@@ -54,5 +54,12 @@
             <pubDate>Fri, 13 Dec 2024 13:21:00 GMT</pubDate>
         </item>
 
+        <item>
+            <title>New masterclass: Modern DOM UaF Exploit Development (Firefox RCE)</title>
+            <link>https://zerodayengineering.com/training/masterclass/browser-security-nightly.html#domuaf</link>
+            <description>Online on 14th March, 13:00 UTC.</description>
+            <pubDate>Mon, 17 Feb 2024 12:10:00 GMT</pubDate>
+        </item>
+
     </channel>
 </rss>
