@@ -85,7 +85,7 @@
                                  <a href="training/index.html" class="nav-link cursor-item">Training</a>
                                  <ul class="dropdown">
                                     <li><a href="training/schedule.html">Schedule</a></li>
-                                    <li><a href="training/index.html">Courses</a></li>
+                                    <li><a href="training/index.html">Training Programs</a></li>
                                     <li><a href="training/masterclass">Masterclasses</a></li>                                   
                                     <li><a href="training/reviews/index.html">Reviews & Buzz</a></li>
                                  </ul>
@@ -135,48 +135,48 @@
                            Note: this class is focused on system internals and research setup - with just a little starter kit on vulnerability research.</p>
 
                            <p>Topics - general:
-                           * ECMAScript specification (what we need to know)
-                           * Anatomy of a JavaScript engine
-                           * Attack surface models
-                           * Common classes of bugs 
-                           * Common vulnerability trends 
-                           * Exploitation patterns </p>
+                           • ECMAScript specification (what we need to know)
+                           • Anatomy of a JavaScript engine
+                           • Attack surface models
+                           • Common classes of bugs 
+                           • Common vulnerability trends 
+                           • Exploitation patterns </p>
                            
                            <p>Topics - v8:
-                           * Building on Linux (a dockerscript will be given)
-                           * Interesting build tweaks
-                           * d8 command line parameters
-                           * Intrinsics for live introspection
-                           * Debugging with gdb
-                           * Codebase overview & patterns 
-                           * v8 pipeline (as of 2023Q2)
-                           * How fundamental JavaScript concepts are implemented in v8
-                           * Inspecting low-level JavaScript entities in runtime</p>
+                           • Building on Linux (a dockerscript will be given)
+                           • Interesting build tweaks
+                           • d8 command line parameters
+                           • Intrinsics for live introspection
+                           • Debugging with gdb
+                           • Codebase overview & patterns 
+                           • v8 pipeline (as of 2023Q2)
+                           • How fundamental JavaScript concepts are implemented in v8
+                           • Inspecting low-level JavaScript entities in runtime</p>
 
                            <p>You will learn:
-                           * How every JavaScript engine works internally 
-                           * What to expect from a codebase of unfamiliar engine 
-                           * Where and how to look/fuzz for bugs
-                           * How to build/debug/attack v8
+                           • How every JavaScript engine works internally 
+                           • What to expect from a codebase of unfamiliar engine 
+                           • Where and how to look/fuzz for bugs
+                           • How to build/debug/attack v8
                            </p>
 
                            <p>Who should attend:
-                           * Professional vulnerability researchers transitioning to JavaScript from other specializations
-                           * Security researchers working with or interested in JavaScript engines 
-                           * JavaScript engines core developers and testers
-                           * Electron and nodejs develepers who are curious about how javascript engines work internally 
+                           • Professional vulnerability researchers transitioning to JavaScript from other specializations
+                           • Security researchers working with or interested in JavaScript engines 
+                           • JavaScript engines core developers and testers
+                           • Electron and nodejs develepers who are curious about how javascript engines work internally 
                            </p>
                            
                            <p>Pre-requisites: 
-                           * JavaScript 
-                           * C++ 
-                           * Linux command line
+                           • JavaScript 
+                           • C++ 
+                           • Linux command line
                            </p>
 
                            <p>Recommended setup:
-                           * Laptop for test & exercise
-                           * Linux virtual machine (Ubuntu 18.04 LTS is used in most open source dev setups)
-                           * Large second monitor for watching the stream
+                           • Laptop for test & exercise
+                           • Linux virtual machine (Ubuntu 18.04 LTS is used in most open source dev setups)
+                           • Large second monitor for watching the stream
                            </p>
 
                            <p>Audience note: this class is designed with a structured depth which makes it suitable for all level audiences, from beginners/webdevs (provided they have a certain readiness for low-level introspection labs, or able to skip it), to professional security and vulnerability researchers who wish to enter JavaScript specialization.</p>
@@ -194,8 +194,7 @@
                            Duration: 4 hours
                            Location: online
                            Instructor: Alisa Esage
-                           Level: intermediate
-                           Availability: <font style="background:red"><a href="training/universal-vulnerability-research.html">registration closed</a></font>
+                           Level: intermediate</p>
                            
                            <p>JavaScript engines come with their own special (if unique) classes of security vulnerabilities. For example, it can be easily verified by CVE history that buffer overflows are more or less nonexistent in modern engines (such as those baked into web browsers: v8, SpiderMonkey, JSC...), while type confusion bugs are extremely common. Why is it so? The knowledge about JavaScript engines architecture and implementation as well as ECMAScript specification demands - that was covered comprehensively in the <a href="jsinternals">JavaScript Engines Internals masterclass</a> - lets us precisely understand such bug trends and project it onto specific targets, to make predictions about bug classes that should be targetted or expected in a vulnerability research project. In this class, however, we take architectural awareness and system internals as a pre-requisite starting point to explore exclusively the world of vulnerabilities which are specific to JavaScript engines, and establish the basis of related analytical skills.
                               
@@ -206,40 +205,40 @@
                            Note: we won't have time for any refreshers on basic appsec theory or JavaScript engines internals in this class; make sure that you meet the pre-requisites before booking.</p>
 
                            <p>Topics:
-                           * The big picture: vulnerability classes/trends/patterns that affect JavaScript engines
-                           * Case studies of known vulnerabilities in JavaScript engines (C++ code level)
-                           * Vulnerability analysis for JSE - general principles and the workflow
+                           • The big picture: vulnerability classes/trends/patterns that affect JavaScript engines
+                           • Case studies of known vulnerabilities in JavaScript engines (C++ code level)
+                           • Vulnerability analysis for JSE - general principles and the workflow
                            </p>
 
                            <p>You will learn:
-                           * What to expect when bughunting a JavaScript engine 
-                           * Quickly understanding a common vulnerability class/pattern from a testcase
-                           * How to apply the knowledge about bug trends and patterns to your research project 
-                           * How to go from understanding a JSE vulnerablity in code to a proof of concept testcase
-                           * What to do with a vulnerability testcase to gain further insight toward exploit development
+                           • What to expect when bughunting a JavaScript engine 
+                           • Quickly understanding a common vulnerability class/pattern from a testcase
+                           • How to apply the knowledge about bug trends and patterns to your research project 
+                           • How to go from understanding a JSE vulnerablity in code to a proof of concept testcase
+                           • What to do with a vulnerability testcase to gain further insight toward exploit development
                            </p>
 
                            <p>Who should attend:
-                           * Specialized vulnerability researchers - browsers and JavaScript engines
-                           * Professional vulnerability researchers transitioning to JavaScript from other specializations
-                           * Security researchers working with or interested in JavaScript engines 
-                           * JavaScript engines core developers and testers
-                           * Electron and nodejs develepers who are curious about how javascript engines work internally 
+                           • Specialized vulnerability researchers - browsers and JavaScript engines
+                           • Professional vulnerability researchers transitioning to JavaScript from other specializations
+                           • Security researchers working with or interested in JavaScript engines 
+                           • JavaScript engines core developers and testers
+                           • Electron and nodejs develepers who are curious about how javascript engines work internally 
                            </p>
                            
                            <p>Pre-requisites: 
-                           * JavaScript 
-                           * C++ 
-                           * Linux command line
-                           * Application security concepts
-                           * <a href="#jsinternals">Masterclass: JavaScript Engines Internals</a> or equivalent knowledge by self-study
-                           * Self-built v8-debug on Linux (<a href="https://gist.github.com/alisaesage/d03ef5c67d04caccccbfba6747a2689d">Dockerfile</a>)
+                           • JavaScript 
+                           • C++ 
+                           • Linux command line
+                           • Application security concepts
+                           • <a href="#jsinternals">Masterclass: JavaScript Engines Internals</a> or equivalent knowledge by self-study
+                           • Self-built v8-debug on Linux (<a href="https://gist.github.com/alisaesage/d03ef5c67d04caccccbfba6747a2689d">Dockerfile</a>)
                            </p>
 
                            <p>Recommended setup:
-                           * Laptop for test & exercise
-                           * Linux virtual machine (Ubuntu 18.04 LTS is used in most open source dev setups)
-                           * Large second monitor for watching the stream
+                           • Laptop for test & exercise
+                           • Linux virtual machine (Ubuntu 18.04 LTS is used in most open source dev setups)
+                           • Large second monitor for watching the stream
                            </p>
 
                            <p>Audience note: this is a medium specialized class which requires some knowledge of application security concepts as a prerequisite (such as C++ bug classes, memory corruption, etc.), as well as solid understanding of inner workings of JavaScript engines. Attendees should consider taking the <a href="#jsinternals">JavaScript Engines Internals masterclass</a> first to ensure getting the most of this class.</p>
@@ -250,6 +249,61 @@
                               <input type="hidden" name="currency_code" value="EUR" />
                               <input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_cart_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Add to Cart" />
                             </form> -->
+
+                           <hr>   
+
+                           <h6><a name="domuaf">Masterclass: Modern DOM UaF Exploit Development (Firefox RCE)</a></h6>
+                           <p>Duration: 4 hours
+                           Availability: online + on-demand
+                           Instructor: Alisa Esage
+                           Level: advanced/specialized                           
+                           
+                           In this masterclass you will learn how to exploit modern use-after-free vulnerabilities affecting the Document Object Model (DOM) subsystem of browser. Majority of security bugs found in the browser content process outside of the JavaScript engine are DOM bugs, which allow for remote code execution via JavaScript and/or HTML code. 
+                           
+                           This masterclass takes a full-stack, hands-on approach to the bug class, starting from the C++ patch, and ending with a basic proof-of-concept exploit. As a case study, we'll use a recent real-life bug in the Firefox browser. All the background theory will be given, excluding basic concepts of application security and memory corruption which are contained in the <a class="underline" target="_blank" href="training/universal-vulnerability-research.html">Zero Day Vulnerability Research</a> course.
+                            
+                           Topics covered in the masterclass:
+                           • Browser Document Object Model and JavaScript Web API internals.
+                           • Recap: Memory management theory, garbage collection and reference counting. 
+                           • Relevant technical standards and specifications.
+                           • Relevant advanced concepts of JavaScript syntax & programming model. 
+                           • Recap: Use-after-free bug class - universal perspective.
+                           • Use-after-free bug class - DOM specifics.
+                           • Recap: Exploitation of Use-after-free vulnerabilities - universal perspective.
+                           • Exploitation of Use-after-free vulnerabilities - DOM specifics.
+
+                           You will learn these skills and their application in a real-world scenario:
+                           • How to find out the patch commit from a security advisory.
+                           • Reverse engineering of a medium-complex C++ security patch in browser codebase.
+                           • Analysis of AddressSanitizer logs for vulnerability research.
+                           • How to create a proof-of-concept testcase from a patch.
+                           • Mental modeling for vulnerability analysis. 
+                           • Bug triage on the test platform.
+                           • Low-level debugging for binary exploit development - gdb.
+                           • Abstract thinking for exploit development to minimize the need for low-level debugging. 
+                           • How to write a working exploit for a real-world bug.
+                           
+                           Who should attend:
+                           • Specialized vulnerability researchers - browser and JavaScript engine target.
+                           • Professional vulnerability researchers transitioning to browser security from other specializations.
+                           • Security researchers working with or interested in attacking browsers.
+                           • Browser core developers interested in code hardening and offensive research workflows.
+                           
+                           Pre-requisites: 
+                           • Application Security & Memory Corruption concepts. 
+                           At the level of <a class="underline" target="_blank" href="training/universal-vulnerability-research.html">Zero Day Vulnerability Research</a> training or above.
+                           • Some experience with binary exploit development. 
+                           Basic buffer-overflow level is enough.
+                           • C++, JavaScript, some x86_64 assembly.
+                           Reading plus ability to put together some code, given access to online resources. 
+                           • Self-built debug version of Firefox on Linux.
+                           Specific commit and build instructions will be communicated to attendees one week before the class.
+
+                           <font style="background:green"><a class="underline" target="_blank" href="https://buy.stripe.com/eVa14ycyy3Dj8HmdRk">Register now</a>
+
+                           </p>
+
+                          
 
                            <hr>   
 
