@@ -34,7 +34,7 @@
         </item>
 
         <item>
-            <title>New masterclass: "Hacking KVM"</title>
+            <title>New masterclass: Hacking KVM</title>
             <link>https://zerodayengineering.com/training/masterclass/hypervisor-security-nightly.html#hackingkvm</link>
             <description>Set up a Kernel Virtual Machine hacking platform, from zero to ready in four hours. Hands-on deep technical masterclass with essential theory. Livestream on Saturday 10th August, 12:00-16:00 UTC.</description>
             <pubDate>Mon, 5 August 2024 12:55:00 GMT</pubDate>
@@ -58,7 +58,7 @@
             <title>New masterclass: Modern DOM UaF Exploit Development (Firefox RCE)</title>
             <link>https://zerodayengineering.com/training/masterclass/browser-security-nightly.html#domuaf</link>
             <description>Online on 14th March, 13:00 UTC + on-demand.</description>
-            <pubDate>Mon, 17 Feb 2024 12:10:00 GMT</pubDate>
+            <pubDate>Mon, 17 Feb 2025 12:10:00 GMT</pubDate>
         </item>
 
     </channel>
