@@ -21,7 +21,7 @@
       <!--Favicons-->
       <link rel="shortcut icon" href="images/favicon.png">
       <!--Page Title-->
-      <title>Release: VM Escape Exploit for Parallels Desktop Hypervisor (Pwn2Own 2021)</title>
+      <title>Architecting Exploits: The VM Escape That Split the Field</title>
       <!-- Stylesheets -->
       <!-- bootstrap -->
       <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -97,7 +97,7 @@
                                  <a href="about.html" class="nav-link cursor-item">Company</a>
                                  <ul class="dropdown">
                                     <li><a href="about.html">About us</a></li>
-                                    <li><a href="work-with-us.html">Work with us</a></li>
+                                    <li><a href="work-with-us.html">Services</a></li>
                                     <li><a href="contact.html">Contact</a></li>
                                  </ul>
                               </li>                           </ul>
@@ -116,40 +116,69 @@
                      <div class="row justify-content-center">
                         <div class="col-md-8">
                            <div id="quote"></div>
-                           <h3 class="mb-4">Release: VM Escape Exploit for Parallels Desktop Hypervisor (Pwn2Own 2021)</h3>
-                           <p class="date">March 20th, 2024 – Alisa Esage</p>
+                           <h3 class="mb-4">Architecting Exploits: The VM Escape That Split the Field</h3>
+<p class="date">March 20th, 2024 – Alisa</p>
 
-                           <p>In April 2021 I participated in Pwn2Own Vancouver competition as an independent solo player, and successfully demonstrated a 0-day virtual machine escape exploit with code execution on Parallels hypervisor. Today I am finally releasing the exploit source code together with a technical walkthrough video talk that I gave on Zero Day Engineering livestream in November 2021.</p>
+<p>In April 2021, I participated in the Pwn2Own Vancouver competition as an independent solo entrant and successfully demonstrated a <strong>zero-day virtual machine escape</strong> against the Parallels hypervisor.</p>
 
-                           <div align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/xZg0l7Cg2qg?si=zSpBwtPwL5NuP_o0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><p><i>Pwn, pwn!</i></p></div>
+<p>This post documents the event, releases the exploit source code, and provides a full technical walkthrough video. But more importantly, it seals the historical record.</p>
 
-                           <p style="text-align: center;"><img src="images/blog/pwn2own21-thezdi.png" alt="" title="" class="img-fluid" width="70%">             
-                           <p style="text-align: center;"><img src="images/blog/pwn2own21-thezdi2.png" alt="" title="" class="img-fluid" width="70%">                                     
-                           <i>Organizer's reactions</i></p>
+<h4>The Exploit</h4>
+<p>The vulnerability was located in the Shared Folders subsystem of Parallels Desktop hypervisor, and the resulting exploit chain achieved <strong>full guest-to-host escape</strong>—executing code on the host from within the guest VM.</p>
 
-                           <a href=""><p style="text-align: center;"><img src="images/blog/pwn2own21-alisaesage.png" alt="" title="" class="img-fluid" width="70%"></a>            
-                           <i>✅</i></p>
+<p>It is true that a hypervisor-level escape represents a hard challenge, regardless of the vendor; all of my expertise and skills had to converge to make it happen, even if the exploit demonstration appears effortless. As such, it is rightfully recognized as a strong accomplishment beyond gender/identity context.</p>
 
-                           <p style="text-align: center;"><img src="images/blog/pwn2own21-dragosr.png" alt="" title="" class="img-fluid" width="70%">                         
-                           <i>Dragos Ruiu, Founder Pwn2Own</i></p>
+<p>The exploit was executed <strong>remotely</strong> by Pwn2Own contest staff under controlled conditions, while I <strong>oversaw the launch via remote video link</strong>.</p>
 
-                           <p style="text-align: center;"><img src="images/blog/pwn2own21-abdhariri.png" alt="" title="" class="img-fluid" width="70%">                         
-                           <i>Abdul Aziz Hariri, Pwn2Own staff at that time</i></p>
-      
-                           <p>The specific Parallels hypervisor subsystem in which I found the vulnerability was since then publicly documented in community blogs, so I don't feel that it needs yet another technical writeup. Instead, I invite you to look at the code, and watch the technical walkthrough video, which covers the bug and the exploit through all the relevant aspects of my workflow, from attack surface modeling and reverse engineering, to vulnerability discovery and exploit development. And if you like hypervisors, I strongly recommend my <a class="underline" target="_blank" href="training/hypervisor-vulnerability-research.html">Hypervisor Vulnerability Research</a> course as the next step in your research journey, as well as the follow-up course <a class="underline" target="_blank" href="training/hypervisor-vulnerability-research.html">Advanced Hypervisor Exploit Development</a>. My training courses are the best systematic source of knowledge on specialized system internals and vulnerability exploitation ever, that will save you many months of reverse engineering and sifting through blogs while learning to pwn.
+<div align="center">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/xZg0l7Cg2qg?si=zSpBwtPwL5NuP_o0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+   <p><i>Live demonstration record of Alisa's exploit at Pwn2Own 2021</i></p>
+</div>
 
-                           It should be noted that my exploit entry was formally named a "partial win" only because the security bug that I exploited was said to be internally known to the Parallels staff. However, the bug remained unpatched in the Parallels hypervisor and wasn't publicly disclosed on the day of the contest. My exploit thus demonstrated a fully successful 0-day virtual machine escape, as the video record shows. As such, the "partial win" naming does not represent any technical issues with the attack, but rather, it is due to an old policy quirk in the contest rules. This quirk is generally not considered fair by the cybersecurity community, which <a class="underline" target="_blank" href="https://itwire.com/business-it-news/security/anger-as-woman-researcher-walks-away-empty-handed-from-hacking-contest.html">expressed a massive disapproval</a> of the rule that allowed the organizers to label my win as "partial". I hope that the organizers will consider updating the rules in the future to reflect the current state of the industry, where private bugs are a norm, and the exploit quality is the only thing that matters.
+<p style="text-align: center;"><img src="images/blog/pwn2own21-thezdi.png" alt="" class="img-fluid" width="70%"></p>
+<p style="text-align: center;"><img src="images/blog/pwn2own21-thezdi2.png" alt="" class="img-fluid" width="70%"><br><i>Archived public acknowledgment by Zero Day Initiative (ZDI)</i></p>
 
-                           As the first female participant in the <a class="underline" target="_blank" href="https://en.wikipedia.org/wiki/Pwn2Own">17-year history</a> (as of 2024) of Pwn2Own competition, I am proud to break this historical record, and establish a blueprint for more women to follow. Gender diversity remains largely a theoretical concept in the upper tiers of cybersecurity industry, and while more women occupy management roles these days, top technical tiers of the industry are still overwhelmingly male-dominated. Despite rumors in the press, I did receive my cash prize for the exploit, and I am grateful to the organizers for the opportunity to participate in the competition, and to the cybersecurity community for their support. 
+<p style="text-align: center;"><img src="images/blog/pwn2own21-dragosr.png" alt="" class="img-fluid" width="70%"><br><i>Confirmation by Dragos Ruiu, Pwn2Own founder</i></p>
 
-                           With that being said, on to the technical part, and happy hacking!
+<p style="text-align: center;"><img src="images/blog/pwn2own21-abdhariri.png" alt="" class="img-fluid" width="70%"><br><i>Exploit  executed by Abdul Aziz Hariri, Pwn2Own operations lead</i></p>
 
-                           <a class="underline" target="_blank" href="https://github.com/alisaesage/Pwn/tree/main/prl_pwn_v1.1">Exploit source code</a>
-                           <a class="underline" target="_blank" href="https://youtu.be/6UhgLteN-PU">Technical walkthrough video</a>
-                           <a class="underline" target="_blank" href="research/slides/ZDE2021_AdvancedEasyPwn2Own2021.pdf">Slides</a>
+<h4>What Actually Happened</h4>
+<p>   • The exploit was <strong>fully functional</strong> and achieved its intended impact of executing my shellcode on the host MacOS system.
+   • It worked by breaking hypervisor isolation to pivot from inside of an up-to-date Parallels virtual machine to the Parallels hypervisor process on the host.
+   • The vulnerability which I used, while <strong>internally known to Parallels</strong>, was <strong>unpatched and undisclosed</strong> at the time of the contest.
+   • The contest organizers applied the label <strong>“partial win”</strong>—not due to technical failure, but because of a rule which penalized exploits if the vendor was privately aware of the security issue.
+</p>
 
-                           <i>Updated (23-08-2024): Add remarks about "partial win" and gender diversity</i>
-                           </p>
+<p class="quote">Note: “Partial” was a policy artifact. The exploit was complete, as video shows.</p>
+
+<p>The cybersecurity community responded with strong criticism of the rule in question.  
+<a class="underline" target="_blank" href="https://itwire.com/business-it-news/security/anger-as-woman-researcher-walks-away-empty-handed-from-hacking-contest.html">See article</a>.</p>
+
+<h4>The Historical Threshold</h4>
+<p>This event marked the <strong>first ever female participation in the 17-year history of Pwn2Own</strong>, and the first technically complete 0-day VM escape by a woman on record.</p>
+
+<p>In the field where female technical presence remains a rarity and everybody is campaigning to "get more women into it", I came in and showed my work. Not to prove anything — but as a side effect of being myself. Not as an emerging trend — but as a presence in the void. That presence is now sealed into the timeline: visible, undeniable, and earned without compromise. And I am proud of establishing a clean historical precedent, as well as of my technical accomplishments that it stands upon.</p>
+
+<h4>Code and Training</h4>
+<p>I’m releasing the exploit source code here:  
+<a class="underline" target="_blank" href="https://github.com/alisaesage/Pwn/tree/main/prl_pwn_v1.1">Exploit source code</a></p>
+
+<p>And the full technical walkthrough (recorded live on ZDE livestream) here:  
+<a class="underline" target="_blank" href="https://youtu.be/6UhgLteN-PU">Technical walkthrough video</a></p>
+
+<p>If you’re serious about hypervisors and want to go beyond this single bug, start with my pro training:</p>
+<ul>
+   <li><a class="underline" target="_blank" href="training/hypervisor-vulnerability-research.html">Hypervisor Vulnerability Research</a></li>
+   <li><a class="underline" target="_blank" href="training/hypervisor-vulnerability-research.html">Advanced Hypervisor Exploit Development</a></li>
+</ul>
+
+<p>These are the most comprehensive, field-tested training programs available. Built from experience, as a system of entire field — and structured around my signature methods.
+</p>
+
+<h4>Final Note</h4>
+<p>This record stands.<br>
+The exploit was real. The win was real. The precedent is irreversible.<br>
+I was just getting started. <span class="butterfly-seal"></span></p>
                                                             
                            <div class="pt-5 mb-5 categories_tags ">
                               <div class="social float-right">

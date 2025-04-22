@@ -94,7 +94,7 @@ h6 {
   margin-bottom: 20px;
   font-weight: 700;
   line-height: 1.2;
-  color: #640100;
+  color: #4a0000;
 }
 
 h3.section-title {
@@ -1221,7 +1221,7 @@ hr {
 .site-nav .site-nav-ul-none-onepage>li.has-children>.dropdown>li a:hover,
 .site-nav .site-nav-ul-none-onepage>li.has-children>ul>li a:hover {
   color: #000;
-  background: #640100;
+  background: #4a0000;
   padding-left: 30px;
 }
 
@@ -2795,4 +2795,16 @@ span.error {
 .footer .footer-site-social li a:hover,
 .footer .footer-site-social li a:focus {
   color: #EDEAE6;
+}
+
+.butterfly-seal {
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  background-image: url('../images/butterfly-seal.png'); /* Path to your transparent PNG */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  vertical-align: middle;
+  opacity: 0.9;
 }
