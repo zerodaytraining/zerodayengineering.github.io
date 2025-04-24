@@ -787,7 +787,7 @@ ion-icon {
   position: absolute;
   height: 1px;
   width: 0;
-  background-color: #EDEAE6fff;
+  background-color: #EDEAE6;
 }
 
 .btn-draw .btn-draw__text:before {
@@ -810,7 +810,7 @@ ion-icon {
   position: absolute;
   height: 0;
   width: 1px;
-  background-color: #EDEAE6fff;
+  background-color: #EDEAE6;
   -webkit-transition: all 0.2s cubic-bezier(0.2, 0.3, 0.25, 0.9);
   transition: all 0.2s cubic-bezier(0.2, 0.3, 0.25, 0.9);
 }
@@ -2799,12 +2799,18 @@ span.error {
 
 .butterfly-seal {
   display: inline-block;
-  width: 2em;
-  height: 2em;
+  width: 1.8em;
+  height: 1.8em;
   background-image: url('../images/butterfly-seal.png'); /* Path to your transparent PNG */
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   vertical-align: middle;
-  opacity: 0.9;
+  opacity: 0.6;
+}
+
+body, html, .page-wrapper, .article, .main-content {
+  -webkit-user-select: text !important;
+  user-select: text !important;
+  -webkit-touch-callout: default !important;
 }
