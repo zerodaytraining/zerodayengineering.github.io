@@ -498,3 +498,26 @@ function Cursor() {
   link.forEach(b => b.addEventListener('mouseleave', animateit));
   window.addEventListener('mousemove', editCursor);
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Select all elements that are intended to trigger the lightbox
+  document.querySelectorAll('.lightbox-trigger').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+          e.preventDefault(); // Prevent the default anchor behavior
+          const imageSrc = this.getAttribute('data-image'); // Get the image URL from the data attribute
+          const lightbox = document.getElementById('lightbox');
+          const lightboxImage = document.getElementById('lightbox-img');
+          
+          // Set the lightbox image src and show the lightbox
+          lightboxImage.src = imageSrc;
+          lightbox.style.display = 'flex'; // Display the lightbox
+      });
+  });
+
+  // Close lightbox when clicking on the lightbox (outside the image)
+  document.getElementById('lightbox').addEventListener('click', function (e) {
+      if (e.target === this) {
+          this.style.display = 'none'; // Hide the lightbox when clicking outside the image
+      }
+  });
+});

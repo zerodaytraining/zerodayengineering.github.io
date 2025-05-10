@@ -2814,3 +2814,42 @@ body, html, .page-wrapper, .article, .main-content {
   user-select: text !important;
   -webkit-touch-callout: default !important;
 }
+
+/* reviews */
+
+.userpic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.card-title {
+  display: flex;
+  align-items: center;
+}
+.card-custom-border {
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white border with transparency */
+  border-radius: 10px; /* Rounded corners */
+  margin-bottom: 15px; /* Space between cards */
+  break-inside: avoid; /* Avoid breaking the card across columns */
+}
+
+/* Lightbox overlay styling */
+.lightbox {
+ display: none; /* Hidden by default */
+ position: fixed;
+ z-index: 1050; /* Ensure it’s on top */
+ left: 0;
+ top: 0;
+ width: 100%;
+ height: 100%;
+ background-color: rgba(0, 0, 0, 0.8); /* Dark semi-transparent background */
+ justify-content: center;
+ align-items: center;
+}
+
+.lightbox img {
+ max-width: 90%;
+ max-height: 90%;
+ box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
