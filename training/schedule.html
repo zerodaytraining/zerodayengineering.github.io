@@ -210,7 +210,7 @@
                                     <td>Online tutorials on July 5, 12, 19, 26th (all Saturdays), 2025, <a href="https://www.timeanddate.com/worldclock/converter.html?iso=20250101T090000&p1=1440&p2=136&p3=236&p4=179" target="_blank">15-17 UTC</a> </td>
                                     <td>self-paced + online</td>
                                     <td>€4,000++ </a></td>
-                                    <td><a class="underline" href="https://buy.stripe.com/00g6oSbuu3DjcXC9B2">registration open</a></td>
+                                    <td><a class="underline" href="javascript:toggleZDEModal(true)">Application form</a></td>
                                  </tr>
                                  <tr>
                                     <td><a href="training/advanced-hypervisor-exploitation.html">Advanced Hypervisor Exploit Engineering</a></td>
@@ -220,7 +220,7 @@
                                     <td>Online tutorials on August 9, 16, 23, 30th (all Saturdays), 2025, <a href="https://www.timeanddate.com/worldclock/converter.html?iso=20250101T090000&p1=1440&p2=136&p3=236&p4=179" target="_blank">15-17 UTC</a> </td>
                                     <td>self-paced + online</td>
                                     <td>€4,000++ </a></td>
-                                    <td><a class="underline" href="https://buy.stripe.com/9AQ28C566b5LaPu5kL">registration open</a></td>
+                                    <td><a class="underline" href="javascript:toggleZDEModal(true)">Application form</a></p></td>
                                  </tr>
                                  <tr>
                                     <td>Zero Day Engineering & Exploit Design II</td>
@@ -254,6 +254,119 @@
                   </div>
                </div>
 
+             <!-- Modal Overlay -->
+             <div id="zdeModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; justify-content:center; align-items:center; font-family:inherit;">
+               <div style="background:#f5f5f5; color:#111; padding:2rem; border-radius:1rem; width:100%; max-width:600px; position:relative; box-shadow:0 0 40px rgba(0,0,0,0.4); overflow-y:auto; max-height:90vh;">
+
+               <!-- Close Button -->
+               <button onclick="toggleZDEModal(false)" style="position:absolute; top:12px; right:16px; background:none; border:none; font-size:20px; color:#555; cursor:pointer;">✕</button>
+            
+               <!-- Modal Content -->
+               <h2 style="font-size:1.5rem; font-weight:bold; margin-bottom:1rem;">Zero Day Engineering — Application</h2>
+            
+               <form id="zdeForm" class="flex flex-col gap-4">
+                  <!-- Identity -->
+                  <div>
+                     <label class="block mb-1" for="full_name">Full Name *</label>
+                     <input type="text" id="full_name" name="Full Name" required style="width:100%; padding:0.5rem; background:white; color:#111; border:1px solid #ccc;">
+                  </div>
+            
+                  <div>
+                     <label class="block mb-1" for="email">Email *</label>
+                     <input type="email" id="email" name="Email" required style="width:100%; padding:0.5rem; background:white; color:#111; border:1px solid #ccc;">
+                  </div>
+            
+                  <div>
+                     <label class="block mb-1" for="phone">Phone *</label>
+                     <input type="text" id="phone" name="Phone" required style="width:100%; padding:0.5rem; background:white; color:#111; border:1px solid #ccc;">
+                  </div>
+            
+                  <div>
+                     <label class="block mb-1" for="company">Company / Affiliation *</label>
+                     <input type="text" id="company" name="Company" required style="width:100%; padding:0.5rem; background:white; color:#111; border:1px solid #ccc;">
+                  </div>
+            
+                  <div>
+                     <label class="block mb-1" for="role">Your Role *</label>
+                     <input type="text" id="role" name="Role" required style="width:100%; padding:0.5rem; background:white; color:#111; border:1px solid #ccc;">
+                  </div>
+            
+                  <!-- Target Area (Dropdown) -->
+                  <div>
+                     <label class="block mb-1" for="target">Target Area</label>
+                     <select id="target" name="Target Area" style="width:100%; padding:0.5rem; background:white; color:#111; border:1px solid #ccc;">
+                        <option>Exploit Engineering</option>
+                        <option>Fuzzing & Program Analysis</option>
+                        <option>Hypervisor & Virtualization</option>
+                        <option>Browsers & JavaScript Engines</option>
+                        <option>Firmware & Baseband</option>
+                        <option>OS & Kernel</option>
+                        <option>Other</option>
+                     </select>
+                  </div>
+            
+                  <!-- Desired Format (Dropdown) -->
+                  <div>
+                     <label class="block mb-1" for="format">Desired Format</label>
+                     <select id="format" name="Desired Format" style="width:100%; padding:0.5rem; background:white; color:#111; border:1px solid #ccc;">
+                     <option>Online Cohorts</option>
+                     <option>Self-paced Course</option>
+                     <option selected>Self-paced Course with Technical Support</option>
+                     <option>Private Online or In-Person Training</option>
+                     <option>Long-form Private Consulting</option>
+                     <option>Specialized R&D Project</option>
+                     <option>Speaking / Keynote</option>
+                     <option>Exploit Artifacts</option>
+                     <option>Other</option>
+                     </select>
+                  </div>
+            
+                  <!-- Details -->
+                  <div>
+                     <label class="block mb-1" for="details">Details</label>
+                     <textarea id="details" name="Details" rows="4" style="width:100%; padding:0.5rem; background:white; color:#111; border:1px solid #ccc;"></textarea>
+                  </div>
+            
+                  <!-- Access Options (Checkboxes) -->
+                  <div>
+                     <div style="display:flex; flex-direction:column; gap:0.25rem;">
+                     <label><input type="checkbox" name="Access Options" value="purchase"> I am prepared to make the purchase within 10 days</label>
+                     <label><input type="checkbox" name="Access Options" value="notifications"> I want to get an email notification when relevant product(s) become available</label>
+                     </div>
+                  </div>
+            
+                  <!-- Submit -->
+                  <button type="submit" style="display:block; margin:1rem auto 0 auto; padding:0.5rem 1.5rem; border:1px solid #333; background:none; color:#111; font-size:1rem; cursor:pointer;">
+                     Submit
+                  </button>
+               </form>
+            
+               <p id="zdeResponse" style="margin-top:1rem; font-size:0.875rem; color:#008000;"></p>
+               </div>
+            </div>
+
+            <script>
+               const scriptURL = 'https://script.google.com/macros/s/AKfycbwr71l28B1IVwYWQbhhEEZOepZu0NfRkx2sJL4JM-zBRs7K35yMLoO21AnZWHKBdnzLBg/exec'; // Replace with actual script endpoint
+               const form = document.getElementById('zdeForm');
+               const modal = document.getElementById('zdeModal');
+               const responseEl = document.getElementById('zdeResponse');
+             
+               function toggleZDEModal(show) {
+                 modal.style.display = show ? 'flex' : 'none';
+               }
+             
+               form.addEventListener('submit', e => {
+                 e.preventDefault();
+                 const data = new FormData(form);
+                 fetch(scriptURL, { method: 'POST', body: data })
+                   .then(() => {
+                     responseEl.textContent = 'Submitted. Thank you.';
+                     form.reset();
+                   })
+                   .catch(() => responseEl.textContent = 'Error. Try again later.');
+               });
+             </script>
+            <!-- Modal Overlay end -->
 
             <!-- Footer -->
             <footer class="footer section">
