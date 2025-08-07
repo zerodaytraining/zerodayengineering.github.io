@@ -19,6 +19,7 @@ https://zerodayengineering.com/training/
 https://zerodayengineering.com/training/hypervisor-vulnerability-research.html
 
 # → "browser exploit development"
+# → "browser exploitation training"
 https://zerodayengineering.com/training/browser-exploit-design.html
 
 # → "JavaScript Engines Exploitation"
