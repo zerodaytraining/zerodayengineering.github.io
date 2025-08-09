@@ -61,5 +61,15 @@
             <pubDate>Mon, 17 Feb 2025 12:10:00 GMT</pubDate>
         </item>
 
+        <item>
+            <title>New class: Modern DOM UaF Exploit Development (Firefox RCE)</title>
+            <link>https://zerodayengineering.com/training/masterclass/hypervisor-security-nightly.html#hvr2025update</link>
+            <description>In this series of four lectures Alisa looks into recent virtualization technology developments across hardware, exploit competitions, emergent attacks and fuzzing research. Details and purchase here: https://zerodayengineering.com/training/masterclass/hypervisor-security-nightly.html#hvr2025update</description>
+            <pubDate>Fri, 08 Aug 2025 18:00:00 GMT</pubDate>
+        </item>
+
     </channel>
 </rss>
+
+
+
