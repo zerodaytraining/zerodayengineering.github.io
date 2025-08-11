@@ -3,7 +3,7 @@
     <channel>
         <title>Zero Day Engineering - RSS feed</title>
         <link>http://www.zerodayengineering.com</link>
-        <description>State-of-the-art vulnerability research & courses</description>
+        <description>State-of-the-art vulnerability research &nbsp; courses</description>
         <language>en-us</language>
         
         <image>
@@ -20,7 +20,7 @@
         </item>
 
         <item>
-            <title>⚡️0-Day Insights: Google Chrome "actively exploited" bug chain on Viz & v8-wasm (May 2024)</title>
+            <title>⚡️0-Day Insights: Google Chrome "actively exploited" bug chain on Viz &nbsp; v8-wasm (May 2024)</title>
             <link>https://zerodayengineering.com/insights/chrome-viz-v8-wasm.html</link>
             <description>Emergency security updates were recently released by Google for a two-bug exploit chain under active exploitation targeting Chrome browser. This quick technical note looks at the bug chain from a cutting edge vulnerability research perspective, placing root cause analysis in the context of both system internals and offensive research trends.</description>
             <pubDate>Wed, 17 May 2024 11:20:00 GMT</pubDate>
@@ -43,7 +43,7 @@
         <item>
             <title>Discussion: Fuzzing from First Principles</title>
             <link>https://zerodayengineering.com/research/discussion-fuzzing-from-first-principles.html</link>
-            <description>On September 14, 2024, I had the pleasure of participating in the Off By One Security Podcast by SANS, discussing "Fuzzing from First Principles". In this follow-up article, I’ll tackle some interesting questions and comments from the livestream chat that didn’t make it into the live Q&A due to time constraints.</description>
+            <description>On September 14, 2024, I had the pleasure of participating in the Off By One Security Podcast by SANS, discussing "Fuzzing from First Principles". In this follow-up article, I’ll tackle some interesting questions and comments from the livestream chat that didn’t make it into the live Q&nbsp;A due to time constraints.</description>
             <pubDate>Wed, 14 Oct 2024 09:00:00 GMT</pubDate>
         </item>
 
@@ -66,7 +66,7 @@
             <link>https://zerodayengineering.com/research/slides/BH2025_ReverseEngineeringHexagonISDB.pdf</link>
             <description>On April 3rd, 2025, I had presented my work on reverse-engineering the hardware internals of Qualcomm Hexagon ISDB JTAG at Black Hat Asia 2021, Singapore.
 
-Hexagon is a tightly restricted proprietary architecture which doesn't permit low-level debugging – a challenge which I was tasked to conquer under a private commercial R&D contract.</description>
+Hexagon is a tightly restricted proprietary architecture which doesn't permit low-level debugging – a challenge which I was tasked to conquer under a private commercial R&nbsp;D contract.</description>
             <pubDate>Fri, 08 Aug 2025 18:00:00 GMT</pubDate>
         </item>
 
