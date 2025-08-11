@@ -62,6 +62,15 @@
         </item>
 
         <item>
+            <title>Slides: Black Hat Asia 2021 - Unveiling the Mysteries of Hexagon QDSP6 ISDB JTAG</title>
+            <link>https://zerodayengineering.com/research/slides/BH2025_ReverseEngineeringHexagonISDB.pdf</link>
+            <description>On April 3rd, 2025, I had presented my work on reverse-engineering the hardware internals of Qualcomm Hexagon ISDB JTAG at Black Hat Asia 2021, Singapore.
+
+Hexagon is a tightly restricted proprietary architecture which doesn't permit low-level debugging – a challenge which I was tasked to conquer under a private commercial R&D contract.</description>
+            <pubDate>Fri, 08 Aug 2025 18:00:00 GMT</pubDate>
+        </item>
+
+        <item>
             <title>New class: Hypervisor Field Updates 2021-2025</title>
             <link>https://zerodayengineering.com/training/masterclass/hypervisor-security-nightly.html#hvr2025update</link>
             <description>In this series of four lectures Alisa looks into recent virtualization technology developments across hardware, exploit competitions, emergent attacks and fuzzing research. Details and purchase here: https://zerodayengineering.com/training/masterclass/hypervisor-security-nightly.html#hvr2025update</description>
