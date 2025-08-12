@@ -131,14 +131,14 @@
                            <h3 class="mb-4">Pwn2Own 2021 Vancouver: My Solo Hypervisor Escape Breakthrough</h3>
 <p class="date">March 20th, 2024 – Alisa</p>
 
-<p>In April 2021, I participated in the Pwn2Own Vancouver competition as an independent solo entrant and successfully demonstrated a zero-day virtual machine escape against the Parallels hypervisor - a target worth <a class="underline" target="_blank" href="https://web.archive.org/web/20210616191511/https://www.zerodayinitiative.com/Pwn2OwnVancouver2021Rules.html">$40,000 cash bounty</a>.</p>
+<p>In April 2021, I participated in the Pwn2Own Vancouver competition as an independent solo entrant and successfully demonstrated a zero-day virtual machine escape against the Parallels hypervisor - a target worth $40,000 cash bounty <a class="underline" target="_blank" href="https://web.archive.org/web/20210616191511/https://www.zerodayinitiative.com/Pwn2OwnVancouver2021Rules.html">[1]</a>.</p>
 
 <p>This post documents the event, releases the exploit source code, and provides a full technical walkthrough video. But more importantly, it seals the historical record.</p>
 
 <h4>The Exploit</h4>
 <p>The vulnerability was located in the Shared Folders subsystem of Parallels Desktop hypervisor, and the resulting exploit chain achieved full guest-to-host escape — executing code on the host from within the guest VM.
    
-My exploit had to be quite complicated, pivoting off a Linux Kernel module to a custom protocol implementation to deliver the payload through the hypercall interface. I was able to achieve 100% reliability of the exploit: partly by finding a rare logic bug in hypervisor internals, and partly by following systematic exploit engineering principles (that are now included in my <a class="underline" href="training" target="_blank">training programs</a>).</p>
+My exploit had to be quite complicated: pivoting off a Linux Kernel module to a reverse-engineered protocol implementation to deliver the payload through the hypercall interface. I was able to achieve 100% reliability of the exploit: partly by finding a rare logic bug in hypervisor internals, and partly by following systematic exploit engineering principles (that are now included in my <a class="underline" href="training" target="_blank">training programs</a>).</p>
 
 <p>Hypervisor escapes are considered to be one of the most challenging exploit classes, especially when delivered in the form of a zero day exploit. They are universally recognized as a strong technical accomplishment, regardles of the attack vector. I am proud of being able to elevate my skills beyond my <a href="https://x.com/alisaesage/status/974646492932853760" class="underline" target="_blank">first attempts with VirtualBox</a>, to show a live exploit for a complex binary hypervisor.</p>
 
@@ -163,7 +163,7 @@ My exploit had to be quite complicated, pivoting off a Linux Kernel module to a 
    • The contest organizers applied the label “partial win” because of the contest rule which penalized exploits if the vendor was privately aware of the security issue.
 </p>
 
-<p>The cybersecurity community responded with <a class="underline" target="_blank" href="https://itwire.com/business-it-news/security/anger-as-woman-researcher-walks-away-empty-handed-from-hacking-contest.html">strong criticism of that rule</a>.</p>
+<p>The cybersecurity community responded with <a class="underline" target="_blank" href="https://itwire.com/business-it-news/security/anger-as-woman-researcher-walks-away-empty-handed-from-hacking-contest.html">strong criticism of that rule</a>. Some prominent figures also criticized dismissive takes from the contest organizer, which emphasized "ascii art" in the entry success report tweet instead of clearly stating the actual exploit impact: 0-day VM escape.</p>
 
 <p>My breakthrough was covered by independent media outlets (<a class="underline" target="_blank" href="https://thehackernews.com/2021/04/windows-ubuntu-zoom-safari-ms-exchange.html">1</a>, <a class="underline" target="_blank" href="https://portswigger.net/daily-swig/pwn2own-2021-zero-click-zoom-exploit-among-winners-as-payout-record-smashed">2</a>, <a class="underline" target="_blank" href="https://therecord.media/pwn2own-2021-hacking-contest-ends-with-a-three-way-tie">3</a>, <a class="underline" target="_blank" href="https://www.heise.de/news/Gehackt-Windows-Ubuntu-Exchange-Teams-Zoom-Chrome-Safari-und-Edge-6010171.html">4</a>).</p>
 
@@ -174,7 +174,7 @@ My exploit had to be quite complicated, pivoting off a Linux Kernel module to a 
 
 <p>In the field where female technical presence remains a rarity and everybody is campaigning to "get more women into it", I came in and showed my work. Not to prove anything — but as a side effect of being myself. Not as an emerging trend — as a break-through. That presence is now imprinted into the timeline: visible, undeniable, and earned without compromise. </p>
    
-<p>Without downplaying my gender-specific breakthrough, I have to admit that I never aimed to be the first woman in anything. My values of excellence are universal, and my work targets cutting edge technical challenges – not the token awards. Today I keep advancing alongsite with the best minds in the field, not defined by my gender or contests.</p>
+<p>Without downplaying my gender-specific breakthrough, I have to admit that I never aimed to be the first woman in anything. My values of excellence are universal, and my work targets cutting edge technical challenges – not the token awards. Today I keep advancing alongsite with the best minds in the field, not defined by gender or contests.</p>
 
 <h4>Code and Training</h4>
 <p>I’m releasing the exploit source code here:  
@@ -188,7 +188,7 @@ My exploit had to be quite complicated, pivoting off a Linux Kernel module to a 
    
 • <a class="underline" target="_blank" href="training/hypervisor-vulnerability-research.html">Hypervisor Vulnerability Research</a>
 
-This is the most comprehensive hypervisor exploit training program available on the market. Alumni include multiple Pwn2Own winners; a few attendees had found hypervisor security bugs worth $250,000 [<a class="underline" target="_blank" href="https://www.microsoft.com/en-us/msrc/bounty-hyper-v">1</a>, <a class="underline" target="_blank" href="https://x.com/australeo/status/1413040409719103488">2</a>] by directly applying my insights and methodologies. 
+This is the most comprehensive hypervisor exploit training program available on the market. Alumni include multiple Pwn2Own winners; a few attendees had found hypervisor security bugs worth $250,000 [<a class="underline" target="_blank" href="https://www.microsoft.com/en-us/msrc/bounty-hyper-v">1</a>, <a class="underline" target="_blank" href="https://x.com/australeo/status/1413040409719103488">2</a>, <a class="underline" target="_blank" href="https://www.akamai.com/blog/security/discovering-a-critical-0-day">3</a>] by directly applying my insights and methodologies. 
 
 If you're new and looking to get into zero day hunting and exploit development, start with my Zero Day Vulnerability Research course: 
 
@@ -196,7 +196,9 @@ If you're new and looking to get into zero day hunting and exploit development, 
 
 This is the only universal course in the industry built by an actual advanced-level hacker. It doesn't just teach you shallow skills like, how to spot a buffer overflow; it starts from the mindset, builds up powerful mental models that apply to any research target, and then introduces essential cross-domain skills such as fuzzing, reverse engineering, and vulnerability analysis – so that you're future proof for decades ahead. 
 
-My unique methodology is largely derived from solo research experience at the intersection of multiple high-entry, high-stake technical fields: hypervisors, browsers, basebands - and further refined through 1st hand experience of hacking through barriers that few people ever get exposed to. Which makes my trainings not just technical information - it's the blueprint of breakthrough. You can check out public training reviews <a class="underline" target="_blank" href="/training/reviews/">here</a>. 
+While being entry-level, ZDVR course isn't shallow – it includes plenty of cutting edge insights and tips from my personal experience. And if you want to go deeper than the content offers, take the Complete package which includes technical support from me personally. 
+
+My unique methodology comes from 10+ years of solo research work in multiple high-entry, high-stake technical fields: hypervisors, browsers, basebands - and further refined through the practice of hacking through barriers that few ever get exposed to. Which makes my trainings not just technical information - it's the blueprint of breakthrough. You can check out public training reviews <a class="underline" target="_blank" href="/training/reviews/">here</a>. 
 
 <span class="butterfly-seal"></span>
 </p>
