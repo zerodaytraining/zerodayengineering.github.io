@@ -43,8 +43,26 @@
         <item>
             <title>Discussion: Fuzzing from First Principles</title>
             <link>https://zerodayengineering.com/research/discussion-fuzzing-from-first-principles.html</link>
-            <description>On September 14, 2024, I had the pleasure of participating in the Off By One Security Podcast by SANS, discussing "Fuzzing from First Principles". In this follow-up article, I’ll tackle some interesting questions and comments from the livestream chat that didn’t make it into the live Q&amp;A due to time constraints.</description>
+            <description>On September 14, 2024, I had participated in the Off By One Security Podcast by SANS. I presented my Probabilistic Theory of Fuzzing there for the first time – and explained how practical low-level fuzzing works through it. 
+                                       
+            In this follow-up article I release the slides of my podcast - while tackling selected questions and comments from the livestream chat that didn’t make it into the live Q&amp;A.</description>
             <pubDate>Wed, 14 Oct 2024 09:00:00 GMT</pubDate>
+        </item>
+
+        <item>
+            <title>Keynote: Vulnerability Research in the Age of AI</title>
+            <link>https://zerodayengineering.com/research/slides/VXCON2024_Keynote.pdf</link>
+            <description>On November 16th, 2024, I gave a keynote at VXCON 2024 conference, Hong Kong. I offered my insights on how AI will change the art of vulnerability research.</description>
+            <pubDate>Sat, 16 Nov 2024 09:00:00 GMT</pubDate>
+        </item>
+
+        <item>
+            <title>Slides: Workshop - Attacking v8, from Zero to Exploit</title>
+            <link>https://zerodayengineering.com/research/slides/VXCON2024_Keynote.pdf</link>
+            <description>On November 15th, 2024, I gave a workshop on browser exploitation at VXCON 2024 conference, Hong Kong. 
+                
+            In this workshop I taught my full process of exploiting a non-trivial vulnerability in Google Chrome's v8 JavaScript engine, from zero-knowledge patch to novel exploit concept. The slide deck holds the skeleton of my methodology.</description>
+            <pubDate>Fri, 15 Nov 2024 09:00:00 GMT</pubDate>
         </item>
 
         <item>
@@ -68,6 +86,13 @@
 
 Hexagon is a tightly restricted proprietary architecture which doesn't permit low-level debugging – a challenge which I was tasked to conquer under a private commercial R&amp;D contract.</description>
             <pubDate>Fri, 08 Aug 2025 18:00:00 GMT</pubDate>
+        </item>
+
+        <item>
+            <title>New training: Browser Exploit Design</title>
+            <link>https://zerodayengineering.com/training/browser-exploit-design.html</link>
+            <description>Advanced exploratory training program covering 80%+ of the subject field systematically. Practicalities are based on Firefox, Chrome and WebKit. Full stack exploit exercises with modern 0-days include: renderer DOM use-after-free, JavaScript engine type confusion, and sandbox escape via IPC memory corruption. Intermediate to advanced level.</description>
+            <pubDate>Mon, 2 June 2025 12:10:00 GMT</pubDate>
         </item>
 
         <item>
