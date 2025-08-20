@@ -30,6 +30,7 @@ body {
 
 body {
   font-family: "Poppins", sans-serif;
+  font-style: normal;
   color: #EDEAE6;
   font-size: 14px;
   line-height: 30px;
@@ -95,6 +96,7 @@ h6 {
   font-weight: 700;
   line-height: 1.2;
   color: #4a0000;
+  font-style: normal;
 }
 
 h3.section-title {
@@ -135,6 +137,7 @@ p {
   line-height: 1.5;
   margin-bottom: 20px;
   font-weight: 300;
+  font-style: normal;
   color: #EDEAE6;
   font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
