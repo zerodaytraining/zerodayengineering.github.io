@@ -493,6 +493,12 @@ function Cursor() {
     follower.removeClass("active");
   });
 
+  const editCursor = e => {
+          // unused 
+          /* const { clientX: x, clientY: y } = e;
+          cursor.style.left = x + 'px';
+          cursor.style.top = y + 'px'; */
+    };
 
   link.forEach(b => b.addEventListener('mousemove', animateit));
   link.forEach(b => b.addEventListener('mouseleave', animateit));
