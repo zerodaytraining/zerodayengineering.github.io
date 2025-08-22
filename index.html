@@ -126,12 +126,12 @@
                   <div class="row align-items-center">
                      <div class="col-md-8">
                         <h1 class="heading">Zero Day <br> <span id="quote">Engineering</span></h1>
-                        <p class="subheading text-white">State-of-the-Art Vulnerability Research<br>& Exploit Design</p>
+                        <p class="subheading text-white">State-of-the-Art Exploit Design<br> Research & Consulting</p>
                      </div>
                   </div>
                   <div class="coverimage desktop-only"></div>
                   <div class="coverimage-desc desktop-only">
-                     <p class="hero-desc"><i>Alisa Esage, Owner & System Architect <a href="about.html#founder"><i class="fa fa-question-circle"></i></a> <a href="http://twitter.com/alisaesage"><i class="fa fa-twitter"></i></a> <a href="http://youtube.com/@alisaesage"><i class="fa fa-youtube"></i></a>
+                     <p class="hero-desc"><i>Alisa Esage, Owner & System Architect </a>
                      </p>
                   </div>
                </div>
@@ -142,7 +142,7 @@
                <div class="container">
                   <div class="row mb-80 border-section">
                      <div class="col-lg-6">
-                        <h3 class="section-title">Foundations</h3>
+                        <h3 class="section-title">Professional Training</h3>
                      </div>
                   </div>
                   <div class="row portfolio-items">
@@ -154,7 +154,7 @@
                               <div class="portfolio-wrap gsap-reveal">
                                  <a href="training/universal-vulnerability-research.html" class="portfolio-item"><img src="images/thumbnails/training-zero-day-vulnerabilty-research.png" alt="" class="img-fluid"></a>
                                  <div class="portfolio-content">
-                                    <p>Universal Training</p>
+                                    <p>Universal Foundations</p>
                                     <h3><a href="training/universal-vulnerability-research.html">Zero Day Vulnerability Research</a></h3>
                                     <a href="training/universal-vulnerability-research.html" class="portfolio-link"></a>
                                  </div>
@@ -228,64 +228,105 @@
                         <h3 class="section-title">Highlights</h3>
                      </div>
                   </div>
-                  <div class="row portfolio-items">
-                     <div class="col-lg-12 p-0">
-                        <div class="work-gallery">
+                 
+                  <!-- Highlights Carousel -->
+                  <div id="highlightCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
+                  <ol class="carousel-indicators">
+                     <li data-target="#highlightCarousel" data-slide-to="0" class="active"></li>
+                     <li data-target="#highlightCarousel" data-slide-to="1"></li>
+                     <li data-target="#highlightCarousel" data-slide-to="2"></li>
+                     <li data-target="#highlightCarousel" data-slide-to="3"></li>
+                  </ol>
 
-                           <!-- Black Hat Asia 2025 -->
-                           <div class="col-md-6 single-item">
-                              <div class="portfolio-wrap gsap-reveal">
-                                 <a href="research/" class="portfolio-item"><img src="images/publicity/BlackHatAsia2025.jpg" alt="" class="img-fluid"></a>
-                                 <div class="portfolio-content">
-                                    <p>April 2025</p>
-                                    <h3><a href="research">Black Hat Asia 2025: Slides Published</a></h3>
-                                    <a href="research" class="portfolio-link"></a>
-                                 </div>
+                  <div class="carousel-inner">
+
+                     <!-- Slide 1: Black Hat Asia 2025 -->
+                     <div class="carousel-item active">
+                        <div class="row justify-content-center">
+                        <div class="col-md-6 single-item">
+                           <div class="portfolio-wrap gsap-reveal">
+                              <a href="research/" class="portfolio-item">
+                              <img src="images/publicity/BlackHatAsia2025.jpg" alt="" class="img-fluid">
+                              </a>
+                              <div class="portfolio-content">
+                              <p>April 2025</p>
+                              <h3><a href="research">Reverse Engineering Qualcomm Hexagon QDSP6 JTAG (Slides)</a></h3>
+                              <a href="research" class="portfolio-link"></a>
                               </div>
                            </div>
-
-                           <!-- VXCON KEYNOTE 2024 -->
-                           <div class="col-md-6 single-item">
-                              <div class="portfolio-wrap gsap-reveal">
-                                 <a href="research/" class="portfolio-item"><img src="images/thumbnails/keynote-vxcon2024.png" alt="" class="img-fluid"></a>
-                                 <div class="portfolio-content">
-                                    <p>November 2024</p>
-                                    <h3><a href="research/">Keynote: Vulnerability Research in the Age of AI (Slides)</a></h3>
-                                    <a href="research/" class="portfolio-link"></a>
-                                 </div>
-                              </div>
-                           </div>
-
-                           <!-- FFFP 2024 -->
-                           <div class="col-md-6 single-item">
-                              <div class="portfolio-wrap gsap-reveal">
-                                 <a href="research/slides/FuzzingFromFirstPrinciples.pdf" class="portfolio-item"><img src="images/thumbnails/fffp.png" alt="" class="img-fluid"></a>
-                                 <div class="portfolio-content">
-                                    <p>October 2024</p>
-                                    <h3><a href="research/slides/FuzzingFromFirstPrinciples.pdf">Intro to Probabilistic Fuzzing Theory (Slides)</a></h3>
-                                    <a href="research/slides/FuzzingFromFirstPrinciples.pdf" class="portfolio-link"></a>
-                                 </div>
-                              </div>
-                           </div>
-
-                           <!-- Pwn2Own 2021 -->
-                           <div class="col-md-6 single-item">
-                              <div class="portfolio-wrap gsap-reveal">
-                                 <a href="research/pwn2own-2021-vm-escape.html" class="portfolio-item"><img src="images/research/pwn2own2021_livestream.png" alt="" class="img-fluid"></a>
-                                 <div class="portfolio-content">
-                                    <p>April 2024</p>
-                                    <h3><a href="research/pwn2own-2021-vm-escape.html">Pwn2Own 2021: Exploit Released</a></h3>
-                                    <a href="research/pwn2own-2021-vm-escape.html" class="portfolio-link"></a>
-                                 </div>
-                              </div>
-                           </div>
-
-
+                        </div>
                         </div>
                      </div>
+
+                     <!-- Slide 2: VXCON KEYNOTE 2024 -->
+                     <div class="carousel-item">
+                        <div class="row justify-content-center">
+                        <div class="col-md-6 single-item">
+                           <div class="portfolio-wrap gsap-reveal">
+                              <a href="research/" class="portfolio-item">
+                              <img src="images/thumbnails/keynote-vxcon2024.png" alt="" class="img-fluid">
+                              </a>
+                              <div class="portfolio-content">
+                              <p>November 2024</p>
+                              <h3><a href="research/">Keynote (Slides)</a></h3>
+                              <a href="research/" class="portfolio-link"></a>
+                              </div>
+                           </div>
+                        </div>
+                        </div>
+                     </div>
+
+                     <!-- Slide 3: FFFP 2024 -->
+                     <div class="carousel-item">
+                        <div class="row justify-content-center">
+                        <div class="col-md-6 single-item">
+                           <div class="portfolio-wrap gsap-reveal">
+                              <a href="research/slides/FuzzingFromFirstPrinciples.pdf" class="portfolio-item">
+                              <img src="images/thumbnails/fffp.png" alt="" class="img-fluid">
+                              </a>
+                              <div class="portfolio-content">
+                              <p>October 2024</p>
+                              <h3><a href="research/slides/FuzzingFromFirstPrinciples.pdf">Intro to Probabilistic Fuzzing Theory (Slides)</a></h3>
+                              <a href="research/slides/FuzzingFromFirstPrinciples.pdf" class="portfolio-link"></a>
+                              </div>
+                           </div>
+                        </div>
+                        </div>
+                     </div>
+
+                     <!-- Slide 4: Pwn2Own 2021 -->
+                     <div class="carousel-item">
+                        <div class="row justify-content-center">
+                        <div class="col-md-6 single-item">
+                           <div class="portfolio-wrap gsap-reveal">
+                              <a href="research/pwn2own-2021-vm-escape.html" class="portfolio-item">
+                              <img src="images/research/pwn2own2021_livestream.png" alt="" class="img-fluid">
+                              </a>
+                              <div class="portfolio-content">
+                              <p>April 2024</p>
+                              <h3><a href="research/pwn2own-2021-vm-escape.html">Pwn2Own: Virtual Machine Escape (Full Release)</a></h3>
+                              <a href="research/pwn2own-2021-vm-escape.html" class="portfolio-link"></a>
+                              </div>
+                           </div>
+                        </div>
+                        </div>
+                     </div>
+
+                  </div>
+
+                  <a class="carousel-control-prev" href="#highlightCarousel" role="button" data-slide="prev">
+                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                     <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#highlightCarousel" role="button" data-slide="next">
+                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                     <span class="sr-only">Next</span>
+                  </a>
                   </div>
                </div>
             </div>
+
+
 
             <!-- Footer -->
             <footer class="footer section">
@@ -296,7 +337,7 @@
                         <div class="hr-footer"></div>
                         <div class="footer-site-logo"><a href="index.html" class="main-logo"><img src="images/logo.png" class="logo-img light-logo img-fluid" alt=""></a></div>  
                         <p class="site-copyright">
-                           <small>&copy; 2019-2025 Zero Day Engineering Research & Consulting. All Rights Reserved. <a href="rss" class="social-icon"><i class="fa fa-rss"></i></a></small>
+                           <small>&copy; 2019-2025 Zero Day Engineering. All Rights Reserved. <a href="rss" class="social-icon"><i class="fa fa-rss"></i></a></small>
                         </p>
                      </div>
                   </div>
