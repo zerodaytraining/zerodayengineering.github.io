@@ -17,7 +17,7 @@
         1.FONTS
 ========================*/
 
-@import url("https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alice&family=Poppins:wght@300;400;500;600;700&display=swap");
 
 /*======================
       2.BASIC
@@ -95,7 +95,7 @@ h6 {
   margin-bottom: 20px;
   font-weight: 700;
   line-height: 1.2;
-  color: #4a0000;
+  color: #640100;
   font-style: normal;
 }
 
@@ -449,23 +449,91 @@ ion-icon {
   z-index: 1;
 }
 
-.hero-desc {
-  padding: 0;
-  margin: 0;
-  font-weight: 300;
-  font-size: 14px;
-  color: #EDEAE6;
+.hero {
+  width: 600px;
+  height: 800px;
+  background-image: url('../images/alisa-gold.jpg');
+  max-width: 600px;
+  max-height: 800px;
+  position: absolute;
+  right: 0px;
+  bottom: 0;
+  background-size: cover;
+  z-index: 1;
 }
 
-@media(max-width: 768px) {
+.hero-desc {
+  width: 440px;
+  position: absolute;
+  bottom: 0px;
+  right: 0;
+  background: #000;
+  color: #EDEAE6;
+  z-index: 9999;
+  padding: 30px;
+  font-style: normal;
+  font-weight: 300;
+}
+
+.hero-text {
+    position: relative;
+    z-index: 1;                   /* above .hero */
+  }
+
+
+/* ===== LOCK LAYOUT BELOW 768px ===== */
+@media (max-width: 768px) {
+
+  /* Fix the hero image size/position (no more responsive scaling) */
+  .hero {
+    position: absolute;
+    width: 340px;              /* snap size */
+    aspect-ratio: 3/4;
+    height: auto;             /* keep 3:4 so composition stays identical */
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center; /* tweak if you need face framing */
+    z-index: 0; 
+  }
+
+  /* Fix the caption block to a matching, smaller constant */
   .hero-desc {
-    padding-left: 80px;
-    margin: 0;
-    font-weight: 300;
+    width: 260px;
+    padding: 10px 12px;
     font-size: 14px;
+    font-style: normal;
     color: #EDEAE6;
   }
+
+  /* Put BOTH title and subtitle on one higher layer */
+  .hero-text {
+    position: relative;
+    z-index: 1;                   /* above .hero */
+  }
+
+  /* If you have a hero title/subtitle, freeze those too */
+  .hero-title { font-size: 60px; line-height: 1.05; }
+  .hero-subtitle,
+  .content-hero p { font-size: 16px; }
+
+  /* Optional: prevent further shrinking from container rules */
+  .content-hero { min-width: 420px; position: relative; } /* ensure .hero is anchored */
 }
+
+/* no shrinking */
+@media (max-width: 400px) {
+
+  .hero {
+    width: 0px;
+  }
+
+  .hero-desc {
+    font-size: 0px;
+  }
+
+}
+
 
 .coverimage-desc {
   width: 440px;
@@ -588,6 +656,8 @@ ion-icon {
 .cover-v1 .container {
   z-index: 9;
   position: relative;
+  isolation: isolate; /* ensures blending happens against what's inside here,
+                         not the whole page, and prevents outside interference */
 }
 
 .cover-v1 .container,
@@ -600,7 +670,7 @@ ion-icon {
   font-size: 5rem;
   font-weight: 900;
   color: #640100; 
-  mix-blend-mode: difference;
+  mix-blend-mode: color-burn;
   z-index: 9998;
   position: relative;
 }
@@ -614,7 +684,7 @@ ion-icon {
 @media (max-width: 767px) {
   .cover-v1 .heading {
     font-size: 2.5rem;
-    color: #000!important;
+    /* color: #000!important; */
     mix-blend-mode: color-burn;
     margin-top: 100px;
   }
@@ -637,16 +707,18 @@ ion-icon {
 }
 
 .cover-v1 .subheading {
-  font-size: 14px;
-  color: #000;
+  font-size: 24px;
+  color: white;
   letter-spacing: 1px;
   font-weight: 300;
   max-width: 480px;
+  mix-blend-mode: normal;
+  z-index: 9999;
 }
 
 @media (max-width: 991.98px) {
   .cover-v1 .subheading {
-    font-size: 24px;
+    font-size: 14px;
   }
 }
 
@@ -913,7 +985,6 @@ a:hover .btn-draw.btn--white {
 
 .hero-title {
   font-weight: 700;
-  font-family: 'Poppins', sans-serif;
   display: inline-block;
   vertical-align: top;
   margin: 0 auto;
@@ -927,7 +998,6 @@ a:hover .btn-draw.btn--white {
 @media (max-width: 767px) {
   .hero-title {
     font-weight: 700;
-    font-family: 'Poppins', sans-serif;
     display: inline-block;
     vertical-align: top;
     margin: 0 auto;
@@ -1224,7 +1294,7 @@ hr {
 .site-nav .site-nav-ul-none-onepage>li.has-children>.dropdown>li a:hover,
 .site-nav .site-nav-ul-none-onepage>li.has-children>ul>li a:hover {
   color: #000;
-  background: #4a0000;
+  background: #640100;
   padding-left: 30px;
 }
 
