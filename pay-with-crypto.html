@@ -39,6 +39,52 @@
    </head>
    <body data-spy="scroll" data-target=".site-nav-target" data-offset="200">
 
+      <!-- cool my head -->
+      <canvas id="snow" style="position:fixed; top:0; left:0; width:100vw; height:100vh;pointer-events:none;z-index:9999;"></canvas>
+      <script>
+      const c = document.getElementById("snow");
+      const ctx = c.getContext("2d");
+      c.width = window.innerWidth; 
+      c.height = window.innerHeight;
+
+      const flakes = [...Array(150)].map(() => ({
+      x: Math.random()*c.width,
+      y: Math.random()*c.height,
+      r: 1+Math.random()*2,
+      dx: -1+Math.random()*2,
+      dy: 1+Math.random()*2
+      }));
+
+      function draw(){
+      ctx.clearRect(0,0,c.width,c.height);
+      flakes.forEach(f=>{
+         f.x+=f.dx; f.y+=f.dy;
+         if(f.y>c.height) f.y=0;
+         if(f.x>c.width) f.x=0;
+         if(f.x<0) f.x=c.width;
+         ctx.beginPath();
+         ctx.arc(f.x,f.y,f.r,0,2*Math.PI);
+         ctx.fillStyle="rgba(255,255,255,0.8)";
+         ctx.fill();
+      });
+      requestAnimationFrame(draw);
+      }
+      draw();
+
+      // push snowflakes
+      window.onmousemove = e => {
+         flakes.forEach(f => {
+            const dx = f.x - e.clientX;
+            const dy = f.y - e.clientY;
+            const dist = Math.sqrt(dx*dx + dy*dy);
+            if (dist < 80) {
+               f.x += dx/dist * 5;
+               f.y += dy/dist * 5;
+            }
+         });
+      };
+      </script>
+
       <!-- Preloader -->
       <div class="loader desktop-only">
          <div class="intro">
