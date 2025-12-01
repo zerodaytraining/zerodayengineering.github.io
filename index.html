@@ -70,8 +70,9 @@
       });
       requestAnimationFrame(draw);
       }
-      draw();
-
+      if (Math.random() < 0.2) {
+         draw();
+      }
       // push snowflakes
       window.onmousemove = e => {
          flakes.forEach(f => {
@@ -176,7 +177,7 @@
                      </div>
                   </div>
                   <div class="hero"></div>
-                  <div class="hero-desc">Alisa Esage, Owner & Snowflake Engineer</div>
+                  <div class="hero-desc">Alisa Esage, Owner & System Architect</div>
                </div>
             </div>
 
