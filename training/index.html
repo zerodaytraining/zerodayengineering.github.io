@@ -69,7 +69,10 @@
       });
       requestAnimationFrame(draw);
       }
-      draw();
+      if (Math.random() < 0.2) {
+         draw();
+      }
+;
 
       // push snowflakes
       window.onmousemove = e => {
