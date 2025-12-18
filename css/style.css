@@ -9,6 +9,7 @@
     8.BLOG
     9.CONTACT
     10.FOOTER
+    11.EXTRAS
 
 ************************/
 
@@ -38,6 +39,7 @@ body {
   position: relative;
   letter-spacing: .025em;
   background-color: #000;
+  padding-top: 20px; /* for promo banner */
 }
 
 body:before {
@@ -2870,6 +2872,10 @@ span.error {
   color: #EDEAE6;
 }
 
+/*======================
+      11.EXTRAS
+========================*/
+
 .butterfly-seal {
   display: inline-block;
   width: 1.8em;
@@ -2925,4 +2931,31 @@ body, html, .page-wrapper, .article, .main-content {
  max-width: 90%;
  max-height: 90%;
  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+#promo-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #111;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 10px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  z-index: 10000;
+}
+
+#promo-close {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 18px;
+  cursor: pointer;
 }

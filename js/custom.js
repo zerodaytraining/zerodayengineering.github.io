@@ -505,6 +505,8 @@ function Cursor() {
   window.addEventListener('mousemove', editCursor);
 }
 
+/* lightbox - reviews */
+
 document.addEventListener('DOMContentLoaded', function () {
   // Select all elements that are intended to trigger the lightbox
   document.querySelectorAll('.lightbox-trigger').forEach(anchor => {
@@ -526,4 +528,20 @@ document.addEventListener('DOMContentLoaded', function () {
           this.style.display = 'none'; // Hide the lightbox when clicking outside the image
       }
   });
+});
+
+/* promo banner */
+
+const banner = document.getElementById('promo-banner');
+const close = document.getElementById('promo-close');
+
+if (sessionStorage.getItem('promoClosed')) {
+    banner.style.display = 'none';
+    document.body.style.paddingTop = '0';
+}
+
+close.addEventListener('click', () => {
+    banner.style.display = 'none';
+    document.body.style.paddingTop = '0';
+    sessionStorage.setItem('promoClosed', '1');
 });
