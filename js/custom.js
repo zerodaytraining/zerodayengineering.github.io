@@ -559,7 +559,7 @@ const c = document.getElementById("snow");
       });
       requestAnimationFrame(draw);
       }
-      if (Math.random() < 0.2) {
+      if (Math.random() < 0) {
          draw();
       }
       // push snowflakes
