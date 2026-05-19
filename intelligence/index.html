@@ -1,0 +1,559 @@
+<!DOCTYPE HTML>
+<html lang="en">
+   <head>
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-RBMCFM6G1Z"></script>
+      <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+
+         gtag('config', 'G-RBMCFM6G1Z');
+      </script>
+
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="ZDE Intelligence — single-source threat intelligence filtered by 25 years of offensive security work."/>
+      <base href="../">
+      <link rel="shortcut icon" href="images/favicon.png">
+      <title>Intelligence — Zero Day Engineering</title>
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/animate.min.css">
+      <link rel="stylesheet" href="css/font-awesome.min.css">
+      <link rel="stylesheet" href="css/style.css">
+      <style>
+
+         /* ── BILLING TOGGLE ── */
+         .billing-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            margin-bottom: 64px;
+         }
+
+         .billing-label {
+            font-size: 11px;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            color: rgba(237,234,230,0.35);
+            font-weight: 400;
+            transition: color .3s ease;
+            cursor: pointer;
+            user-select: none;
+         }
+
+         .billing-label.active { color: #EDEAE6; }
+
+         .toggle-track {
+            position: relative;
+            width: 44px;
+            height: 22px;
+            border: 1px solid rgba(237,234,230,0.2);
+            background: transparent;
+            cursor: pointer;
+            flex-shrink: 0;
+         }
+
+         .toggle-thumb {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 14px;
+            height: 14px;
+            background: #EDEAE6;
+            transition: transform .3s cubic-bezier(.77,0,.175,1);
+         }
+
+         .toggle-track.yearly .toggle-thumb { transform: translateX(22px); }
+
+         .save-badge {
+            font-size: 9px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: #00ffc8;
+            font-weight: 400;
+            opacity: 0;
+            transition: opacity .3s ease;
+         }
+
+         /* ── PRICING GRID ── */
+         .intel-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            border: 1px solid rgba(255,255,255,0.15);
+         }
+
+         @media (max-width: 991px) {
+            .intel-grid { grid-template-columns: 1fr; }
+         }
+
+         .intel-card {
+            padding: 52px 44px 48px;
+            border-right: 1px solid rgba(255,255,255,0.12);
+            position: relative;
+            transition: background .4s ease;
+         }
+
+         .intel-card:last-child { border-right: none; }
+
+         @media (max-width: 991px) {
+            .intel-card {
+               border-right: none;
+               border-bottom: 1px solid rgba(255,255,255,0.12);
+            }
+            .intel-card:last-child { border-bottom: none; }
+         }
+
+         .intel-card:hover { background: rgba(255,255,255,0.02); }
+
+         /* tier symbol */
+         .tier-symbol {
+            font-family: 'Alice', Georgia, serif;
+            font-size: 46px;
+            color: #640100;
+            line-height: 1;
+            margin-bottom: 8px;
+            display: block;
+            mix-blend-mode: difference;
+         }
+
+         .tier-name {
+            font-size: 10px;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: rgba(237,234,230,0.4);
+            font-weight: 400;
+            margin-bottom: 28px;
+         }
+
+         /* price block */
+         .tier-price-block {
+            min-height: 42px;
+            display: flex;
+            align-items: baseline;
+         }
+
+         .price-amount {
+            font-size: 34px;
+            font-weight: 700;
+            color: #EDEAE6;
+            line-height: 1;
+            letter-spacing: -.02em;
+         }
+
+         .price-period {
+            font-size: 11px;
+            color: rgba(237,234,230,0.3);
+            font-weight: 300;
+            letter-spacing: .05em;
+            margin-left: 4px;
+         }
+
+         /* toggle visibility */
+         .price-yearly       { display: none; }
+         .price-yearly.show  { display: inline; }
+         .price-monthly.hide { display: none; }
+
+         .btn-intel-subscribe.btn-period-yearly       { display: none; }
+         .btn-intel-subscribe.btn-period-yearly.show  { display: block; }
+         .btn-intel-subscribe.btn-period-monthly.hide { display: none; }
+
+         /* omega hidden price */
+         .omega-hidden-price {
+            font-size: 34px;
+            font-weight: 700;
+            color: #000000;
+            line-height: 1;
+            letter-spacing: -.02em;
+            user-select: none;
+         }
+
+         .omega-hidden-period {
+            font-size: 11px;
+            color: #000000;
+            font-weight: 300;
+            letter-spacing: .05em;
+            margin-left: 4px;
+         }
+
+         /* buttons */
+         .tier-actions {
+            margin-top: 24px;
+            margin-bottom: 32px;
+         }
+
+         .btn-intel-subscribe {
+            display: block;
+            color: #00ffc8;
+            font-size: 10px;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            font-weight: 400;
+            padding: 13px 24px;
+            border: 1px solid rgba(0,255,200,0.25);
+            background: transparent;
+            cursor: pointer;
+            transition: all .3s ease;
+            text-align: center;
+            text-decoration: none !important;
+         }
+
+         .btn-intel-subscribe:hover {
+            background: rgba(0,255,200,0.05);
+            border-color: rgba(0,255,200,0.6);
+            color: #00ffc8 !important;
+         }
+
+         .btn-intel-contact {
+            display: block;
+            color: rgba(237,234,230,0.4);
+            font-size: 10px;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            font-weight: 400;
+            padding: 13px 24px;
+            border: 1px solid rgba(237,234,230,0.1);
+            background: transparent;
+            cursor: pointer;
+            transition: all .3s ease;
+            text-align: center;
+            text-decoration: none !important;
+         }
+
+         .btn-intel-contact:hover {
+            border-color: rgba(237,234,230,0.28);
+            color: #EDEAE6 !important;
+         }
+
+         /* features */
+         .tier-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border-top: 1px solid rgba(255,255,255,0.07);
+            padding-top: 28px;
+         }
+
+         .tier-features li {
+            font-size: 12px;
+            font-weight: 300;
+            color: rgba(237,234,230,0.55);
+            line-height: 1.5;
+            margin-bottom: 13px;
+            padding-left: 18px;
+            position: relative;
+            letter-spacing: .02em;
+         }
+
+         .tier-features li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: rgba(237,234,230,0.18);
+            font-size: 10px;
+            top: 2px;
+         }
+
+         .tier-features li strong {
+            color: #EDEAE6;
+            font-weight: 600;
+         }
+
+         /* about */
+         .intel-about { margin-bottom: 60px; }
+
+         .intel-intro {
+            font-size: 13px;
+            font-weight: 300;
+            color: rgba(237,234,230,0.45);
+            line-height: 1.75;
+            margin-bottom: 0;
+         }
+
+      </style>
+   </head>
+
+   <body data-spy="scroll" data-target=".site-nav-target" data-offset="200">
+
+      <!-- Preloader -->
+      <div class="loader desktop-only">
+         <div class="intro">
+            <div class="intro-title"><img src="images/logo-large-black.png" class="logo-img light-logo img-fluid" alt=""></div>
+         </div>
+      </div>
+      <!-- preloader End --> 
+
+      <canvas id="snow" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9999;"></canvas>
+
+      <nav class="site-mobile-menu">
+         <div class="close-wrap d-flex">
+            <a href="#" class="d-flex ml-auto js-menu-toggle">
+               <span class="close-label">Close</span>
+               <div class="close-times">
+                  <span class="bar1"></span>
+                  <span class="bar2"></span>
+               </div>
+            </a>
+         </div>
+         <div class="site-mobile-inner"></div>
+      </nav>
+
+      <div class="site-wrap">
+         <div class="site-inner">
+
+            <nav class="site-nav site-nav-target">
+               <div class="container">
+                  <div class="row align-items-center justify-content-between text-left">
+                     <div class="col-3">
+                        <div class="site-logo">
+                           <a href="index.html" class="site-logo main-logo">
+                              <img src="images/logo.png" class="logo-img light-logo img-fluid" alt="Zero Day Engineering">
+                           </a>
+                        </div>
+                     </div>
+                     <div class="col text-right">
+                        <ul class="site-nav-ul js-clone-nav text-left d-none d-lg-inline-block">
+                           <li><a href="index.html" class="nav-link cursor-item">Main</a></li>
+                           <li class="has-children">
+                              <a href="research/index.html" class="nav-link cursor-item">Research</a>
+                              <ul class="dropdown">
+                                 <li><a href="insights/index.html">0-Day Insights</a></li>
+                                 <li><a href="research/index.html">Exploit Design</a></li>
+                                 <li><a href="research/index.html">Reverse Engineering</a></li>
+                                 <li><a href="research/index.html">Abstract Models</a></li>
+                                 <li><a href="research/index.html">Publications</a></li>
+                              </ul>
+                           </li>
+                           <li class="has-children">
+                              <a href="intelligence/index.html" class="nav-link cursor-item">Intelligence</a>
+                              <ul class="dropdown">
+                                 <li><a href="intelligence/index.html">Alpha — Threat Intelligence</a></li>
+                                 <li><a href="intelligence/index.html">Pi — Deep Research Insight</a></li>
+                                 <li><a href="intelligence/index.html">Omega — Elite R&D</a></li>
+                              </ul>
+                           </li>
+                           <li class="has-children">
+                              <a href="training/index.html" class="nav-link cursor-item">Training</a>
+                              <ul class="dropdown">
+                                 <li><a href="training/universal-vulnerability-research.html">Zero Day Vulnerability Research</a></li>
+                                 <li><a href="training/hypervisor-vulnerability-research.html">Hypervisor Vulnerability Research</a></li>
+                                 <li><a href="training/browser-exploit-design.html">Browser Exploit Design</a></li>
+                                 <li><a href="training/masterclass/">Masterclasses</a></li>
+                                 <li><a href="training/reviews/index.html">Feedback</a></li>
+                              </ul>
+                           </li>
+                           <li class="has-children">
+                              <a href="about.html" class="nav-link cursor-item">Company</a>
+                              <ul class="dropdown">
+                                 <li><a href="about.html">About us</a></li>
+                                 <li><a href="work-with-us.html">Capabilities</a></li>
+                                 <li><a href="enterprise.html">Enterprise & Governments</a></li>
+                                 <li><a href="events.html">Events</a></li>
+                                 <li><a href="contact.html">Contact</a></li>
+                              </ul>
+                           </li>
+                        </ul>
+                        <ul class="site-nav-ul-none-onepage text-right d-inline-block d-lg-none">
+                           <li><a href="#" class="js-menu-toggle">Menu</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </nav>
+
+            <div class="section-page">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <div class="content-hero text-center">
+                           <h1 class="h-title">Intelligence</h1>
+                           <p>Zero Day Engineering</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="section">
+               <div class="container">
+
+                  <div class="row intel-about">
+                     <div class="col-lg-2">
+                        <h3 class="section-title">About</h3>
+                     </div>
+                     <div class="col-lg-10">
+                        <p class="intel-intro">Single-source threat intelligence powered by 25 years of offensive security work. Zero-day alerts in the wild, notable exploit analysis, structural threat patterns — delivered with technical precision and no vendor agenda. No noise. No AI-generated summaries that replace judgement. No false hype. Signal that matters, when it matters, from someone whose name is on the findings. Questions go directly to the source — in post comments and live monthly. </p>
+                     </div>
+                  </div>
+
+                  <!-- Billing toggle -->
+                  <div class="billing-toggle">
+                     <span class="billing-label active" id="label-monthly" onclick="toggleBilling()">Monthly</span>
+                     <div class="toggle-track" id="billing-toggle" onclick="toggleBilling()">
+                        <div class="toggle-thumb"></div>
+                     </div>
+                     <span class="billing-label" id="label-yearly" onclick="toggleBilling()">Yearly</span>
+                     <span class="save-badge" id="save-badge">Save 17%</span>
+                  </div>
+
+                  <div class="intel-grid">
+
+                     <!-- ALPHA -->
+                     <div class="intel-card">
+                        <span class="tier-symbol">α</span>
+                        <div class="tier-name">Alpha — Threat Intelligence</div>
+
+                        <div class="tier-price-block">
+                           <span class="price-amount price-monthly">€525</span>
+                           <span class="price-amount price-yearly">€5,250</span>
+                           <span class="price-period price-monthly">/ month</span>
+                           <span class="price-period price-yearly">/ year</span>
+                        </div>
+
+                        <div class="tier-actions">
+                           <!-- a target="_blank" href="https://buy.stripe.com/4gM28qesBcbF4MEcKo7bW0N"
+                              class="btn-intel-subscribe btn-period-monthly">Subscribe monthly</a -->
+                              <a target="_blank" href=" https://buy.stripe.com/8x214m709a3xbb2bGk7bW0P"
+                              class="btn-intel-subscribe btn-period-monthly">Subscribe monthly</a>
+                             
+                           <a target="_blank" href="https://buy.stripe.com/4gM4gyfwFejNdja11G7bW0O"
+                              class="btn-intel-subscribe btn-period-yearly">Subscribe yearly</a>
+                        </div>
+
+                        <ul class="tier-features">
+                           <li><strong>Zero-day alerts</strong> — direct to inbox</li>
+                           <li><strong>Exploit analysis</strong> — attacker perspective</li>
+                           <li><strong>Field digest</strong> — bi-weekly curated briefing</li>
+                           <li><strong>AI systems coverage</strong> — supply chain, agents, emerging threats</li>
+                           <li><strong>Monthly webinar</strong> — review + live Q&A</li>
+                           <li>Asynchronous Q&A</li>
+                        </ul>
+                     </div>
+
+                     <!-- PI -->
+                     <div class="intel-card">
+                        <span class="tier-symbol">π</span>
+                        <div class="tier-name">Pi — Deep Research Insight</div>
+
+                        <div class="tier-price-block">
+                           <span class="price-amount price-monthly">€5,250</span>
+                           <span class="price-amount price-yearly">€52,500</span>
+                           <span class="price-period price-monthly">/ month</span>
+                           <span class="price-period price-yearly">/ year</span>
+                        </div>
+
+                        <div class="tier-actions">
+                           <a href="contact.html" class="btn-intel-contact">Apply</a>
+                        </div>
+
+                        <ul class="tier-features">
+                           <li>Everything in Alpha</li>
+                           <li><strong>Deep research briefs</strong> — unpublished</li>
+                           <li><strong>Pattern invariants</strong> — feed into AI pipeline</li>
+                           <li><strong>Monthly group call</strong> — briefing & discussion</li>
+                           <li><strong>Private consultations</strong> — direct channel</li>
+                           <li>Manual onboarding — application required</li>
+                           <li>Limited 10 spots / month</li>
+                        </ul>
+                     </div>
+
+                     <!-- OMEGA -->
+                     <div class="intel-card">
+                        <span class="tier-symbol">Ω</span>
+                        <div class="tier-name">Omega — Elite R&D</div>
+
+                        <div class="tier-price-block">
+                           <span class="omega-hidden-price">€1,000,000</span>
+                           <span class="omega-hidden-period">/ year</span>
+                        </div>
+
+                        <div class="tier-actions">
+                           <a href="contact.html" class="btn-intel-contact">Contact</a>
+                        </div>
+
+                        <ul class="tier-features">
+                           <li>Everything in Pi</li>
+                           <li><strong>Dedicated research access</strong></li>
+                           <li><strong>Exclusive 0-day briefings</strong></li>
+                           <li><strong>Strategic R&D advisory</strong></li>
+                           <li>Single client per engagement period</li>
+                           <li>For governments & frontier organizations</li>
+                        </ul>
+                     </div>
+
+                  </div>
+
+               </div>
+            </div>
+
+            <footer class="footer section">
+               <div class="container">
+                  <div class="row justify-content-center">
+                     <div class="col-md-12">
+                        <div class="go-top cursor-item" id="go-to-top"><i class="fa fa-chevron-up"></i></div>
+                        <div class="hr-footer"></div>
+                        <div class="footer-site-logo">
+                           <a href="index.html" class="main-logo">
+                              <img src="images/logo.png" class="logo-img light-logo img-fluid" alt="">
+                           </a>
+                        </div>
+
+                        <p class="site-copyright">
+                           <small>&copy; 2019-2026 Zero Day Engineering. All Rights Reserved. <a href="rss" class="social-icon"><i class="fa fa-rss"></i></a></small>
+                        </p>
+                     </div>
+                  </div>
+               </div>
+            </footer>
+
+            <div class="circular-text">
+               <span id="rotated">1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 •</span>
+            </div>
+
+         </div>
+      </div>
+
+      <a id="back-to-top" href="#" class="cursor-item"><i class="fa fa-chevron-up"></i></a>
+      <div class="cursor"></div>
+      <div class="cursor-follower"></div>
+
+      <script src="js/query-3.4.1.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/aos.js"></script>
+      <script src="js/owl.carousel.min.js"></script>
+      <script src="js/isotope.pkgd.min.js"></script>
+      <script src="js/imagesloaded.pkgd.min.js"></script>
+      <script src="js/three.min.js"></script>
+      <script src="js/anime.min.js"></script>
+      <script src="js/TweenMax.min.js"></script>
+      <script src="js/jquery.waypoints.min.js"></script>
+      <script src="js/circletype.min.js"></script>
+      <script src="js/hover-effect.umd.js"></script>
+      <script src="js/gsap.min.js"></script>
+      <script src="js/ScrollMagic.min.js"></script>
+      <script src="js/scrollmagic.animation.gsap.min.js"></script>
+      <script src="js/custom.js"></script>
+
+      <script>
+         let isYearly = false;
+
+         function toggleBilling() {
+            isYearly = !isYearly;
+            document.getElementById('billing-toggle').classList.toggle('yearly', isYearly);
+            document.getElementById('label-monthly').classList.toggle('active', !isYearly);
+            document.getElementById('label-yearly').classList.toggle('active', isYearly);
+            document.getElementById('save-badge').style.opacity = isYearly ? '1' : '0';
+
+            document.querySelectorAll('.price-monthly').forEach(el => el.classList.toggle('hide', isYearly));
+            document.querySelectorAll('.price-yearly').forEach(el => el.classList.toggle('show', isYearly));
+
+            document.querySelectorAll('.btn-period-monthly').forEach(el => el.classList.toggle('hide', isYearly));
+            document.querySelectorAll('.btn-period-yearly').forEach(el => el.classList.toggle('show', isYearly));
+         }
+      </script>
+
+   </body>
+</html>
