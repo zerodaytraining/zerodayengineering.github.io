@@ -78,8 +78,8 @@ body,
 }
 
 ::selection {
-  background: #E0D5BC;
-  color: black;
+  background: #1BC8FF;
+  color: #05090D;
 }
 
 .h1,
@@ -127,12 +127,12 @@ a {
 
 a:hover {
   text-decoration: none !important;
-  color: #E0D5BC!important;
+  color: #1BC8FF!important;
 }
 
 a:active,
 a:focus {
-  color: #E0D5BC;
+  color: #1BC8FF;
 }
 
 p {
@@ -822,7 +822,7 @@ ion-icon {
 }
 
 .btn-draw {
-  color: #E0D5BC;
+  color: #1BC8FF;
   margin-left: 2.3em;
 }
 
@@ -832,7 +832,7 @@ ion-icon {
   right: 0;
   height: 1px;
   width: 100%;
-  background-color: #E0D5BC;
+  background-color: #1BC8FF;
 }
 
 .btn-draw:before {
@@ -842,7 +842,7 @@ ion-icon {
   left: -2.4em;
   height: 1px;
   width: 3em;
-  background-color: #E0D5BC;
+  background-color: #1BC8FF;
   -webkit-transition: all 0.25s ease;
   transition: all 0.25s ease;
 }
@@ -1600,12 +1600,12 @@ hr {
 
 .site-nav.scrolled .site-nav-ul>li>a.active,
 .site-nav.scrolled .site-nav-ul-none-onepage>li>a.active {
-  color: #C8B99A;
+  color: #1BC8FF;
 }
 
 .site-nav.scrolled .site-nav-ul>li>a.active:before,
 .site-nav.scrolled .site-nav-ul-none-onepage>li>a.active:before {
-  background: #EDEAE6;
+  background: #1BC8FF;
 }
 
 .site-nav.scrolled.awake {
