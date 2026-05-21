@@ -21,7 +21,7 @@
       <link rel="stylesheet" href="css/bootstrap.min.css">
       <link rel="stylesheet" href="css/animate.min.css">
       <link rel="stylesheet" href="css/font-awesome.min.css">
-      <link rel="stylesheet" href="css/style.css?v=20260521">
+      <link rel="stylesheet" href="css/style.css?v=20260531">
       <style>
 
          /* ── BILLING TOGGLE ── */
@@ -81,7 +81,7 @@
          /* ── PRICING GRID ── */
          .intel-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 0;
             border: 1px solid rgba(255,255,255,0.15);
          }
@@ -95,6 +95,8 @@
             border-right: 1px solid rgba(255,255,255,0.12);
             position: relative;
             transition: background .4s ease;
+            overflow: hidden;
+            min-width: 0;
          }
 
          .intel-card:last-child { border-right: none; }
@@ -131,9 +133,9 @@
 
          /* price block */
          .tier-price-block {
-            min-height: 42px;
+            height: 52px;
             display: flex;
-            align-items: baseline;
+            align-items: center;
          }
 
          .price-amount {
@@ -161,23 +163,6 @@
          .btn-intel-subscribe.btn-period-yearly.show  { display: block; }
          .btn-intel-subscribe.btn-period-monthly.hide { display: none; }
 
-         /* omega hidden price */
-         .omega-hidden-price {
-            font-size: 34px;
-            font-weight: 700;
-            color: transparent;
-            line-height: 1;
-            letter-spacing: -.02em;
-            user-select: none;
-         }
-
-         .omega-hidden-period {
-            font-size: 11px;
-            color: transparent;
-            font-weight: 300;
-            letter-spacing: .05em;
-            margin-left: 4px;
-         }
 
          /* buttons */
          .tier-actions {
@@ -387,7 +372,7 @@
                         <h3 class="section-title">About</h3>
                      </div>
                      <div class="col-lg-10">
-                        <p class="intel-intro">Independent briefing on emergent threats and applied exploit research.<br>Structured access to world class <a target="_blank" href="about.html#founder">expert practitioner</a> for scoped on-demand advisory.<br>Live ongoing insights and analysis from our <a target="_blank" href="research">research labs</a>.</p>
+                        <p class="intel-intro">Independent briefing on emerging threats and applied exploit research.<br>Structured access to world class <a target="_blank" href="about.html#founder">expert practitioner</a> for scoped on-demand advisory.<br>Live ongoing insights and analysis from our <a target="_blank" href="research">research labs</a>.</p>
                      </div>
                   </div>
 
@@ -416,7 +401,7 @@
                         </div>
 
                         <div class="tier-actions">
-                           <a href="intelligence/apply.html" target="_blank" class="btn-intel-contact">Apply</a>
+                           <a href="intelligence/application-form.html" target="_blank" class="btn-intel-contact">Apply</a>
                         </div>
 
                         <ul class="tier-features">
@@ -427,7 +412,7 @@
                            <li>One group call per month</li>
                            <li>Asynchronous Q&amp;A via email</li>
                         </ul>
-                        <p style="font-size:11px; line-height:1.7; color:rgba(237,234,230,0.35); margin-top:20px;">Early access, limited to 10 spots per month</p>
+                        <p style="font-size:11px; line-height:1.7; color:rgba(237,234,230,0.35); margin-top:20px;">Early access, limited to 10 spots</p>
                      </div>
 
                      <!-- PI -->
@@ -443,7 +428,7 @@
                         </div>
 
                         <div class="tier-actions">
-                           <a href="intelligence/apply.html" target="_blank" class="btn-intel-contact">Apply</a>
+                           <a href="intelligence/application-form.html" target="_blank" class="btn-intel-contact">Apply</a>
                         </div>
 
                         <ul class="tier-features tier-features-prose">
@@ -459,9 +444,7 @@
                         <span class="tier-symbol">Ω</span>
                         <div class="tier-name">Omega — Exclusive R&D</div>
 
-                        <div class="tier-price-block">
-                           <span class="omega-hidden-price">000000000000</span>
-                        </div>
+                        <div class="tier-price-block"></div>
 
                         <div class="tier-actions">
                            <a href="contact.html" class="btn-intel-contact">Contact</a>
@@ -472,7 +455,7 @@
 
                   </div>
 
-                  <p style="font-size:11px; letter-spacing:.08em; color:rgba(237,234,230,0.35); margin-top:28px;">Note: options listed are operational intelligence sections, not product tiers.</p>
+                  <p style="font-size:11px; letter-spacing:.08em; color:rgba(237,234,230,0.35); margin-top:28px;">Note: options listed are operational intelligence layers, not product tiers.</p>
 
                </div>
             </div>

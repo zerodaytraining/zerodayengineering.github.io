@@ -153,8 +153,9 @@
     ease: Expo.easeInOut
   });
 
-  var qoute = document.getElementById('quote'),
-      arr = quote.innerText.split(''),
+  var quote = document.getElementById('quote');
+  if (!quote) return;
+  var arr = quote.innerText.split(''),
       html = '';
 
       for( var i =0; i < arr.length; i++ ) {
@@ -189,14 +190,16 @@
       })
 
             
-  // Image Distort Header 
-  var hoverDistort = new hoverEffect({
-    parent: document.querySelector('.distortion'),
-    intensity: 0.5,
-    image1: 'images/hero.jpg',
-    image2: 'images/hero.jpg',
-    displacementImage: 'images/dist-filter.png'
-  });
+  // Image Distort Header
+  if (document.querySelector('.distortion')) {
+    var hoverDistort = new hoverEffect({
+      parent: document.querySelector('.distortion'),
+      intensity: 0.5,
+      image1: 'images/hero.jpg',
+      image2: 'images/hero.jpg',
+      displacementImage: 'images/dist-filter.png'
+    });
+  }
 
   $('.distortion').hover(
     function () {
@@ -523,11 +526,14 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Close lightbox when clicking on the lightbox (outside the image)
-  document.getElementById('lightbox').addEventListener('click', function (e) {
-      if (e.target === this) {
-          this.style.display = 'none'; // Hide the lightbox when clicking outside the image
-      }
-  });
+  var lightbox = document.getElementById('lightbox');
+  if (lightbox) {
+    lightbox.addEventListener('click', function (e) {
+        if (e.target === this) {
+            this.style.display = 'none';
+        }
+    });
+  }
 });
 
 /* snow */
@@ -580,13 +586,14 @@ const c = document.getElementById("snow");
 const banner = document.getElementById('promo-banner');
 const close = document.getElementById('promo-close');
 
-if (sessionStorage.getItem('promoClosed')) {
-    banner.style.display = 'none';
-    document.body.style.paddingTop = '0';
+if (banner && close) {
+  if (sessionStorage.getItem('promoClosed')) {
+      banner.style.display = 'none';
+      document.body.style.paddingTop = '0';
+  }
+  close.addEventListener('click', () => {
+      banner.style.display = 'none';
+      document.body.style.paddingTop = '0';
+      sessionStorage.setItem('promoClosed', '1');
+  });
 }
-
-close.addEventListener('click', () => {
-    banner.style.display = 'none';
-    document.body.style.paddingTop = '0';
-    sessionStorage.setItem('promoClosed', '1');
-});
