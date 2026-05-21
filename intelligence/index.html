@@ -21,7 +21,7 @@
       <link rel="stylesheet" href="css/bootstrap.min.css">
       <link rel="stylesheet" href="css/animate.min.css">
       <link rel="stylesheet" href="css/font-awesome.min.css">
-      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/style.css?v=20260520">
       <style>
 
          /* ── BILLING TOGGLE ── */
@@ -72,7 +72,7 @@
             font-size: 9px;
             letter-spacing: .12em;
             text-transform: uppercase;
-            color: #00ffc8;
+            color: #C8B99A;
             font-weight: 400;
             opacity: 0;
             transition: opacity .3s ease;
@@ -113,7 +113,7 @@
          .tier-symbol {
             font-family: 'Alice', Georgia, serif;
             font-size: 46px;
-            color: #640100;
+            color: #8A7A5A;
             line-height: 1;
             margin-bottom: 8px;
             display: block;
@@ -165,7 +165,7 @@
          .omega-hidden-price {
             font-size: 34px;
             font-weight: 700;
-            color: #000000;
+            color: transparent;
             line-height: 1;
             letter-spacing: -.02em;
             user-select: none;
@@ -173,7 +173,7 @@
 
          .omega-hidden-period {
             font-size: 11px;
-            color: #000000;
+            color: transparent;
             font-weight: 300;
             letter-spacing: .05em;
             margin-left: 4px;
@@ -187,13 +187,13 @@
 
          .btn-intel-subscribe {
             display: block;
-            color: #00ffc8;
+            color: #C8B99A;
             font-size: 10px;
             letter-spacing: .18em;
             text-transform: uppercase;
             font-weight: 400;
             padding: 13px 24px;
-            border: 1px solid rgba(0,255,200,0.25);
+            border: 1px solid rgba(200,185,154,0.25);
             background: transparent;
             cursor: pointer;
             transition: all .3s ease;
@@ -202,9 +202,9 @@
          }
 
          .btn-intel-subscribe:hover {
-            background: rgba(0,255,200,0.05);
-            border-color: rgba(0,255,200,0.6);
-            color: #00ffc8 !important;
+            background: rgba(200,185,154,0.05);
+            border-color: rgba(200,185,154,0.6);
+            color: #C8B99A !important;
          }
 
          .btn-intel-contact {
@@ -256,6 +256,9 @@
             font-size: 10px;
             top: 2px;
          }
+
+         .tier-features-prose li::before { content: none; }
+         .tier-features-prose li { padding-left: 0; margin-bottom: 18px; }
 
          .tier-features li strong {
             color: #EDEAE6;
@@ -331,7 +334,7 @@
                               <a href="intelligence/index.html" class="nav-link cursor-item">Intelligence</a>
                               <ul class="dropdown">
                                  <li><a href="intelligence/index.html">Alpha — Threat Intelligence</a></li>
-                                 <li><a href="intelligence/index.html">Pi — Pattern Intelligence</a></li>
+                                 <li><a href="intelligence/index.html">Pi — Pattern Insight</a></li>
                                  <li><a href="intelligence/index.html">Omega — Exclusive R&D</a></li>
                               </ul>
                            </li>
@@ -348,7 +351,8 @@
                            <li class="has-children">
                               <a href="about.html" class="nav-link cursor-item">Company</a>
                               <ul class="dropdown">
-                                 <li><a href="about.html">About us</a></li>                                 <li><a href="strategic-access.html">Industry &amp; Government</a></li>
+                                 <li><a href="about.html">About us</a></li>                                 
+                                 <li><a href="strategic-access.html">Industry &amp; Government</a></li>
                                  <li><a href="events.html">Events</a></li>
                                  <li><a href="contact.html">Contact</a></li>
                               </ul>
@@ -383,7 +387,7 @@
                         <h3 class="section-title">About</h3>
                      </div>
                      <div class="col-lg-10">
-                        <p class="intel-intro">Single-source threat intelligence powered by 25 years of offensive security work. Zero-day alerts in the wild, notable exploit analysis, structural threat patterns — delivered with technical precision and no vendor agenda. No noise. No AI-generated summaries that replace judgement. No false hype. Signal that matters, when it matters, from someone whose name is on the findings. Questions go directly to the source — in post comments and live monthly. </p>
+                        <p class="intel-intro">Independent briefing on emergent threats and applied exploit research.<br>Structured access to world class <a target="_blank" href="about.html#founder">expert practitioner</a> for scoped on-demand advisory.<br>Live ongoing insights and analysis from our <a target="_blank" href="research">research labs</a>.</p>
                      </div>
                   </div>
 
@@ -405,56 +409,48 @@
                         <div class="tier-name">Alpha — Threat Intelligence</div>
 
                         <div class="tier-price-block">
-                           <span class="price-amount price-monthly">€525</span>
-                           <span class="price-amount price-yearly">€5,250</span>
+                           <span class="price-amount price-monthly">€5,000</span>
+                           <span class="price-amount price-yearly">€50,000</span>
                            <span class="price-period price-monthly">/ month</span>
                            <span class="price-period price-yearly">/ year</span>
                         </div>
 
                         <div class="tier-actions">
-                           <!-- a target="_blank" href="https://buy.stripe.com/4gM28qesBcbF4MEcKo7bW0N"
-                              class="btn-intel-subscribe btn-period-monthly">Subscribe monthly</a -->
-                              <a target="_blank" href=" https://buy.stripe.com/8x214m709a3xbb2bGk7bW0P"
-                              class="btn-intel-subscribe btn-period-monthly">Subscribe monthly</a>
-                             
-                           <a target="_blank" href="https://buy.stripe.com/4gM4gyfwFejNdja11G7bW0O"
-                              class="btn-intel-subscribe btn-period-yearly">Subscribe yearly</a>
+                           <a href="intelligence/apply.html" target="_blank" class="btn-intel-contact">Apply</a>
                         </div>
 
                         <ul class="tier-features">
-                           <li><strong>Zero-day alerts</strong> — direct to inbox</li>
-                           <li><strong>Exploit analysis</strong> — attacker perspective</li>
-                           <li><strong>Field digest</strong> — bi-weekly curated briefing</li>
-                           <li><strong>AI systems coverage</strong> — supply chain, agents, emerging threats</li>
-                           <li><strong>Monthly webinar</strong> — review + live Q&A</li>
-                           <li>Asynchronous Q&A</li>
+                           <li>Exploit alerts for critical systems</li>
+                           <li>Weekly briefing curated by the expert</li>
+                           <li>Bi-monthly deep analysis of what matters</li>
+                           <li>Exposure to AI infrastructure security and crypto exploits</li>
+                           <li>One group call per month</li>
+                           <li>Asynchronous Q&amp;A via email</li>
                         </ul>
+                        <p style="font-size:11px; line-height:1.7; color:rgba(237,234,230,0.35); margin-top:20px;">Early access, limited to 10 spots per month</p>
                      </div>
 
                      <!-- PI -->
                      <div class="intel-card">
                         <span class="tier-symbol">π</span>
-                        <div class="tier-name">Pi — Pattern Intelligence</div>
+                        <div class="tier-name">Pi — Pattern Insight</div>
 
                         <div class="tier-price-block">
-                           <span class="price-amount price-monthly">€5,250</span>
-                           <span class="price-amount price-yearly">€52,500</span>
+                           <span class="price-amount price-monthly">€50,000</span>
+                           <span class="price-amount price-yearly">€500,000</span>
                            <span class="price-period price-monthly">/ month</span>
                            <span class="price-period price-yearly">/ year</span>
                         </div>
 
                         <div class="tier-actions">
-                           <a href="contact.html" class="btn-intel-contact">Apply</a>
+                           <a href="intelligence/apply.html" target="_blank" class="btn-intel-contact">Apply</a>
                         </div>
 
-                        <ul class="tier-features">
-                           <li>Everything in Alpha</li>
-                           <li><strong>Deep research briefs</strong> — unpublished</li>
-                           <li><strong>Pattern invariants</strong> — feed into AI pipeline</li>
-                           <li><strong>Monthly group call</strong> — briefing & discussion</li>
-                           <li><strong>Private consultations</strong> — direct channel</li>
-                           <li>Manual onboarding — application required</li>
-                           <li>Limited 10 spots / month</li>
+                        <ul class="tier-features tier-features-prose">
+                           <li>Strategic advisory on applied attack surface modeling and exploit engineering research.</li>
+                           <li>Focus on AI integration and capability evaluation for vulnerability development.</li>
+                           <li>Scoped on deep abstract models that recur across systems; novel and active invariant violation patterns; and cutting edge applied techniques.</li>
+                           <li>Selective access to ongoing unpublished research and emerging methodologies.</li>
                         </ul>
                      </div>
 
@@ -464,25 +460,19 @@
                         <div class="tier-name">Omega — Exclusive R&D</div>
 
                         <div class="tier-price-block">
-                           <span class="omega-hidden-price">€1,000,000</span>
-                           <span class="omega-hidden-period">/ year</span>
+                           <span class="omega-hidden-price">000000000000</span>
                         </div>
 
                         <div class="tier-actions">
                            <a href="contact.html" class="btn-intel-contact">Contact</a>
                         </div>
 
-                        <ul class="tier-features">
-                           <li>Everything in Pi</li>
-                           <li><strong>Dedicated research access</strong></li>
-                           <li><strong>Exclusive 0-day briefings</strong></li>
-                           <li><strong>Strategic R&D advisory</strong></li>
-                           <li>Single client per engagement period</li>
-                           <li>For governments & frontier organizations</li>
-                        </ul>
+                        <ul class="tier-features"></ul>
                      </div>
 
                   </div>
+
+                  <p style="font-size:11px; letter-spacing:.08em; color:rgba(237,234,230,0.35); margin-top:28px;">Note: options listed are operational intelligence sections, not product tiers.</p>
 
                </div>
             </div>

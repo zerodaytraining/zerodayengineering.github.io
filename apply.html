@@ -1,0 +1,557 @@
+<!DOCTYPE HTML>
+<html lang="en">
+   <head>
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-RBMCFM6G1Z"></script>
+      <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'G-RBMCFM6G1Z');
+      </script>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content=""/>
+      <meta name="keywords" content=""/>
+      <meta name="author" content=""/>
+      <link rel="shortcut icon" href="images/favicon.png">
+      <title>Applications — Zero Day Engineering Intelligence</title>
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/animate.min.css">
+      <link rel="stylesheet" href="css/owl.carousel.min.css">
+      <link rel="stylesheet" href="css/aos.css"/>
+      <link rel="stylesheet" href="css/font-awesome.min.css">
+      <link rel="stylesheet" href="css/style.css?v=20260520">
+      <style>
+         .apply-form-wrap {
+            max-width: 640px;
+            margin: 0 auto;
+         }
+         .apply-field {
+            margin-bottom: 32px;
+         }
+         .apply-label {
+            display: block;
+            font-size: 11px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: rgba(237,234,230,0.45);
+            margin-bottom: 10px;
+         }
+         .apply-label .field-note {
+            display: block;
+            font-size: 10px;
+            letter-spacing: .05em;
+            text-transform: none;
+            color: rgba(237,234,230,0.28);
+            margin-top: 4px;
+         }
+         .apply-input,
+         .apply-textarea {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(200,185,154,0.25);
+            color: rgba(237,234,230,0.82);
+            font-size: 14px;
+            letter-spacing: .04em;
+            padding: 8px 0;
+            outline: none;
+            transition: border-color 0.2s;
+            border-radius: 0;
+            -webkit-appearance: none;
+            appearance: none;
+         }
+         .apply-input:focus,
+         .apply-textarea:focus {
+            border-bottom-color: #C8B99A;
+         }
+         .apply-input.error,
+         .apply-textarea.error {
+            border-bottom-color: rgba(200,185,154,0.75);
+         }
+         .apply-textarea {
+            resize: vertical;
+            min-height: 72px;
+            line-height: 1.65;
+         }
+         .apply-radio-group {
+            display: flex;
+            gap: 32px;
+            padding: 8px 0;
+         }
+         .apply-radio-label {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            font-size: 14px;
+            letter-spacing: .04em;
+            color: rgba(237,234,230,0.72);
+            cursor: pointer;
+         }
+         .apply-radio-label input[type="radio"] {
+            accent-color: #C8B99A;
+            width: 14px;
+            height: 14px;
+            cursor: pointer;
+         }
+         .apply-error-msg {
+            display: none;
+            font-size: 11px;
+            color: rgba(200,185,154,0.85);
+            margin-top: 6px;
+            letter-spacing: .04em;
+         }
+         .apply-error-msg.visible {
+            display: block;
+         }
+         .apply-divider {
+            border: none;
+            border-top: 1px solid rgba(200,185,154,0.1);
+            margin: 40px 0;
+         }
+         .btn-apply-submit {
+            display: inline-block;
+            padding: 13px 40px;
+            border: 1px solid rgba(200,185,154,0.45);
+            background: transparent;
+            color: #C8B99A;
+            font-size: 11px;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s;
+            margin-top: 12px;
+         }
+         .btn-apply-submit:hover {
+            background: rgba(200,185,154,0.07);
+            border-color: #C8B99A;
+         }
+         .btn-apply-submit:disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
+         }
+         .apply-status {
+            margin-top: 20px;
+            font-size: 13px;
+            letter-spacing: .05em;
+            color: rgba(237,234,230,0.55);
+            display: none;
+         }
+         .apply-status.success { display: block; color: rgba(200,185,154,0.9); }
+         .apply-status.fail    { display: block; color: rgba(200,185,154,0.65); }
+      </style>
+   </head>
+   <body data-spy="scroll" data-target=".site-nav-target" data-offset="200">
+
+      <canvas id="snow" style="position:fixed; top:0; left:0; width:100vw; height:100vh;pointer-events:none;z-index:9999;"></canvas>
+
+      <div class="loader desktop-only">
+         <div class="intro">
+            <div class="intro-title"><img src="images/logo-large-black.png" class="logo-img light-logo img-fluid" alt=""></div>
+         </div>
+      </div>
+
+      <nav class="site-mobile-menu">
+         <div class="close-wrap d-flex">
+            <a href="#" class="d-flex ml-auto js-menu-toggle">
+               <span class="close-label">Close</span>
+               <div class="close-times">
+                  <span class="bar1"></span>
+                  <span class="bar2"></span>
+               </div>
+            </a>
+         </div>
+         <div class="site-mobile-inner"></div>
+      </nav>
+
+      <div class="site-wrap">
+         <div class="site-inner">
+
+            <nav class="site-nav site-nav-target">
+               <div class="container">
+                  <div class="row align-items-center justify-content-between text-left">
+                     <div class="col-3">
+                        <div class="site-logo">
+                           <a href="index.html" class="site-logo main-logo"><img src="images/logo.png" class="logo-img light-logo img-fluid" alt=""><span></span></a>
+                        </div>
+                     </div>
+                     <div class="col text-right">
+                        <ul class="site-nav-ul js-clone-nav text-left d-none d-lg-inline-block">
+                              <li><a href="index.html" class="nav-link cursor-item">Main</a></li>
+                              <li class="has-children">
+                                 <a href="research/index.html" class="nav-link cursor-item">Research</a>
+                                 <ul class="dropdown">
+                                    <li><a href="insights/index.html">0-Day Insights</a></li>
+                                    <li><a href="research/index.html">Exploit Design</a></li>
+                                    <li><a href="research/index.html">Reverse Engineering</a></li>
+                                    <li><a href="research/index.html">Abstract Models</a></li>
+                                    <li><a href="research/index.html">Publications</a></li>
+                                 </ul>
+                              </li>
+                              <li class="has-children">
+                                 <a href="contact.html" class="nav-link cursor-item">Intelligence</a>
+                                 <ul class="dropdown">
+                                    <li><a href="intelligence/index.html">Alpha — Threat Intelligence</a></li>
+                                    <li><a href="intelligence/index.html">Pi — Pattern Insight</a></li>
+                                    <li><a href="intelligence/index.html">Omega — Exclusive R&D</a></li>
+                                 </ul>
+                              </li>
+                              <li class="has-children">
+                                 <a href="training/index.html" class="nav-link cursor-item">Training</a>
+                                 <ul class="dropdown">
+                                    <li><a href="training/universal-vulnerability-research.html">Zero Day Vulnerability Research</a></li>
+                                    <li><a href="training/hypervisor-vulnerability-research.html">Hypervisor Vulnerability Research</a></li>
+                                    <li><a href="training/browser-exploit-design.html">Browser Exploit Design</a></li>
+                                    <li><a href="training/masterclass/">Masterclasses</a></li>
+                                    <li><a href="training/reviews/index.html">Feedback</a></li>
+                                 </ul>
+                              </li>
+                              <li class="has-children">
+                                 <a href="about.html" class="nav-link cursor-item">Company</a>
+                                 <ul class="dropdown">
+                                    <li><a href="about.html">About us</a></li>
+                                    <li><a href="strategic-access.html">Industry &amp; Government</a></li>
+                                    <li><a href="events.html">Events</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                           <ul class="site-nav-ul-none-onepage text-right d-inline-block d-lg-none">
+                              <li><a href="#" class="js-menu-toggle">Menu</a></li>
+                           </ul>
+                     </div>
+                  </div>
+               </div>
+            </nav>
+
+            <div class="section-page">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <div class="content-hero text-center" data-aos="fade-left" data-aos-duration="1000">
+                           <h1 class="h-title" id="quote">Application Form</h1>
+                           <p>intelligence subscriptions & engagement solicitations</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="section" id="apply-section">
+               <div class="container">
+                  <div class="row justify-content-center">
+                     <div class="col-md-8">
+                        <div class="apply-form-wrap">
+
+                           <form id="applyForm" novalidate>
+
+                              <div class="apply-field">
+                                 <label class="apply-label" for="fullName">Full Name</label>
+                                 <input type="text" id="fullName" name="fullName" class="apply-input" autocomplete="name">
+                                 <span class="apply-error-msg" id="err-fullName">Required.</span>
+                              </div>
+
+                              <div class="apply-field">
+                                 <label class="apply-label" for="email">
+                                    Email Address
+                                    <span class="field-note">office email only</span>
+                                 </label>
+                                 <input type="email" id="email" name="email" class="apply-input" autocomplete="email">
+                                 <span class="apply-error-msg" id="err-email">Please use your organization email address.</span>
+                              </div>
+
+                              <div class="apply-field">
+                                 <label class="apply-label" for="organization">Organization</label>
+                                 <input type="text" id="organization" name="organization" class="apply-input" autocomplete="organization">
+                                 <span class="apply-error-msg" id="err-organization">Required.</span>
+                              </div>
+
+                              <div class="apply-field">
+                                 <label class="apply-label" for="role">Role</label>
+                                 <input type="text" id="role" name="role" class="apply-input">
+                                 <span class="apply-error-msg" id="err-role">Required.</span>
+                              </div>
+
+
+                              <div class="apply-field">
+                                 <label class="apply-label" for="budget">Security Budget, per year</label>
+                                 <input type="text" id="budget" name="budget" class="apply-input" placeholder="">
+                                 <span class="apply-error-msg" id="err-budget">Required.</span>
+                              </div>
+
+                              <div class="apply-field">
+                                 <label class="apply-label">Are you the final decision maker?</label>
+                                 <div class="apply-radio-group">
+                                    <label class="apply-radio-label"><input type="radio" name="decisionMaker" value="Yes"> Yes</label>
+                                    <label class="apply-radio-label"><input type="radio" name="decisionMaker" value="No"> No</label>
+                                 </div>
+                                 <span class="apply-error-msg" id="err-decisionMaker">Required.</span>
+                              </div>
+
+
+                              <div class="apply-field">
+                                 <label class="apply-label" for="howLearned">How did you learn about us?</label>
+                                 <input type="text" id="howLearned" name="howLearned" class="apply-input">
+                                 <span class="apply-error-msg" id="err-howLearned">Required.</span>
+                              </div>
+
+                              <div class="apply-field">
+                                 <label class="apply-label" for="primaryInterest">What is your primary interest?</label>
+                                 <input type="text" id="primaryInterest" name="primaryInterest" class="apply-input">
+                                 <span class="apply-error-msg" id="err-primaryInterest">Required.</span>
+                              </div>
+
+                              <div class="apply-field">
+                                 <label class="apply-label" for="priorProviders">Did you use or are using any mainstream cybersecurity intelligence providers?</label>
+                                 <textarea id="priorProviders" name="priorProviders" class="apply-textarea"></textarea>
+                                 <span class="apply-error-msg" id="err-priorProviders">Required.</span>
+                              </div>
+
+                              <div class="apply-field">
+                                 <label class="apply-label" for="alternatives">What alternative solutions did you consider?</label>
+                                 <textarea id="alternatives" name="alternatives" class="apply-textarea"></textarea>
+                                 <span class="apply-error-msg" id="err-alternatives">Required.</span>
+                              </div>
+
+                              <div class="apply-field">
+                                 <label class="apply-label" for="whyUs">Why did you choose us specifically?</label>
+                                 <textarea id="whyUs" name="whyUs" class="apply-textarea"></textarea>
+                                 <span class="apply-error-msg" id="err-whyUs">Required.</span>
+                              </div>
+
+
+                              <div class="apply-field">
+                                 <label class="apply-label" for="techStack">
+                                    Describe the technological stack that you are securing
+                                    <span class="field-note">For Alpha Intelligence applicants. Optional.</span>
+                                 </label>
+                                 <textarea id="techStack" name="techStack" class="apply-textarea"></textarea>
+                              </div>
+
+                              <div class="apply-field">
+                                 <label class="apply-label" for="researchProgram">
+                                    Describe the research program that you solicit our participation in
+                                    <span class="field-note">For Pi Intelligence applicants. Optional.</span>
+                                 </label>
+                                 <textarea id="researchProgram" name="researchProgram" class="apply-textarea"></textarea>
+                              </div>
+
+                              <div class="apply-field">
+                                 <label class="apply-label" for="fundingTimeline">How fast are you able to fund the subscription if invited?</label>
+                                 <input type="text" id="fundingTimeline" name="fundingTimeline" class="apply-input">
+                                 <span class="apply-error-msg" id="err-fundingTimeline">Required.</span>
+                              </div>
+
+                              <div class="apply-field">
+                                 <label class="apply-label">Would you like to receive further updates about our offers?</label>
+                                 <div class="apply-radio-group">
+                                    <label class="apply-radio-label"><input type="radio" name="receiveUpdates" value="Yes"> Yes</label>
+                                    <label class="apply-radio-label"><input type="radio" name="receiveUpdates" value="No"> No</label>
+                                 </div>
+                                 <span class="apply-error-msg" id="err-receiveUpdates">Required.</span>
+                              </div>
+
+                              <div>
+                                 <button type="submit" class="btn-apply-submit" id="submitBtn">Submit Application</button>
+                                 <div class="apply-status" id="applyStatus"></div>
+                              </div>
+
+                           </form>
+
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <footer class="footer section">
+               <div class="container">
+                  <div class="row justify-content-center">
+                     <div class="col-md-12">
+                        <div class="go-top cursor-item" id="go-to-top"><i class="fa fa-chevron-up"></i></div>
+                        <div class="hr-footer"></div>
+                        <div class="footer-site-logo"><a href="index.html" class="main-logo"><img src="images/logo.png" class="logo-img light-logo img-fluid" alt=""></a></div>
+                        <p class="site-copyright">
+                           <small>&copy; 2019-2026 Zero Day Engineering. All Rights Reserved. <a href="rss" class="social-icon"><i class="fa fa-rss"></i></a></small>
+                        </p>
+                     </div>
+                  </div>
+               </div>
+            </footer>
+
+            <div class="circular-text">
+               <span id="rotated">1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 •</span>
+            </div>
+         </div>
+      </div>
+
+      <a id="back-to-top" href="#" class="cursor-item"><i class="fa fa-chevron-up"></i></a>
+      <div class="cursor"></div>
+      <div class="cursor-follower"></div>
+
+      <script src="js/query-3.4.1.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/aos.js"></script>
+      <script src="js/owl.carousel.min.js"></script>
+      <script src="js/isotope.pkgd.min.js"></script>
+      <script src="js/imagesloaded.pkgd.min.js"></script>
+      <script src="js/three.min.js"></script>
+      <script src="js/anime.min.js"></script>
+      <script src="js/TweenMax.min.js"></script>
+      <script src="js/jquery.waypoints.min.js"></script>
+      <script src="js/circletype.min.js"></script>
+      <script src="js/hover-effect.umd.js"></script>
+      <script src="js/gsap.min.js"></script>
+      <script src="js/ScrollMagic.min.js"></script>
+      <script src="js/scrollmagic.animation.gsap.min.js"></script>
+      <script src="js/custom.js"></script>
+
+      <script>
+         // Replace with your deployed Google Apps Script web app URL
+         const GAS_URL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL';
+
+         const FREE_DOMAINS = [
+            'gmail.com','googlemail.com',
+            'yahoo.com','yahoo.co.uk','yahoo.fr','yahoo.de','yahoo.es','yahoo.it','yahoo.ca','yahoo.com.au',
+            'hotmail.com','hotmail.co.uk','hotmail.fr','hotmail.de','hotmail.es','hotmail.it',
+            'outlook.com','outlook.fr','outlook.de','outlook.es','live.com','live.co.uk','live.fr','live.de',
+            'icloud.com','me.com','mac.com',
+            'aol.com','aim.com',
+            'protonmail.com','proton.me','tutanota.com','tutanota.de','tuta.io','tuta.com',
+            'mail.com','gmx.com','gmx.net','gmx.de','gmx.at','gmx.ch',
+            'zoho.com','zohomail.com',
+            'yandex.com','yandex.ru','yandex.net','yandex.ua',
+            'mail.ru','bk.ru','inbox.ru','list.ru',
+            'fastmail.com','fastmail.fm','fastmail.net',
+            'hushmail.com','guerrillamail.com','10minutemail.com','mailinator.com',
+            'temp-mail.org','throwam.com','dispostable.com'
+         ];
+
+         function isBlockedDomain(email) {
+            const at = email.lastIndexOf('@');
+            if (at < 0) return false;
+            return FREE_DOMAINS.includes(email.slice(at + 1).toLowerCase());
+         }
+
+         const TEXTAREA_FIELDS = ['priorProviders','alternatives','whyUs'];
+         const INPUT_FIELDS = ['fullName','organization','role','budget','howLearned','primaryInterest','fundingTimeline'];
+
+         function markField(id, valid) {
+            const el = document.getElementById(id);
+            const err = document.getElementById('err-' + id);
+            if (!el) return;
+            el.classList.toggle('error', !valid);
+            if (err) err.classList.toggle('visible', !valid);
+         }
+
+         function validate() {
+            let ok = true;
+
+            INPUT_FIELDS.forEach(id => {
+               const empty = !document.getElementById(id).value.trim();
+               markField(id, !empty);
+               if (empty) ok = false;
+            });
+
+            TEXTAREA_FIELDS.forEach(id => {
+               const empty = !document.getElementById(id).value.trim();
+               markField(id, !empty);
+               if (empty) ok = false;
+            });
+
+            // Email: presence + domain check
+            const emailEl = document.getElementById('email');
+            const emailVal = emailEl.value.trim();
+            const emailOk = emailVal && emailVal.includes('@') && !isBlockedDomain(emailVal);
+            markField('email', emailOk);
+            if (!emailOk) ok = false;
+
+            // Radio: decision maker
+            const radioOk = !!document.querySelector('input[name="decisionMaker"]:checked');
+            const radioErr = document.getElementById('err-decisionMaker');
+            if (radioErr) radioErr.classList.toggle('visible', !radioOk);
+            if (!radioOk) ok = false;
+
+            // Radio: receive updates
+            const updatesOk = !!document.querySelector('input[name="receiveUpdates"]:checked');
+            const updatesErr = document.getElementById('err-receiveUpdates');
+            if (updatesErr) updatesErr.classList.toggle('visible', !updatesOk);
+            if (!updatesOk) ok = false;
+
+            return ok;
+         }
+
+         function buildText(d) {
+            return [
+               'Full Name: '                  + d.fullName,
+               'Email: '                      + d.email,
+               'Organization: '               + d.organization,
+               'Role: '                       + d.role,
+               'Security Budget/yr: '         + d.budget,
+               'Final Decision Maker: '       + d.decisionMaker,
+               'How Learned: '                + d.howLearned,
+               'Primary Interest: '           + d.primaryInterest,
+               'Prior Providers: '            + d.priorProviders,
+               'Alternatives Considered: '    + d.alternatives,
+               'Why Our Offer: '              + d.whyUs,
+               'Tech Stack (Alpha): '         + (d.techStack || '—'),
+               'Research Program (Pi): '      + (d.researchProgram || '—'),
+               'Funding Timeline: '           + d.fundingTimeline,
+               'Receive Updates: '            + d.receiveUpdates,
+            ].join('\n\n');
+         }
+
+         document.getElementById('applyForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            if (!validate()) return;
+
+            const btn    = document.getElementById('submitBtn');
+            const status = document.getElementById('applyStatus');
+
+            btn.disabled    = true;
+            btn.textContent = 'Sending…';
+            status.className = 'apply-status';
+            status.textContent = '';
+
+            const radio   = document.querySelector('input[name="decisionMaker"]:checked');
+            const updates = document.querySelector('input[name="receiveUpdates"]:checked');
+            const d = {
+               fullName:        document.getElementById('fullName').value.trim(),
+               email:           document.getElementById('email').value.trim(),
+               organization:    document.getElementById('organization').value.trim(),
+               role:            document.getElementById('role').value.trim(),
+               budget:          document.getElementById('budget').value.trim(),
+               decisionMaker:   radio   ? radio.value   : '',
+               howLearned:      document.getElementById('howLearned').value.trim(),
+               primaryInterest: document.getElementById('primaryInterest').value.trim(),
+               priorProviders:  document.getElementById('priorProviders').value.trim(),
+               alternatives:    document.getElementById('alternatives').value.trim(),
+               whyUs:           document.getElementById('whyUs').value.trim(),
+               techStack:       document.getElementById('techStack').value.trim(),
+               researchProgram: document.getElementById('researchProgram').value.trim(),
+               fundingTimeline: document.getElementById('fundingTimeline').value.trim(),
+               receiveUpdates:  updates ? updates.value : '',
+            };
+
+            try {
+               const resp = await fetch(GAS_URL, {
+                  method: 'POST',
+                  body: JSON.stringify({ text: buildText(d) }),
+               });
+               if (!resp.ok) throw new Error('non-200');
+               status.className   = 'apply-status success';
+               status.textContent = 'Application received. We will be in touch.';
+               document.getElementById('applyForm').reset();
+            } catch (_) {
+               status.className   = 'apply-status fail';
+               status.textContent = 'Submission failed. Please email contact@zerodayengineering.com directly.';
+            } finally {
+               btn.disabled    = false;
+               btn.textContent = 'Submit Application';
+            }
+         });
+      </script>
+   </body>
+</html>
