@@ -204,7 +204,7 @@
                               <li class="has-children">
                                  <a href="../intelligence/index.html" class="nav-link cursor-item">Intelligence</a>
                                  <ul class="dropdown">
-                                    <li><a href="index.html">Alpha — Threat Intelligence</a></li>
+                                    <li><a href="index.html">Alpha &mdash; Exploit Intelligence</a></li>
                                     <li><a href="index.html">Pi — Pattern Insight</a></li>
                                     <li><a href="index.html">Omega — Exclusive R&D</a></li>
                                  </ul>
@@ -289,7 +289,7 @@
                                  <label class="apply-label" for="product">Product</label>
                                  <select id="product" name="product" class="apply-select">
                                     <option value="" disabled selected></option>
-                                    <option value="Alpha — Threat Intelligence">Alpha — Threat Intelligence</option>
+                                    <option value="Alpha Intelligence">Alpha Intelligence</option>
                                     <option value="Pi — Pattern Insight">Pi — Pattern Insight</option>
                                     <option value="Omega — Exclusive R&D">Omega — Exclusive R&D</option>
                                  </select>
@@ -369,6 +369,14 @@
                                     <label class="apply-radio-label"><input type="radio" name="receiveUpdates" value="No"> No</label>
                                  </div>
                                  <span class="apply-error-msg" id="err-receiveUpdates">Required.</span>
+                              </div>
+
+                              <div class="apply-field">
+                                 <label class="apply-label" for="questions">
+                                    Do you have any questions? Write them here.
+                                    <span class="field-note">Optional.</span>
+                                 </label>
+                                 <textarea id="questions" name="questions" class="apply-textarea" rows="4"></textarea>
                               </div>
 
                               <div>
@@ -462,7 +470,7 @@
 
          function updateConditionalFields() {
             const val = productEl.value;
-            const showAlpha = val === 'Alpha — Threat Intelligence';
+            const showAlpha = val === 'Alpha Intelligence';
             const showPi    = val === 'Pi — Pattern Insight';
 
             techStackWrap.classList.toggle('visible', showAlpha);
@@ -507,7 +515,7 @@
             if (!productOk) ok = false;
 
             // Conditional: tech stack (Alpha)
-            if (productEl.value === 'Alpha — Threat Intelligence') {
+            if (productEl.value === 'Alpha Intelligence') {
                const empty = !techStackEl.value.trim();
                markField('techStack', !empty);
                if (empty) ok = false;
@@ -554,6 +562,7 @@
                'Funding Timeline: '           + d.fundingTimeline,
                'Receive Updates: '            + d.receiveUpdates,
             );
+            if (d.questions) lines.push('Questions: '            + d.questions);
             return lines.join('\n\n');
          }
 
@@ -593,6 +602,7 @@
                researchProgram: researchEl.value.trim(),
                fundingTimeline: document.getElementById('fundingTimeline').value.trim(),
                receiveUpdates:  updates ? updates.value : '',
+               questions:       document.getElementById('questions').value.trim(),
             };
 
             try {
