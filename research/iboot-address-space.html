@@ -1,0 +1,349 @@
+<!DOCTYPE HTML>
+<html lang="en">
+   <head>
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-RBMCFM6G1Z"></script>
+      <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+
+         gtag('config', 'G-RBMCFM6G1Z');
+      </script>
+      <!--Meta Tags-->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="iBoot address space — a generalized perspective on Apple devices' bootchain memory layout across all stages of the boot process."/>
+      <meta name="keywords" content="iBoot, SecuROM, iOS, bootchain, memory layout, exploit development"/>
+      <meta name="author" content="Alisa Esage"/>
+      <base href="../">
+      <!--Favicons-->
+      <link rel="shortcut icon" href="images/favicon.png">
+      <!--Page Title-->
+      <title>iBoot Address Space — Zero Day Engineering</title>
+      <!-- Stylesheets -->
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/animate.min.css">
+      <link rel="stylesheet" href="css/owl.carousel.min.css">
+      <link rel="stylesheet" href="css/aos.css"/>
+      <link rel="stylesheet" href="css/font-awesome.min.css">
+      <link rel="stylesheet" href="css/style.css?v=20260531">
+   </head>
+   <body data-spy="scroll" data-target=".site-nav-target" data-offset="200">
+
+      <canvas id="snow" style="position:fixed; top:0; left:0; width:100vw; height:100vh;pointer-events:none;z-index:9999;"></canvas>
+
+      <div class="loader desktop-only">
+         <div class="intro">
+            <div class="intro-title"><img src="images/logo-large-black.png" class="logo-img light-logo img-fluid" alt=""></div>
+         </div>
+      </div>
+
+      <nav class="site-mobile-menu">
+         <div class="close-wrap d-flex">
+            <a href="#" class="d-flex ml-auto js-menu-toggle">
+               <span class="close-label">Close</span>
+               <div class="close-times">
+                  <span class="bar1"></span>
+                  <span class="bar2"></span>
+               </div>
+            </a>
+         </div>
+         <div class="site-mobile-inner"></div>
+      </nav>
+
+      <div class="site-wrap">
+         <div class="site-inner">
+
+            <nav class="site-nav site-nav-target">
+               <div class="container">
+                  <div class="row align-items-center justify-content-between text-left">
+                     <div class="col-3">
+                        <div class="site-logo">
+                           <a href="index.html" class="site-logo main-logo"><img src="images/logo.png" class="logo-img light-logo img-fluid" alt=""><span></span></a>
+                        </div>
+                     </div>
+                     <div class="col text-right">
+                        <ul class="site-nav-ul js-clone-nav text-left d-none d-lg-inline-block">
+                              <li><a href="index.html" class="nav-link cursor-item">Main</a></li>
+                              <li class="has-children">
+                                 <a href="research/index.html" class="nav-link cursor-item">Research</a>
+                                 <ul class="dropdown">
+                                    <li><a href="insights/index.html">0-Day Insights</a></li>
+                                    <li><a href="research/index.html">Exploit Design</a></li>
+                                    <li><a href="research/index.html">Reverse Engineering</a></li>
+                                    <li><a href="research/index.html">Abstract Models</a></li>
+                                    <li><a href="research/index.html">Publications</a></li>
+                                 </ul>
+                              </li>
+                              <li class="has-children">
+                                 <a href="intelligence/index.html" class="nav-link cursor-item">Intelligence</a>
+                                 <ul class="dropdown">
+                                    <li><a href="intelligence/alpha/index.html">Alpha &mdash; Exploit Intelligence</a></li>
+                                    <li><a href="intelligence/index.html">Pi — Pattern Insight</a></li>
+                                    <li><a href="intelligence/index.html">Omega — Exclusive R&D</a></li>
+                                 </ul>
+                              </li>
+                              <li class="has-children">
+                                 <a href="training/index.html" class="nav-link cursor-item">Training</a>
+                                 <ul class="dropdown">
+                                    <li><a href="training/universal-vulnerability-research.html">Zero Day Vulnerability Research</a></li>
+                                    <li><a href="training/hypervisor-vulnerability-research.html">Hypervisor Vulnerability Research</a></li>
+                                    <li><a href="training/browser-exploit-design.html">Browser Exploit Design</a></li>
+                                    <li><a href="training/masterclass/">Masterclasses</a></li>
+                                    <li><a href="training/certification/">Certification</a></li>
+                                    <li><a href="training/reviews/index.html">Praise</a></li>
+                                 </ul>
+                              </li>
+                              <li class="has-children">
+                                 <a href="about.html" class="nav-link cursor-item">Company</a>
+                                 <ul class="dropdown">
+                                    <li><a href="about.html">About us</a></li>
+                                    <li><a href="strategic-access.html">Enterprise &amp; Governments</a></li>
+                                    <li><a href="events.html">Events</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                           <ul class="site-nav-ul-none-onepage text-right d-inline-block d-lg-none">
+                           <li><a href="#" class="js-menu-toggle">Menu</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </nav>
+
+            <div class="section">
+               <div class="blog-single-inner">
+                  <div class="container">
+                     <div class="row justify-content-center">
+                        <div class="col-md-8">
+                           <div id="quote"></div>
+                           <h3 class="mb-4">iBoot Address Space</h3>
+                           <p class="date">November 10, 2019 – Alisa Esage</p>
+
+                           <p>Originally published in <a class="underline" href="https://re.alisa.sh/notes/iBoot-address-space.html">Alisa's Research Notes</a>.</p>
+
+                           <p>This research note documents a generalized perspective on Apple devices' bootchain memory layout across all stages of the boot process, and specifically relevant to SecuROM and iBoot. As a case study, a detailed memory map of iPhone 5 during boot is presented.</p>
+
+                           <h6>Introduction</h6>
+
+                           <p>In the past few years I studied zero-day vulnerability discovery and exploit development across various classes of software systems: browsers, operating system kernels, hypervisors, and most recently, various firmwares, TrustZone and Secure Boot. As a result of that systematical study, I recognized that a clear mental model of a system's memory space is the cornerstone of professional exploit development, just as a clear mental model of a system's input consumption is the cornerstone of vulnerability discovery. These are the fundamental elements of research intelligence, both as a reference and as a first step in a systematical study of a new system.</p>
+
+                           <p>The security community has always paid much attention to systematical research and documenting of various heap internals, as heap is the central playground of both userland and kernel code, where the majority of memory corruptions occur. For bootchains and firmware in general, however, heap is only one part of the puzzle, due in part to the compact nature of these systems, where a buffer overflow can potentially span multiple functional memory areas beyond the heap and the stack. In that context we want to learn: how the system's entire memory space is segregated; where exactly are the boundaries of various memory regions and their purposes; memory access permissions; in general, what we should avoid stomping on, and what may be useful for a pivoting overwrite.</p>
+
+                           <p>Understanding of the bootchain memory space of Apple's devices is crucial for prototyping security vulnerabilities that break the Secure Boot procedure, which Apple explicitly motivates with their Security Bounty <a class="underline" href="https://www.apple.com/business/docs/site/iOS_Security_Guide.pdf">[1]</a>. Within a larger perspective of iOS security research, such knowledge stands at the foundation of developing persistent and tethered jailbreaks.</p>
+
+                           <p>This is mostly a theoretical study, based on Apple's source codes available in the public domain, analysis of various bootchain-level exploits, and reverse engineering.</p>
+
+                           <h6>Background</h6>
+
+                           <p>All devices produced by Apple — iPhones, iPads, iPods, and Apple TVs — rely on a secure boot mechanism based on a cryptographic chain of trust, which ensures integrity of all components of the boot chain and the operating system. For more information about this mechanism refer to the official iOS Security Guide <a class="underline" href="https://www.apple.com/business/docs/site/iOS_Security_Guide.pdf">[1]</a>.</p>
+
+                           <p>Despite apparent complexity of the boot chain, especially on older iPhones, it's generally simple:</p>
+                           <ol>
+                              <li>the root of trust: SecureROM — which is hardware-based code with Apple's cryptographic keys — acquires, cryptographically verifies, and starts iBoot;</li>
+                              <li>iBoot acquires, cryptographically verifies, and boots the iOS kernel;</li>
+                              <li>iOS kernel loads, cryptographically verifies, and contains apps.</li>
+                           </ol>
+
+                           <p>SecuROM and iBoot are the two most important stages of the boot process, reachable via USB from DFU mode and Recovery Mode, respectively. Other components of the boot chain (LLB, iBEC, iBSS) may be omitted for the purposes of a generalized study, as they don't seem to have much unique attack surface, whilst being hard to reach with a bug. Also, there is a tendency for unification of the boot chain.</p>
+
+                           <p>One important thing to note about the bootchain components, and why I am filing them under the same research note: they share a lot of common code, and in particular the low-level service primitives which are responsible for fundamental operations at all stages of boot, such as heap management and task management.</p>
+
+                           <p>Each component of the boot chain sits in its own part of the memory space. Each receives its own personal memory regions for operating and book-keeping purposes. From the perspective of the running code, SecureROM and iBoot each see a different memory layout. As a result, the same vulnerability which impacts both SecuROM and iBoot would have entirely different security implications (beyond patching) and exploit development techniques.</p>
+
+                           <p>Likewise, the global memory layout differs significantly, not only across device models, but also with respect to model modifications. Hardware properties of the same model — such as the size of the screen or memory capacity — impact the placement and size of crucial memory regions.</p>
+
+                           <p>Nevertheless, let's try to observe the fundamental principles in bootchain memory organization: overall structure of the memory space, common types of memory regions, and general tendencies in their placement which are invariant to boot stages and hardware.</p>
+
+                           <h6>Memory overview</h6>
+
+                           <p>iPhone's physical memory view is backed by several distinct memory banks: notably, DRAM, as seen in device specifications and teardown blogs; read-only flash storage which contains SecuROM; and probably a faster memory chip, used almost exclusively by the 1st stage bootloader (SecuROM).</p>
+
+                           <p>During the boot procedure each subsequent component of the bootchain claims its predefined space in memory in a process similar to unrolling a carpet. ROM is always mapped at the same offset per SoC, and relocated to the high memory for booting on 32-bit devices. iBoot is loaded in the lower half of the memory space, that gets eventually re-used by the kernel. The memory at offset zero is always reserved for the boot trampoline.</p>
+
+                           <p>Compare a top-level memory map on iPhone 5 (32-bit A6) and iPhone 7+ (64-bit A11, probably up to iPhone X):</p>
+
+                           <p><b>iPhone 5 (A6 S5L8950X — 32-bit):</b></p>
+<pre class="code">0x00000000: ARM reset vector,
+  relocated bootstrap code
+0x10000000: SecuROM playground
+  size: 0x00080000
+0x3F000000: ROM mapping
+  size: 0x00010000
+0x80000000: iBoot &amp; kernel
+  size: 0x40000000
+0xBFFFFFFF:</pre>
+
+                           <p><b>iPhone 7+ (A10 T8010 — 64-bit):</b></p>
+<pre class="code">0x0'00000000: reserved
+0x1'00000000: ROM mapping
+  size: 0x0'02000000
+0x1'80000000: SecureROM playground
+  size: 0x0'00200000
+0x8'00000000: iBoot &amp; kernel
+  size: varies
+0xX</pre>
+
+                           <p>As seen from the comparison, not only the offsets are different, but the ROM mapping is placed differently.</p>
+
+                           <h6>Memory regions</h6>
+
+                           <p>From the perspective of vulnerability research and exploit development, we are mainly interested in specific types of memory regions, containing the code's runtime structures that may be corrupted and leveraged for a pivot: heaps, stacks, data segment, and whatever memory holds the program's inputs. We are also interested in the code section, that may be reused for code execution in a ROP chain (if it's read-only), or modified (if it's writeable). At deeper stages of the research process, hardware-based vulnerability prototyping asks for I/O register mappings and MMU configs.</p>
+
+                           <p><b>Code.</b> All executable components of the bootchain are loaded at predefined memory addresses, after being copied there from their respective storage locations. SecuROM code is moved from the ROM origin to high memory and executed from there. iBoot code address varies per device model.</p>
+
+                           <p><b>Data.</b> This is where globally defined variables and arrays live. Notably, data section holds the roots of the heap. Data section of each bootchain component starts immediately after the code section, except for SecuROM which uses a statically defined memory address to which the data section is moved by the bootstrap code. Data section is relatively compact, and any overflow in it will spill into the next memory region, which is the heap.</p>
+
+                           <p><b>Heaps.</b> Main heap is located immediately after the data section. 2nd stage and later bootloaders (i.e. everything past SecuROM) get an extra heap, which is located around the special memory used for bootstrapping.</p>
+
+                           <p><b>Stacks.</b> There are system stacks and task stacks. System stacks are reserved for the primordial task, interrupt management and exception management. These are located at a predefined address at the bottom of the memory region used by each bootchain component. Task stacks are allocated and freed on demand from the heap.</p>
+
+                           <p>A special region of memory is used to receive and contain next stage binary images before they are verified. This region is directly writeable via USB DFU or Recovery Mode. It is located at a fixed address and may be adjoined with either data section (in SecuROM) or with the extra heap (in iBoot).</p>
+
+                           <p><b>I/O space.</b> Located at a fixed address somewhere between SecuROM space and iBoot space, and far away from both.</p>
+
+                           <p><b>MMU page tables.</b> This is where the MMU configuration is stored, and can't be touched. Stored at a predefined address near the system stacks.</p>
+
+                           <p>In addition, newer A-SoCs have special memory regions required by new hardware, such as PCI register mappings and configuration space (A7+) and SEP TZ0 on devices with Secure Enclave.</p>
+
+                           <h6>Security mitigations</h6>
+
+                           <p>Apple's bootchain is devoid of ASLR, at least up to iPhone X.</p>
+
+                           <p>Memory access permissions segregation (W^X) was added in A7 (iPhone 5S). On older models such as iPhone 5 everything is possible.</p>
+
+                           <p>In general, it appears that many security-relevant hardware and firmware improvements were introduced with A7, which is also the first 64-bit A-SoC.</p>
+
+                           <p>Internal mitigations of heaps and stacks are out of scope of this note.</p>
+
+                           <h6>Case study: iPhone 5 address space</h6>
+
+                           <p>Let's expand the high-level memory view of iPhone 5 presented above to a detailed view which includes each bootloader's private memory view.</p>
+
+<pre class="code">0x00000000: ARM reset vector,
+    relocated SecuROM code
+
+0x10000000: SecureROM playground
+    size: 0x00080000
+    ...
+    0x10000000: Reserved for bootstrap
+    size: 0x00060000
+    0x10060000: Data
+    size: 0x00003000
+    0x10063000: Heap
+    size: 0x00016000
+    0x10079000: System stacks
+    size: 0x00003000
+    0x1007c000: MMU page tables
+    size: 0x00004000
+0x1007FFFF: End of SecureROM playground
+    ...
+
+0x30000000: I/O register mappings
+
+0x3F000000: ROM mapping
+    size: 0x00010000
+    ...
+
+0x80000000: Main memory: iBoot and kernel
+    size: 0x40000000
+
+    0x80000000: Reserved for bootstrap
+        size: 0x10000000
+
+    0x--------: Heap extra (varies, ~0x90000000)
+
+    0xBFF00000: iBoot code
+        size: 0xFC000
+
+    0x--------: Data
+    0x--------: Heap
+
+    0xBFFF7000: System stacks
+
+    0xBFFF8000: MMU page tables
+
+0xBFFFFFFF: End of main memory</pre>
+
+                           <p>Note that it's still a simplified map, with the LLB space omitted for the same reasons as stated above, and many functional memory regions never mentioned which are less relevant to the problem of vulnerability research.</p>
+
+                           <p>This is a researcher's view, mapped outside of the time domain. In reality only one part of this map is active and relevant at any given moment. When SecuROM runs, iBoot is not loaded yet, its heaps and stacks are not initialized. When iBoot runs, SecuROM is inactive, its heaps and stacks are not relevant. After the kernel boots, iBoot is in the past and may be destroyed by the kernel's operation.</p>
+
+                           <h6>Recommendations</h6>
+
+                           <p>Apple could greatly enhance the security of its bootchain by introducing some entropy into the placement of various memory regions, also known as Address Space Randomization. ASLR is a well established security mitigation across all types of software systems, that prevents certain types of exploits completely, while increasing the development costs of others by a factor of 2x–10x by forcing the developer to discover or craft a memory disclosure primitive in addition to the code execution vulnerability. Whilst the iOS kernel has been equipped with ASLR for a while, the bootchain is lagging behind.</p>
+
+                           <p>As a case study: ASLR probably would not have prevented the <a class="underline" href="https://github.com/axi0mX/ipwndfu/blob/master/checkm8.py">checkm8 exploit</a>, because it relies on a very powerful heap corruption primitive that can in theory be leveraged both for arbitrary code execution and a memory disclosure. However, ASLR would require the developer to groom a significantly more precise heap layout whilst relying on some additional SecuROM code functionality to inform the exploit about the memory offsets that it needs for operation — at the very least, that would minimize the number of parties in possession of the exploit.</p>
+
+                           <p><b>Secure placement of memory regions.</b> Besides ASLR, simple disjoining of memory regions by a large margin or a guard page would block a class of exploits based on cross-boundary overflows from data to heap, from heap to system stacks, and so on.</p>
+
+                           <p><b>Task management design refactoring.</b> Currently both SecuROM and iBoot's task stacks are allocated on the heap at runtime, which introduces unnecessary simplification to exploit development. An arbitrary heap corruption vulnerability in bootchain can be turned into a stack pivot for shell code execution with near-zero effort. Compare it with a more traditional implementation found on majority of userland and kernel systems, where stacks are allocated in a special region far away from the heap, maybe once per runtime, and can only be exploited with a stack-based vulnerability, but rarely with a heap corruption vulnerability.</p>
+
+                           <p>These recommendations are based on my best knowledge of Apple devices' bootchain implementation up to iPhone X, and good will. Heap and stack internals hardening considerations are out of scope.</p>
+
+                           <h6>References</h6>
+
+                           <ol>
+                              <li>iOS Security Guide — <a class="underline" href="https://www.apple.com/business/docs/site/iOS_Security_Guide.pdf">https://www.apple.com/business/docs/site/iOS_Security_Guide.pdf</a></li>
+                              <li>Apple Open Source — <a class="underline" href="https://opensource.apple.com/">https://opensource.apple.com/</a></li>
+                              <li>Principles of ARM® Memory Maps White Paper — <a class="underline" href="http://infocenter.arm.com/help/topic/com.arm.doc.den0001c/DEN0001C_principles_of_arm_memory_maps.pdf">infocenter.arm.com</a></li>
+                           </ol>
+
+                           <div class="post-single-navigation d-flex align-items-stretch">
+                              <a href="research/index.html" class="mr-auto w-50 pr-4">
+                                 <span class="d-block cursor-item"><i class="fa fa-chevron-left mr-2"></i> Research</span></a>
+                              <a href="training/index.html" class="ml-auto w-50 text-right pl-4">
+                                 <span class="d-block cursor-item">Training <i class="fa fa-chevron-right ml-2"></i></span></a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <footer class="footer section">
+               <div class="container">
+                  <div class="row justify-content-center">
+                     <div class="col-md-12">
+                        <div class="go-top cursor-item" id="go-to-top"><i class="fa fa-chevron-up"></i></div>
+                        <div class="hr-footer"></div>
+                        <div class="footer-site-logo"><a href="index.html" class="main-logo"><img src="images/logo.png" class="logo-img light-logo img-fluid" alt=""></a></div>
+                        <p class="site-copyright">
+                           <small>&copy; 2019-2026 Zero Day Engineering. All Rights Reserved. <a href="rss" class="social-icon"><i class="fa fa-rss"></i></a></small>
+                        </p>
+                     </div>
+                  </div>
+               </div>
+            </footer>
+
+            <div class="circular-text">
+               <span id="rotated">1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 •</span>
+            </div>
+         </div>
+      </div>
+
+      <a id="back-to-top" href="#" class="cursor-item"><i class="fa fa-chevron-up"></i></a>
+      <div class="cursor"></div>
+      <div class="cursor-follower"></div>
+
+      <script src="js/query-3.4.1.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/aos.js"></script>
+      <script src="js/owl.carousel.min.js"></script>
+      <script src="js/isotope.pkgd.min.js"></script>
+      <script src="js/imagesloaded.pkgd.min.js"></script>
+      <script src="js/three.min.js"></script>
+      <script src="js/anime.min.js"></script>
+      <script src="js/TweenMax.min.js"></script>
+      <script src="js/jquery.waypoints.min.js"></script>
+      <script src="js/circletype.min.js"></script>
+      <script src="js/hover-effect.umd.js"></script>
+      <script src="js/gsap.min.js"></script>
+      <script src="js/ScrollMagic.min.js"></script>
+      <script src="js/scrollmagic.animation.gsap.min.js"></script>
+      <script src="js/custom.js"></script>
+   </body>
+</html>
