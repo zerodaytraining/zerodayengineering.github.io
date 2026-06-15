@@ -97,6 +97,7 @@
                                     <li><a href="training/browser-exploit-design.html">Browser Exploit Design</a></li>
                                     <li><a href="training/masterclass/">Masterclasses</a></li>  
                                     <li><a href="training/certification/">Certification</a></li>
+                                    <li><a href="events.html">Schedule</a></li>
                                     <li><a href="training/reviews/index.html">Praise</a></li>
                                  </ul>
                               </li>
@@ -153,7 +154,17 @@
                                  <th>Venue & Registration</th>
                               </tr>
                               <tr>
-                                 <td>TBA</td>
+                                 <td>Zero Day Engineering for Chrome Browser <span style="background:#8A7A5A; color:#000; font-size:9px; padding:2px 6px; letter-spacing:.12em; text-transform:uppercase; margin-left:6px; vertical-align:middle; font-weight:600;">new</span></td>
+                                 <td>training</td>
+                                 <td>5 days</td>
+                                 <td>Browsers & JavaScript</td>
+                                 <td>August 24-28, 2026</td>
+                                 <td>online</td>
+                                 <td>€6,000–8,000</td>
+                                 <td><a href="contact.html">contact us</a></td>
+                              </tr>
+                              <tr>
+                                 <td>Reserved</td>
                                  <td>keynote</td>
                                  <td></td>
                                  <td>Leadership</td>
@@ -163,14 +174,14 @@
                                  <td><a href="https://www.c0c0n.org/">c0c0n 2026 — Hacking &amp; Cyber Security Briefing</a></td>
                               </tr>
                               <tr>
-                                 <td>Private Mastermind</td>
+                                 <td>Private In-Person Event</td>
                                  <td></td>
                                  <td></td>
                                  <td></td>
                                  <td></td>
                                  <td></td>
                                  <td></td>
-                                 <td>contact us</td>
+                                 <td><a href="#" onclick="openNotifyModal(); return false;" style="color:#C8B99A; text-decoration:underline;">notify me</a></td>
                               </tr>
                            </table>
                         </div>
@@ -708,5 +719,236 @@
       <script src="js/ScrollMagic.min.js"></script>
       <script src="js/scrollmagic.animation.gsap.min.js"></script>
       <script src="js/custom.js"></script>
+
+      <!-- Notify modal (Access Denied newsletter subscription) -->
+      <style>
+         .notify-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(7, 8, 13, 0.92);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+         }
+         .notify-overlay.active { display: flex; }
+         .notify-box {
+            width: min(440px, 100%);
+            border: 1px solid rgba(200,185,154,0.25);
+            background: #07080d;
+            padding: 40px 36px;
+            color: rgba(237,234,230,0.88);
+            font-family: inherit;
+         }
+         .notify-label {
+            font-size: 9px;
+            letter-spacing: 5px;
+            color: rgba(237,234,230,0.4);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            text-align: center;
+         }
+         .notify-title {
+            font-size: 18px;
+            color: rgba(237,234,230,0.95);
+            text-align: center;
+            margin-bottom: 24px;
+            letter-spacing: .02em;
+         }
+         .notify-field { width: 100%; margin-bottom: 18px; }
+         .notify-field-label {
+            font-size: 8px;
+            letter-spacing: 3px;
+            color: rgba(237,234,230,0.4);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 6px;
+         }
+         .notify-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(200,185,154,0.25);
+            padding: 8px 0;
+            font-size: 12px;
+            letter-spacing: 1px;
+            color: rgba(237,234,230,0.95);
+            outline: none;
+            -webkit-appearance: none;
+            border-radius: 0;
+            font-family: inherit;
+         }
+         .notify-input:focus { border-bottom-color: rgba(200,185,154,0.6); }
+         .notify-actions {
+            margin-top: 24px;
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+         }
+         .notify-btn {
+            background: transparent;
+            border: 1px solid rgba(200,185,154,0.45);
+            padding: 10px 28px;
+            font-size: 10px;
+            letter-spacing: 4px;
+            color: #C8B99A;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            -webkit-appearance: none;
+            border-radius: 0;
+         }
+         .notify-btn:hover {
+            background: rgba(200,185,154,0.07);
+            border-color: #C8B99A;
+         }
+         .notify-btn-secondary {
+            color: rgba(237,234,230,0.4);
+            border-color: rgba(237,234,230,0.15);
+         }
+         .notify-btn-secondary:hover {
+            color: rgba(237,234,230,0.7);
+            border-color: rgba(237,234,230,0.35);
+            background: transparent;
+         }
+         .notify-error {
+            display: none;
+            color: rgba(210, 100, 100, 0.7);
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-align: center;
+            margin-top: 14px;
+            text-transform: uppercase;
+         }
+         .notify-confirm-text {
+            font-size: 14px;
+            color: rgba(237,234,230,0.85);
+            text-align: center;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            font-style: italic;
+         }
+      </style>
+
+      <div class="notify-overlay" id="notify-modal">
+         <div class="notify-box">
+            <div class="notify-label">Access Denied</div>
+            <div class="notify-title">Get notified about private events</div>
+            <div class="notify-field">
+               <label class="notify-field-label">Email</label>
+               <input class="notify-input" id="notify-email" type="email" autocomplete="email" spellcheck="false" autocapitalize="off" required>
+            </div>
+            <div class="notify-field">
+               <label class="notify-field-label">Full Name</label>
+               <input class="notify-input" id="notify-name" type="text" autocomplete="name" spellcheck="false" required>
+            </div>
+            <div class="notify-field">
+               <label class="notify-field-label">Company</label>
+               <input class="notify-input" id="notify-company" type="text" autocomplete="organization" spellcheck="false" required>
+            </div>
+            <div class="notify-field">
+               <label class="notify-field-label">Role</label>
+               <input class="notify-input" id="notify-role" type="text" autocomplete="organization-title" spellcheck="false" required>
+            </div>
+            <div class="notify-field">
+               <label class="notify-field-label">What brings you here?</label>
+               <input class="notify-input" id="notify-signal" type="text" placeholder="be specific: what news piece, article, tweet, etc." spellcheck="false" required>
+            </div>
+            <div class="notify-field">
+               <label class="notify-field-label">Primary Interest</label>
+               <input class="notify-input" id="notify-interest" type="text" placeholder="e.g. getting started, pro research, 0-day insights, etc." spellcheck="false" required>
+            </div>
+            <div class="notify-actions">
+               <button class="notify-btn notify-btn-secondary" onclick="closeNotifyModal()">Cancel</button>
+               <button class="notify-btn" id="notify-submit" onclick="submitNotify()">Subscribe</button>
+            </div>
+            <div class="notify-error" id="notify-error">Error. Try again later.</div>
+         </div>
+      </div>
+
+      <div class="notify-overlay" id="notify-confirm">
+         <div class="notify-box">
+            <div class="notify-confirm-text">One more step — check your email to confirm your subscription.</div>
+            <div class="notify-actions">
+               <button class="notify-btn" onclick="closeNotifyConfirm()">OK</button>
+            </div>
+         </div>
+      </div>
+
+      <script>
+         function openNotifyModal() {
+            document.getElementById('notify-error').style.display = 'none';
+            document.getElementById('notify-modal').classList.add('active');
+            document.getElementById('notify-email').focus();
+         }
+         function closeNotifyModal() {
+            document.getElementById('notify-modal').classList.remove('active');
+         }
+         function closeNotifyConfirm() {
+            document.getElementById('notify-confirm').classList.remove('active');
+         }
+         async function submitNotify() {
+            const btn = document.getElementById('notify-submit');
+            const email    = document.getElementById('notify-email').value.trim();
+            const name     = document.getElementById('notify-name').value.trim();
+            const company  = document.getElementById('notify-company').value.trim();
+            const role     = document.getElementById('notify-role').value.trim();
+            const signal   = document.getElementById('notify-signal').value.trim();
+            const interest = document.getElementById('notify-interest').value.trim();
+
+            const errEl = document.getElementById('notify-error');
+            if (!email || !email.includes('@')) {
+               errEl.textContent = 'Valid email required.'; errEl.style.display = 'block'; return;
+            }
+            if (!name || !company || !role || !signal || !interest) {
+               errEl.textContent = 'All fields are required.'; errEl.style.display = 'block'; return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = '...';
+            errEl.style.display = 'none';
+
+            const params = new URLSearchParams({
+               email:    email,
+               name:     name,
+               company:  company,
+               role:     role,
+               signal:   signal,
+               interest: interest,
+               referrer: document.referrer || '',
+               utm_source:   new URLSearchParams(location.search).get('utm_source')   || '',
+               utm_medium:   new URLSearchParams(location.search).get('utm_medium')   || '',
+               utm_campaign: new URLSearchParams(location.search).get('utm_campaign') || ''
+            });
+
+            try {
+               const res = await fetch('https://script.google.com/macros/s/AKfycbw3qtOKKxtC4rt6AZ4ohQa0GuCXjKyTHyHCbjahjRnVmN-KBz7NtFpP0-4HrZQ_7rET/exec', {
+                  method: 'POST',
+                  body: params
+               });
+               const data = JSON.parse(await res.text());
+               if (data.ok) {
+                  closeNotifyModal();
+                  document.getElementById('notify-confirm').classList.add('active');
+               } else {
+                  document.getElementById('notify-error').textContent = 'Error. Try again later.';
+                  document.getElementById('notify-error').style.display = 'block';
+                  btn.disabled = false;
+                  btn.textContent = 'Subscribe';
+               }
+            } catch(err) {
+               console.error(err);
+               document.getElementById('notify-error').textContent = 'Error. Try again later.';
+               document.getElementById('notify-error').style.display = 'block';
+               btn.disabled = false;
+               btn.textContent = 'Subscribe';
+            }
+         }
+         document.getElementById('notify-modal').addEventListener('keydown', e => {
+            if (e.key === 'Enter') submitNotify();
+            if (e.key === 'Escape') closeNotifyModal();
+         });
+      </script>
    </body>
 </html>
