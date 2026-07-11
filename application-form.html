@@ -294,6 +294,8 @@
                                     <option value="Alpha Intelligence">Alpha Intelligence</option>
                                     <option value="Pi — Pattern Insight">Pi — Pattern Insight</option>
                                     <option value="Omega — Exclusive R&D">Omega — Exclusive R&D</option>
+                                    <option value="Private Training">Private Training</option>
+                                    <option value="Intelligence Report">Intelligence Report</option>
                                  </select>
                                  <span class="apply-error-msg" id="err-product">Required.</span>
                               </div>
@@ -326,13 +328,7 @@
                               </div>
 
                               <div class="apply-field">
-                                 <label class="apply-label" for="priorProviders">Did you use or are using any mainstream cybersecurity intelligence providers?</label>
-                                 <input type="text" id="priorProviders" name="priorProviders" class="apply-input">
-                                 <span class="apply-error-msg" id="err-priorProviders">Required.</span>
-                              </div>
-
-                              <div class="apply-field">
-                                 <label class="apply-label" for="alternatives">What alternative solutions did you consider?</label>
+                                 <label class="apply-label" for="alternatives">Which alternative solutions did you try or consider?</label>
                                  <input type="text" id="alternatives" name="alternatives" class="apply-input">
                                  <span class="apply-error-msg" id="err-alternatives">Required.</span>
                               </div>
@@ -359,13 +355,10 @@
                               </div>
 
                               <div class="apply-field">
-                                 <label class="apply-label" for="fundingTimeline">How soon can you make the payment for the subscription if invited?</label>
-                                 <input type="text" id="fundingTimeline" name="fundingTimeline" class="apply-input">
-                                 <span class="apply-error-msg" id="err-fundingTimeline">Required.</span>
-                              </div>
-
-                              <div class="apply-field">
-                                 <label class="apply-label">Would you like to receive further updates about our products?</label>
+                                 <label class="apply-label">
+                                    Would you like to receive further updates about our products?
+                                    <span class="field-note">Subscribes to Access Denied newsletter.</span>
+                                 </label>
                                  <div class="apply-radio-group">
                                     <label class="apply-radio-label"><input type="radio" name="receiveUpdates" value="Yes"> Yes</label>
                                     <label class="apply-radio-label"><input type="radio" name="receiveUpdates" value="No"> No</label>
@@ -485,7 +478,7 @@
 
          productEl.addEventListener('change', updateConditionalFields);
 
-         const INPUT_FIELDS = ['fullName','organization','role','budget','howLearned','primaryInterest','priorProviders','alternatives','whyUs','fundingTimeline'];
+         const INPUT_FIELDS = ['fullName','organization','role','budget','howLearned','primaryInterest','alternatives','whyUs'];
 
          function markField(id, valid) {
             const el  = document.getElementById(id);
@@ -554,14 +547,12 @@
                'Final Decision Maker: '       + d.decisionMaker,
                'How Learned: '                + d.howLearned,
                'Primary Interest: '           + d.primaryInterest,
-               'Prior Providers: '            + d.priorProviders,
-               'Alternatives Considered: '    + d.alternatives,
+               'Alternatives Tried/Considered: ' + d.alternatives,
                'Why Our Offer: '              + d.whyUs,
             ];
             if (d.techStack)       lines.push('Tech Stack (Alpha): '    + d.techStack);
             if (d.researchProgram) lines.push('Research Program (Pi): ' + d.researchProgram);
             lines.push(
-               'Funding Timeline: '           + d.fundingTimeline,
                'Receive Updates: '            + d.receiveUpdates,
             );
             if (d.questions) lines.push('Questions: '            + d.questions);
@@ -597,12 +588,10 @@
                decisionMaker:   radio   ? radio.value   : '',
                howLearned:      document.getElementById('howLearned').value.trim(),
                primaryInterest: document.getElementById('primaryInterest').value.trim(),
-               priorProviders:  document.getElementById('priorProviders').value.trim(),
                alternatives:    document.getElementById('alternatives').value.trim(),
                whyUs:           document.getElementById('whyUs').value.trim(),
                techStack:       techStackEl.value.trim(),
                researchProgram: researchEl.value.trim(),
-               fundingTimeline: document.getElementById('fundingTimeline').value.trim(),
                receiveUpdates:  updates ? updates.value : '',
                questions:       document.getElementById('questions').value.trim(),
             };
