@@ -14,31 +14,24 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="description" content=""/>
+      <meta name="description" content="Chrome Full Chain Exploit Engineering — live online cohort training on modern Chromium browser exploitation, from renderer to sandbox escape."/>
       <meta name="keywords" content=""/>
       <meta name="author" content=""/>
-      <base href="../"> 
+      <base href="../../">
       <!--Favicons-->
       <link rel="shortcut icon" href="images/favicon.png">
       <!--Page Title-->
-      <title>Training: Browser Exploit Design – Zero Day Engineering</title>
+      <title>Training: Chrome Full Chain Exploit Engineering – Zero Day Engineering</title>
       <!-- Stylesheets -->
-      <!-- bootstrap -->
       <link rel="stylesheet" href="css/bootstrap.min.css">
-      <!-- Animate -->
       <link rel="stylesheet" href="css/animate.min.css">
-      <!-- Owl carusel -->
       <link rel="stylesheet" href="css/owl.carousel.min.css">
-      <!-- Aos Css-->
       <link rel="stylesheet" href="css/aos.css"/>
-      <!-- font awesome -->
       <link rel="stylesheet" href="css/font-awesome.min.css">
-      <!-- main css -->
       <link rel="stylesheet" href="css/style.css?v=20260531">
    </head>
 
    <body data-spy="scroll" data-target=".site-nav-target" data-offset="200">
-      <!-- cool my head -->
       <canvas id="snow" style="position:fixed; top:0; left:0; width:100vw; height:100vh;pointer-events:none;z-index:9999;"></canvas>
 
       <!-- Preloader -->
@@ -47,8 +40,7 @@
             <div class="intro-title"><img src="images/logo-large-black.png" class="logo-img light-logo img-fluid" alt=""></div>
          </div>
       </div>
-      <!-- preloader End --> 
-     
+
       <!-- Nav mobile -->
       <nav class="site-mobile-menu">
          <div class="close-wrap d-flex">
@@ -62,11 +54,9 @@
          </div>
          <div class="site-mobile-inner"></div>
       </nav>
-      <!-- Nav mobile end -->
 
       <!-- Main content wrap -->
       <div class="site-wrap">
-         <!-- Main content inner -->
          <div class="site-inner">
 
             <!-- Main Nav -->
@@ -103,10 +93,10 @@
                               <li class="has-children">
                                  <a href="training/index.html" class="nav-link cursor-item">Training</a>
                                  <ul class="dropdown">
-                                    <li><a href="training/universal-vulnerability-research.html">Zero Day Vulnerability Research</a></li>                                    
+                                    <li><a href="training/universal-vulnerability-research.html">Zero Day Vulnerability Research</a></li>
                                     <li><a href="training/hypervisor-vulnerability-research.html">Hypervisor Vulnerability Research</a></li>
                                     <li><a href="training/browser-exploit-design.html">Browser Exploit Design</a></li>
-                                    <li><a href="training/masterclass/">Masterclasses</a></li>  
+                                    <li><a href="training/masterclass/">Masterclasses</a></li>
                                     <li><a href="training/certification/">Certification</a></li>
                                     <li><a href="events.html">Schedule</a></li>
                                     <li><a href="training/reviews/index.html">Praise</a></li>
@@ -116,12 +106,13 @@
                               <li class="has-children">
                                  <a href="about.html" class="nav-link cursor-item">Company</a>
                                  <ul class="dropdown">
-                                    <li><a href="about.html">About us</a></li>                                    <li><a href="strategic-access.html">Enterprise &amp; Governments</a></li> 
-                                    <li><a href="events.html">Events</a></li> 
+                                    <li><a href="about.html">About us</a></li>
+                                    <li><a href="strategic-access.html">Enterprise &amp; Governments</a></li>
+                                    <li><a href="events.html">Events</a></li>
                                     <li><a href="contact.html">Contact</a></li>
                                  </ul>
                               </li>
-                           
+
                            </ul>
                            <ul class="site-nav-ul-none-onepage text-right d-inline-block d-lg-none">
                            <li><a href="#" class="js-menu-toggle">Menu</a></li>
@@ -130,84 +121,81 @@
                   </div>
                </div>
             </nav>
-            <!-- Main Nav end -->
 
+            <!-- Hero -->
             <div class="section-page">
                <div class="container">
                   <div class="row">
                      <div class="col-lg-12">
                         <div class="content-hero text-center" data-aos="fade-left" data-aos-duration="1000">
-                           <h1 class="h-title" id="quote">
-                              Training
-                           </h1>
+                           <h1 class="h-title" id="quote">Training</h1>
                            <p>Zero Day Engineering</p>
                         </div>
                      </div>
                   </div>
                </div>
             </div>
-            
+
+            <!-- Body -->
             <div class="portfolio-single-wrap section">
                <div class="portfolio-single-inner">
                   <div class="container">
-                     <h2 class="heading-portfolio-single-h2">Browser Exploit Design</h2>
+                     <h2 class="heading-portfolio-single-h2">Chrome Full Chain Exploit Engineering <span style="background:#8A7A5A; color:#000; font-size:11px; padding:3px 8px; letter-spacing:.12em; text-transform:uppercase; margin-left:10px; vertical-align:middle; font-weight:600;">new</span></h2>
                      <div class="row justify-content-between align-items-stretch">
                         <div class="col-lg-8">
-                          <p><a class="lightbox-trigger" href="#" data-image="images/portfolio/safari-on-linux-exploit.png"><img src="images/portfolio/safari-on-linux-exploit.png" alt="Image" class="img-fluid"></a></p>
-                          <p><a class="lightbox-trigger" href="#" data-image="images/training/CSE.png"><img src="images/training/CSE.png" alt="Image" class="img-fluid"></a></p>
-                          <p><a class="lightbox-trigger" href="#" data-image="images/training/brexp-mapof-chrome.png"><img src="images/training/brexp-mapof-chrome.png" alt="Image" class="img-fluid"></a></p>
-                          <p><a class="lightbox-trigger" href="#" data-image="images/training/brexp-arw.png"><img src="images/training/brexp-arw.png" alt="Image" class="img-fluid"></a></p>
+                          <p><a class="lightbox-trigger" href="#" data-image="research/chrome-exploit-mitigations/images/chrome_security_architecture_bug_map.svg"><img src="research/chrome-exploit-mitigations/images/chrome_security_architecture_bug_map.svg" alt="Chrome security architecture with bug map" title="Chrome security architecture with bug map" class="img-fluid"></a></p>
+                          <p><a class="lightbox-trigger" href="#" data-image="research/chrome-exploit-mitigations/images/chrome_0xbadbad.png"><img src="research/chrome-exploit-mitigations/images/chrome_0xbadbad.png" alt="Cacheline poisoning crash in PartitionAlloc Thread Cache" title="Cacheline poisoning crash in PartitionAlloc Thread Cache" class="img-fluid"></a></p>
+                          <p><a class="lightbox-trigger" href="#" data-image="images/training/alisa-portrait.jpg"><img src="images/training/alisa-portrait.jpg" alt="Your instructor" title="Your instructor" class="img-fluid"></a></p>
                         </div>
                         <div class="col-lg-4 pl-lg-5">
                            <div class="sticky">
                               <div class="row">
                                  <div class="col-md-12 mb-4">
                                     <div class="detail-v1">
-                                       <p>Advanced exploratory training program covering 80%+ of the subject field systematically.
-                                       
-                                       Practicalities are based on Firefox, Chrome and WebKit. 
-                                       
-                                       Full stack exploit exercises with modern 0-days include: renderer DOM use-after-free, JavaScript engine type confusion, and sandbox escape via IPC memory corruption. 
-                                       
-                                       Intermediate to advanced level.
+                                       <p>A rigorous hands-on training on modern Chrome browser exploitation for <a class="underline" href="https://bughunters.google.com/about/rules/chrome-friends/chrome-vulnerability-reward-program-rules" target="_blank" rel="noopener">Chromium VRP</a> and beyond. The author's methodology of vulnerability discovery and exploit engineering, applied to current Chromium project, with AI acceleration integrated end-to-end.
 
-                                       Prerequisite to <a class="underline" href="training/chrome-full-chain/">Chrome Full Chain Exploit Engineering</a> training.
+                                       Beyond covering up-to-date Chromium security internals and building components of a full chain as worked examples of this year's bugs, this training will lean into meta-cognitive skills, abstract models, and specific knowledge of LLM internals to facilitate advanced use of AI models.
 
-                                       For more information, refer to the <a class="underline" target="_blank" href="training/details/Browser-Exploit-Design.pdf">training booklet</a>.
+                                       Advanced level. Assumes working familiarity with browser internals or completion of <a class="underline" href="training/browser-exploit-design.html">Browser Exploit Design</a>.
+
+                                       For more information, refer to the <a class="underline" target="_blank" href="training/details/Chrome-Full-Chain-Exploit-Engineering.pdf">training booklet</a>.
+
+                                       Background - video: <a class="underline" href="https://youtu.be/AbWdNaOFP0U" target="_blank" rel="noopener">Overview of My Research Methodology</a> · <a class="underline" href="https://www.youtube.com/live/b9OhamkAY2I" target="_blank" rel="noopener">JS Engine Exploitation Workshop (2024)</a> · <a class="underline" href="https://youtu.be/WouAptHlyC4" target="_blank" rel="noopener">Modern Attacks on Google Chrome (2023)</a>.
                                        </p>
                                     </div>
                                     <hr>
                                  </div>
                                  <div class="col-md-12 mb-4">
                                     <div class="detail-v1">
-                                       <span class="detail-label">Created by</span>
+                                       <span class="detail-label">Instructor</span>
                                        <span class="detail-val"><p>Alisa Esage</p></span>
                                     </div>
                                  </div>
                                  <div class="col-md-12 mb-4">
                                     <div class="detail-v1">
                                        <span class="detail-label">Format</span>
-                                       <span class="detail-val"><p>Self-paced video training with optional technical support</p></span>
+                                       <span class="detail-val"><p>Live online cohort</p></span>
                                     </div>
-                                 </div>                                 
+                                 </div>
                                  <div class="col-md-12 mb-4">
                                     <div class="detail-v1">
-                                       <span class="detail-label">Access options</span>
+                                       <span class="detail-label">Schedule</span>
+                                       <span class="detail-val"><p>August 25-28, 2026<br>Live: 13:00-17:00 UTC daily<br>Self-paced: 2-4 hrs daily<br>Questions: 1 month by email<br>Recordings: 3 months</p></span>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-12 mb-4">
+                                    <div class="detail-v1">
+                                       <span class="detail-label">Registration</span>
                                        <span class="detail-val">
-                                          <p><b>Option 1</b>
+                                          <p><b>Early rate 1</b> (until August 1st)
+                                             Price: €6,000 per seat
 
-                                             Self-paced Package - Complete
-                                             Price: €6,000
-                                             
-                                             <a target="_blank" class="underline" href="https://buy.stripe.com/4gMdR898h4Jd5QIaCg7bW0F">Purchase</a>
-                                          </p>                                                   
-                                          <p><b>Option 2</b>
-                                          
-                                             Self-paced Package - Basic
-                                             Price: €4,000
-                                             
-                                             <a target="_blank" class="underline" href="https://buy.stripe.com/8x28wO84dgrV92U4dS7bW0G">Purchase</a>
-                                          </p>                                                   
+                                             <a target="_blank" class="underline" href="https://billing.zerodayengineering.com/b/aFaeVcbgp1x1cf625K7bW0U">Register</a>
+
+                                          <b>Standard rate</b>
+                                             Price: €8,000 per seat
+
+                                             <a target="_blank" class="underline" href="https://billing.zerodayengineering.com/b/4gM5kC3NX2B592U11G7bW0V">Register</a></p>
                                        </span>
                                     </div>
                                  </div>
@@ -216,9 +204,10 @@
                                        <span class="detail-label">Information</span>
                                        <span class="detail-val">
                                           <p><a class="underline" href="policy.html">Terms & Conditions</a>
-                                          <a class="underline" href="training/details/Browser-Exploit-Design.pdf">About package options</a>
+                                          <a class="underline" href="training/details/Chrome-Full-Chain-Exploit-Engineering.pdf">About the program</a>
                                           <a class="underline" href="training/reviews">Reviews & Feedback</a>
-                                          <a class="underline" href="pay-with-crypto.html">Pay with crypto</a></p>   
+                                          <a class="underline" href="pay-with-crypto.html">Pay with crypto</a>
+                                          <a class="underline" href="strategic-access.html">Private training</a></p>
                                        </span>
                                     </div>
                                  </div>
@@ -226,9 +215,9 @@
                                     <div class="detail-v1">
                                        <span class="detail-label">Share</span>
                                           <div class="social">
-                                             <a href="https://www.facebook.com/sharer/sharer.php?u=https://zerodayengineering.com/training/browser-exploit-design.html&t=Zero Day Engineering Training: Browser Exploit Design" class="mr-3"><i class="fa fa-facebook"></i></a>
-                                             <a href="https://twitter.com/intent/tweet?url=https://zerodayengineering.com/training/browser-exploit-design.html&text=Zero Day Engineering Training: Browser Exploit Design" class="mr-3"><i class="fa fa-twitter"></i></a>
-                                             <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://zerodayengineering.com/training/browser-exploit-design.html&title=Zero Day Engineering Training: Browser Exploit Design" class="mr-3"><i class="fa fa-linkedin"></i></a>
+                                             <a href="https://www.facebook.com/sharer/sharer.php?u=https://zerodayengineering.com/training/chrome-full-chain/&t=Zero Day Engineering Training: Chrome Full Chain Exploit Engineering" class="mr-3"><i class="fa fa-facebook"></i></a>
+                                             <a href="https://twitter.com/intent/tweet?url=https://zerodayengineering.com/training/chrome-full-chain/&text=Zero Day Engineering Training: Chrome Full Chain Exploit Engineering" class="mr-3"><i class="fa fa-twitter"></i></a>
+                                             <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://zerodayengineering.com/training/chrome-full-chain/&title=Zero Day Engineering Training: Chrome Full Chain Exploit Engineering" class="mr-3"><i class="fa fa-linkedin"></i></a>
                                           </div>
                                        </div>
                                     </div>
@@ -239,7 +228,7 @@
                   </div>
                </div>
 
-               <!-- Lightbox for displaying enlarged image -->
+               <!-- Lightbox -->
                <div id="lightbox" class="lightbox">
                   <img id="lightbox-img" src="" alt="Enlarged screenshot">
                </div>
@@ -251,16 +240,15 @@
                      <div class="col-md-12">
                         <div class="go-top cursor-item" id="go-to-top"><i class="fa fa-chevron-up"></i></div>
                         <div class="hr-footer"></div>
-                        <div class="footer-site-logo"><a href="index.html" class="main-logo"><img src="images/logo.png" class="logo-img light-logo img-fluid" alt=""></a></div>                       
+                        <div class="footer-site-logo"><a href="index.html" class="main-logo"><img src="images/logo.png" class="logo-img light-logo img-fluid" alt=""></a></div>
                         <p class="site-copyright">
                            <small>&copy; 2021-2026 Zero Day Engineering. All Rights Reserved. <a href="rss" class="social-icon"><i class="fa fa-rss"></i></a></small>
-                           
+
                         </p>
                      </div>
                   </div>
                </div>
             </footer>
-            <!-- Footer end -->
 
             <!-- Circle Scroll -->
             <div class="circular-text">
@@ -268,46 +256,27 @@
             </div>
 
          </div>
-         <!-- Main content inner end -->
       </div>
-      <!-- Main content wrap end -->
 
-      <!-- Back to top button -->
       <a id="back-to-top" href="#" class="cursor-item"><i class="fa fa-chevron-up"></i></a>
-
       <div class="cursor"></div>
       <div class="cursor-follower"></div>
 
-      <!-- jquery -->
       <script src="js/query-3.4.1.min.js"></script>
-      <!-- bootstrap -->
       <script src="js/bootstrap.min.js"></script>
-      <!-- aos -->
       <script src="js/aos.js"></script>
-      <!-- owl.carusel js -->
       <script src="js/owl.carousel.min.js"></script>
-      <!-- isotope js -->
       <script src="js/isotope.pkgd.min.js"></script>
-      <!-- isotope image loader js -->
       <script src="js/imagesloaded.pkgd.min.js"></script>
-      <!-- three -->
       <script src="js/three.min.js"></script>
-      <!-- anime -->
       <script src="js/anime.min.js"></script>
-      <!-- tweenmax -->
       <script src="js/TweenMax.min.js"></script>
-      <!-- jquery.waypoints.min.js -->
       <script src="js/jquery.waypoints.min.js"></script>
-      <!-- circletype-->
       <script src="js/circletype.min.js"></script>
-      <!-- hover-effect -->
       <script src="js/hover-effect.umd.js"></script>
-      <!-- gsap -->
       <script src="js/gsap.min.js"></script>
-      <!-- ScrollMagic gsap -->
       <script src="js/ScrollMagic.min.js"></script>
       <script src="js/scrollmagic.animation.gsap.min.js"></script>
-      <!-- custom -->
       <script src="js/custom.js"></script>
    </body>
 </html>
