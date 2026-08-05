@@ -13,15 +13,12 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="description" content="A firsthand analysis of three modern Chrome-specific exploit mitigations — MiraclePtr, v8 sandbox, and PartitionAlloc — from actual zero day research targeting Google Chrome."/>
-      <meta name="keywords" content="Chrome exploit mitigations, MiraclePtr, v8 sandbox, PartitionAlloc, browser exploit, zero day"/>
+      <meta name="description" content="Reference table of Chrome exploit mitigations — PartitionAlloc, V8 sandbox, Process/Sandbox, IPC/Mojo, CFI, Compiler/OS Baseline, Web Platform, Spectre/Side-Channel."/>
+      <meta name="keywords" content="Chrome exploit mitigations, MiraclePtr, v8 sandbox, PartitionAlloc, browser exploit, reference"/>
       <meta name="author" content="Alisa Esage"/>
-      <base href="../../">
-      <!--Favicons-->
+      <base href="../../../../">
       <link rel="shortcut icon" href="images/favicon.png">
-      <!--Page Title-->
-      <title>Chrome Exploit Mitigations — Zero Day Engineering</title>
-      <!-- Stylesheets -->
+      <title>Chrome Exploit Mitigations Reference — Zero Day Engineering</title>
       <link rel="stylesheet" href="css/bootstrap.min.css">
       <link rel="stylesheet" href="css/animate.min.css">
       <link rel="stylesheet" href="css/owl.carousel.min.css">
@@ -34,22 +31,17 @@
 
       <canvas id="snow" style="position:fixed; top:0; left:0; width:100vw; height:100vh;pointer-events:none;z-index:9999;"></canvas>
 
-      <!-- Preloader -->
       <div class="loader desktop-only">
          <div class="intro">
             <div class="intro-title"><img src="images/logo-large-black.png" class="logo-img light-logo img-fluid" alt=""></div>
          </div>
       </div>
 
-      <!-- Nav mobile -->
       <nav class="site-mobile-menu">
          <div class="close-wrap d-flex">
             <a href="#" class="d-flex ml-auto js-menu-toggle">
                <span class="close-label">Close</span>
-               <div class="close-times">
-                  <span class="bar1"></span>
-                  <span class="bar2"></span>
-               </div>
+               <div class="close-times"><span class="bar1"></span><span class="bar2"></span></div>
             </a>
          </div>
          <div class="site-mobile-inner"></div>
@@ -58,7 +50,6 @@
       <div class="site-wrap">
          <div class="site-inner">
 
-            <!-- Main Nav -->
             <nav class="site-nav site-nav-target">
                <div class="container">
                   <div class="row align-items-center justify-content-between text-left">
@@ -117,7 +108,6 @@
                   </div>
                </div>
             </nav>
-            <!-- Main Nav end -->
 
             <div class="section">
                <div class="blog-single-inner">
@@ -125,48 +115,22 @@
                      <div class="row justify-content-center">
                         <div class="col-md-11">
                            <div id="quote"></div>
-                           <h3 class="mb-4">Chrome Exploit Mitigations</h3>
-                           <p class="date">June 2nd, 2026 &ndash; Alisa Esage</p>
+                           <h3 class="mb-4">Chrome Exploit Mitigations Reference</h3>
+                           <p>Structured reference of Chrome browser exploit mitigations. First published in the research article <a class="underline" href="research/chrome-exploit-mitigations/">Chrome Exploit Mitigations</a>, which includes narrative discussion of MiraclePtr, v8 sandbox, and PartitionAlloc in context.</p>
 
-<nav style="margin:1rem 0 2rem; font-size:0.85rem; line-height:1.6; color:inherit;">
-<strong>Contents</strong><br>
-1. <a href="#introduction" style="color:inherit;">Introduction</a><br>
-2. <a href="#landscape" style="color:inherit;">The Landscape</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tbl-pa" style="color:inherit;">PartitionAlloc</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tbl-v8s" style="color:inherit;">V8 Sandbox</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tbl-v8ns" style="color:inherit;">V8 (non-sandbox)</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tbl-process" style="color:inherit;">Process / Sandbox</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tbl-mojo" style="color:inherit;">IPC / Mojo</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tbl-cfi" style="color:inherit;">Control-Flow Integrity</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tbl-compiler" style="color:inherit;">Compiler / OS Baseline</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tbl-web" style="color:inherit;">Web Platform</a><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tbl-spectre" style="color:inherit;">Spectre / Side-Channel</a><br>
-3. <a href="#old-guard" style="color:inherit;">The Old Guard</a><br>
-4. <a href="#miracleptr" style="color:inherit;">MiraclePtr</a><br>
-5. <a href="#partitionalloc" style="color:inherit;">PartitionAlloc</a><br>
-6. <a href="#v8-sandbox" style="color:inherit;">v8 sandbox</a><br>
-7. <a href="#conclusions" style="color:inherit;">Conclusions</a><br>
-8. <a href="#products" style="color:inherit;">Relevant Products</a><br>
-9. <a href="#references" style="color:inherit;">References</a>
-</nav>
+                           <nav style="margin:1rem 0 2rem; font-size:0.85rem; line-height:1.6; color:inherit;">
+                           <strong>Contents</strong><br>
+                           <a href="reference/browsers/chrome/mitigations.html#tbl-pa" style="color:inherit;">PartitionAlloc</a><br>
+                           <a href="reference/browsers/chrome/mitigations.html#tbl-v8s" style="color:inherit;">V8 Sandbox</a><br>
+                           <a href="reference/browsers/chrome/mitigations.html#tbl-v8ns" style="color:inherit;">V8 (non-sandbox)</a><br>
+                           <a href="reference/browsers/chrome/mitigations.html#tbl-process" style="color:inherit;">Process / Sandbox</a><br>
+                           <a href="reference/browsers/chrome/mitigations.html#tbl-mojo" style="color:inherit;">IPC / Mojo</a><br>
+                           <a href="reference/browsers/chrome/mitigations.html#tbl-cfi" style="color:inherit;">Control-Flow Integrity</a><br>
+                           <a href="reference/browsers/chrome/mitigations.html#tbl-compiler" style="color:inherit;">Compiler / OS Baseline</a><br>
+                           <a href="reference/browsers/chrome/mitigations.html#tbl-web" style="color:inherit;">Web Platform</a><br>
+                           <a href="reference/browsers/chrome/mitigations.html#tbl-spectre" style="color:inherit;">Spectre / Side-Channel</a>
+                           </nav>
 
-<h4 id="introduction">Introduction</h4>
-<p>Earlier this year I invested several weeks full-time in zero day engineering for Google Chrome and validating my mental models of frontier browser defenses. I found and reported to Chromium VRP a number of security bugs across renderer, network service, and browser process. This article will focus on three modern Chrome-specific exploit mitigations that I had to confront while writing the exploits: MiraclePtr, v8 sandbox, and PartitionAlloc.</p>
-
-<p>Before getting to those three, I met the old guard: ASLR, CFI, CORS and the sandbox security model itself. These are generally well understood and I will only briefly mention my experience with them here.</p>
-
-<p>As my bugs spanned the full stack of Chrome technology – from a renderer RCE to network service partial-EoP and browser process EoP for sandbox escape, all memory corruption issues – I consider this subset of mitigations somewhat representative of the actual resistance surface that a modern Chrome attacker will face; and a priority for offensive R&amp;D.</p>
-
-<figure style="text-align:center; margin:2rem 0;">
-   <img src="research/chrome-exploit-mitigations/images/chrome_security_architecture_bug_map.svg?v=20260602b" alt="Chrome security architecture with bug map" class="img-fluid">
-   <figcaption style="margin-top:0.5rem; font-size:0.9rem;">Chrome architecture (simplified), with my findings marked on it.</figcaption>
-</figure>
-
-<p>Some of my bugs bypassed the relevant Chrome mitigations, while others were blocked by them despite my best effort. I cover both types in this article, as much as the present stage of responsible disclosure permits. Full technical details of the exploits will be disclosed in due course.</p>
-
-<p>For a compressed systematic exposure to prerequisite knowledge, I recommend my <a class="underline" href="training/browser-exploit-design.html">Browser Exploit Design</a> course.</p>
-
-<h4 id="landscape">The Landscape</h4>
 <p>Chrome has many exploit mitigations that are doing more work than public knowledge suggests.</p>
 <p>The tables below are actual as of Stable (M148).</p>
 
@@ -371,151 +335,12 @@
 <p>Not all the mitigations at once are at work against every Chrome exploit chain. An exploit would usually hit a small subset of mitigations, which depends on the bug class, operating system, hardware architecture, field trials configuration, user configuration, Chrome version, specific bug instance shape, and other factors.</p>
 
 <p>That said, certain mitigations are more prohibitive while others are mostly obstacles in the exploit engineering process.</p>
-
-<h4 id="old-guard">The Old Guard</h4>
-<p>Familiar exploit mitigations – such as ASLR and CFI – are still relevant and present a substantial obstacle to exploit engineering for modern Chrome.</p>
-
-<p>Consider ASLR. The common bounce-off judgement from an "exploit expert": "Just find an infoleak bug to bypass it". Technically correct, but... In my experience, reality differs.</p>
-
-<p>First, pure memory disclosure vulnerabilities in Chrome are rare. This is both statistical and structural. I looked at most Chrome security bugs of the past year, plus selectively picked prior samples. I didn't get an impression that a memory disclosure bug in Chrome is easy.</p>
-
-<p>Furthermore, an infoleak bug must be located in the same process as the main bug to be chainable, which constrains the search space. Every process type in Chrome is a different world with its own anti-patterns, architectural models and implementation details. A problem like "I need to find an infoleak in renderer and another one in the browser process" isn't the same problem repeated twice, it's two different specialization projects.</p>
-
-<p>Historically, ASLR in Chrome renderer was weakened by JavaScript engine type confusion vulnerabilities. A typical JSE bug is powerful enough that it can work twice: first to disclose memory and break ASLR, then to execute the code. <a class="underline" href="research/javascript-engines-exploitation-jscript9.html">[1]</a> Enablement of v8 sandbox in M124 broke this convenience, and made ASLR hard again for the Chrome renderer.</p>
-
-<p>In contrast, the broker process, GPU process and other high-privilege browser processes never had this kind of a luxury bug class to coast through ASLR, which is why the majority of wild 0-day chains for Chrome use either logic bugs for the sandbox escape part, or an OS kernel EoP (another restricted attack surface), or settle on a renderer-only payload, or attack a peculiar configuration – all compromises driven by the cost of an honest infoleak chain in the browser process.</p>
-
-<p>Another assumed solution to bypass ASLR is to "make" an infoleak out of a compatible use-after-free bug. In fact, PartitionAlloc blocks many state manipulations on use-after-free bugs, while MiraclePtr shrinks the attack surface.</p>
-
-<p>A similar situation with CFI/CFG (Control Flow Integrity). In Chrome, CFI is baked into every object vtable dispatch by the compiler, excluding a handful of code-annotated exceptions, which makes the coverage broad and solid. It means that any accidental vtable call on a use-after-free object will hit a hard crash, and if that happens early enough in the bug's state machine, it becomes unexploitable.</p>
-
-<figure style="text-align:center; margin:2rem 0;">
-   <img src="research/chrome-exploit-mitigations/images/chrome_cfg.png" alt="CFG wall in Chrome on Windows" class="img-fluid" style="border:1px solid rgba(255,255,255,0.5);">
-   <figcaption style="margin-top:0.5rem; font-size:0.9rem;">CFG wall in Chrome on Windows. %rax has the vtable pointer that was called to 0x41414141`41414141, %rip on failed CFG dispatch.</figcaption>
-</figure>
-
-<p>In general, most of the old-gen mitigations are not invariants, but rather cost-raisers. An encounter with them is often bypassable with the same bug and a bit of luck. Newer Chrome-specific mitigations tend to be more solid. If a bug is blocked by it, it's often game over – go find another one.</p>
-
-<p>Further sections deal with the newer mitigations that I experienced.</p>
-
-<h4 id="miracleptr">MiraclePtr</h4>
-<p>MiraclePtr – also known as BackupRefPtr or BRP – is a fairly recent and ambitious addition to Chrome's list of exploit mitigations. It aims to make use-after-free bugs unexploitable without eliminating them, at the cost of manually wrapping each pointer in <code>raw_ptr&lt;T&gt;</code>, plus some runtime overhead. Design docs and developer's instructions are published [<a class="underline" target="_blank" href="https://docs.google.com/document/d/1pnnOAIz_DMWDI4oIOFoMAqLnf_MZ2GsrJNb_dbQ3ZBg/edit?tab=t.0#heading=h.p1fqfm5alk4a">1</a> <a class="underline" target="_blank" href="https://docs.google.com/document/d/1m0c63vXXLyGtIGBi9v6YFANum7-IRC3-dmiYBCWqkMk/edit?tab=t.0#heading=h.jgclb3snutxw">2</a> <a class="underline" target="_blank" href="https://source.chromium.org/chromium/chromium/src/+/main:base/memory/raw_ptr.md">3</a>], although it's best understood by reading the code, which is compact.</p>
-
-<p>The security invariant offered by MiraclePtr: "as long as a dangling <code>raw_ptr&lt;T&gt;</code> exists, the slot is not reused". This is achieved by 1) counting pointer instances in a field under <code>InSlotMetadata</code>, and 2) quarantining the freed memory if <code>InSlotMetadata</code> counter isn't zero on free. Coverage is per-field and per-process, not whole-allocator.</p>
-
-<figure style="text-align:center; margin:2rem 0;">
-   <img src="research/chrome-exploit-mitigations/images/backuprefptr_code_subsystem_map_clean.svg?v=20260602b" alt="BackupRefPtr code subsystem map" class="img-fluid">
-   <figcaption style="margin-top:0.5rem; font-size:0.9rem;">BackupRefPtr (MiraclePtr) code subsystem map</figcaption>
-</figure>
-
-<p>I first encountered MiraclePtr at the stage of vulnerability discovery. I found a bug by static analysis; it looked good until I tested it with Address Sanitizer...</p>
-
-<figure style="text-align:center; margin:2rem 0;">
-   <img src="research/chrome-exploit-mitigations/images/chrome_PROTECTED.png" alt="MiraclePtr-PROTECTED crash in ASan" class="img-fluid" style="border:1px solid rgba(255,255,255,0.5);">
-   <figcaption style="margin-top:0.5rem; font-size:0.9rem;">MiraclePtr-PROTECTED crash in ASan</figcaption>
-</figure>
-
-<p>That was surprising: I knew about <code>raw_ptr&lt;T&gt;</code> and didn't see it in the code? Turns out that MiraclePtr was recently (and quietly) rolled into some popular chromium idioms, so it's invisible in the code unless you look deep into familiar system internals. Sneaky!</p>
-
-<p>I spent some time looking at the MiraclePtr implementation, and couldn't find a bypass in the given time. It's quite obvious that the code was heavily scrutinized and hedged against anything that could go wrong. I didn't bother reporting the bug – Google officially considers MiraclePtr-PROTECTED bugs strongly mitigated. On those Chromium builds that don't enable MiraclePtr mitigation, it's still an exploitable 0-day.</p>
-
-<p>Meanwhile, my other bugs escaped MiraclePtr – they are UNPROTECTED and exploitable in release Chrome before the patch.</p>
-
-<h4 id="partitionalloc">PartitionAlloc</h4>
-<p>PartitionAlloc manages all the memory in official Chrome, including C++ new operator, and excluding v8 (which uses Oilpan). PartitionAlloc has been ramping exploit mitigations for years, and by now is a bit of a beast. MiraclePtr implementation is based on PartitionAlloc infrastructure, too. Official documentation is in the chromium docs [<a class="underline" href="https://source.chromium.org/chromium/chromium/src/+/main:base/allocator/partition_allocator/PartitionAlloc.md" target="_blank">4</a>].</p>
-
-<p>Out of many mitigations in PartitionAlloc, Thread Cache itself – as in, separate freelists per thread – doesn't have a reputation as an exploit blocker. Indeed, it was built as a performance optimization and never offered any strong security invariants. In reality, it quietly mitigates many bug shapes in the browser process.</p>
-
-<figure style="text-align:center; margin:2rem 0;">
-   <img src="research/chrome-exploit-mitigations/images/partitionalloc_thread_cache_subsystem_map.svg?v=20260602f" alt="PartitionAlloc ThreadCache code subsystem map" class="img-fluid">
-   <figcaption style="margin-top:0.5rem; font-size:0.9rem;">PartitionAlloc ThreadCache code subsystem map</figcaption>
-</figure>
-
-<p>I have dealt with Thread Cache directly and passed by encoded freelist pointers, cacheline poisoning (<code>0xbadbad00</code>), and scheduler loop quarantine (<code>0xcdcdcdcd</code>) when working on the exploit for a double-free issue in the browser process. The latter was surprising, since Scheduler Loop Quarantine isn't supposed to be enabled yet – it's actually enabled in Dev channel via field trials configuration.</p>
-
-<figure style="text-align:center; margin:2rem 0;">
-   <img src="research/chrome-exploit-mitigations/images/chrome_freelist2.png" alt="Encoded freelist pointers in PartitionAlloc" class="img-fluid" style="border:1px solid rgba(255,255,255,0.5);">
-   <figcaption style="margin-top:0.5rem; font-size:0.9rem;">Encoded freelist pointers in PartitionAlloc. Invalid memory access pattern: high-bits saturated, low-bits zero due to XOR'ing logic.</figcaption>
-</figure>
-
-<figure style="text-align:center; margin:2rem 0;">
-   <img src="research/chrome-exploit-mitigations/images/chrome_0xbadbad.png" alt="Cacheline poisoning (0xbadbad00) in PartitionAlloc Thread Cache" class="img-fluid" style="border:1px solid rgba(255,255,255,0.5);">
-   <figcaption style="margin-top:0.5rem; font-size:0.9rem;">Cacheline poisoning (0xbadbad00) in PartitionAlloc Thread Cache</figcaption>
-</figure>
-
-<p>Consider the following scenario: a use-after-free bug in the browser process. As of current Chromium, the majority of objects in the browser process live in the same PA root partition, so reclaiming the freed object doesn't look hard in code. The problem is the multi-threading architecture of the browser process combined with the per-thread cache. This combination constrains object reclamation paths to those used in the vulnerable thread, which substantially shrinks the opportunity space to even begin to control the state machine from the bug. The following diagram illustrates the problem.</p>
-
-<figure style="text-align:center; margin:2rem 0;">
-   <img src="research/chrome-exploit-mitigations/images/browser_process_threadcache_reclaim_architecture.svg?v=20260602b" alt="Browser process threads, ThreadCache, and cross-thread UAF reclaim architecture" class="img-fluid">
-   <figcaption style="margin-top:0.5rem; font-size:0.9rem;">Browser process threads, ThreadCache, and cross-thread UAF reclaim architecture</figcaption>
-</figure>
-
-<p>In this scenario, a bypass of Thread Cache depends on the bug's control flow graph escaping between free and re-use of the vulnerable object to allocate memory elsewhere to force a purge to the shared bucket. If the bug's code site is tight between free and re-use, it becomes unexploitable and heap grooming via another thread doesn't help. The same bug without Thread Cache would be exploitable. The specific bug that I worked with was of the former type and was effectively blocked by the mitigation in official Chrome.</p>
-
-<h4 id="v8-sandbox">v8 sandbox</h4>
-<p>v8 sandbox works by breaking common JavaScript Engine exploit idioms at a deep level of abstraction, which makes it efficient. Consider in-object pointer indirection, one of the key features of v8 sandbox. In a JavaScript engine, many object types have a pointer in them, which points to additional data (such as array contents in an ArrayBuffer). A typical JavaScript bug allows to craft a fake JavaScript object, which the unsuspecting engine then uses – dereferencing the fake inner pointer and thereby reading/writing to arbitrary memory whatever the JavaScript code requires. This allows to build an arbitrary RW primitive through the bug, a canonical JavaScript engine exploitation technique. The v8 sandbox replaces in-object pointers with indexes in out-of-sandbox tables, which breaks the exploit primitive universally. This feature alone isn't sufficient to break every exploit, and v8 sandbox doesn't end on it. Many official design docs are available [<a class="underline" target="_blank" href="https://docs.google.com/document/d/1FM4fQmIhEqPG8uGp5o9A-mnPB5BOeScZYpkHjo0KKA8/edit?tab=t.0#heading=h.xzptrog8pyxf">5</a> <a class="underline" target="_blank" href="https://source.chromium.org/chromium/chromium/src/+/main:v8/src/sandbox/README.md">6</a>].</p>
-
-<figure style="text-align:center; margin:2rem 0;">
-   <img src="research/chrome-exploit-mitigations/images/v8_sandbox_subsystem_map.svg?v=20260602d" alt="V8 sandbox code subsystem map" class="img-fluid">
-   <figcaption style="margin-top:0.5rem; font-size:0.9rem;">V8 sandbox code subsystem map</figcaption>
-</figure>
-
-<p>All known public bypasses of the v8 sandbox, including 0-days, are bugs in the sandbox code. I looked at most of v8 sandbox bypasses (more than 80 issues in 2025), the bug patterns were eliminated systematically, and the implementation is substantially hardened now.</p>
-
-<p>My renderer exploit bypasses the v8 sandbox by using a special kind of v8 bug that isn't fully covered by the sandbox. The exploit achieves arbitrary address read and write. This is an interesting attack surface for lateral thinking about attacking v8 in post-v8 sandbox era.</p>
-
-<figure style="text-align:center; margin:2rem 0;">
-   <img src="research/chrome-exploit-mitigations/images/chrome_badd1e_coffee.png" alt="v8 exploit achieving arbitrary read/write" class="img-fluid" style="border:1px solid rgba(255,255,255,0.25);">
-   <figcaption style="margin-top:0.5rem; font-size:0.9rem;">v8 exploit — full arbitrary write. Controlled registers with markers: %rax (<code>0xbadd1e</code>) and %rbx (<code>0xc0ffee</code>).</figcaption>
-</figure>
-
-<h4 id="conclusions">Conclusions</h4>
-<p>Chrome exploit mitigations continue to harden while being asymmetrically concentrated in the browser process and high-privilege processes, with the renderer and v8 now catching up.</p>
-
-<p>Bypassing Chrome-specific mitigations head-on becomes nearly impossible; the open path lies through blind spots in coverage, platform-specific weaknesses, and bugs in mitigation code.</p>
-
-<p>All current mitigations have limits, some of them structural (e.g., optimization). Those limits mark the edge of the practical attack surface.</p>
-
-<p>Logic issues such as UXSS gain importance, as they are the least covered by current exploit mitigations.</p>
-
-<h4 id="products">Relevant Products</h4>
-<p><a class="underline" href="training/browser-exploit-design.html"><b>Browser Exploit Design</b></a> — hands-on self-paced training in modern browser exploitation. Focus on class-wide models, canonical bug classes and exploit techniques, and full-chain perspective.</p>
-<p><a class="underline" href="training/chrome-full-chain/"><b>Chrome Full Chain Exploit Engineering</b></a> — live online cohort and private in-person training on modern Chrome browser exploitation. Covers current internals, bugs, and full-chain RCE components construction with AI acceleration.</p>
-<p><a class="underline" href="intelligence/index.html"><b>Pi — Pattern Insight</b></a> — subscription intelligence service with in-depth research and analysis.</p>
-
-<h4 id="references">References</h4>
-<ol style="padding-left:1.5rem;">
-<li><a class="underline" target="_blank" href="https://docs.google.com/document/d/1pnnOAIz_DMWDI4oIOFoMAqLnf_MZ2GsrJNb_dbQ3ZBg/edit?tab=t.0#heading=h.p1fqfm5alk4a">MiraclePtr One Pager</a></li>
-<li><a class="underline" target="_blank" href="https://docs.google.com/document/d/1m0c63vXXLyGtIGBi9v6YFANum7-IRC3-dmiYBCWqkMk/edit?tab=t.0#heading=h.jgclb3snutxw">BackupRefPtr design document</a></li>
-<li><a class="underline" target="_blank" href="https://source.chromium.org/chromium/chromium/src/+/main:base/memory/raw_ptr.md">Developer docs — raw_ptr.md (source.chromium.org)</a></li>
-<li><a class="underline" target="_blank" href="https://source.chromium.org/chromium/chromium/src/+/main:base/allocator/partition_allocator/PartitionAlloc.md">PartitionAlloc docs (source.chromium.org)</a></li>
-<li><a class="underline" target="_blank" href="https://docs.google.com/document/d/1FM4fQmIhEqPG8uGp5o9A-mnPB5BOeScZYpkHjo0KKA8/edit?tab=t.0#heading=h.xzptrog8pyxf">V8 Sandbox design document</a></li>
-<li><a class="underline" target="_blank" href="https://source.chromium.org/chromium/chromium/src/+/main:v8/src/sandbox/README.md">V8 sandbox README (source.chromium.org)</a></li>
-<li><a class="underline" target="_blank" href="https://docs.google.com/drawings/d/1TuECFL9K7J5q5UePJLC-YH3satvb1RrjLRH-tW_VKeE/edit">Chrome Security Architecture diagram</a></li>
-</ol>
-
-<div class="pt-5 mb-5 categories_tags">
-   <div class="social float-right">
-      <a href="https://twitter.com/zerodayalpha" target="_blank" class="mr-3"><i class="fa fa-twitter"></i></a>
-      <a href="https://www.linkedin.com/company/zero-day-engineering/" target="_blank" class="mr-3"><i class="fa fa-linkedin"></i></a>
-      <a href="https://zerodayengineering.com/rss" target="_blank" class="mr-3"><i class="fa fa-rss"></i></a>
-   </div>
-</div>
-
-<div class="post-single-navigation d-flex align-items-stretch">
-   <a href="research/index.html" class="mr-auto w-50 pr-4">
-      <span class="d-block cursor-item"><i class="fa fa-chevron-left mr-2"></i> Research</span></a>
-   <a href="training/index.html" class="ml-auto w-50 text-right pl-4">
-      <span class="d-block cursor-item">Training <i class="fa fa-chevron-right ml-2"></i></span></a>
-</div>
-
                         </div>
                      </div>
                   </div>
                </div>
             </div>
 
-            <!-- Footer -->
             <footer class="footer section">
                <div class="container">
                   <div class="row justify-content-center">
@@ -532,7 +357,7 @@
             </footer>
 
             <div class="circular-text">
-               <span id="rotated">1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 • 0 • 1 •</span>
+               <span id="rotated">1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull;</span>
             </div>
          </div>
       </div>
@@ -556,7 +381,6 @@
       <script src="js/gsap.min.js"></script>
       <script src="js/ScrollMagic.min.js"></script>
       <script src="js/scrollmagic.animation.gsap.min.js"></script>
-      <script src="js/highlight.min.js"></script>
       <script src="js/custom.js"></script>
    </body>
 </html>

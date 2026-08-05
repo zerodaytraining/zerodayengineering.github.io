@@ -1,0 +1,486 @@
+<!DOCTYPE HTML>
+<html lang="en">
+   <head>
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-RBMCFM6G1Z"></script>
+      <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'G-RBMCFM6G1Z');
+      </script>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="JavaScript engine terminology glossary — compiler theory, memory management, engine core, V8, JavaScriptCore, SpiderMonkey. Reference for JS engine vulnerability research."/>
+      <meta name="keywords" content="JavaScript engine glossary, V8, JavaScriptCore, JSC, SpiderMonkey, TurboFan, Ignition, Sparkplug, Maglev, DFG, FTL, Ion, JIT, vulnerability research"/>
+      <meta name="author" content="Alisa Esage"/>
+      <base href="../../../../">
+      <link rel="shortcut icon" href="images/favicon.png">
+      <title>JavaScript Engines — Terminology Glossary — Zero Day Engineering</title>
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/animate.min.css">
+      <link rel="stylesheet" href="css/owl.carousel.min.css">
+      <link rel="stylesheet" href="css/aos.css"/>
+      <link rel="stylesheet" href="css/font-awesome.min.css">
+      <link rel="stylesheet" href="css/default-dark.min.css">
+      <link rel="stylesheet" href="css/style.css?v=20260601">
+   </head>
+   <body data-spy="scroll" data-target=".site-nav-target" data-offset="200">
+
+      <canvas id="snow" style="position:fixed; top:0; left:0; width:100vw; height:100vh;pointer-events:none;z-index:9999;"></canvas>
+
+      <div class="loader desktop-only">
+         <div class="intro">
+            <div class="intro-title"><img src="images/logo-large-black.png" class="logo-img light-logo img-fluid" alt=""></div>
+         </div>
+      </div>
+
+      <nav class="site-mobile-menu">
+         <div class="close-wrap d-flex">
+            <a href="#" class="d-flex ml-auto js-menu-toggle">
+               <span class="close-label">Close</span>
+               <div class="close-times"><span class="bar1"></span><span class="bar2"></span></div>
+            </a>
+         </div>
+         <div class="site-mobile-inner"></div>
+      </nav>
+
+      <div class="site-wrap">
+         <div class="site-inner">
+
+            <nav class="site-nav site-nav-target">
+               <div class="container">
+                  <div class="row align-items-center justify-content-between text-left">
+                     <div class="col-3">
+                        <div class="site-logo">
+                           <a href="index.html" class="site-logo main-logo"><img src="images/logo.png" class="logo-img light-logo img-fluid" alt=""><span></span></a>
+                        </div>
+                     </div>
+                     <div class="col text-right">
+                        <ul class="site-nav-ul js-clone-nav text-left d-none d-lg-inline-block">
+                              <li class="has-children">
+                                 <a href="research/index.html" class="nav-link cursor-item">Research</a>
+                                 <ul class="dropdown">
+                                    <li><a href="insights/index.html">0-Day Insights</a></li>
+                                    <li><a href="research/index.html">Exploit Design</a></li>
+                                    <li><a href="research/index.html">Reverse Engineering</a></li>
+                                    <li><a href="research/index.html">Abstract Models</a></li>
+                                    <li><a href="research/index.html">Publications</a></li>
+                                 </ul>
+                              </li>
+                              <li class="has-children">
+                                 <a href="intelligence/index.html" class="nav-link cursor-item">Intelligence</a>
+                                 <ul class="dropdown">
+                                    <li><a href="intelligence/alpha/index.html">Alpha &mdash; Exploit Intelligence</a></li>
+                                    <li><a href="contact.html">Pi — Deep Research Insight</a></li>
+                                    <li><a href="contact.html">Omega — Elite R&amp;D</a></li>
+                                 </ul>
+                              </li>
+                              <li class="has-children">
+                                 <a href="training/index.html" class="nav-link cursor-item">Training</a>
+                                 <ul class="dropdown">
+                                    <li><a href="training/universal-vulnerability-research.html">Zero Day Vulnerability Research</a></li>
+                                    <li><a href="training/hypervisor-vulnerability-research.html">Hypervisor Vulnerability Research</a></li>
+                                    <li><a href="training/browser-exploit-design.html">Browser Exploit Design</a></li>
+                                    <li><a href="training/masterclass/">Masterclasses</a></li>
+                                    <li><a href="training/certification/">Certification</a></li>
+                                    <li><a href="events.html">Schedule</a></li>
+                                    <li><a href="training/reviews/index.html">Praise</a></li>
+                                 </ul>
+                              </li>
+                              <li class="has-children">
+                                 <a href="about.html" class="nav-link cursor-item">Company</a>
+                                 <ul class="dropdown">
+                                    <li><a href="about.html">About us</a></li>
+                                    <li><a href="strategic-access.html">Enterprise &amp; Governments</a></li>
+                                    <li><a href="events.html">Events</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                 </ul>
+                              </li>
+
+                           </ul>
+                           <ul class="site-nav-ul-none-onepage text-right d-inline-block d-lg-none">
+                           <li><a href="#" class="js-menu-toggle">Menu</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </nav>
+
+            <div class="section">
+               <div class="blog-single-inner">
+                  <div class="container">
+                     <div class="row justify-content-center">
+                        <div class="col-md-8">
+                           <div id="quote"></div>
+<h3>JavaScript Engines — Terminology Glossary</h3>
+
+<p>Reference for the acronyms and terms relevant to JavaScript engine internals and vulnerability research. Organized by universal concepts (compiler theory, memory management, engine core) and engine-specific vocabulary (V8, JSC, SpiderMonkey).</p>
+
+<h4 style='margin-top:2.5rem;'>1. Compiler theory</h4>
+
+<p><b>IR — Intermediate Representation.</b> Any structured form of code between the source and the emitted machine code. Every JIT tier has its own IR.</p>
+
+<p><b>AST — Abstract Syntax Tree.</b> The parsed form of source code, before any lowering. The first IR every engine builds.</p>
+
+<p><b>Bytecode.</b> A compact linear IR interpreted or fed into a baseline JIT. V8 uses Ignition bytecode; JSC uses LLInt bytecode; SpiderMonkey has its own.</p>
+
+<p><b>SSA — Static Single Assignment.</b> An IR form where every variable is assigned exactly once. Makes dataflow analysis and optimization tractable. Nearly every optimizing JIT normalizes to SSA before optimizing.</p>
+
+<p><b>Phi node.</b> An SSA construct at a control-flow merge point that selects a value based on which predecessor block executed. Alt names: Merge node, Select node. See also: Upsilon (JSC&#x27;s alternative construction).</p>
+
+<p><b>CFG — Control Flow Graph.</b> The graph of basic blocks connected by branches. Every optimization walks the CFG.</p>
+
+<p><b>Basic block.</b> A straight-line sequence of instructions with a single entry and single exit. The unit of CFG nodes.</p>
+
+<p><b>Sea of Nodes.</b> A graph IR that mixes data and control dependencies as edges rather than separating them. Used by V8 TurboFan (originally from HotSpot).</p>
+
+<p><b>JIT — Just-In-Time compiler.</b> A compiler that emits machine code at runtime, based on observed types and behavior. Contrast: AOT (Ahead-Of-Time).</p>
+
+<p><b>Tiering / speculative tier-up.</b> Running code through progressively-more-optimizing compilers as it heats up. V8: Ignition → Sparkplug → Maglev → TurboFan.</p>
+
+<p><b>Baseline compiler / baseline JIT.</b> A fast non-optimizing JIT that emits machine code with minimal analysis. Used for warm code that isn&#x27;t hot enough for the optimizer.</p>
+
+<p><b>Optimizing compiler / optimizing JIT.</b> The high-tier JIT that runs full optimization passes on hot code. Slower to compile but produces fast code.</p>
+
+<p><b>Deoptimization / deopt / bailout.</b> Abandoning the optimized machine code and returning to a lower tier (typically bytecode interpreter) when a type-speculation guard fails. The core mechanism enabling speculative optimization.</p>
+
+<p><b>OSR — On-Stack Replacement.</b> Swapping the running function to a different tier while it&#x27;s executing on the stack, without waiting for it to return. Essential for tiering into loops that never exit.</p>
+
+<p><b>Speculative optimization.</b> Emitting fast code that assumes runtime types/shapes and inserts guards that deopt on assumption failure. The entire premise of modern JS JITs.</p>
+
+<p><b>Inline cache (IC).</b> A per-callsite cache of the last-seen shape/type at that site, used to skip generic property lookup. Feeds type feedback into higher tiers.</p>
+
+<p><b>Type feedback / profiling.</b> Runtime data collected by lower tiers about what shapes/types actually occur at each callsite. Consumed by the optimizing compiler.</p>
+
+<p><b>Register allocation.</b> Assigning IR virtual registers to real CPU registers. The heaviest backend pass.</p>
+
+<p><b>Constant folding.</b> Compile-time evaluation of expressions with constant operands.</p>
+
+<p><b>CSE — Common Subexpression Elimination.</b> Recognizing repeated computations and evaluating them once.</p>
+
+<p><b>DCE — Dead Code Elimination.</b> Removing computations whose results are never used.</p>
+
+<p><b>LICM — Loop-Invariant Code Motion.</b> Hoisting computations out of loops when they don&#x27;t depend on the loop variable.</p>
+
+<p><b>Escape analysis.</b> Determining whether an object&#x27;s lifetime is bounded by a function, so it can be allocated on the stack or scalar-replaced instead of on the heap.</p>
+
+<p><b>Escaped object.</b> An object determined by escape analysis to have a lifetime beyond the current function, forcing heap allocation.</p>
+
+<p><b>Scalar replacement.</b> Replacing an escape-analyzed object with its individual fields kept in registers, eliminating the allocation entirely.</p>
+
+<p><b>Peephole optimization.</b> Local rewrites of short instruction sequences into better ones during code emission.</p>
+
+<p><b>Elimination phase.</b> Any optimization pass that removes redundant IR nodes (DCE, CSE, dead-store elimination, etc.).</p>
+
+<p><b>Node.</b> A single operation in an IR graph. V8 TurboFan calls its IR nodes &quot;Nodes&quot;; JSC calls them &quot;DFG Nodes&quot;; SpiderMonkey has MIR Nodes.</p>
+
+<h4 style='margin-top:2.5rem;'>2. Memory management</h4>
+
+<p><b>GC — Garbage Collection.</b> Automatic reclamation of unreachable objects. All major JS engines are garbage-collected.</p>
+
+<p><b>Root set.</b> The set of objects known to be alive without needing traversal — typically stack values, global variables, and registers. GC starts marking from the roots.</p>
+
+<p><b>Marking.</b> The phase where the collector traverses reachable objects and marks them alive.</p>
+
+<p><b>Sweeping.</b> The phase where the collector frees unmarked (unreachable) objects.</p>
+
+<p><b>Mark and sweep.</b> The classic GC algorithm: mark all reachable objects, sweep unmarked ones.</p>
+
+<p><b>Mark-compact.</b> Mark reachable objects, then compact them to eliminate fragmentation.</p>
+
+<p><b>Copying collector.</b> A collector that copies live objects into a fresh region and discards the source region wholesale. Cheney&#x27;s algorithm is the canonical form.</p>
+
+<p><b>Scavenger.</b> The minor-GC (young generation) copying collector in V8 and SpiderMonkey.</p>
+
+<p><b>Generational GC.</b> Splits the heap into generations by object age. Young objects (nursery) are collected frequently and cheaply; old objects rarely.</p>
+
+<p><b>Young / Old / Nursery / Tenured.</b> Generational GC&#x27;s two generations. Objects allocated in Young/Nursery; promoted to Old/Tenured if they survive one or more scavenges.</p>
+
+<p><b>Liveness generation.</b> The generational-GC boundary tracking which generation an object currently belongs to. Also: &quot;age&quot; of an object.</p>
+
+<p><b>Store barrier / write barrier.</b> Extra code emitted around memory writes that lets the collector stay correct under mutation. Records inter-generational pointers so the young-generation collector can find them.</p>
+
+<p>Example: inline void WriteBarrier(Object* dst, Object* value) { if (Heap::IsInOldGen(dst) &amp;&amp; Heap::IsInYoungGen(value)) RememberedSet::Insert(dst); *dst = value; }</p>
+
+<p><b>Read barrier.</b> Symmetric to write barrier — extra code around reads. Rare in JS engines; used by concurrent-compaction algorithms.</p>
+
+<p><b>Remembered set.</b> The data structure recording old-to-young pointers. Consulted during minor GC as additional roots.</p>
+
+<p><b>Card marking.</b> A cheap remembered-set implementation that tracks dirty regions (&quot;cards&quot;) rather than individual pointers.</p>
+
+<p><b>Incremental GC.</b> GC interleaved with mutator work in small slices, to reduce pause times.</p>
+
+<p><b>Concurrent GC.</b> GC running in a separate thread while the mutator continues. Requires barriers to stay correct.</p>
+
+<p><b>Parallel GC.</b> GC using multiple threads to do the collection work in parallel while the mutator is paused.</p>
+
+<p><b>Stop-the-world.</b> A GC phase during which all mutator threads are paused. Every GC has at least a brief STW phase (for root scanning); reducing this is the point of incremental/concurrent designs.</p>
+
+<p><b>Tri-color marking.</b> Marking algorithm using three colors: white (unvisited), gray (visited but children not yet), black (visited and done). Enables concurrent marking with barriers to maintain the tri-color invariant.</p>
+
+<p><b>Conservative GC.</b> A collector that treats every stack/register slot as potentially a pointer, without a type map. Historically JSC used conservative marking of C++ stack values; most engines have moved to precise (rooted) marking for JS heap.</p>
+
+<p><b>Weak reference.</b> A pointer that doesn&#x27;t keep its target alive. GC clears weak references to unreachable targets. Exposed to JS as <code>WeakRef</code>, <code>WeakMap</code>, <code>WeakSet</code>.</p>
+
+<p><b>Handles.</b> A double-indirection mechanism (pointer-to-pointer) that lets GC move the underlying object without invalidating references held by C++ code. All engines use handles for API interaction.</p>
+
+<p><b>Arena / zone.</b> A region of the heap that groups objects sharing a common lifetime, allowing bulk deallocation. SpiderMonkey uses &quot;Zone&quot; for its per-realm arenas.</p>
+
+<p><b>Bump allocator.</b> Allocation by incrementing a pointer. Extremely fast; used in the young generation.</p>
+
+<p><b>Free list.</b> Allocation by picking from a linked list of pre-sized free slots. Used for old-generation allocation.</p>
+
+<p><b>TLAB — Thread-Local Allocation Buffer.</b> A per-thread bump region, so allocations don&#x27;t need atomic operations.</p>
+
+<p><b>Allocation site.</b> The source-code location where an object is allocated. Used for allocation-site feedback (predicting object shape).</p>
+
+<p><b>Root scanning.</b> The GC phase that walks the roots to find initially-live objects. Always stop-the-world.</p>
+
+<h4 style='margin-top:2.5rem;'>3. Engine core concepts</h4>
+
+<p><b>Shape / Map / Structure / Hidden class.</b> The runtime type descriptor for a JS object — records property names, offsets, and attributes. Objects with the same shape share the descriptor. Alt names by engine: <b>V8: Map</b>, <b>JSC: Structure</b>, <b>SpiderMonkey: Shape</b>.</p>
+
+<p><b>Prototype.</b> The <code>[[Prototype]]</code> link a JS object follows for inherited property lookup. Shape/Map records prototype identity, so prototype changes invalidate all shape-dependent optimizations.</p>
+
+<p><b>Prototype chain.</b> The linear chain of <code>[[Prototype]]</code> links a lookup traverses on missing property.</p>
+
+<p><b>Property attributes.</b> The three flags on each own property: writable, enumerable, configurable. Encoded in the shape.</p>
+
+<p><b>Property access.</b> The operation of loading or storing a named property. The hottest operation in JS; every engine has an inline cache system for it.</p>
+
+<p><b>Realm.</b> An ECMAScript spec construct encapsulating a global object and its intrinsics. Cross-realm object access is a source of many security-sensitive edge cases.</p>
+
+<p><b>Compartment.</b> A GC/heap partition. Objects in one compartment can&#x27;t directly hold pointers to another. Used to enforce security boundaries (site isolation, iframe boundaries).</p>
+
+<p><b>Realm-agnostic vs realm-tied.</b> Whether an object&#x27;s behavior depends on which realm created it. Cross-realm invariants are a bug source.</p>
+
+<p><b>Feedback vector.</b> V8&#x27;s per-function struct holding inline-cache slots and type-feedback data. Consumed by tier-up compilers.</p>
+
+<p><b>Bytecode array.</b> An engine-specific data structure holding compiled bytecode for one function.</p>
+
+<p><b>SFI — SharedFunctionInfo.</b> V8&#x27;s shareable-across-realms metadata for a JS function (source, bytecode, feedback). Multiple <code>JSFunction</code> instances can share one SFI.</p>
+
+<p><b>Tagged pointer.</b> A pointer with type-tag bits stolen from unused address bits. Enables representing small integers, booleans, and object pointers in a single machine word.</p>
+
+<p><b>NaN-boxing.</b> A tagged-value representation encoding integers/pointers into IEEE-754 double NaN bit patterns. Used by JSC and SpiderMonkey.</p>
+
+<p><b>Smi — Small Integer.</b> V8&#x27;s tagged-integer representation: 31 or 32 bits stored inline in a pointer slot.</p>
+
+<p><b>HeapObject.</b> V8&#x27;s term for any GC-allocated object (as opposed to Smi/inline).</p>
+
+<p><b>Butterfly.</b> JSC&#x27;s split object storage layout: named properties grow leftward from a base pointer, indexed properties grow rightward. Enables shrink/grow without copying half the storage.</p>
+
+<p><b>Group / ObjectGroup.</b> SpiderMonkey&#x27;s older type descriptor (largely superseded by Shape); tracked type-inference data at object granularity.</p>
+
+<p><b>Slot.</b> An individual property storage location on an object (in-object slot vs out-of-object/backing-store slot).</p>
+
+<p><b>Pointer tagging.</b> General term for any scheme encoding type info in pointer bits. Includes tagged pointers, NaN-boxing, Smi tagging.</p>
+
+<p><b>Pointer compression.</b> Storing 32-bit offsets from a base pointer instead of full 64-bit pointers, to halve heap object size. V8 uses this on 64-bit builds.</p>
+
+<p><b>BigInt.</b> Arbitrary-precision integer type added in ES2020. Every engine implements it as a heap-allocated variable-length object.</p>
+
+<p><b>Wasm — WebAssembly.</b> A separate bytecode/VM sharing the engine&#x27;s runtime. V8 uses Liftoff (baseline) + TurboFan (optimizing); JSC uses BBQ + OMG; SpiderMonkey uses Baseline + Ion.</p>
+
+<h4 style='margin-top:2.5rem;'>4. V8 — Chrome</h4>
+
+<p><b>Ignition.</b> V8&#x27;s bytecode interpreter. First tier: executes bytecode directly, records type feedback.</p>
+
+<p><b>Sparkplug.</b> V8&#x27;s baseline JIT (introduced 2021). Fast non-optimizing compiler that emits machine code directly from bytecode, with 1:1 bytecode-to-machine-code correspondence for easy OSR back to Ignition.</p>
+
+<p><b>Maglev.</b> V8&#x27;s mid-tier optimizing JIT (introduced 2023). Faster to compile than TurboFan, produces medium-quality code. Sits between Sparkplug and TurboFan in the pipeline.</p>
+
+<p><b>TurboFan.</b> V8&#x27;s high-tier optimizing compiler. Uses a Sea-of-Nodes IR. Being progressively replaced by Turboshaft.</p>
+
+<p><b>Turboshaft.</b> V8&#x27;s next-generation optimizing compiler backend, replacing TurboFan piece by piece. Uses a more traditional CFG-of-basic-blocks IR.</p>
+
+<p><b>Crankshaft.</b> V8&#x27;s original optimizing compiler (deprecated 2017), replaced by TurboFan. Historical reference only.</p>
+
+<p><b>Hydrogen / Lithium.</b> Crankshaft&#x27;s IR layers (Hydrogen = high-level, Lithium = low-level). Deprecated.</p>
+
+<p><b>Full-codegen.</b> V8&#x27;s original first-tier JIT (deprecated), replaced by Ignition + Sparkplug.</p>
+
+<p><b>Torque.</b> V8&#x27;s DSL for writing builtins and runtime code, generates CSA (CodeStubAssembler) code. Type-safe, portable across architectures.</p>
+
+<p><b>CSA — CodeStubAssembler.</b> V8&#x27;s portable assembler-like API for writing builtins. Compiled to native code at build time.</p>
+
+<p><b>Orinoco.</b> V8&#x27;s GC architecture project name (the family of collectors: Scavenger for young, Mark-Compact for old, all with concurrent/parallel optimizations).</p>
+
+<p><b>MinorMC.</b> V8&#x27;s minor mark-compact collector, an alternative to Scavenger for the young generation.</p>
+
+<p><b>Isolate.</b> V8&#x27;s top-level runtime instance. Each isolate is an independent VM with its own heap, roots, and compilers. Chromium runs one isolate per renderer.</p>
+
+<p><b>Context.</b> V8&#x27;s realm-equivalent within an isolate. Multiple contexts (realms) can share an isolate.</p>
+
+<p><b>V8 Sandbox.</b> V8&#x27;s in-process memory sandbox restricting JIT-code memory access to a bounded region, so a JS engine bug can&#x27;t easily reach arbitrary process memory. Enforces sandboxed-pointer discipline. See also: reference/browsers/chrome/mitigations/.</p>
+
+<p><b>External pointer.</b> A pointer from inside the V8 sandbox to memory outside it (e.g., to a C++ object). Sandboxed to enforce that JS code can&#x27;t forge them.</p>
+
+<p><b>Sandboxed pointer.</b> A pointer constrained to the V8 sandbox region. Enforced by the compiler emitting bounds-checked accesses.</p>
+
+<p><b>Trusted space.</b> A heap region for objects whose integrity is trusted (e.g., bytecode arrays), separated from user-controllable objects.</p>
+
+<p><b>Code space / RO space / large object space.</b> V8&#x27;s heap partitions by object kind: executable code, immutable read-only data, oversized allocations.</p>
+
+<p><b>Optimized frame / deopt data.</b> The metadata attached to a TurboFan-compiled function that lets the runtime reconstruct the bytecode-interpreter state at deopt.</p>
+
+<p><b>Liftoff.</b> V8&#x27;s baseline Wasm compiler. Single-pass, no IR, fast compilation for startup.</p>
+
+<p><b>JSFunction.</b> The user-visible JS function object. Holds a pointer to a SFI (shared) and a feedback vector (instance-specific).</p>
+
+<p><b>JSObject.</b> V8&#x27;s base class for all user-defined JS objects.</p>
+
+<h4 style='margin-top:2.5rem;'>5. JSC — JavaScriptCore / WebKit / Safari</h4>
+
+<p><b>LLInt — Low-Level Interpreter.</b> JSC&#x27;s first tier: an assembly-language bytecode interpreter (yes, an interpreter written in assembly, generated via a JSC-internal DSL). Extremely fast for an interpreter.</p>
+
+<p><b>Baseline JIT.</b> JSC&#x27;s second tier: a template-based JIT that emits code by concatenating precompiled snippets. Records profiling data for higher tiers.</p>
+
+<p><b>DFG — Data Flow Graph.</b> JSC&#x27;s mid-tier optimizing JIT. Uses SSA over a DFG IR. Handles most speculative optimizations.</p>
+
+<p><b>FTL — Faster Than Light.</b> JSC&#x27;s top-tier optimizing JIT. Originally used LLVM as its backend; now uses B3.</p>
+
+<p><b>B3 — Bare Bones Backend.</b> JSC&#x27;s LLVM-replacement optimizing backend. Used by FTL and the Wasm OMG tier.</p>
+
+<p><b>Air — Assembly IR.</b> B3&#x27;s low-level backend IR, close to machine code. Register allocation and instruction selection happen here.</p>
+
+<p><b>Upsilon.</b> JSC&#x27;s alternative to standard Phi nodes: an Upsilon node in the predecessor block writes a value into a Phi in the successor. Enables SSA without dominator-tree recomputation on IR changes.</p>
+
+<p><b>OSR entry / OSR exit.</b> JSC&#x27;s terms for tier-up (entering optimized code mid-execution) and deopt (exiting optimized code back to a lower tier).</p>
+
+<p><b>Butterfly.</b> JSC&#x27;s split object storage layout (see Engine Core section).</p>
+
+<p><b>Structure.</b> JSC&#x27;s Shape/Map equivalent (see Engine Core section).</p>
+
+<p><b>Epoch.</b> JSC&#x27;s generational-GC boundary counter. Objects allocated in the current epoch are young; earlier epochs are old.</p>
+
+<p><b>MarkedSpace / MarkedBlock.</b> JSC&#x27;s old-generation heap organization. MarkedSpace is the collection of MarkedBlocks (16 KB chunks) for old objects.</p>
+
+<p><b>Eden / Nursery.</b> JSC&#x27;s young generation.</p>
+
+<p><b>Handles.</b> JSC&#x27;s rooted-pointer mechanism (see Engine Core section).</p>
+
+<p><b>LargeAllocation.</b> JSC&#x27;s separate space for objects too large for MarkedBlocks.</p>
+
+<p><b>BBQ — Build Bytecode Quickly.</b> JSC&#x27;s baseline Wasm compiler.</p>
+
+<p><b>OMG — Optimized Machine code Generator.</b> JSC&#x27;s optimizing Wasm compiler, uses B3.</p>
+
+<p><b>JSCell.</b> JSC&#x27;s base class for all GC-allocated objects.</p>
+
+<p><b>JSGlobalObject.</b> JSC&#x27;s realm/global object.</p>
+
+<h4 style='margin-top:2.5rem;'>6. SpiderMonkey — Firefox</h4>
+
+<p><b>Interpreter.</b> SpiderMonkey&#x27;s C++ bytecode interpreter (baseline tier).</p>
+
+<p><b>Baseline Interpreter.</b> SpiderMonkey&#x27;s newer intermediate tier introduced 2019 — a portable interpreter written in the JIT&#x27;s IR that gets JIT-compiled once per bytecode instruction. Not to be confused with Baseline Compiler.</p>
+
+<p><b>Baseline Compiler.</b> SpiderMonkey&#x27;s second-tier baseline JIT.</p>
+
+<p><b>Ion / IonMonkey.</b> SpiderMonkey&#x27;s optimizing JIT. Uses MIR/LIR SSA IR.</p>
+
+<p><b>Warp.</b> SpiderMonkey&#x27;s newer optimizing frontend to Ion (2020+), replacing the old TypeInference-based one. Uses CacheIR for type feedback.</p>
+
+<p><b>CacheIR.</b> SpiderMonkey&#x27;s IR for inline caches. Recorded by ICs at runtime and consumed by Warp for optimization.</p>
+
+<p><b>MIR — Middle-level IR.</b> Ion&#x27;s high-level SSA IR.</p>
+
+<p><b>LIR — Low-level IR.</b> Ion&#x27;s post-lowering IR, close to machine code.</p>
+
+<p><b>Trial inlining.</b> Warp&#x27;s mechanism for speculatively inlining and rolling back if the specialization doesn&#x27;t pay off.</p>
+
+<p><b>TraceMonkey.</b> SpiderMonkey&#x27;s original trace-based JIT (deprecated). Historical reference.</p>
+
+<p><b>JaegerMonkey.</b> SpiderMonkey&#x27;s method-based JIT that replaced TraceMonkey (deprecated).</p>
+
+<p><b>Nursery.</b> SpiderMonkey&#x27;s young generation.</p>
+
+<p><b>Tenured heap.</b> SpiderMonkey&#x27;s old generation.</p>
+
+<p><b>Zone.</b> SpiderMonkey&#x27;s per-realm heap partition (contains all objects for a realm).</p>
+
+<p><b>Chunks.</b> SpiderMonkey&#x27;s 1 MB heap chunks that hold Arenas.</p>
+
+<p><b>Arena.</b> SpiderMonkey&#x27;s 4 KB heap sub-allocation unit within a chunk, dedicated to one AllocKind.</p>
+
+<p><b>AllocKind.</b> SpiderMonkey&#x27;s per-object-type categorization for allocation (object, string, symbol, etc.).</p>
+
+<p><b>Compartment.</b> SpiderMonkey&#x27;s cross-realm boundary within a Zone. Multiple realms may share a compartment.</p>
+
+<p><b>JSContext.</b> SpiderMonkey&#x27;s per-thread runtime state.</p>
+
+<p><b>JSObject.</b> SpiderMonkey&#x27;s base class for user JS objects.</p>
+
+<p><b>Shape.</b> SpiderMonkey&#x27;s property-descriptor structure (see Engine Core).</p>
+
+<p><b>Group / ObjectGroup.</b> SpiderMonkey&#x27;s older type descriptor, largely superseded by Shape. Historical.</p>
+
+<p><b>JITZone.</b> SpiderMonkey&#x27;s per-Zone JIT code and metadata.</p>
+
+<h4 style='margin-top:2.5rem;'>7. Common tools and terms</h4>
+
+<p><b>V8 Inspector Protocol / CDP.</b> The V8 debugging protocol used by Chrome DevTools. Not JS-engine internal but standard for interactive analysis.</p>
+
+<p><b>--allow-natives-syntax.</b> V8 command-line flag that enables <code>%FunctionName()</code> syntax in JS for calling V8 runtime intrinsics. Standard for exploitation testing and internal debugging.</p>
+
+<p><b>--print-code / --print-opt-code.</b> V8 flags to dump generated machine code, useful for JIT internals inspection.</p>
+
+<p><b>d8.</b> V8&#x27;s standalone shell. The reference environment for JS engine exploration.</p>
+
+<p><b>jsshell.</b> SpiderMonkey&#x27;s standalone shell.</p>
+
+<p><b>jsc.</b> JSC&#x27;s standalone shell (yes, both the engine and the shell are called jsc).</p>
+
+<p><b>Turbolizer.</b> V8 TurboFan&#x27;s graph visualizer. Reads dumped IR graphs and renders them interactively.</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <footer class="footer section">
+               <div class="container">
+                  <div class="row justify-content-center">
+                     <div class="col-md-12">
+                        <div class="go-top cursor-item" id="go-to-top"><i class="fa fa-chevron-up"></i></div>
+                        <div class="hr-footer"></div>
+                        <div class="footer-site-logo"><a href="index.html" class="main-logo"><img src="images/logo.png" class="logo-img light-logo img-fluid" alt=""></a></div>
+                        <p class="site-copyright">
+                           <small>&copy; 2021-2026 Zero Day Engineering. All Rights Reserved. <a href="rss" class="social-icon"><i class="fa fa-rss"></i></a></small>
+                        </p>
+                     </div>
+                  </div>
+               </div>
+            </footer>
+
+            <div class="circular-text">
+               <span id="rotated">1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull;</span>
+            </div>
+         </div>
+      </div>
+
+      <a id="back-to-top" href="#" class="cursor-item"><i class="fa fa-chevron-up"></i></a>
+      <div class="cursor"></div>
+      <div class="cursor-follower"></div>
+
+      <script src="js/query-3.4.1.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/aos.js"></script>
+      <script src="js/owl.carousel.min.js"></script>
+      <script src="js/isotope.pkgd.min.js"></script>
+      <script src="js/imagesloaded.pkgd.min.js"></script>
+      <script src="js/three.min.js"></script>
+      <script src="js/anime.min.js"></script>
+      <script src="js/TweenMax.min.js"></script>
+      <script src="js/jquery.waypoints.min.js"></script>
+      <script src="js/circletype.min.js"></script>
+      <script src="js/hover-effect.umd.js"></script>
+      <script src="js/gsap.min.js"></script>
+      <script src="js/ScrollMagic.min.js"></script>
+      <script src="js/scrollmagic.animation.gsap.min.js"></script>
+      <script src="js/custom.js"></script>
+   </body>
+</html>

@@ -1,0 +1,487 @@
+<!DOCTYPE HTML>
+<html lang="en">
+   <head>
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-RBMCFM6G1Z"></script>
+      <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'G-RBMCFM6G1Z');
+      </script>
+      <!--Meta Tags-->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Linux kernel acronyms and terms glossary for vulnerability research: async/concurrency, locking, memory allocation, lifecycle, sockets, crypto, mitigations, bug classes, kernelCTF, tooling."/>
+      <meta name="keywords" content="linux kernel glossary, RCU, softirq, SLUB, sighand, k_itimer, kTLS, AF_ALG, KASAN, KASLR, kernelCTF"/>
+      <meta name="author" content="Alisa Esage"/>
+      <base href="../../../../">
+      <link rel="shortcut icon" href="images/favicon.png">
+      <title>Linux Kernel — Acronyms and Terms Glossary — Zero Day Engineering</title>
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/animate.min.css">
+      <link rel="stylesheet" href="css/owl.carousel.min.css">
+      <link rel="stylesheet" href="css/aos.css"/>
+      <link rel="stylesheet" href="css/font-awesome.min.css">
+      <link rel="stylesheet" href="css/default-dark.min.css">
+      <link rel="stylesheet" href="css/style.css?v=20260601">
+   </head>
+   <body data-spy="scroll" data-target=".site-nav-target" data-offset="200">
+
+      <canvas id="snow" style="position:fixed; top:0; left:0; width:100vw; height:100vh;pointer-events:none;z-index:9999;"></canvas>
+
+      <div class="loader desktop-only">
+         <div class="intro">
+            <div class="intro-title"><img src="images/logo-large-black.png" class="logo-img light-logo img-fluid" alt=""></div>
+         </div>
+      </div>
+
+      <nav class="site-mobile-menu">
+         <div class="close-wrap d-flex">
+            <a href="#" class="d-flex ml-auto js-menu-toggle">
+               <span class="close-label">Close</span>
+               <div class="close-times"><span class="bar1"></span><span class="bar2"></span></div>
+            </a>
+         </div>
+         <div class="site-mobile-inner"></div>
+      </nav>
+
+      <div class="site-wrap">
+         <div class="site-inner">
+
+            <nav class="site-nav site-nav-target">
+               <div class="container">
+                  <div class="row align-items-center justify-content-between text-left">
+                     <div class="col-3">
+                        <div class="site-logo">
+                           <a href="index.html" class="site-logo main-logo"><img src="images/logo.png" class="logo-img light-logo img-fluid" alt=""><span></span></a>
+                        </div>
+                     </div>
+                     <div class="col text-right">
+                        <ul class="site-nav-ul js-clone-nav text-left d-none d-lg-inline-block">
+                              <li class="has-children">
+                                 <a href="research/index.html" class="nav-link cursor-item">Research</a>
+                                 <ul class="dropdown">
+                                    <li><a href="insights/index.html">0-Day Insights</a></li>
+                                    <li><a href="research/index.html">Exploit Design</a></li>
+                                    <li><a href="research/index.html">Reverse Engineering</a></li>
+                                    <li><a href="research/index.html">Abstract Models</a></li>
+                                    <li><a href="research/index.html">Publications</a></li>
+                                 </ul>
+                              </li>
+                              <li class="has-children">
+                                 <a href="intelligence/index.html" class="nav-link cursor-item">Intelligence</a>
+                                 <ul class="dropdown">
+                                    <li><a href="intelligence/alpha/index.html">Alpha &mdash; Exploit Intelligence</a></li>
+                                    <li><a href="contact.html">Pi — Deep Research Insight</a></li>
+                                    <li><a href="contact.html">Omega — Elite R&amp;D</a></li>
+                                 </ul>
+                              </li>
+                              <li class="has-children">
+                                 <a href="training/index.html" class="nav-link cursor-item">Training</a>
+                                 <ul class="dropdown">
+                                    <li><a href="training/universal-vulnerability-research.html">Zero Day Vulnerability Research</a></li>
+                                    <li><a href="training/hypervisor-vulnerability-research.html">Hypervisor Vulnerability Research</a></li>
+                                    <li><a href="training/browser-exploit-design.html">Browser Exploit Design</a></li>
+                                    <li><a href="training/masterclass/">Masterclasses</a></li>
+                                    <li><a href="training/certification/">Certification</a></li>
+                                    <li><a href="events.html">Schedule</a></li>
+                                    <li><a href="training/reviews/index.html">Praise</a></li>
+                                 </ul>
+                              </li>
+                              <li class="has-children">
+                                 <a href="about.html" class="nav-link cursor-item">Company</a>
+                                 <ul class="dropdown">
+                                    <li><a href="about.html">About us</a></li>
+                                    <li><a href="strategic-access.html">Enterprise &amp; Governments</a></li>
+                                    <li><a href="events.html">Events</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                 </ul>
+                              </li>
+
+                           </ul>
+                           <ul class="site-nav-ul-none-onepage text-right d-inline-block d-lg-none">
+                           <li><a href="#" class="js-menu-toggle">Menu</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </nav>
+
+            <div class="section">
+               <div class="blog-single-inner">
+                  <div class="container">
+                     <div class="row justify-content-center">
+                        <div class="col-md-8">
+                           <div id="quote"></div>
+<h3>Linux Kernel — Acronyms and Terms Glossary</h3>
+
+<p>Reference for the acronyms relevant to kernel vulnerability research. Each entry expands the term first, then defines it, then states why it matters here.</p>
+
+<h4 style='margin-top:2.5rem;'>1. Asynchrony and concurrency</h4>
+
+<p><b>RCU — Read-Copy-Update.</b> A lockless read scheme. Readers enter <code>rcu_read_lock()</code> with no atomics. Writers replace a pointer and defer freeing the old object until every pre-existing reader has finished. That deferred free is the whole source of the P1 bug class.</p>
+
+<p><b>Grace period.</b> The wait until all readers that could see an old object have released it. <code>call_rcu</code> and <code>kfree_rcu</code> free after one grace period.</p>
+
+<p><b>call_rcu / kfree_rcu.</b> Queue an object to be freed after the next grace period, instead of freeing it now.</p>
+
+<p><b>rcu_dereference.</b> The correct way to load an RCU-protected pointer inside a reader.</p>
+
+<p><b>BH — Bottom Half.</b> The deferred half of interrupt handling. The interrupt top half stays minimal and the real work runs later.</p>
+
+<p><b>softirq — software interrupt.</b> The high-priority deferred context that runs bottom-half work. Network receive, timers, tasklets, and block completion run here, asynchronously to any syscall.</p>
+
+<p><b>tasklet.</b> A simple deferred callback that runs in softirq context.</p>
+
+<p><b>NAPI — New API.</b> The network driver polling framework. It processes received packets in softirq context.</p>
+
+<p><b>IRQ — Interrupt ReQuest.</b> A hardware interrupt. The handler can preempt almost anything, so state it touches needs <code>spin_lock_irqsave</code>.</p>
+
+<p><b>NMI — Non-Maskable Interrupt.</b> An interrupt that cannot be blocked by disabling normal interrupts.</p>
+
+<p><b>PMI — Performance Monitoring Interrupt.</b> The NMI-class interrupt the CPU raises on a perf counter overflow. It was the async context in the perf overflow race, CVE-2026-23271.</p>
+
+<p><b>PMU — Performance Monitoring Unit.</b> The CPU hardware that counts events and raises the PMI.</p>
+
+<p><b>Workqueue.</b> A mechanism to defer work to a kernel thread. <code>queue_work</code> schedules a function to run later in a kworker.</p>
+
+<p><b>kworker.</b> The kernel thread that runs queued workqueue items.</p>
+
+<p><b>delayed_work.</b> A workqueue item scheduled to run after a delay.</p>
+
+<p><b>task_work.</b> A queue of callbacks that run when a specific task returns to userspace. File teardown through <code>fput</code> rides this, so closing a file frees it later, not inline.</p>
+
+<p><b>timer_list.</b> The classic kernel timer, with jiffy granularity. Its callback runs in softirq.</p>
+
+<p><b>hrtimer — high-resolution timer.</b> A nanosecond-granularity timer whose callback runs in softirq or hardirq.</p>
+
+<p><b>jiffies.</b> The kernel tick counter. The unit for <code>timer_list</code> timeouts.</p>
+
+<p><b>Preemption.</b> The scheduler taking a CPU away from running kernel code.</p>
+
+<p><b>PREEMPT_NONE.</b> A build with no involuntary kernel preemption. The paid kernelCTF target uses it, which closes races that only open on preemptible kernels.</p>
+
+<p><b>PREEMPT_RT.</b> The fully preemptible real-time build. Some syzbot races reproduce only here and are therefore out of scope for the target.</p>
+
+<p><b>per-CPU.</b> Data with a separate copy per CPU, to avoid locking.</p>
+
+<h4 style='margin-top:2.5rem;'>2. Locking and memory ordering</h4>
+
+<p><b>spinlock.</b> A busy-wait lock for short critical sections that cannot sleep.</p>
+
+<p><b>mutex.</b> A sleeping lock for longer sections.</p>
+
+<p><b>rt_mutex — real-time mutex.</b> A priority-inheriting sleeping lock. It backs futex priority inheritance and was the subject of CVE-2026-43499.</p>
+
+<p><b>seqlock — sequence lock.</b> A lock optimized for rare writers and frequent readers, using a sequence counter.</p>
+
+<p><b>siglock.</b> The spinlock inside <code>sighand_struct</code> that serializes signal and posix-timer state for a process.</p>
+
+<p><b>READ_ONCE / WRITE_ONCE.</b> Force a single, non-torn compiler access to a shared variable.</p>
+
+<p><b>smp_rmb / smp_wmb / smp_mb.</b> Read, write, and full memory barriers on multi-processor systems.</p>
+
+<p><b>smp_store_release / smp_load_acquire.</b> Paired barriers that publish and observe a value with ordering. The CVE-2026-64560 fix added a store-release on <code>sighand = NULL</code>. On x86 these are compiler barriers only.</p>
+
+<h4 style='margin-top:2.5rem;'>3. Memory allocation</h4>
+
+<p><b>SLAB / SLUB / SLOB.</b> The kernel heap allocators. SLUB is the current default. Objects of one type live in a dedicated cache.</p>
+
+<p><b>kmalloc.</b> General kernel allocation. Requests fall into size-class caches named <code>kmalloc-8</code>, <code>kmalloc-16</code>, and so on.</p>
+
+<p><b>kmem_cache.</b> A dedicated slab cache for one object type, for example <code>posix_timers_cache</code>.</p>
+
+<p><b>SLAB_TYPESAFE_BY_RCU.</b> A cache flag that lets a freed slot be reused within the RCU grace period. The pointer stays valid-typed but may point at a different object, so identity must be rechecked. It complicated CVE-2026-46242.</p>
+
+<p><b>INIT_ON_ALLOC / INIT_ON_FREE.</b> Config options that zero slab memory on allocation or free. Both are OFF on the target, so uninitialized reuse and residual pointers work.</p>
+
+<p><b>Cross-cache attack.</b> Freeing an object so its page returns to the allocator, then reclaiming that page as a different cache to overlap two object types. Viable on the target because it uses normal SLUB.</p>
+
+<p><b>Page allocator / buddy.</b> The lower allocator that hands out physical page runs. <code>order-0</code> is a single page.</p>
+
+<p><b>GFP flags.</b> Allocation-context flags passed to <code>kmalloc</code>, for example <code>GFP_KERNEL</code>.</p>
+
+<p><b>PTE — Page Table Entry.</b> One entry mapping a virtual page to a physical page. The essiv exploit, CVE-2025-40019, wrote a forged PTE.</p>
+
+<p><b>PGD — Page Global Directory.</b> The top level of the page tables.</p>
+
+<p><b>physmap / direct map.</b> The kernel&#x27;s linear mapping of all physical memory. A target for KASLR-independent attacks.</p>
+
+<h4 style='margin-top:2.5rem;'>4. Object lifetime and reference counting</h4>
+
+<p><b>refcount_t / atomic_t.</b> Reference and atomic counters. Teardown runs when the last reference drops.</p>
+
+<p><b>kref.</b> A reference-count helper. <code>kref_put</code> runs the release function on the final put.</p>
+
+<p><b>fget / fput.</b> Take and drop a reference to a <code>struct file</code>. The final <code>fput</code> defers destruction through task_work.</p>
+
+<p><b>__fput / ____fput.</b> The deferred file destruction functions that run later, not at the <code>fput</code> call site.</p>
+
+<p><b>get_task_struct / put_task_struct.</b> Take and drop a reference to a task.</p>
+
+<p><b>sock_hold / sock_put.</b> Take and drop a reference to a socket.</p>
+
+<h4 style='margin-top:2.5rem;'>5. Process, task, and signal lifecycle</h4>
+
+<p><b>task_struct.</b> The kernel structure for a thread.</p>
+
+<p><b>Thread group.</b> The set of threads that share a process. They share a TGID.</p>
+
+<p><b>TGID — Thread Group ID.</b> The identifier userspace calls the process ID.</p>
+
+<p><b>PID — Process ID.</b> Per thread inside the kernel. <code>PIDTYPE_TGID</code> and <code>PIDTYPE_PID</code> select which identity a lookup targets.</p>
+
+<p><b>exec / execve.</b> Replace the current program image. A non-leader thread doing this triggers the sensitive path.</p>
+
+<p><b>de_thread.</b> The exec-time routine that tears down the other threads and makes the caller the sole thread and leader. It is the hot lifecycle transition in the newest bug cluster.</p>
+
+<p><b>switch_leader.</b> The step inside de_thread that transfers thread-group leadership to a new task.</p>
+
+<p><b>release_task / __exit_signal.</b> The reaping path for a dying task. <code>__exit_signal</code> sets <code>sighand = NULL</code>, which is the signal that misleads the racing delete paths.</p>
+
+<p><b>sighand — signal handler struct.</b> The shared signal state for a process. A NULL <code>sighand</code> means the task is being reaped, and misreading that NULL is the core of the P2 bugs.</p>
+
+<p><b>signal_struct.</b> The per-process signal and timer state, including the process-wide cpu timer queues.</p>
+
+<p><b>Zombie.</b> A task that has exited but not yet been reaped.</p>
+
+<p><b>exit_state.</b> The field that marks a task as exiting or dead. The CVE-2025-38352 fix checks it.</p>
+
+<p><b>cred — credentials.</b> The uid, gid, and capability set of a task. Overwriting a cred is a common route to root.</p>
+
+<p><b>CAP_* — capabilities.</b> Fine-grained privilege bits, for example <code>CAP_NET_ADMIN</code> and <code>CAP_SYS_ADMIN</code>. The target gates many surfaces behind these.</p>
+
+<p><b>userns — user namespace.</b> A namespace that can grant capabilities inside it. It is disabled on the target, which closes many surfaces.</p>
+
+<p><b>k_itimer.</b> The kernel object for a posix timer. It is the freed object in CVE-2026-64560.</p>
+
+<p><b>cpu_timer / timerqueue.</b> The embedded node and the red-black tree that hold armed cpu timers. A dangling timerqueue node is the UAF primitive in the posix-timer bugs.</p>
+
+<h4 style='margin-top:2.5rem;'>6. Socket and networking surfaces</h4>
+
+<p><b>AF_* — Address Family.</b> The socket domain. Key ones on the target are AF_UNIX, AF_INET, AF_NETLINK, and AF_ALG.</p>
+
+<p><b>AF_UNIX.</b> Local sockets. They pass file descriptors and run a garbage collector, which produced several bugs.</p>
+
+<p><b>AF_NETLINK.</b> The kernel configuration and event socket family.</p>
+
+<p><b>AF_ALG.</b> The userspace interface to the kernel crypto API. A rich surface because userspace can force many crypto templates to instantiate.</p>
+
+<p><b>AF_PACKET / AF_XDP.</b> Raw packet families. Both need <code>CAP_NET_RAW</code>, so they are not unprivileged on the target.</p>
+
+<p><b>ULP — Upper Layer Protocol.</b> A protocol layered on TCP. <code>setsockopt(TCP_ULP, &quot;tls&quot;)</code> installs kernel TLS.</p>
+
+<p><b>kTLS — kernel TLS.</b> TLS record processing inside the kernel. The top confirmed surface, with several bugs.</p>
+
+<p><b>SCM_RIGHTS.</b> The ancillary message type that passes file descriptors between processes. It drives the AF_UNIX garbage collector.</p>
+
+<p><b>cmsg — control message.</b> Ancillary data attached to a <code>sendmsg</code> or <code>recvmsg</code>.</p>
+
+<p><b>skb / sk_buff — socket buffer.</b> The kernel packet structure. A freed skb behind a stale pointer is the UAF in the TLS parser bugs.</p>
+
+<p><b>skb_shared_info.</b> The metadata at the end of an skb data buffer, including the page fragment array. A common overflow target.</p>
+
+<p><b>frags.</b> The paged fragment array in an skb.</p>
+
+<p><b>GC — Garbage Collection.</b> Here it means the AF_UNIX collector for cycles of in-flight file descriptors.</p>
+
+<p><b>in-flight fd.</b> A file descriptor sitting in a socket&#x27;s receive queue, not yet received.</p>
+
+<p><b>SCC — Strongly Connected Component.</b> A cluster in a directed graph. The AF_UNIX collector uses Tarjan SCC detection, which CVE-2025-40214 corrupted.</p>
+
+<p><b>unix_vertex / unix_edge.</b> The graph nodes and edges the AF_UNIX collector builds over in-flight sockets.</p>
+
+<p><b>sock_diag / NETLINK_SOCK_DIAG.</b> The socket introspection interface. Its dump path walks socket hashtables and reached the rhashtable bug CVE-2026-64563.</p>
+
+<p><b>rhashtable — resizable hashtable.</b> The kernel&#x27;s growable hashtable library. Its walk resume path held a stale cursor in CVE-2026-64563.</p>
+
+<p><b>rhashtable_walk.</b> An iterator over an rhashtable that can stop and resume. The resume seam was the bug.</p>
+
+<p><b>MSG_PEEK / MSG_MORE / MSG_SPLICE_PAGES.</b> Send and receive flags. Peek reads without consuming, More holds data for coalescing, and Splice moves pages by reference.</p>
+
+<p><b>splice / zero-copy.</b> Moving data between file descriptors by page reference instead of copying. It reached freed pages in the TLS bugs.</p>
+
+<p><b>reuseport.</b> A group of sockets sharing a port, selected by a filter. The classic BPF variant produced CVE-2026-52910.</p>
+
+<p><b>conntrack — connection tracking.</b> Netfilter state tracking. Its processing on traffic is reachable, but its configuration needs <code>CAP_NET_ADMIN</code>.</p>
+
+<p><b>netfilter / xtables / nftables.</b> The packet filtering frameworks. nftables is compiled out on the target, which removed the historically top surface.</p>
+
+<p><b>XFRM.</b> The IPsec transformation framework. It reaches crypto templates and is under-explored.</p>
+
+<p><b>ESP — Encapsulating Security Payload.</b> The IPsec packet format that pulls in the authencesn crypto template.</p>
+
+<p><b>PF_KEY.</b> The key management socket for IPsec.</p>
+
+<h4 style='margin-top:2.5rem;'>7. Crypto surfaces</h4>
+
+<p><b>AEAD — Authenticated Encryption with Associated Data.</b> Encryption that also authenticates plaintext and extra header data.</p>
+
+<p><b>authenc / authencesn.</b> Templates that combine a cipher and a hash. The <code>esn</code> variant assumes ESP framing and rejected too-short input only after the fix, CVE-2026-23060.</p>
+
+<p><b>essiv.</b> An IV-generation template. Its length check was missing on one branch in CVE-2025-40019.</p>
+
+<p><b>gcm / cbc / cts / ccm / lrw / xts.</b> Cipher modes and templates present on the target. They form the force-instantiation space.</p>
+
+<p><b>assoclen — associated data length.</b> The length of the authenticated header region. Attacker control of it drove the P4 underflow bugs.</p>
+
+<p><b>ivsize — initialization vector size.</b> Subtracted from <code>assoclen</code> in the underflowing arithmetic.</p>
+
+<p><b>scatterlist / scatterwalk / SGL.</b> A list of memory segments and the walker over it. Crypto operates on scatterlists, and a bad offset walks out of bounds.</p>
+
+<p><b>cryptd.</b> The kernel thread that runs deferred crypto. It produces the async <code>-EBUSY</code> completion path.</p>
+
+<p><b>-EINPROGRESS / -EBUSY.</b> Return codes meaning the crypto request will finish later through a callback. Double-cleanup on <code>-EBUSY</code> was CVE-2026-31533.</p>
+
+<p><b>Crypto template.</b> A named construction such as <code>essiv(authenc(hmac(sha256),cbc(aes)),sha256)</code> that userspace can force the kernel to build.</p>
+
+<p><b>Force instantiation.</b> Binding an AF_ALG socket to a template name to make the kernel construct that code path on demand.</p>
+
+<h4 style='margin-top:2.5rem;'>8. Mitigations and hardening</h4>
+
+<p><b>KASLR — Kernel Address Space Layout Randomization.</b> Randomizes the kernel base. Rules require defeating it without a separate leak.</p>
+
+<p><b>KASAN — Kernel Address SANitizer.</b> Debug instrumentation that reports a use-after-free loudly. It is what a trigger PoC lands on.</p>
+
+<p><b>KCSAN / KMSAN.</b> Sanitizers for data races and uninitialized memory.</p>
+
+<p><b>SMEP / SMAP.</b> CPU features that block the kernel from executing or accessing user pages.</p>
+
+<p><b>KPTI — Kernel Page Table Isolation.</b> Separates kernel and user page tables to mitigate Meltdown.</p>
+
+<p><b>CFI / kCFI / CFI_CLANG.</b> Control-Flow Integrity. It checks indirect call targets. It is OFF on the target, so function-pointer hijacking is not blocked.</p>
+
+<p><b>IBT — Indirect Branch Tracking.</b> A coarse hardware forward-edge check. It is present on the target.</p>
+
+<p><b>STACKPROTECTOR.</b> Stack canaries against linear stack overflows.</p>
+
+<p><b>FORTIFY_SOURCE.</b> Compile-time and run-time bounds checks on common memory functions.</p>
+
+<p><b>HARDENED_USERCOPY.</b> Bounds checks on copies between kernel and user.</p>
+
+<p><b>SLAB_FREELIST_RANDOM / SLAB_FREELIST_HARDENED.</b> Randomize and obfuscate the slab freelist, and detect some double frees. Both are present on the target.</p>
+
+<p><b>STATIC_USERMODEHELPER.</b> Routes usermode helpers through a fixed path. It is OFF on the target, so overwriting <code>core_pattern</code> or <code>modprobe_path</code> gives root.</p>
+
+<p><b>SLAB_VIRTUAL.</b> A mitigation-only feature that isolates slab virtual addresses. It is absent on the target, so cross-cache attacks work.</p>
+
+<p><b>LSM — Linux Security Module.</b> The security hook framework. The target stack includes lockdown, yama, loadpin, safesetid, integrity, apparmor, and bpf.</p>
+
+<p><b>SELinux / AppArmor / Landlock / Yama / lockdown.</b> Individual security modules. The exploit runs unconfined, and SELinux and Landlock are off.</p>
+
+<p><b>seccomp — secure computing.</b> A syscall filter. The target places no seccomp filter on the exploit, so the full syscall table is available.</p>
+
+<p><b>bpf_jit_harden.</b> Constant blinding for the BPF JIT.</p>
+
+<p><b>dmesg_restrict / kptr_restrict.</b> Restrict kernel log and pointer visibility. dmesg is restricted on the target, so there is no log oracle.</p>
+
+<h4 style='margin-top:2.5rem;'>9. Bug classes and exploitation primitives</h4>
+
+<p><b>UAF — Use-After-Free.</b> Access to memory after it is freed. The dominant class in this corpus.</p>
+
+<p><b>OOB — Out-Of-Bounds.</b> A read or write past an allocation.</p>
+
+<p><b>TOCTOU — Time-Of-Check to Time-Of-Use.</b> A race between validating a value and using it.</p>
+
+<p><b>Double-free.</b> Freeing the same object twice, often through duplicated cleanup.</p>
+
+<p><b>Type confusion.</b> Treating memory as the wrong type.</p>
+
+<p><b>Uninit — uninitialized use.</b> Reading a field never set on allocation. It works here because zero-on-alloc is off.</p>
+
+<p><b>Heap spray / grooming.</b> Allocating many objects to control heap layout before a bug fires.</p>
+
+<p><b>Reclaim.</b> Allocating controlled data into a freed slot or page after a free.</p>
+
+<p><b>AAR / AAW — Arbitrary Address Read / Write.</b> The strong primitives an exploit aims to build.</p>
+
+<p><b>Primitive.</b> A reusable capability such as a controlled write, a leak, or a free.</p>
+
+<p><b>core_pattern / modprobe_path.</b> Kernel settings that name a userspace helper. Overwriting either gives root when usermode helpers are not static.</p>
+
+<p><b>usermodehelper.</b> The mechanism that runs a userspace program from the kernel, for example a coredump handler.</p>
+
+<p><b>ROP / JOP — Return / Jump Oriented Programming.</b> Reusing existing code by chaining gadgets.</p>
+
+<p><b>Info leak.</b> A disclosure of kernel data such as a pointer. It has no value on its own without a corruption bug that needs it.</p>
+
+<h4 style='margin-top:2.5rem;'>10. kernelCTF competition terms</h4>
+
+<p><b>LTS — Long Term Support.</b> The supported stable kernel series. The paid target is the latest hardened LTS.</p>
+
+<p><b>COS — Container-Optimized OS.</b> Google&#x27;s kernel variant. It is an unpaid target now.</p>
+
+<p><b>Mitigation instance.</b> A previous hardened target with extra sysctls. It is deprecated as a paid target.</p>
+
+<p><b>0-day.</b> A bug with no mainline patch and no public disclosure of any kind.</p>
+
+<p><b>1-day / n-day.</b> A bug already patched upstream but not yet backported to the target series. The gap is the exploitable window.</p>
+
+<p><b>dedup / dupe.</b> The rule that only the first submission of a given bug is rewarded.</p>
+
+<p><b>Slot / drop / bump.</b> One paid capture per version bump. The version drops at a fixed time and the first valid capture wins.</p>
+
+<p><b>Flag.</b> The secret captured by a working exploit on the live instance.</p>
+
+<p><b>exp&lt;NNN&gt;.</b> A kernelCTF submission identifier, for example exp527.</p>
+
+<p><b>Novelty track.</b> A separate reward for a novel technique. It is exempt from dedup and can be submitted off the race clock.</p>
+
+<h4 style='margin-top:2.5rem;'>11. Tooling</h4>
+
+<p><b>syzkaller / syzbot.</b> The kernel fuzzer and its public dashboard of crashes.</p>
+
+<p><b>kernelXDK.</b> An exploit development kit used by some submissions. It resolves target symbols and struct layouts.</p>
+
+<p><b>kxdb / TargetDb.</b> The kernelXDK database of per-target offsets and symbols.</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <footer class="footer section">
+               <div class="container">
+                  <div class="row justify-content-center">
+                     <div class="col-md-12">
+                        <div class="go-top cursor-item" id="go-to-top"><i class="fa fa-chevron-up"></i></div>
+                        <div class="hr-footer"></div>
+                        <div class="footer-site-logo"><a href="index.html" class="main-logo"><img src="images/logo.png" class="logo-img light-logo img-fluid" alt=""></a></div>
+                        <p class="site-copyright">
+                           <small>&copy; 2021-2026 Zero Day Engineering. All Rights Reserved. <a href="rss" class="social-icon"><i class="fa fa-rss"></i></a></small>
+                        </p>
+                     </div>
+                  </div>
+               </div>
+            </footer>
+
+            <div class="circular-text">
+               <span id="rotated">1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull;</span>
+            </div>
+         </div>
+      </div>
+
+      <a id="back-to-top" href="#" class="cursor-item"><i class="fa fa-chevron-up"></i></a>
+      <div class="cursor"></div>
+      <div class="cursor-follower"></div>
+
+      <script src="js/query-3.4.1.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/aos.js"></script>
+      <script src="js/owl.carousel.min.js"></script>
+      <script src="js/isotope.pkgd.min.js"></script>
+      <script src="js/imagesloaded.pkgd.min.js"></script>
+      <script src="js/three.min.js"></script>
+      <script src="js/anime.min.js"></script>
+      <script src="js/TweenMax.min.js"></script>
+      <script src="js/jquery.waypoints.min.js"></script>
+      <script src="js/circletype.min.js"></script>
+      <script src="js/hover-effect.umd.js"></script>
+      <script src="js/gsap.min.js"></script>
+      <script src="js/ScrollMagic.min.js"></script>
+      <script src="js/scrollmagic.animation.gsap.min.js"></script>
+      <script src="js/custom.js"></script>
+   </body>
+</html>
