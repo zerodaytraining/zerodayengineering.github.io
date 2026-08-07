@@ -2961,3 +2961,101 @@ body, html, .page-wrapper, .article, .main-content {
   font-size: 18px;
   cursor: pointer;
 }
+
+/* Footer copyright — muted gray */
+.site-copyright,
+.site-copyright a {
+  color: rgba(237,234,230,0.35) !important;
+}
+
+.nl-footer-link {
+  color: #EDEAE6 !important;
+  text-decoration: none !important;
+}
+
+/* Newsletter modal */
+.nl-modal-overlay {
+  position: fixed; inset: 0;
+  background: #000;
+  display: none;
+  align-items: center; justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+}
+.nl-modal-overlay.active { display: flex; }
+.nl-modal-box {
+  background: #000;
+  border: 1px solid #C8B99A;
+  padding: 28px 32px;
+  max-width: 480px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  color: #EDEAE6;
+  line-height: 1.4;
+}
+.nl-modal-label {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #8A7A5A;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.nl-modal-field { margin-bottom: 14px; }
+.nl-modal-field-label {
+  display: block;
+  font-size: 14px;
+  color: #EDEAE6;
+  margin-bottom: 8px;
+}
+.nl-modal-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #EDEAE6;
+  color: #EDEAE6;
+  font-size: 14px;
+  padding: 8px 0;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+}
+.nl-modal-input::placeholder { color: #EDEAE6; opacity: 0.2; }
+.nl-modal-input:focus { border-bottom-color: #8A7A5A; }
+.nl-modal-actions {
+  display: flex;
+  gap: 20px;
+  margin-top: 24px;
+  justify-content: center;
+}
+.nl-modal-btn {
+  background: transparent;
+  border: 1px solid #EDEAE6;
+  color: #EDEAE6;
+  padding: 10px 24px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: inherit;
+}
+.nl-modal-btn:hover {
+  color: #1BC8FF;
+}
+.nl-modal-error {
+  display: none;
+  margin-top: 16px;
+  font-size: 12px;
+  color: #f64b3c;
+  text-align: center;
+}
+.nl-modal-note {
+  margin-top: 20px;
+  text-align: center;
+  color: #EDEAE6;
+  font-weight: 300;
+}
+.nl-modal-confirm-text {
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 24px;
+}
