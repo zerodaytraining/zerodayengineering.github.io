@@ -24,27 +24,26 @@
       <link rel="stylesheet" href="css/font-awesome.min.css">
       <link rel="stylesheet" href="css/style.css?v=20260806">
       <style>
+         /* Application form — follows the design system used in the newsletter modal.
+            See design-system.md in the project root. */
          .apply-form-wrap {
             max-width: 640px;
             margin: 0 auto;
          }
          .apply-field {
-            margin-bottom: 44px;
+            margin-bottom: 20px;
          }
          .apply-label {
             display: block;
-            font-size: 11px;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-            color: rgba(237,234,230,0.45);
-            margin-bottom: 10px;
+            font-size: 14px;
+            color: #EDEAE6;
+            margin-bottom: 8px;
          }
          .apply-label .field-note {
             display: block;
-            font-size: 10px;
-            letter-spacing: .05em;
-            text-transform: none;
-            color: rgba(237,234,230,0.28);
+            font-size: 14px;
+            color: #EDEAE6;
+            opacity: 0.5;
             margin-top: 4px;
          }
          .apply-input,
@@ -53,37 +52,42 @@
             width: 100%;
             background: transparent;
             border: none;
-            border-bottom: 1px solid rgba(200,185,154,0.25);
-            color: rgba(237,234,230,0.82);
+            border-bottom: 1px solid #EDEAE6;
+            color: #EDEAE6;
             font-size: 14px;
-            letter-spacing: .04em;
-            padding: 6px 0;
+            padding: 8px 0;
             outline: none;
-            transition: border-color 0.2s;
             border-radius: 0;
             -webkit-appearance: none;
             appearance: none;
+            font-family: "Poppins", sans-serif;
+            font-weight: 300;
+         }
+         .apply-input::placeholder,
+         .apply-textarea::placeholder {
+            color: #EDEAE6;
+            opacity: 0.2;
          }
          .apply-select {
             cursor: pointer;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='rgba(200,185,154,0.5)'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23EDEAE6'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 4px center;
             padding-right: 20px;
          }
          .apply-select option {
-            background: #111110;
-            color: rgba(237,234,230,0.82);
+            background: #000;
+            color: #EDEAE6;
          }
          .apply-input:focus,
          .apply-textarea:focus,
          .apply-select:focus {
-            border-bottom-color: #C8B99A;
+            border-bottom-color: #8A7A5A;
          }
          .apply-input.error,
          .apply-textarea.error,
          .apply-select.error {
-            border-bottom-color: rgba(200,185,154,0.75);
+            border-bottom-color: #f64b3c;
          }
          .apply-radio-group {
             display: flex;
@@ -95,49 +99,43 @@
             align-items: center;
             gap: 9px;
             font-size: 14px;
-            letter-spacing: .04em;
-            color: rgba(237,234,230,0.72);
+            color: #EDEAE6;
             cursor: pointer;
          }
          .apply-radio-label input[type="radio"] {
-            accent-color: #C8B99A;
+            accent-color: #EDEAE6;
             width: 14px;
             height: 14px;
             cursor: pointer;
          }
          .apply-error-msg {
             display: none;
-            font-size: 11px;
-            color: rgba(200,185,154,0.85);
+            font-size: 12px;
+            color: #f64b3c;
             margin-top: 6px;
-            letter-spacing: .04em;
          }
          .apply-error-msg.visible {
             display: block;
          }
          .apply-field-conditional {
             display: none;
-            margin-bottom: 44px;
+            margin-bottom: 20px;
          }
          .apply-field-conditional.visible {
             display: block;
          }
          .btn-apply-submit {
-            display: inline-block;
-            padding: 13px 40px;
-            border: 1px solid rgba(200,185,154,0.45);
             background: transparent;
-            color: #C8B99A;
-            font-size: 11px;
-            letter-spacing: .14em;
-            text-transform: uppercase;
+            border: 1px solid #EDEAE6;
+            color: #EDEAE6;
+            padding: 10px 24px;
+            font-size: 14px;
             cursor: pointer;
-            transition: background 0.2s, border-color 0.2s;
+            font-family: inherit;
             margin-top: 12px;
          }
          .btn-apply-submit:hover {
-            background: rgba(200,185,154,0.07);
-            border-color: #C8B99A;
+            color: #1BC8FF;
          }
          .btn-apply-submit:disabled {
             opacity: 0.45;
@@ -145,13 +143,12 @@
          }
          .apply-status {
             margin-top: 20px;
-            font-size: 13px;
-            letter-spacing: .05em;
-            color: rgba(237,234,230,0.55);
+            font-size: 14px;
+            color: #EDEAE6;
             display: none;
          }
-         .apply-status.success { display: block; color: rgba(200,185,154,0.9); }
-         .apply-status.fail    { display: block; color: rgba(200,185,154,0.65); }
+         .apply-status.success { display: block; color: #EDEAE6; }
+         .apply-status.fail    { display: block; color: #f64b3c; }
       </style>
    </head>
    <body data-spy="scroll" data-target=".site-nav-target" data-offset="200">
@@ -197,11 +194,8 @@
                               </div>
 
                               <div class="apply-field">
-                                 <label class="apply-label" for="email">
-                                    Email Address
-                                    <span class="field-note">Office email only. Free email services are not accepted.</span>
-                                 </label>
-                                 <input type="email" id="email" name="email" class="apply-input" autocomplete="email">
+                                 <label class="apply-label" for="email">Email Address</label>
+                                 <input type="email" id="email" name="email" class="apply-input" autocomplete="email" placeholder="name@yourcompany.com">
                                  <span class="apply-error-msg" id="err-email">Please use your organization email address.</span>
                               </div>
 
@@ -277,19 +271,13 @@
                               </div>
 
                               <div class="apply-field-conditional" id="field-researchProgram">
-                                 <label class="apply-label" for="researchProgram">
-                                    Describe the research program that you solicit our participation in
-                                    <span class="field-note"></span>
-                                 </label>
+                                 <label class="apply-label" for="researchProgram">Describe the research program that you solicit our participation in</label>
                                  <input type="text" id="researchProgram" name="researchProgram" class="apply-input">
                                  <span class="apply-error-msg" id="err-researchProgram">Required.</span>
                               </div>
 
                               <div class="apply-field">
-                                 <label class="apply-label">
-                                    Would you like to receive further updates about our products?
-                                    <span class="field-note">Subscribes to Access Denied newsletter.</span>
-                                 </label>
+                                 <label class="apply-label">Would you like to receive further updates about our products?</label>
                                  <div class="apply-radio-group">
                                     <label class="apply-radio-label"><input type="radio" name="receiveUpdates" value="Yes"> Yes</label>
                                     <label class="apply-radio-label"><input type="radio" name="receiveUpdates" value="No"> No</label>
@@ -298,10 +286,7 @@
                               </div>
 
                               <div class="apply-field">
-                                 <label class="apply-label" for="questions">
-                                    Do you have any questions? Write them here.
-                                    <span class="field-note">Optional.</span>
-                                 </label>
+                                 <label class="apply-label" for="questions">Do you have any questions? Write them here.</label>
                                  <textarea id="questions" name="questions" class="apply-textarea" rows="4"></textarea>
                               </div>
 

@@ -23,8 +23,10 @@
       <link rel="stylesheet" href="css/font-awesome.min.css">
       <link rel="stylesheet" href="css/style.css?v=20260806">
       <style>
+         /* Intelligence tiers — follows the design system used in the newsletter modal.
+            See design-system.md in the project root. */
 
-         /* ── BILLING TOGGLE ── */
+         /* Billing toggle */
          .billing-toggle {
             display: flex;
             align-items: center;
@@ -32,30 +34,25 @@
             gap: 18px;
             margin-bottom: 64px;
          }
-
          .billing-label {
-            font-size: 11px;
-            letter-spacing: .15em;
-            text-transform: uppercase;
-            color: rgba(237,234,230,0.35);
-            font-weight: 400;
-            transition: color .3s ease;
+            font-size: 14px;
+            color: #EDEAE6;
+            opacity: 0.35;
+            font-weight: 300;
+            transition: opacity .3s ease;
             cursor: pointer;
             user-select: none;
          }
-
-         .billing-label.active { color: #EDEAE6; }
-
+         .billing-label.active { opacity: 1; }
          .toggle-track {
             position: relative;
             width: 44px;
             height: 22px;
-            border: 1px solid rgba(237,234,230,0.2);
+            border: 1px solid #8A7A5A;
             background: transparent;
             cursor: pointer;
             flex-shrink: 0;
          }
-
          .toggle-thumb {
             position: absolute;
             top: 3px;
@@ -65,53 +62,42 @@
             background: #EDEAE6;
             transition: transform .3s cubic-bezier(.77,0,.175,1);
          }
-
          .toggle-track.yearly .toggle-thumb { transform: translateX(22px); }
-
          .save-badge {
-            font-size: 9px;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-            color: #C8B99A;
-            font-weight: 400;
+            font-size: 14px;
+            color: #8A7A5A;
+            font-weight: 300;
             opacity: 0;
             transition: opacity .3s ease;
          }
 
-         /* ── PRICING GRID ── */
+         /* Pricing grid */
          .intel-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 0;
-            border: 1px solid rgba(255,255,255,0.15);
+            border: 1px solid #8A7A5A;
          }
-
          @media (max-width: 991px) {
             .intel-grid { grid-template-columns: 1fr; }
          }
-
          .intel-card {
             padding: 52px 44px 48px;
-            border-right: 1px solid rgba(255,255,255,0.12);
+            border-right: 1px solid #8A7A5A;
             position: relative;
-            transition: background .4s ease;
             overflow: hidden;
             min-width: 0;
          }
-
          .intel-card:last-child { border-right: none; }
-
          @media (max-width: 991px) {
             .intel-card {
                border-right: none;
-               border-bottom: 1px solid rgba(255,255,255,0.12);
+               border-bottom: 1px solid #8A7A5A;
             }
             .intel-card:last-child { border-bottom: none; }
          }
 
-         .intel-card:hover { background: rgba(255,255,255,0.02); }
-
-         /* tier symbol */
+         /* Tier symbol */
          .tier-symbol {
             font-family: 'Alice', Georgia, serif;
             font-size: 46px;
@@ -121,150 +107,108 @@
             display: block;
             mix-blend-mode: difference;
          }
-
          .tier-name {
-            font-size: 10px;
-            letter-spacing: .2em;
-            text-transform: uppercase;
-            color: rgba(237,234,230,0.4);
-            font-weight: 400;
+            font-size: 14px;
+            color: #EDEAE6;
+            font-weight: 300;
             margin-bottom: 28px;
          }
 
-         /* price block */
+         /* Price block */
          .tier-price-block {
             height: 52px;
             display: flex;
             align-items: center;
          }
-
          .price-amount {
             font-size: 34px;
             font-weight: 700;
             color: #EDEAE6;
             line-height: 1;
-            letter-spacing: -.02em;
          }
-
          .price-period {
-            font-size: 11px;
-            color: rgba(237,234,230,0.3);
+            font-size: 14px;
+            color: #EDEAE6;
+            opacity: 0.5;
             font-weight: 300;
-            letter-spacing: .05em;
             margin-left: 4px;
          }
 
-         /* toggle visibility */
+         /* Toggle visibility */
          .price-yearly       { display: none; }
          .price-yearly.show  { display: inline; }
          .price-monthly.hide { display: none; }
-
          .btn-intel-subscribe.btn-period-yearly       { display: none; }
          .btn-intel-subscribe.btn-period-yearly.show  { display: block; }
          .btn-intel-subscribe.btn-period-monthly.hide { display: none; }
-
          .btn-intel-contact.btn-period-yearly       { display: none; }
          .btn-intel-contact.btn-period-yearly.show  { display: block; }
          .btn-intel-contact.btn-period-monthly.hide { display: none; }
 
-
-         /* buttons */
+         /* Buttons — same style as newsletter modal button */
          .tier-actions {
             margin-top: 24px;
             margin-bottom: 32px;
          }
-
-         .btn-intel-subscribe {
-            display: block;
-            color: #C8B99A;
-            font-size: 10px;
-            letter-spacing: .18em;
-            text-transform: uppercase;
-            font-weight: 400;
-            padding: 13px 24px;
-            border: 1px solid rgba(200,185,154,0.25);
-            background: transparent;
-            cursor: pointer;
-            transition: all .3s ease;
-            text-align: center;
-            text-decoration: none !important;
-         }
-
-         .btn-intel-subscribe:hover {
-            background: rgba(200,185,154,0.05);
-            border-color: rgba(200,185,154,0.6);
-            color: #C8B99A !important;
-         }
-
+         .btn-intel-subscribe,
          .btn-intel-contact {
             display: block;
-            color: rgba(237,234,230,0.4);
-            font-size: 10px;
-            letter-spacing: .18em;
-            text-transform: uppercase;
-            font-weight: 400;
-            padding: 13px 24px;
-            border: 1px solid rgba(237,234,230,0.1);
             background: transparent;
+            border: 1px solid #EDEAE6;
+            color: #EDEAE6;
+            font-size: 14px;
+            padding: 10px 24px;
             cursor: pointer;
-            transition: all .3s ease;
+            font-family: inherit;
             text-align: center;
             text-decoration: none !important;
          }
-
+         .btn-intel-subscribe:hover,
          .btn-intel-contact:hover {
-            border-color: rgba(237,234,230,0.28);
-            color: #EDEAE6 !important;
+            color: #1BC8FF !important;
          }
 
-         /* features */
+         /* Features */
          .tier-features {
             list-style: none;
             padding: 0;
             margin: 0;
-            border-top: 1px solid rgba(255,255,255,0.07);
+            border-top: 1px solid #8A7A5A;
             padding-top: 28px;
          }
-
          .tier-features li {
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 300;
-            color: rgba(237,234,230,0.55);
+            color: #EDEAE6;
             line-height: 1.5;
             margin-bottom: 13px;
             padding-left: 18px;
             position: relative;
-            letter-spacing: .02em;
          }
-
          .tier-features li::before {
             content: '—';
             position: absolute;
             left: 0;
-            color: rgba(237,234,230,0.18);
-            font-size: 10px;
-            top: 2px;
+            color: #8A7A5A;
+            font-size: 14px;
+            top: 0;
          }
-
          .tier-features-prose li::before { content: none; }
          .tier-features-prose li { padding-left: 0; margin-bottom: 18px; }
-
          .tier-features li strong {
             color: #EDEAE6;
             font-weight: 600;
          }
 
-         /* about */
+         /* About */
          .intel-about { margin-bottom: 60px; }
-
          .intel-intro {
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 300;
-            color: rgba(237,234,230,0.45);
+            color: #EDEAE6;
             line-height: 1.75;
             margin-bottom: 0;
          }
-
       </style>
    </head>
 
@@ -306,7 +250,7 @@
                         <h3 class="section-title">About</h3>
                      </div>
                      <div class="col-lg-10">
-                        <p class="intel-intro">Independent briefing on emerging threats and applied exploit research.<br>Structured access to world class <a target="_blank" href="about.html#founder">expert practitioner</a>'s mindset for scoped on-demand advisory.<br>Live ongoing insights and analysis from our <a target="_blank" href="research">research labs</a>.</p>
+                        <p class="intel-intro">Independent briefing on emerging threats and applied exploit research.<br>Structured access to world class <a class="underline" target="_blank" href="about.html#founder">expert practitioner</a>'s mindset for scoped on-demand advisory.<br>Live ongoing insights and analysis from our <a class="underline" target="_blank" href="research">research labs</a>.</p>
                      </div>
                   </div>
 
@@ -335,7 +279,7 @@
                            <li>Asynchronous Q&amp;A via email</li>
                            <li>Access to 0-Day Watch platform</li>
                         </ul>
-                        <p style="font-size:11px; line-height:1.7; color:rgba(237,234,230,0.35); margin-top:20px; margin-bottom:0;">Q4 cohort launches 1 October 2026<br>Team rates available.<br><br><a href="intelligence/alpha/index.html" style="color:rgba(200,185,154,0.7); text-decoration:underline;">Learn more</a></p>
+                        <p style="margin-top:20px; margin-bottom:0;"><span style="opacity:0.5;">Q4 cohort launches 1 October 2026<br>Team rates available.</span><br><br><a class="underline" href="intelligence/alpha/index.html">Learn more</a></p>
                      </div>
 
                      <!-- PI -->
@@ -376,7 +320,7 @@
 
                   </div>
 
-                  <p style="font-size:11px; letter-spacing:.08em; color:rgba(237,234,230,0.35); margin-top:28px;">Note: options listed are operational intelligence layers, not product tiers.</p>
+                  <p style="margin-top:28px; opacity:0.5;">Note: options listed are operational intelligence layers, not product tiers.</p>
 
                </div>
             </div>
