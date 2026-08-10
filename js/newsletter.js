@@ -37,7 +37,7 @@
                <button class="nl-modal-btn" id="nl-submit" onclick="submitNewsletter()">Subscribe</button>
             </div>
             <div class="nl-modal-error" id="nl-error">Error. Try again later.</div>
-            <div class="nl-modal-note">Bi-weekly mailing with updates from the Founder</div>
+            <div class="nl-modal-note">Occasional mailing with updates from the Founder</div>
          </div>
       </div>
       <div class="nl-modal-overlay" id="nl-modal-confirm">
