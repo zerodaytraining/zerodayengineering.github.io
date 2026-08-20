@@ -21,48 +21,12 @@
       <link rel="stylesheet" href="css/bootstrap.min.css">
       <link rel="stylesheet" href="css/animate.min.css">
       <link rel="stylesheet" href="css/font-awesome.min.css">
-      <link rel="stylesheet" href="css/style.css?v=20260806">
+      <link rel="stylesheet" href="css/style.css?v=20260819">
       <style>
-         /* Intelligence tiers — follows the design system used in the newsletter modal.
-            See design-system.md in the project root. */
+         /* Page-local layout only. Reusable atoms live in css/style.css. */
 
-         /* Billing toggle */
-         .billing-toggle {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 18px;
-            margin-bottom: 64px;
-         }
-         .billing-label {
-            font-size: 14px;
-            color: #EDEAE6;
-            opacity: 0.35;
-            font-weight: 300;
-            transition: opacity .3s ease;
-            cursor: pointer;
-            user-select: none;
-         }
-         .billing-label.active { opacity: 1; }
-         .toggle-track {
-            position: relative;
-            width: 44px;
-            height: 22px;
-            border: 1px solid #8A7A5A;
-            background: transparent;
-            cursor: pointer;
-            flex-shrink: 0;
-         }
-         .toggle-thumb {
-            position: absolute;
-            top: 3px;
-            left: 3px;
-            width: 14px;
-            height: 14px;
-            background: #EDEAE6;
-            transition: transform .3s cubic-bezier(.77,0,.175,1);
-         }
-         .toggle-track.yearly .toggle-thumb { transform: translateX(22px); }
+         /* Billing toggle spacing local overrides */
+         .billing-toggle { gap: 18px; margin-bottom: 64px; }
          .save-badge {
             font-size: 14px;
             color: #8A7A5A;
@@ -97,7 +61,7 @@
             .intel-card:last-child { border-bottom: none; }
          }
 
-         /* Tier symbol */
+         /* Tier symbol — unique to this page (Alice serif, blend mode) */
          .tier-symbol {
             font-family: 'Alice', Georgia, serif;
             font-size: 46px;
@@ -114,99 +78,37 @@
             margin-bottom: 28px;
          }
 
-         /* Price block */
+         /* Price row — layout only, atoms come from .card-price / .card-price-period */
          .tier-price-block {
             height: 52px;
             display: flex;
             align-items: center;
          }
-         .price-amount {
-            font-size: 34px;
-            font-weight: 700;
-            color: #EDEAE6;
-            line-height: 1;
-         }
-         .price-period {
-            font-size: 14px;
-            color: #EDEAE6;
-            opacity: 0.5;
-            font-weight: 300;
-            margin-left: 4px;
+
+         /* Card features list — border-top and spacing overlay on .card-list */
+         .intel-card .card-list {
+            border-top: 1px solid #8A7A5A;
+            padding-top: 28px;
          }
 
-         /* Toggle visibility */
-         .price-yearly       { display: none; }
-         .price-yearly.show  { display: inline; }
-         .price-monthly.hide { display: none; }
-         .btn-intel-subscribe.btn-period-yearly       { display: none; }
-         .btn-intel-subscribe.btn-period-yearly.show  { display: block; }
-         .btn-intel-subscribe.btn-period-monthly.hide { display: none; }
-         .btn-intel-contact.btn-period-yearly       { display: none; }
-         .btn-intel-contact.btn-period-yearly.show  { display: block; }
-         .btn-intel-contact.btn-period-monthly.hide { display: none; }
-
-         /* Buttons — same style as newsletter modal button */
+         /* Buttons block spacing */
          .tier-actions {
             margin-top: 24px;
             margin-bottom: 32px;
          }
-         .btn-intel-subscribe,
-         .btn-intel-contact {
-            display: block;
-            background: transparent;
-            border: 1px solid #EDEAE6;
-            color: #EDEAE6;
-            font-size: 14px;
-            padding: 10px 24px;
-            cursor: pointer;
-            font-family: inherit;
-            text-align: center;
-            text-decoration: none !important;
-         }
-         .btn-intel-subscribe:hover,
-         .btn-intel-contact:hover {
-            color: #1BC8FF !important;
-         }
 
-         /* Features */
-         .tier-features {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            border-top: 1px solid #8A7A5A;
-            padding-top: 28px;
-         }
-         .tier-features li {
-            font-size: 14px;
-            font-weight: 300;
-            color: #EDEAE6;
-            line-height: 1.5;
-            margin-bottom: 13px;
-            padding-left: 18px;
-            position: relative;
-         }
-         .tier-features li::before {
-            content: '—';
-            position: absolute;
-            left: 0;
-            color: #8A7A5A;
-            font-size: 14px;
-            top: 0;
-         }
-         .tier-features-prose li::before { content: none; }
-         .tier-features-prose li { padding-left: 0; margin-bottom: 18px; }
-         .tier-features li strong {
-            color: #EDEAE6;
-            font-weight: 600;
-         }
+         /* Toggle visibility per billing period */
+         .price-yearly       { display: none; }
+         .price-yearly.show  { display: inline; }
+         .price-monthly.hide { display: none; }
+         .btn-outline.btn-period-yearly       { display: none; }
+         .btn-outline.btn-period-yearly.show  { display: block; }
+         .btn-outline.btn-period-monthly.hide { display: none; }
 
          /* About */
          .intel-about { margin-bottom: 60px; }
          .intel-intro {
-            font-size: 14px;
             font-weight: 300;
-            color: #EDEAE6;
-            line-height: 1.75;
             margin-bottom: 0;
          }
       </style>
@@ -262,15 +164,15 @@
                         <div class="tier-name"><a href="intelligence/alpha/index.html" style="color:inherit; text-decoration:none;">Alpha &mdash; Exploit Intelligence</a></div>
 
                         <div class="tier-price-block">
-                           <span class="price-amount">€10,000</span>
-                           <span class="price-period">/ quarter / seat</span>
+                           <span class="card-price">€10,000</span>
+                           <span class="card-price-period">/ quarter / seat</span>
                         </div>
 
                         <div class="tier-actions">
-                           <a href="https://billing.zerodayengineering.com/b/3cIdR8fwFdfJ7YQ25K7bW0T" target="_blank" class="btn-intel-subscribe">Reserve</a>
+                           <a href="https://billing.zerodayengineering.com/b/3cIdR8fwFdfJ7YQ25K7bW0T" target="_blank" class="btn-outline btn-outline--block">Reserve</a>
                         </div>
 
-                        <ul class="tier-features">
+                        <ul class="card-list">
                            <li>Exploit alerts for critical systems</li>
                            <li>Weekly briefing podcast by the principal</li>
                            <li>Bi-monthly deep analysis of what matters</li>
@@ -288,15 +190,15 @@
                         <div class="tier-name">Pi — Pattern Insight</div>
 
                         <div class="tier-price-block">
-                           <span class="price-amount">€100,000</span>
-                           <span class="price-period">/ quarter</span>
+                           <span class="card-price">€100,000</span>
+                           <span class="card-price-period">/ quarter</span>
                         </div>
 
                         <div class="tier-actions">
-                           <a href="application-form.html" target="_blank" class="btn-intel-contact">Apply</a>
+                           <a href="application-form.html" target="_blank" class="btn-outline btn-outline--block">Apply</a>
                         </div>
 
-                        <ul class="tier-features tier-features-prose">
+                        <ul class="card-list card-list--prose">
                            <li>Strategic advisory on applied attack surface modeling and exploit engineering research.</li>
                            <li>Focus on AI integration and capability evaluation for vulnerability development.</li>
                            <li>Scoped on deep abstract models that recur across systems; novel and active invariant violation patterns; and cutting edge applied techniques.</li>
@@ -312,10 +214,10 @@
                         <div class="tier-price-block"></div>
 
                         <div class="tier-actions">
-                           <a href="contact.html" class="btn-intel-contact">Contact</a>
+                           <a href="contact.html" class="btn-outline btn-outline--block">Contact</a>
                         </div>
 
-                        <ul class="tier-features"></ul>
+                        <ul class="card-list"></ul>
                      </div>
 
                   </div>
@@ -372,7 +274,7 @@
          }
       </script>
 
-      <script src="/js/newsletter.js?v=20260807"></script>
+      <script src="/js/newsletter.js?v=20260819"></script>
 
    </body>
 </html>

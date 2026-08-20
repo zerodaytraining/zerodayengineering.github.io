@@ -1,50 +1,53 @@
 // Newsletter subscription modal — shared across all pages.
-// Depends on: css/style.css (all .nl-modal-* classes)
-// Backend: Mailpro via GAS proxy
+// Uses shared design-system classes from css/style.css:
+//   .card, .card--featured, .card-title, .field-label, .field-input, .btn-outline.
+// Modal-specific layout: .nl-modal-overlay, .nl-modal-box, .nl-modal-field,
+//   .nl-modal-actions, .nl-modal-error, .nl-modal-note, .nl-modal-confirm-text.
+// Backend: Mailpro via GAS proxy.
 
 (function () {
    const NL_GAS = 'https://script.google.com/macros/s/AKfycbys7jnM9zQ_B6qirWBiqc8baRN6T7o9mPuW0uclyuvmiQMxVW-4fCnemZ5-9n6zzwEX3A/exec';
 
    const MODAL_HTML = `
       <div class="nl-modal-overlay" id="nl-modal">
-         <div class="nl-modal-box">
-            <div class="nl-modal-label">Subscription</div>
+         <div class="nl-modal-box card card--featured">
+            <div class="nl-modal-label card-heading">Subscription</div>
             <div class="nl-modal-field">
-               <label class="nl-modal-field-label">Email</label>
-               <input class="nl-modal-input" id="nl-email" type="email" placeholder="your@email.com" autocomplete="email" spellcheck="false" autocapitalize="off" />
+               <label class="field-label">Email</label>
+               <input class="field-input" id="nl-email" type="email" placeholder="your@email.com" autocomplete="email" spellcheck="false" autocapitalize="off" />
             </div>
             <div class="nl-modal-field">
-               <label class="nl-modal-field-label">Full Name</label>
-               <input class="nl-modal-input" id="nl-name" type="text" autocomplete="name" spellcheck="false" />
+               <label class="field-label">Full Name</label>
+               <input class="field-input" id="nl-name" type="text" autocomplete="name" spellcheck="false" />
             </div>
             <div class="nl-modal-field">
-               <label class="nl-modal-field-label">Company</label>
-               <input class="nl-modal-input" id="nl-company" type="text" autocomplete="organization" spellcheck="false" />
+               <label class="field-label">Company</label>
+               <input class="field-input" id="nl-company" type="text" autocomplete="organization" spellcheck="false" />
             </div>
             <div class="nl-modal-field">
-               <label class="nl-modal-field-label">Role</label>
-               <input class="nl-modal-input" id="nl-role" type="text" autocomplete="organization-title" spellcheck="false" />
+               <label class="field-label">Role</label>
+               <input class="field-input" id="nl-role" type="text" autocomplete="organization-title" spellcheck="false" />
             </div>
             <div class="nl-modal-field">
-               <label class="nl-modal-field-label">What brings you here?</label>
-               <input class="nl-modal-input" id="nl-signal" type="text" placeholder="e.g. a specific publication or news piece" spellcheck="false" />
+               <label class="field-label">What brings you here?</label>
+               <input class="field-input" id="nl-signal" type="text" placeholder="e.g. a specific publication or news piece" spellcheck="false" />
             </div>
             <div class="nl-modal-field">
-               <label class="nl-modal-field-label">Primary Interest</label>
-               <input class="nl-modal-input" id="nl-interest" type="text" placeholder="e.g. a specific product name or research topic" spellcheck="false" />
+               <label class="field-label">Primary Interest</label>
+               <input class="field-input" id="nl-interest" type="text" placeholder="e.g. a specific product name or research topic" spellcheck="false" />
             </div>
             <div class="nl-modal-actions">
-               <button class="nl-modal-btn" id="nl-submit" onclick="submitNewsletter()">Subscribe</button>
+               <button class="btn-outline" id="nl-submit" onclick="submitNewsletter()">Subscribe</button>
             </div>
             <div class="nl-modal-error" id="nl-error">Error. Try again later.</div>
             <div class="nl-modal-note">Occasional mailing with updates from the Founder</div>
          </div>
       </div>
       <div class="nl-modal-overlay" id="nl-modal-confirm">
-         <div class="nl-modal-box">
+         <div class="nl-modal-box card card--featured">
             <div class="nl-modal-confirm-text">One more step — check your email to confirm your subscription.</div>
             <div class="nl-modal-actions" style="justify-content:center;">
-               <button class="nl-modal-btn" onclick="closeNewsletterConfirm()">OK</button>
+               <button class="btn-outline" onclick="closeNewsletterConfirm()">OK</button>
             </div>
          </div>
       </div>

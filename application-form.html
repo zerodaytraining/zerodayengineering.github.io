@@ -22,52 +22,14 @@
       <link rel="stylesheet" href="css/owl.carousel.min.css">
       <link rel="stylesheet" href="css/aos.css"/>
       <link rel="stylesheet" href="css/font-awesome.min.css">
-      <link rel="stylesheet" href="css/style.css?v=20260806">
+      <link rel="stylesheet" href="css/style.css?v=20260819">
       <style>
-         /* Application form — follows the design system used in the newsletter modal.
-            See design-system.md in the project root. */
-         .apply-form-wrap {
-            max-width: 640px;
-            margin: 0 auto;
-         }
-         .apply-field {
-            margin-bottom: 20px;
-         }
-         .apply-label {
-            display: block;
-            font-size: 14px;
-            color: #EDEAE6;
-            margin-bottom: 8px;
-         }
-         .apply-label .field-note {
-            display: block;
-            font-size: 14px;
-            color: #EDEAE6;
-            opacity: 0.5;
-            margin-top: 4px;
-         }
-         .apply-input,
-         .apply-textarea,
-         .apply-select {
-            width: 100%;
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid #EDEAE6;
-            color: #EDEAE6;
-            font-size: 14px;
-            padding: 8px 0;
-            outline: none;
-            border-radius: 0;
-            -webkit-appearance: none;
-            appearance: none;
-            font-family: "Poppins", sans-serif;
-            font-weight: 300;
-         }
-         .apply-input::placeholder,
-         .apply-textarea::placeholder {
-            color: #EDEAE6;
-            opacity: 0.2;
-         }
+         /* Page-local layout only. Reusable atoms live in css/style.css:
+            .field-label, .field-input, .field-note, .btn-outline. */
+         .apply-form-wrap { max-width: 640px; margin: 0 auto; }
+         .apply-field { margin-bottom: 20px; }
+
+         /* Select — dropdown arrow SVG unique to this page */
          .apply-select {
             cursor: pointer;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23EDEAE6'/%3E%3C/svg%3E");
@@ -75,20 +37,9 @@
             background-position: right 4px center;
             padding-right: 20px;
          }
-         .apply-select option {
-            background: #000;
-            color: #EDEAE6;
-         }
-         .apply-input:focus,
-         .apply-textarea:focus,
-         .apply-select:focus {
-            border-bottom-color: #8A7A5A;
-         }
-         .apply-input.error,
-         .apply-textarea.error,
-         .apply-select.error {
-            border-bottom-color: #f64b3c;
-         }
+         .apply-select option { background: #000; color: #EDEAE6; }
+
+         /* Radios — page-specific layout */
          .apply-radio-group {
             display: flex;
             gap: 32px;
@@ -108,39 +59,19 @@
             height: 14px;
             cursor: pointer;
          }
+
+         /* Error message + conditional field */
          .apply-error-msg {
             display: none;
             font-size: 12px;
             color: #f64b3c;
             margin-top: 6px;
          }
-         .apply-error-msg.visible {
-            display: block;
-         }
-         .apply-field-conditional {
-            display: none;
-            margin-bottom: 20px;
-         }
-         .apply-field-conditional.visible {
-            display: block;
-         }
-         .btn-apply-submit {
-            background: transparent;
-            border: 1px solid #EDEAE6;
-            color: #EDEAE6;
-            padding: 10px 24px;
-            font-size: 14px;
-            cursor: pointer;
-            font-family: inherit;
-            margin-top: 12px;
-         }
-         .btn-apply-submit:hover {
-            color: #1BC8FF;
-         }
-         .btn-apply-submit:disabled {
-            opacity: 0.45;
-            cursor: not-allowed;
-         }
+         .apply-error-msg.visible { display: block; }
+         .apply-field-conditional { display: none; margin-bottom: 20px; }
+         .apply-field-conditional.visible { display: block; }
+
+         /* Submit status */
          .apply-status {
             margin-top: 20px;
             font-size: 14px;
@@ -188,32 +119,32 @@
                            <form id="applyForm" novalidate>
 
                               <div class="apply-field">
-                                 <label class="apply-label" for="fullName">Full Name</label>
-                                 <input type="text" id="fullName" name="fullName" class="apply-input" autocomplete="name">
+                                 <label class="field-label" for="fullName">Full Name</label>
+                                 <input type="text" id="fullName" name="fullName" class="field-input" autocomplete="name">
                                  <span class="apply-error-msg" id="err-fullName">Required.</span>
                               </div>
 
                               <div class="apply-field">
-                                 <label class="apply-label" for="email">Email Address</label>
-                                 <input type="email" id="email" name="email" class="apply-input" autocomplete="email" placeholder="name@yourcompany.com">
+                                 <label class="field-label" for="email">Email Address</label>
+                                 <input type="email" id="email" name="email" class="field-input" autocomplete="email" placeholder="name@yourcompany.com">
                                  <span class="apply-error-msg" id="err-email">Please use your organization email address.</span>
                               </div>
 
                               <div class="apply-field">
-                                 <label class="apply-label" for="organization">Organization</label>
-                                 <input type="text" id="organization" name="organization" class="apply-input" autocomplete="organization">
+                                 <label class="field-label" for="organization">Organization</label>
+                                 <input type="text" id="organization" name="organization" class="field-input" autocomplete="organization">
                                  <span class="apply-error-msg" id="err-organization">Required.</span>
                               </div>
 
                               <div class="apply-field">
-                                 <label class="apply-label" for="role">Role</label>
-                                 <input type="text" id="role" name="role" class="apply-input">
+                                 <label class="field-label" for="role">Role</label>
+                                 <input type="text" id="role" name="role" class="field-input">
                                  <span class="apply-error-msg" id="err-role">Required.</span>
                               </div>
 
                               <div class="apply-field">
-                                 <label class="apply-label" for="product">Product</label>
-                                 <select id="product" name="product" class="apply-select">
+                                 <label class="field-label" for="product">Product</label>
+                                 <select id="product" name="product" class="field-input apply-select">
                                     <option value="" disabled selected></option>
                                     <option value="Alpha Intelligence">Alpha Intelligence</option>
                                     <option value="Pi — Pattern Insight">Pi — Pattern Insight</option>
@@ -226,13 +157,13 @@
                               </div>
 
                               <div class="apply-field">
-                                 <label class="apply-label" for="budget">Security Budget, per year</label>
-                                 <input type="text" id="budget" name="budget" class="apply-input">
+                                 <label class="field-label" for="budget">Security Budget, per year</label>
+                                 <input type="text" id="budget" name="budget" class="field-input">
                                  <span class="apply-error-msg" id="err-budget">Required.</span>
                               </div>
 
                               <div class="apply-field">
-                                 <label class="apply-label">Are you the final decision maker?</label>
+                                 <label class="field-label">Are you the final decision maker?</label>
                                  <div class="apply-radio-group">
                                     <label class="apply-radio-label"><input type="radio" name="decisionMaker" value="Yes"> Yes</label>
                                     <label class="apply-radio-label"><input type="radio" name="decisionMaker" value="No"> No</label>
@@ -241,43 +172,43 @@
                               </div>
 
                               <div class="apply-field">
-                                 <label class="apply-label" for="howLearned">How did you learn about us?</label>
-                                 <input type="text" id="howLearned" name="howLearned" class="apply-input">
+                                 <label class="field-label" for="howLearned">How did you learn about us?</label>
+                                 <input type="text" id="howLearned" name="howLearned" class="field-input">
                                  <span class="apply-error-msg" id="err-howLearned">Required.</span>
                               </div>
 
                               <div class="apply-field">
-                                 <label class="apply-label" for="primaryInterest">What is your primary interest?</label>
-                                 <input type="text" id="primaryInterest" name="primaryInterest" class="apply-input">
+                                 <label class="field-label" for="primaryInterest">What is your primary interest?</label>
+                                 <input type="text" id="primaryInterest" name="primaryInterest" class="field-input">
                                  <span class="apply-error-msg" id="err-primaryInterest">Required.</span>
                               </div>
 
                               <div class="apply-field">
-                                 <label class="apply-label" for="alternatives">Which alternative solutions did you try or consider?</label>
-                                 <input type="text" id="alternatives" name="alternatives" class="apply-input">
+                                 <label class="field-label" for="alternatives">Which alternative solutions did you try or consider?</label>
+                                 <input type="text" id="alternatives" name="alternatives" class="field-input">
                                  <span class="apply-error-msg" id="err-alternatives">Required.</span>
                               </div>
 
                               <div class="apply-field">
-                                 <label class="apply-label" for="whyUs">Why did you choose us specifically?</label>
-                                 <input type="text" id="whyUs" name="whyUs" class="apply-input">
+                                 <label class="field-label" for="whyUs">Why did you choose us specifically?</label>
+                                 <input type="text" id="whyUs" name="whyUs" class="field-input">
                                  <span class="apply-error-msg" id="err-whyUs">Required.</span>
                               </div>
 
                               <div class="apply-field-conditional" id="field-techStack">
-                                 <label class="apply-label" for="techStack">Describe the technological stack that you are securing</label>
-                                 <input type="text" id="techStack" name="techStack" class="apply-input">
+                                 <label class="field-label" for="techStack">Describe the technological stack that you are securing</label>
+                                 <input type="text" id="techStack" name="techStack" class="field-input">
                                  <span class="apply-error-msg" id="err-techStack">Required.</span>
                               </div>
 
                               <div class="apply-field-conditional" id="field-researchProgram">
-                                 <label class="apply-label" for="researchProgram">Describe the research program that you solicit our participation in</label>
-                                 <input type="text" id="researchProgram" name="researchProgram" class="apply-input">
+                                 <label class="field-label" for="researchProgram">Describe the research program that you solicit our participation in</label>
+                                 <input type="text" id="researchProgram" name="researchProgram" class="field-input">
                                  <span class="apply-error-msg" id="err-researchProgram">Required.</span>
                               </div>
 
                               <div class="apply-field">
-                                 <label class="apply-label">Would you like to receive further updates about our products?</label>
+                                 <label class="field-label">Would you like to receive further updates about our products?</label>
                                  <div class="apply-radio-group">
                                     <label class="apply-radio-label"><input type="radio" name="receiveUpdates" value="Yes"> Yes</label>
                                     <label class="apply-radio-label"><input type="radio" name="receiveUpdates" value="No"> No</label>
@@ -286,12 +217,12 @@
                               </div>
 
                               <div class="apply-field">
-                                 <label class="apply-label" for="questions">Do you have any questions? Write them here.</label>
-                                 <textarea id="questions" name="questions" class="apply-textarea" rows="4"></textarea>
+                                 <label class="field-label" for="questions">Do you have any questions? Write them here.</label>
+                                 <textarea id="questions" name="questions" class="field-input" rows="4"></textarea>
                               </div>
 
                               <div style="text-align:center;">
-                                 <button type="submit" class="btn-apply-submit" id="submitBtn">Submit Application</button>
+                                 <button type="submit" class="btn-outline" id="submitBtn">Submit Application</button>
                                  <div class="apply-status" id="applyStatus"></div>
                                  <div class="apply-status fail" id="formError" style="display:none;">Please review the fields above.</div>
                               </div>
@@ -517,6 +448,6 @@
             }
          });
       </script>
-   <script src="/js/newsletter.js?v=20260807"></script>
+   <script src="/js/newsletter.js?v=20260819"></script>
    </body>
 </html>

@@ -2973,43 +2973,97 @@ body, html, .page-wrapper, .article, .main-content {
   text-decoration: none !important;
 }
 
-/* Newsletter modal */
-.nl-modal-overlay {
-  position: fixed; inset: 0;
-  background: #000;
-  display: none;
-  align-items: center; justify-content: center;
-  z-index: 10000;
-  padding: 20px;
-}
-.nl-modal-overlay.active { display: flex; }
-.nl-modal-box {
-  background: #000;
-  border: 1px solid #C8B99A;
-  padding: 28px 32px;
-  max-width: 480px;
-  width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
+/* Simple outline button — reusable across pages.
+   Same style as intelligence tier buttons and the newsletter modal button. */
+.btn-outline {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid #EDEAE6;
   color: #EDEAE6;
-  line-height: 1.4;
+  font-size: 14px;
+  padding: 10px 24px;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: center;
+  text-decoration: none !important;
 }
-.nl-modal-label {
+.btn-outline:hover {
+  color: #1BC8FF !important;
+}
+.btn-outline--block { display: block; }  /* full-width variant */
+.btn-outline:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* ============================================================================
+   SHARED COMPONENT CLASSES
+   Reusable atoms and molecules for cards, prices, lists, forms, and toggles.
+   Documented in design-system.md.
+   ============================================================================ */
+
+/* Card container — base + border variants */
+.card {
+  background: #000;
+  padding: 32px;
+}
+.card--outline { border: 1px solid #8A7A5A; }   /* subtle structural border */
+.card--featured { border: 1px solid #C8B99A; }  /* gold featured border */
+
+/* Card contents */
+.card-heading {
   font-size: 24px;
   font-weight: 700;
   line-height: 1.2;
   color: #8A7A5A;
-  margin-bottom: 20px;
-  text-align: center;
 }
-.nl-modal-field { margin-bottom: 14px; }
-.nl-modal-field-label {
+.card-price {
+  font-size: 34px;
+  font-weight: 700;
+  color: #EDEAE6;
+  line-height: 1;
+}
+.card-price-period {
+  font-size: 14px;
+  font-weight: 300;
+  color: #EDEAE6;
+  opacity: 0.5;
+}
+
+/* Perk / feature list with — bullet */
+.card-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.card-list li {
+  font-size: 14px;
+  font-weight: 300;
+  color: #EDEAE6;
+  padding-left: 18px;
+  position: relative;
+  margin-bottom: 12px;
+}
+.card-list li:last-child { margin-bottom: 0; }
+.card-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: #8A7A5A;
+}
+.card-list li strong {
+  color: #EDEAE6;
+  font-weight: 600;
+}
+/* Prose variant — no bullet, roomier spacing */
+.card-list--prose li { padding-left: 0; margin-bottom: 18px; }
+.card-list--prose li::before { content: none; }
+
+/* Form field atoms */
+.field-label {
   display: block;
   font-size: 14px;
   color: #EDEAE6;
   margin-bottom: 8px;
 }
-.nl-modal-input {
+.field-input {
   width: 100%;
   background: transparent;
   border: none;
@@ -3021,25 +3075,83 @@ body, html, .page-wrapper, .article, .main-content {
   font-family: "Poppins", sans-serif;
   font-weight: 300;
 }
-.nl-modal-input::placeholder { color: #EDEAE6; opacity: 0.2; }
-.nl-modal-input:focus { border-bottom-color: #8A7A5A; }
+.field-input::placeholder { color: #EDEAE6; opacity: 0.2; }
+.field-input:focus { border-bottom-color: #8A7A5A; }
+.field-input.error { border-bottom-color: #f64b3c; }
+.field-note {
+  display: block;
+  font-size: 14px;
+  color: #EDEAE6;
+  opacity: 0.5;
+  margin-top: 4px;
+}
+
+/* Billing period toggle */
+.billing-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+.billing-toggle-label {
+  font-size: 14px;
+  font-weight: 300;
+  color: #EDEAE6;
+  opacity: 0.35;
+  cursor: pointer;
+  user-select: none;
+  transition: opacity .3s ease;
+}
+.billing-toggle-label.active { opacity: 1; }
+.billing-toggle-track {
+  position: relative;
+  width: 44px;
+  height: 22px;
+  border: 1px solid #8A7A5A;
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.billing-toggle-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 14px;
+  height: 14px;
+  background: #EDEAE6;
+  transition: transform .3s cubic-bezier(.77,0,.175,1);
+}
+.billing-toggle-track.yearly .billing-toggle-thumb { transform: translateX(22px); }
+
+/* Newsletter modal — layout-specific only.
+   Card + title + field-label + field-input + btn-outline come from shared atoms. */
+.nl-modal-overlay {
+  position: fixed; inset: 0;
+  background: #000;
+  display: none;
+  align-items: center; justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+}
+.nl-modal-overlay.active { display: flex; }
+.nl-modal-box {
+  /* modal viewport constraints, composed with .card .card--featured */
+  max-width: 480px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.nl-modal-label {
+  /* .card-title styling comes from shared; layout only here */
+  margin-bottom: 20px;
+  text-align: center;
+}
+.nl-modal-field { margin-bottom: 14px; }
 .nl-modal-actions {
   display: flex;
   gap: 20px;
   margin-top: 24px;
   justify-content: center;
-}
-.nl-modal-btn {
-  background: transparent;
-  border: 1px solid #EDEAE6;
-  color: #EDEAE6;
-  padding: 10px 24px;
-  font-size: 14px;
-  cursor: pointer;
-  font-family: inherit;
-}
-.nl-modal-btn:hover {
-  color: #1BC8FF;
 }
 .nl-modal-error {
   display: none;
@@ -3051,7 +3163,6 @@ body, html, .page-wrapper, .article, .main-content {
 .nl-modal-note {
   margin-top: 20px;
   text-align: center;
-  color: #EDEAE6;
   font-weight: 300;
 }
 .nl-modal-confirm-text {
