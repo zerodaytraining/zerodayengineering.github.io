@@ -19,24 +19,24 @@
       <meta name="author" content=""/>
       <base href="../"> 
       <!--Favicons-->
-      <link rel="shortcut icon" href="images/favicon.png">
+      <link rel="shortcut icon" href="/images/favicon.png">
       <!--Page Title-->
       <title>Pwn2Own 2021 Vancouver: My Solo Hypervisor Escape Breakthrough</title>
       <!-- Stylesheets -->
       <!-- bootstrap -->
-      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="/css/bootstrap.min.css">
       <!-- Animate -->
-      <link rel="stylesheet" href="css/animate.min.css">
+      <link rel="stylesheet" href="/css/animate.min.css">
       <!-- Owl carusel -->
-      <link rel="stylesheet" href="css/owl.carousel.min.css">
+      <link rel="stylesheet" href="/css/owl.carousel.min.css">
       <!-- Aos Css-->
-      <link rel="stylesheet" href="css/aos.css"/>
+      <link rel="stylesheet" href="/css/aos.css"/>
       <!-- font awesome -->
-      <link rel="stylesheet" href="css/font-awesome.min.css">
+      <link rel="stylesheet" href="/css/font-awesome.min.css">
       <!-- highlight.js -->
-      <link rel="stylesheet" href="css/default-dark.min.css">
+      <link rel="stylesheet" href="/css/default-dark.min.css">
       <!-- main css -->
-      <link rel="stylesheet" href="css/style.css?v=20260819">
+      <link rel="stylesheet" href="/css/style.css?v=20260819">
    </head>
    <body data-spy="scroll" data-target=".site-nav-target" data-offset="200">
 
@@ -47,7 +47,7 @@
       <!-- Preloader -->
       <div class="loader desktop-only">
          <div class="intro">
-            <div class="intro-title"><img src="images/logo-large-black.png" class="logo-img light-logo img-fluid" alt=""></div>
+            <div class="intro-title"><img src="/images/logo-large-black.png" class="logo-img light-logo img-fluid" alt=""></div>
          </div>
       </div>
       <!-- preloader End --> 
@@ -76,7 +76,7 @@
 <h4>The Exploit</h4>
 <p>The vulnerability was located in the Shared Folders subsystem of Parallels Desktop hypervisor, and the resulting exploit chain achieved full guest-to-host escape — executing code on the host from within the guest VM.
    
-My exploit had to be quite complicated: pivoting off a Linux Kernel module to a reverse-engineered protocol implementation to deliver the payload through the hypercall interface. I was able to achieve 100% reliability of the exploit: partly by finding a rare logic bug in hypervisor internals, and partly by following systematic exploit engineering principles (that are now included in my <a class="underline" href="training" target="_blank">training programs</a>).</p>
+My exploit had to be quite complicated: pivoting off a Linux Kernel module to a reverse-engineered protocol implementation to deliver the payload through the hypercall interface. I was able to achieve 100% reliability of the exploit: partly by finding a rare logic bug in hypervisor internals, and partly by following systematic exploit engineering principles (that are now included in my <a class="underline" href="/training" target="_blank">training programs</a>).</p>
 
 <p>Hypervisor escapes are considered to be one of the most challenging exploit classes, especially when delivered in the form of a zero day exploit. They are universally recognized as a strong technical accomplishment, regardles of the attack vector. I am proud of being able to elevate my skills beyond my <a href="https://x.com/alisaesage/status/974646492932853760" class="underline" target="_blank">first attempts with VirtualBox</a>, to show a live exploit for a complex binary hypervisor.</p>
 
@@ -87,12 +87,12 @@ My exploit had to be quite complicated: pivoting off a Linux Kernel module to a 
    <p><i>Live demonstration record of Alisa's exploit at Pwn2Own 2021</i></p>
 </div>
 
-<p style="text-align: center;"><img src="images/blog/pwn2own21-thezdi.png" alt="" class="img-fluid" width="70%"></p>
-<p style="text-align: center;"><img src="images/blog/pwn2own21-thezdi2.png" alt="" class="img-fluid" width="70%"><br><i>Archived public acknowledgment by Zero Day Initiative (ZDI)</i></p>
+<p style="text-align: center;"><img src="/images/blog/pwn2own21-thezdi.png" alt="" class="img-fluid" width="70%"></p>
+<p style="text-align: center;"><img src="/images/blog/pwn2own21-thezdi2.png" alt="" class="img-fluid" width="70%"><br><i>Archived public acknowledgment by Zero Day Initiative (ZDI)</i></p>
 
-<p style="text-align: center;"><img src="images/blog/pwn2own21-dragosr.png" alt="" class="img-fluid" width="70%"><br><i>Confirmation by Dragos Ruiu, Pwn2Own founder</i></p>
+<p style="text-align: center;"><img src="/images/blog/pwn2own21-dragosr.png" alt="" class="img-fluid" width="70%"><br><i>Confirmation by Dragos Ruiu, Pwn2Own founder</i></p>
 
-<p style="text-align: center;"><img src="images/blog/pwn2own21-abdhariri.png" alt="" class="img-fluid" width="70%"><br><i>Exploit  executed by Abdul Aziz Hariri, Pwn2Own operations lead</i></p>
+<p style="text-align: center;"><img src="/images/blog/pwn2own21-abdhariri.png" alt="" class="img-fluid" width="70%"><br><i>Exploit  executed by Abdul Aziz Hariri, Pwn2Own operations lead</i></p>
 
 <h4>What Actually Happened</h4>
 <p>   • The exploit was fully functional and achieved its intended impact of executing my shellcode on the host MacOS system.
@@ -120,17 +120,17 @@ My exploit had to be quite complicated: pivoting off a Linux Kernel module to a 
 
 <p>And the full technical walkthrough video:  
 <a class="underline" target="_blank" href="https://youtu.be/6UhgLteN-PU">Technical walkthrough video</a>
-<a class="underline" target="_blank" href="research/slides/ZDE2021_AdvancedEasyPwn2Own2021.pdf">Slides</a></p>
+<a class="underline" target="_blank" href="/research/slides/ZDE2021_AdvancedEasyPwn2Own2021.pdf">Slides</a></p>
 
 <p>If you’re serious about hypervisors and want to go beyond this single bug, get my pro training:
    
-• <a class="underline" target="_blank" href="training/hypervisor-vulnerability-research.html">Hypervisor Vulnerability Research</a>
+• <a class="underline" target="_blank" href="/training/hypervisor-vulnerability-research.html">Hypervisor Vulnerability Research</a>
 
 This is the most comprehensive hypervisor exploit training program available on the market. Alumni include multiple Pwn2Own winners; a few attendees had found hypervisor security bugs worth $250,000 [<a class="underline" target="_blank" href="https://www.microsoft.com/en-us/msrc/bounty-hyper-v">1</a>, <a class="underline" target="_blank" href="https://x.com/australeo/status/1413040409719103488">2</a>, <a class="underline" target="_blank" href="https://www.akamai.com/blog/security/discovering-a-critical-0-day">3</a>] by directly applying my insights and methodologies. 
 
 If you're new and looking to get into zero day hunting and exploit development, start with my Zero Day Vulnerability Research course: 
 
-• <a class="underline" target="_blank" href="training/universal-vulnerability-research.html">Zero Day Vulnerability Research</a>
+• <a class="underline" target="_blank" href="/training/universal-vulnerability-research.html">Zero Day Vulnerability Research</a>
 
 This is the only universal course in the industry built by an actual advanced-level hacker. It doesn't just teach you shallow skills like, how to spot a buffer overflow; it starts from the mindset, builds up powerful mental models that apply to any research target, and then introduces essential cross-domain skills such as fuzzing, reverse engineering, and vulnerability analysis – so that you're future proof for decades ahead. 
 
@@ -150,9 +150,9 @@ My unique methodology comes from 10+ years of solo research work in multiple hig
                            </div>
                            
                            <div class="post-single-navigation d-flex align-items-stretch">
-                              <a href="research/index.html" class="mr-auto w-50 pr-4">
+                              <a href="/research/index.html" class="mr-auto w-50 pr-4">
                                  <span class="d-block cursor-item"><i class="fa fa-chevron-left mr-2"></i> Research</span></a>
-                              <a href="training/index.html" class="ml-auto w-50 text-right pl-4">
+                              <a href="/training/index.html" class="ml-auto w-50 text-right pl-4">
                                  <span class="d-block cursor-item">Training <i class="fa fa-chevron-right ml-2"></i></span></a>
                            </div>
                         </div>
@@ -179,38 +179,38 @@ My unique methodology comes from 10+ years of solo research work in multiple hig
       <div class="cursor-follower"></div>
 
       <!-- jquery -->
-      <script src="js/query-3.4.1.min.js"></script>
+      <script src="/js/query-3.4.1.min.js"></script>
       <!-- bootstrap -->
-      <script src="js/bootstrap.min.js"></script>
+      <script src="/js/bootstrap.min.js"></script>
       <!-- aos -->
-      <script src="js/aos.js"></script>
+      <script src="/js/aos.js"></script>
       <!-- owl.carusel js -->
-      <script src="js/owl.carousel.min.js"></script>
+      <script src="/js/owl.carousel.min.js"></script>
       <!-- isotope js -->
-      <script src="js/isotope.pkgd.min.js"></script>
+      <script src="/js/isotope.pkgd.min.js"></script>
       <!-- isotope image loader js -->
-      <script src="js/imagesloaded.pkgd.min.js"></script>
+      <script src="/js/imagesloaded.pkgd.min.js"></script>
       <!-- three -->
-      <script src="js/three.min.js"></script>
+      <script src="/js/three.min.js"></script>
       <!-- anime -->
-      <script src="js/anime.min.js"></script>
+      <script src="/js/anime.min.js"></script>
       <!-- tweenmax -->
-      <script src="js/TweenMax.min.js"></script>
+      <script src="/js/TweenMax.min.js"></script>
       <!-- jquery.waypoints.min.js -->
-      <script src="js/jquery.waypoints.min.js"></script>
+      <script src="/js/jquery.waypoints.min.js"></script>
       <!-- circletype-->
-      <script src="js/circletype.min.js"></script>
+      <script src="/js/circletype.min.js"></script>
       <!-- hover-effect -->
-      <script src="js/hover-effect.umd.js"></script>
+      <script src="/js/hover-effect.umd.js"></script>
       <!-- gsap -->
-      <script src="js/gsap.min.js"></script>
+      <script src="/js/gsap.min.js"></script>
       <!-- ScrollMagic gsap -->
-      <script src="js/ScrollMagic.min.js"></script>
-      <script src="js/scrollmagic.animation.gsap.min.js"></script>
+      <script src="/js/ScrollMagic.min.js"></script>
+      <script src="/js/scrollmagic.animation.gsap.min.js"></script>
       <!-- highlight.js -->
-      <script src="js/highlight.min.js"></script>
+      <script src="/js/highlight.min.js"></script>
       <!-- custom -->
-      <script src="js/custom.js"></script>
+      <script src="/js/custom.js"></script>
       <script>hljs.highlightAll();</script>
    <script src="/js/newsletter.js?v=20260819"></script>
    </body>

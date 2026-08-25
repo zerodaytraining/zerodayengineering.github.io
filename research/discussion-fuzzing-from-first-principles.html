@@ -19,22 +19,22 @@
       <meta name="author" content=""/>
       <base href="../"> 
       <!--Favicons-->
-      <link rel="shortcut icon" href="images/favicon.png">
+      <link rel="shortcut icon" href="/images/favicon.png">
       <!--Page Title-->
       <title>Discussion: Fuzzing from First Principles – Zero Day Engineering Project</title>
       <!-- Stylesheets -->
       <!-- bootstrap -->
-      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="/css/bootstrap.min.css">
       <!-- Animate -->
-      <link rel="stylesheet" href="css/animate.min.css">
+      <link rel="stylesheet" href="/css/animate.min.css">
       <!-- Owl carusel -->
-      <link rel="stylesheet" href="css/owl.carousel.min.css">
+      <link rel="stylesheet" href="/css/owl.carousel.min.css">
       <!-- Aos Css-->
-      <link rel="stylesheet" href="css/aos.css"/>
+      <link rel="stylesheet" href="/css/aos.css"/>
       <!-- font awesome -->
-      <link rel="stylesheet" href="css/font-awesome.min.css">
+      <link rel="stylesheet" href="/css/font-awesome.min.css">
       <!-- main css -->
-      <link rel="stylesheet" href="css/style.css?v=20260819">
+      <link rel="stylesheet" href="/css/style.css?v=20260819">
    </head>
    <body data-spy="scroll" data-target=".site-nav-target" data-offset="200">
 
@@ -45,7 +45,7 @@
       <!-- Preloader -->
       <div class="loader desktop-only">
          <div class="intro">
-            <div class="intro-title"><img src="images/logo-large-black.png" class="logo-img light-logo img-fluid" alt=""></div>
+            <div class="intro-title"><img src="/images/logo-large-black.png" class="logo-img light-logo img-fluid" alt=""></div>
          </div>
       </div>
       <!-- preloader End --> 
@@ -120,7 +120,7 @@
                               
                            Ideally, if a branch can be deterministically resolved with an SMT solver, it gives a probability of P=1 for finding the right conditional value, compared to P=1/254 with stochastic blackbox fuzzing (assuming an 8-bit conditional value on branch and single-byte mutator with a true random generator, as an example; <i>Image 1</i>). So, going deeper into the program, the probabilities of finding the next branch correctly drop overall much slower that in random fuzzing and even in coverage guided fuzzing. This is in theory.</p>
 
-                           <p style="text-align: center;"><img src="research/media/ffp_simple.png" alt="" title="" class="img-fluid" width="70%">                                     
+                           <p style="text-align: center;"><img src="/research/media/ffp_simple.png" alt="" title="" class="img-fluid" width="70%">                                     
                            <i>Image 1. Example of probabilities in stochastic blackbox fuzzing (singular branch)</i></p>
                            
                            <p>In practice, however, this comes with the cost of running the solver, that slows down the fuzzer; as well as other practical constraints. Especially facing the program path explosion, this slowdown accumulates exponentially, rendering symbolic execution-assisted fuzzers unproductive toward deeper program exploration. This is why, at present, symbolic execution-assisted fuzzers are only marginally useful. <b>My model shows exactly why and how it can be improved</b>, though much of the solution will depend on practical challenges.</p>
@@ -133,7 +133,7 @@
                               
                            In symbolic execution, the SMT solver overhead is substantial and it accumulates quickly, which at some point effectively halts the fuzzer. In contrast, in normal fuzzing it's the small probabilities of finding correct values which compound over time, while the cost of running the fuzzer and the fuzzed program is largely consistent throughout the program tree <i>(Image 2)</i>.</p>
                            
-                           <p style="text-align: center;"><img src="research/media/ffp_complex.png" alt="" title="" class="img-fluid" width="70%">                                     
+                           <p style="text-align: center;"><img src="/research/media/ffp_complex.png" alt="" title="" class="img-fluid" width="70%">                                     
                            <i>Image 2. Example of probabilities in stochastic blackbox fuzzing (compounding)</i></p>
    
                            <p>This means that a SE-assisted fuzzer may initially outperform a normal fuzzer, but its productivity drops sharply, while a normal fuzzer starts slower but excels deeper into the program.</p>
@@ -192,7 +192,7 @@
                            
                            <p>Crash triage is a distinct topic which is unrelated to fuzzing, in terms of "how it works". Obviously, this wasn't the topic of discussion, but I'm happy to address it here.</p>
                            
-                           <p>Assuming that your research platform basics are covered (symbolized binary or source code debugging, a snappy debugging setup, a stable crashing test case, etc.), <b>you improve your crash triage by understanding the target software internals</b>. Awareness of common vulnerabilities in target software is helpful, too, so studying the history of vulnerabilities at a mid to deep technical level. This forms the foundation of my specialized Vulnerability Research trainings (such as <a class="underline" target="_blank" href="training/hypervisor-vulnerability-research.html">Hypervisor Vulnerability Research</a>, with more target courses coming soon). Without this theory, you’ll struggle during triaging as well as exploit development, or waste excessive time debugging.</p>
+                           <p>Assuming that your research platform basics are covered (symbolized binary or source code debugging, a snappy debugging setup, a stable crashing test case, etc.), <b>you improve your crash triage by understanding the target software internals</b>. Awareness of common vulnerabilities in target software is helpful, too, so studying the history of vulnerabilities at a mid to deep technical level. This forms the foundation of my specialized Vulnerability Research trainings (such as <a class="underline" target="_blank" href="/training/hypervisor-vulnerability-research.html">Hypervisor Vulnerability Research</a>, with more target courses coming soon). Without this theory, you’ll struggle during triaging as well as exploit development, or waste excessive time debugging.</p>
                            
                            <p class="quote">صائدون البيض > And also I wish Alisa could explain how to make the exploit portable, like for a Linux kernel exploit how to make it work for other kernel versions etc</p>
                            
@@ -246,7 +246,7 @@
                            
                            <div style="display: flex; justify-content: center; align-items: center; margin: 0;">
                               <video width="70%" controls style="height: auto;">
-                                  <source src="research/media/cat-drinker.mov" type="video/mp4">
+                                  <source src="/research/media/cat-drinker.mov" type="video/mp4">
                                   Your browser does not support the video tag.
                               </video></div>
                               <p style="text-align:center;"><i>Cat drinking fountain</i></p>
@@ -258,9 +258,9 @@
                            <p class="quote">Kush> in her training, will she also teach about fuzzing?
                            Maze> Id be looking at the v8 internals course</p>
                            
-                           <p>My <a class="underline" target="_blank" href="training/universal-vulnerability-research.html">Zero Day Vulnerability Research course</a> has a module on fuzzing. It also explains the basics of attack surface modeling to decide where to target the fuzzer.</p>
+                           <p>My <a class="underline" target="_blank" href="/training/universal-vulnerability-research.html">Zero Day Vulnerability Research course</a> has a module on fuzzing. It also explains the basics of attack surface modeling to decide where to target the fuzzer.</p>
                            
-                           <p> <a class="underline" target="_blank" href="training/hypervisor-vulnerability-research.html">Hypervisor Vulnerability Research training</a> includes hypervisor-specific aspects of fuzzing in the general context of vulnerability discovery in hypervisors, while assuming familiarity with fuzzing foundations.</p>
+                           <p> <a class="underline" target="_blank" href="/training/hypervisor-vulnerability-research.html">Hypervisor Vulnerability Research training</a> includes hypervisor-specific aspects of fuzzing in the general context of vulnerability discovery in hypervisors, while assuming familiarity with fuzzing foundations.</p>
                            
                            <p><a class="underline" target="_blank" href="https://zerodayengineering.com/training/masterclass/vulnerability-research.html#fuzzing">Fuzzing masterclass</a> shows how to level up your fuzzing game through understanding low-level internals of modern fuzzing tools, with a goal in mind to attack non-trivial software that either isn't supported by fuzzers out of the box, or is extensively fuzzed by the vendor so you need to outsmart them.</p>
                            
@@ -279,9 +279,9 @@
 
 
                            <div class="post-single-navigation d-flex align-items-stretch">
-                              <a href="research/index.html" class="mr-auto w-50 pr-4">
+                              <a href="/research/index.html" class="mr-auto w-50 pr-4">
                                  <span class="d-block cursor-item"><i class="fa fa-chevron-left mr-2"></i> Research</span></a>
-                              <a href="training/index.html" class="ml-auto w-50 text-right pl-4">
+                              <a href="/training/index.html" class="ml-auto w-50 text-right pl-4">
                                  <span class="d-block cursor-item">Training <i class="fa fa-chevron-right ml-2"></i></span></a>
                            </div>
 
@@ -309,36 +309,36 @@
       <div class="cursor-follower"></div>
 
       <!-- jquery -->
-      <script src="js/query-3.4.1.min.js"></script>
+      <script src="/js/query-3.4.1.min.js"></script>
       <!-- bootstrap -->
-      <script src="js/bootstrap.min.js"></script>
+      <script src="/js/bootstrap.min.js"></script>
       <!-- aos -->
-      <script src="js/aos.js"></script>
+      <script src="/js/aos.js"></script>
       <!-- owl.carusel js -->
-      <script src="js/owl.carousel.min.js"></script>
+      <script src="/js/owl.carousel.min.js"></script>
       <!-- isotope js -->
-      <script src="js/isotope.pkgd.min.js"></script>
+      <script src="/js/isotope.pkgd.min.js"></script>
       <!-- isotope image loader js -->
-      <script src="js/imagesloaded.pkgd.min.js"></script>
+      <script src="/js/imagesloaded.pkgd.min.js"></script>
       <!-- three -->
-      <script src="js/three.min.js"></script>
+      <script src="/js/three.min.js"></script>
       <!-- anime -->
-      <script src="js/anime.min.js"></script>
+      <script src="/js/anime.min.js"></script>
       <!-- tweenmax -->
-      <script src="js/TweenMax.min.js"></script>
+      <script src="/js/TweenMax.min.js"></script>
       <!-- jquery.waypoints.min.js -->
-      <script src="js/jquery.waypoints.min.js"></script>
+      <script src="/js/jquery.waypoints.min.js"></script>
       <!-- circletype-->
-      <script src="js/circletype.min.js"></script>
+      <script src="/js/circletype.min.js"></script>
       <!-- hover-effect -->
-      <script src="js/hover-effect.umd.js"></script>
+      <script src="/js/hover-effect.umd.js"></script>
       <!-- gsap -->
-      <script src="js/gsap.min.js"></script>
+      <script src="/js/gsap.min.js"></script>
       <!-- ScrollMagic gsap -->
-      <script src="js/ScrollMagic.min.js"></script>
-      <script src="js/scrollmagic.animation.gsap.min.js"></script>
+      <script src="/js/ScrollMagic.min.js"></script>
+      <script src="/js/scrollmagic.animation.gsap.min.js"></script>
       <!-- custom -->
-      <script src="js/custom.js"></script>
+      <script src="/js/custom.js"></script>
    <script src="/js/newsletter.js?v=20260819"></script>
    </body>
 </html>

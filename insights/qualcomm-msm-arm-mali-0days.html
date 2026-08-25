@@ -19,24 +19,24 @@
       <meta name="author" content=""/>
       <base href="../"> 
       <!--Favicons-->
-      <link rel="shortcut icon" href="images/favicon.png">
+      <link rel="shortcut icon" href="/images/favicon.png">
       <!--Page Title-->
       <title>Deep Dive: Qualcomm MSM & ARM Mali Kernel 0-day Exploit Attacks of October 2023 - Zero Day Engineering Insights</title>
       <!-- Stylesheets -->
       <!-- bootstrap -->
-      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="/css/bootstrap.min.css">
       <!-- Animate -->
-      <link rel="stylesheet" href="css/animate.min.css">
+      <link rel="stylesheet" href="/css/animate.min.css">
       <!-- Owl carusel -->
-      <link rel="stylesheet" href="css/owl.carousel.min.css">
+      <link rel="stylesheet" href="/css/owl.carousel.min.css">
       <!-- Aos Css-->
-      <link rel="stylesheet" href="css/aos.css"/>
+      <link rel="stylesheet" href="/css/aos.css"/>
       <!-- font awesome -->
-      <link rel="stylesheet" href="css/font-awesome.min.css">
+      <link rel="stylesheet" href="/css/font-awesome.min.css">
       <!-- highlight.js -->
-      <link rel="stylesheet" href="css/default-dark.min.css">
+      <link rel="stylesheet" href="/css/default-dark.min.css">
       <!-- main css -->
-      <link rel="stylesheet" href="css/style.css?v=20260819">
+      <link rel="stylesheet" href="/css/style.css?v=20260819">
    </head>
    <body data-spy="scroll" data-target=".site-nav-target" data-offset="200">
 
@@ -47,7 +47,7 @@
       <!-- Preloader -->
       <div class="loader desktop-only">
          <div class="intro">
-            <div class="intro-title"><img src="images/logo-large-black.png" class="logo-img light-logo img-fluid" alt=""></div>
+            <div class="intro-title"><img src="/images/logo-large-black.png" class="logo-img light-logo img-fluid" alt=""></div>
          </div>
       </div>
       <!-- preloader End --> 
@@ -66,7 +66,7 @@
                      <div class="row justify-content-center">
                         <div class="col-md-8">
                            <h1>Zero Day Engineering Insights</h1>
-                           <p style="font-size:12px; letter-spacing:.04em; color:rgba(237,234,230,0.45);">0-Day Insights are now part of the <a href="../intelligence/index.html" style="color:#C8B99A; text-decoration:none;">Alpha &mdash; Exploit Intelligence</a> subscription.</p>
+                           <p style="font-size:12px; letter-spacing:.04em; color:rgba(237,234,230,0.45);">0-Day Insights are now part of the <a href="/intelligence/index.html" style="color:#C8B99A; text-decoration:none;">Alpha &mdash; Exploit Intelligence</a> subscription.</p>
                            <h3 class="mb-4">Deep Dive: Qualcomm MSM Linux Kernel & ARM Mali GPU 0-day Exploit Attacks of October 2023</h3>
                            <p class="date">December 13th, 2023 - by Alisa Esage</p>
                            <h6>Overview</h6>
@@ -146,7 +146,7 @@
                            
                            Take a look at the <a class="underline" target="_blank" href="https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/documents/snapdragon_801_processor_product_brief_122.pdf">technical brief (PDF) for Snapdragon 801</a>, one of the many Snapdragon SoC models manufactured by Qualcomm. This particular one powers NASA's <a class="underline" target="_blank" href="https://www.youtube.com/watch?v=qwdfdE6ruMw&ab_channel=NASAJetPropulsionLaboratory">Ingenuity helicopter</a>, which landed on Mars on February 18, 2021.</p>
 
-                           <img src="insights/images/snapdragon-801-layout.png" alt="" title="" class="img-fluid">
+                           <img src="/insights/images/snapdragon-801-layout.png" alt="" title="" class="img-fluid">
                            <p style="text-align: center;"><i>Source: <a href="https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/documents/snapdragon_801_processor_product_brief_122.pdf">Snapdragon 801 Processor Product Brief (Qualcomm)</a></i></p>
 
                            <p>The SoC (System on Chip) board here holds only 9 components: aside from the (obviously) CPU, there is Adreno GPU, Hexagon DSP (Digital Signal Processor), an integrated wireless connectivity chip, sensor, camera, satellite support, display and multimedia chips. Each one of the components is a more or less self-contained hardware device that will require a specialized kernel driver in the OS.
@@ -155,8 +155,8 @@
                            
                            A typical modern smartphone-grade Snapdragon SoC is somewhat more complex with more CPU cores, many specialized hardware interfaces, higher clock rate, 64-bit vs. 32-bit, a more developed wireless connectivity infrastructure, etc. Many Android smartphones are based on Snapdragon SoCs (roughly 30%-40%, averaging over long-term trends), while iPhones nowadays use only a standalone <a class="underline" target="_blank" href="https://www.cnet.com/tech/mobile/apple-extends-modem-deal-with-qualcomm-ahead-of-iphone-15-launch/">cellular modem chip</a> from Snapdragon line. Here is a more realistic map of a typical Snapdragon SoC (820e), which gives an idea of how much custom OS kernel code will be needed to support it.</p>
 
-                           <a href="insights/images/snapdragon-820e.png"><img src="insights/images/snapdragon-820e.png" alt="" title="" class="img-fluid"></a>                           
-                           <p style="text-align: center;"><i>Image is taken from the slides of my talk <a class="underline" target="_blank" target="_blank" href="research/slides/CCC2020_AdvancedHexagonDiag.pdf">Advanced Hexagon Diag</a>. It seems that Qualcomm has simplified their technical briefs since then, and I couldn't quickly find the original technical specification document online which the slide refers to. </i></p>
+                           <a href="/insights/images/snapdragon-820e.png"><img src="/insights/images/snapdragon-820e.png" alt="" title="" class="img-fluid"></a>                           
+                           <p style="text-align: center;"><i>Image is taken from the slides of my talk <a class="underline" target="_blank" target="_blank" href="/research/slides/CCC2020_AdvancedHexagonDiag.pdf">Advanced Hexagon Diag</a>. It seems that Qualcomm has simplified their technical briefs since then, and I couldn't quickly find the original technical specification document online which the slide refers to. </i></p>
                         
                            <p>Now that we know what is Qualcomm MSM which holds 4 out of 5 bugs in discussion, let's consider ARM Mali target (CVE-2023-4211).
                            
@@ -171,7 +171,7 @@
 
                            <p>From Qualcomm advisory: "Use After Free in [MSM Linux Kernel] DSP Services - Memory corruption in DSP Services during a remote call from HLOS to DSP."</p>
 
-                           <img src="insights/images/cve-2023-33063.png" alt="" title="" class="img-fluid">                      
+                           <img src="/insights/images/cve-2023-33063.png" alt="" title="" class="img-fluid">                      
                            <p style="text-align: center;"><i>Interestingly, the bug was added to CISA KEV list only in December (2023-12-05), while Qualcomm notified 0-day exploitation in October 2023</i></p>
 
                            <p>The bug is in aDSP device driver code which implements FastRPC. The <a class="underline" target="_blank" href="https://git.codelinaro.org/clo/la/kernel/msm-5.15/-/commit/2643808ddbedfaabbb334741873fb2857f78188a">patch</a> too long to show here in full. We'll need some extra background information for this one. 
@@ -184,13 +184,13 @@
 
                            The patch introduces a new variable <code>unsigned int ctx_refs</code>, which holds the number of context references to fastrpc buffers. This suggests that in the vulnerable code, one of fastrpc buffers was freed out of turn, while some code was still using it, which lead to a Use-after-free vulnerability. I did not verify where exactly it happens; looking at the patch, most likely candidate is the unmapping code, for which the patch adds an extra condition checking the value of the new variable ctx_refs. </p>
 
-                           <a target="_blank" href="insights/images/patch_cve-2023-33063.png"><img src="insights/images/patch_cve-2023-33063.png" alt="" title="" class="img-fluid"> </a>                    
+                           <a target="_blank" href="/insights/images/patch_cve-2023-33063.png"><img src="/insights/images/patch_cve-2023-33063.png" alt="" title="" class="img-fluid"> </a>                    
                            <p style="text-align: center;"><i>Sample snippet of the patch for CVE-2023-33063</i></p>
                            <p>The vulnerability opens an attack vector from userland to kernel, most likely through the IOCTL interface. Use-after-free bugs are, in most cases, easily exploitable. This and other bugs in Qualcomm MSM Linux kernel can be exploited on Qualcomm-based smartphones to escape Android application sandbox and thus elevate privileges of the exploit payload code. Also, this may be a stepping stone to achieve device boot persistence (rooting the device), or simply execute more powerful arbitrary code. </p>
                         
                            <h6>CVE-2023-33106: Unsanitized Input in Adreno GPU KGSL IOCTL</h6>
                            <p>From Qualcomm security advisory: "Use of Out-of-range Pointer Offset in Graphics - Memory corruption while submitting a large list of sync points in an AUX command to the IOCTL_KGSL_GPU_AUX_COMMAND".</p>
-                           <a target="_blank" href="insights/images/patch_cve-2023-33106.png"><img src="insights/images/patch_cve-2023-33106.png" alt="" title="" class="img-fluid"> </a>                    
+                           <a target="_blank" href="/insights/images/patch_cve-2023-33106.png"><img src="/insights/images/patch_cve-2023-33106.png" alt="" title="" class="img-fluid"> </a>                    
                            <p style="text-align: center;"><i>Full patch code for CVE-2023-33106</i></p>
                            <p>This one is easy. Similarly to DSP microdevices on a mobile SoCs, the GPU microdevice requires dedicated OS kernel support, which, for Snapdragon's Adreno GPU, is implemented in the kernel driver named KGSL. One of the source modules which implement this driver in MSM Linux kernel is at drivers/gpu/msm/kgsl.c, where the bug resides.
                            
@@ -201,7 +201,7 @@
                            <h6>CVE-2023-33107: Integer Overflow in KGSL IOMMU SVM memory management</h6>
                            <p>Vendor: "Integer Overflow or Wraparound in Graphics Linux - Memory corruption in Graphics Linux while assigning shared virtual memory region during IOCTL call."</p>
 
-                           <a target="_blank" href="insights/images/patch_cve-2023-33107.png"><img src="insights/images/patch_cve-2023-33107.png" alt="" title="" class="img-fluid"> </a>                    
+                           <a target="_blank" href="/insights/images/patch_cve-2023-33107.png"><img src="/insights/images/patch_cve-2023-33107.png" alt="" title="" class="img-fluid"> </a>                    
                            <p style="text-align: center;"><i>Full patch code for CVE-2023-33107</i></p>
 
                            <p>Similarly to the previous bug, this one is in kgsl driver code for Adreno GPU. Low level aspect of the vulnerability is obvious from the patch: there is an integer wraparound in arithmetic computation of the sum of <code>gpuaddr</code> and <code>size</code> variables. In addition,  patch description suggests that the bug is in IOCTL processing (this is not immediately obvious in the patched code). However, high level context of this bug is quite complex and interesting.
@@ -210,12 +210,12 @@
 
                            Looking again at the bug, it is in kgsl_iommu.c source module, and the vulnerable function <i>iommu_addr_in_svm_ranges</i> implements a (failed) sanity check for three input parameters related to low-level SVM memory management of the GPU. MMU internals are one of the most complex subjects in OS kernel practice, that warrants a dedicated treatment; for our purposes it is only important to know how exactly the user can influence those parameters. Here is where the check procedure is called:</p>
 
-                           <a target="_blank" href="insights/images/patch_cve-2023-33107_2.png"><img src="insights/images/patch_cve-2023-33107_2.png" alt="" title="" class="img-fluid"> </a>                    
+                           <a target="_blank" href="/insights/images/patch_cve-2023-33107_2.png"><img src="/insights/images/patch_cve-2023-33107_2.png" alt="" title="" class="img-fluid"> </a>                    
                            <p style="text-align: center;"><i>Invocation of the buggy check (kgsl_iommu.c)</i></p>
 
                            <p>When the check is miscalculated due to integer wraparound, the malicious <code>gpuaddr</code> and <code>size</code> parameters will go to downstream code and cause a memory corruption (I'm guessing, via corrupted linked list management). The code of <code>kgsl_iommu_set_svm_region</code> can be reached, after passing a long chain of calls in deep internals of the driver, with IOCTL_KGSL_GPUOBJ_IMPORT, which has the following arguments: </p>
 
-                           <a target="_blank" href="insights/images/IOCTL_KGSL_GPUOBJ_IMPORT.png"><img src="insights/images/IOCTL_KGSL_GPUOBJ_IMPORT.png" alt="" title="" class="img-fluid"> </a>                    
+                           <a target="_blank" href="/insights/images/IOCTL_KGSL_GPUOBJ_IMPORT.png"><img src="/insights/images/IOCTL_KGSL_GPUOBJ_IMPORT.png" alt="" title="" class="img-fluid"> </a>                    
                            <p style="text-align: center;"><i>Definition of IOCTL_KGSL_GPUOBJ_IMPORT and parameters</i></p>
 
                            <p>Interstengly, this IOCTL command represents a still rather high level implementation of the the GPU communication protocol for SVM (passing "GPU objects" around the inter-processor boundary). </p>
@@ -223,7 +223,7 @@
                            <h6>CVE-2022-22071: Use-after-free in aDSP driver memory management</h6>
                            <p>From Qualcomm advisory (May 2022 Security Bulletin, not a typo): "Use After Free in Automotive OS Platform Android - Possible use after free when process shell memory is freed using IOCTL munmap call and process initialization is in progress".</p>
 
-                           <a target="_blank" href="insights/images/patch_cve-2022-22071.png"><img src="insights/images/patch_cve-2022-22071.png" alt="" title="" class="img-fluid"> </a>                    
+                           <a target="_blank" href="/insights/images/patch_cve-2022-22071.png"><img src="/insights/images/patch_cve-2022-22071.png" alt="" title="" class="img-fluid"> </a>                    
                            <p style="text-align: center;"><i>Full patch code for CVE-2022-22071</i></p>
                            <p>This vulnerability stands out for several reasons. First, it is a bug that was patched in May 2022, and attributed to the security researcher Seonung Jang(@IFdLRx4At1WFm74), while bug exploitation "in the wild" was reported in October 2023. When 0-day exploit attack is reported, credit is usually given to the incident response analyst who caugh the exploit, while the security researcher who discovered the vulnerability in the code will remain unknown. This line of thinking suggests that the bug was either exploited as N-day on unpatched devices, or as a pseudo-0-day on OEM devices that ship outdated software and fail to update it. Either way, it is most likely that the October attack was informed by patch analysis, similar to the workflow which I show in this article. 
 
@@ -233,7 +233,7 @@
 
                            The meaning of the patch is simple: it informs adsprpc device driver that some memory is still in use, so that the pointer behind it would not be freed. Especially, <code>is_filemap</code> variable is a "flag to indicate map used in process init", and it's checked in unmapping code like this: 
 
-                           <a target="_blank" href="insights/images/patch_cve-2022-22071_2.png"><img src="insights/images/patch_cve-2022-22071_2.png" alt="" title="" class="img-fluid"> </a>                    
+                           <a target="_blank" href="/insights/images/patch_cve-2022-22071_2.png"><img src="/insights/images/patch_cve-2022-22071_2.png" alt="" title="" class="img-fluid"> </a>                    
                            <p style="text-align: center;"><i>Details for CVE-2022-22071</i></p>
                            
                            <p>
@@ -246,7 +246,7 @@
 
                            Looking at Bifrost GPU Kernel Driver code, between r42p0 and r43p0 the code was changed substantially (the source diff is around 10k lines) and not only for security reasons, which makes it non-trivial to identify the specific vulnerability patch. Upon a quick inspection, the change in <code>kbase_csf_queue_register</code> makes a good candidate:</p>
 
-                           <a target="_blank" href="insights/images/patch_cve-2023-4211_maybe.png"><img src="insights/images/patch_cve-2023-4211_maybe.png" alt="" title="" class="img-fluid"> </a>                    
+                           <a target="_blank" href="/insights/images/patch_cve-2023-4211_maybe.png"><img src="/insights/images/patch_cve-2023-4211_maybe.png" alt="" title="" class="img-fluid"> </a>                    
                            <p style="text-align: center;"><i>Suspected patch for CVE-2023-4211</i></p>
                            <p>Here, <code>kbase_csf_queue_register</code> procedure can be reached with KBASE_IOCTL_CS_QUEUE_REGISTER ioctl call, while it clearly involves added sanitization of input parameters related to GPU memory management. If this is not CVE-2023-4211, then it must be a different but very similar vulnerability, which could be exploited using the same technique.</p>
 
@@ -259,7 +259,7 @@
                            The impact of all the bugs is the same: they allow to escape Android application sandbox and execute arbitrary code with elevated privileges. Such bugs would be typically exploited in the third stage of a full-chain exploit, post-RCE through the browser or a similar remote attack vector. Further, such bugs open an attack surface to persistence, that would normally require a third vulnerability.
 
                            To outline the big pictire, a complete full-chain exploit for a modern mobile smartphone (Android-based or iPhone, no big difference) will normally require *at least* four distinct vulnerabilities:
-                           1. Remote code execution bug in Application (such as an <a target="_blank" class="underline" target="_blank" href="research/javascript-engines-exploitation-jscript9.html">exploit for JavaScript engine</a> of mobile browser).
+                           1. Remote code execution bug in Application (such as an <a target="_blank" class="underline" target="_blank" href="/research/javascript-engines-exploitation-jscript9.html">exploit for JavaScript engine</a> of mobile browser).
                            2. Memory disclosure (infoleak) bug in Application, to defeat ASLR.
                            3. Application sandbox bypass and/or elevation of privilege bug.
                            4. Bootloader or a similar level vulnerability to bypass Secure Boot technologies and persist on the device between reboots.
@@ -293,9 +293,9 @@
                            </div>
                            
                            <div class="post-single-navigation d-flex align-items-stretch">
-                              <a href="research/index.html" class="mr-auto w-50 pr-4">
+                              <a href="/research/index.html" class="mr-auto w-50 pr-4">
                                  <span class="d-block cursor-item"><i class="fa fa-chevron-left mr-2"></i> Research</span></a>
-                              <a href="training/index.html" class="ml-auto w-50 text-right pl-4">
+                              <a href="/training/index.html" class="ml-auto w-50 text-right pl-4">
                                  <span class="d-block cursor-item">Training <i class="fa fa-chevron-right ml-2"></i></span></a>
                            </div>
                         </div>
@@ -322,38 +322,38 @@
       <div class="cursor-follower"></div>
 
       <!-- jquery -->
-      <script src="js/query-3.4.1.min.js"></script>
+      <script src="/js/query-3.4.1.min.js"></script>
       <!-- bootstrap -->
-      <script src="js/bootstrap.min.js"></script>
+      <script src="/js/bootstrap.min.js"></script>
       <!-- aos -->
-      <script src="js/aos.js"></script>
+      <script src="/js/aos.js"></script>
       <!-- owl.carusel js -->
-      <script src="js/owl.carousel.min.js"></script>
+      <script src="/js/owl.carousel.min.js"></script>
       <!-- isotope js -->
-      <script src="js/isotope.pkgd.min.js"></script>
+      <script src="/js/isotope.pkgd.min.js"></script>
       <!-- isotope image loader js -->
-      <script src="js/imagesloaded.pkgd.min.js"></script>
+      <script src="/js/imagesloaded.pkgd.min.js"></script>
       <!-- three -->
-      <script src="js/three.min.js"></script>
+      <script src="/js/three.min.js"></script>
       <!-- anime -->
-      <script src="js/anime.min.js"></script>
+      <script src="/js/anime.min.js"></script>
       <!-- tweenmax -->
-      <script src="js/TweenMax.min.js"></script>
+      <script src="/js/TweenMax.min.js"></script>
       <!-- jquery.waypoints.min.js -->
-      <script src="js/jquery.waypoints.min.js"></script>
+      <script src="/js/jquery.waypoints.min.js"></script>
       <!-- circletype-->
-      <script src="js/circletype.min.js"></script>
+      <script src="/js/circletype.min.js"></script>
       <!-- hover-effect -->
-      <script src="js/hover-effect.umd.js"></script>
+      <script src="/js/hover-effect.umd.js"></script>
       <!-- gsap -->
-      <script src="js/gsap.min.js"></script>
+      <script src="/js/gsap.min.js"></script>
       <!-- ScrollMagic gsap -->
-      <script src="js/ScrollMagic.min.js"></script>
-      <script src="js/scrollmagic.animation.gsap.min.js"></script>
+      <script src="/js/ScrollMagic.min.js"></script>
+      <script src="/js/scrollmagic.animation.gsap.min.js"></script>
       <!-- highlight.js -->
-      <script src="js/highlight.min.js"></script>
+      <script src="/js/highlight.min.js"></script>
       <!-- custom -->
-      <script src="js/custom.js"></script>
+      <script src="/js/custom.js"></script>
       <script>hljs.highlightAll();</script>
    <script src="/js/newsletter.js?v=20260819"></script>
    </body>
