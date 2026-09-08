@@ -67,7 +67,7 @@
                            <h3 class="mb-4">From Binary Patch to Proof-of-concept: a VMware ESXi vmxnet3 Case Study </h3>
                            <p class="date">May 13th, 2021 – Alisa Esage</p>
 
-                           <p>A couple of years ago I reverse-engineered an important critical security bug in VMware ESXi vmxnet3 virtual network adapter (CVE-2018-6981) that was leveraged in a full guest-to-host VM escape exploit demonstrated at GeekPwn 2018 competition. I published the results in <a class="underline" href="https://twitter.com/alisaesage/status/1146059432255582211?s=20">my twitter</a> and <a class="underline" href="https://github.com/alisaesage/Disclosures/tree/master/CVE-2018-6981_VMWare_ESXi">github</a>, and (since there was no way to know if I identified the right bug) later <a class="underline" href="https://twitter.com/alisaesage/status/1161561150250598400?s=20">confirmed</a> it against the official bug details. This blog article is a quick wrap-up of that research project.</p>
+                           <p>A couple of years ago I reverse-engineered an important critical security bug in VMware ESXi vmxnet3 virtual network adapter (CVE-2018-6981) that was leveraged in a full guest-to-host VM escape exploit demonstrated at GeekPwn 2018 competition. I published the results in <a class="underline" href="https://twitter.com/alisaesage/status/1146059432255582211?s=20">my twitter</a> and <a class="underline" href="https://github.com/badd1e/Disclosures/tree/master/CVE-2018-6981_VMWare_ESXi">github</a>, and (since there was no way to know if I identified the right bug) later <a class="underline" href="https://twitter.com/alisaesage/status/1161561150250598400?s=20">confirmed</a> it against the official bug details. This blog article is a quick wrap-up of that research project.</p>
 
                               <h6>Background</h6>
 
@@ -125,7 +125,7 @@
 
                            <p>This leads to an access violation in most tests. I did not pursue further development or weaponizaton of this proof-of-concept into a full exploit. </p>
 
-                           <p>The proof-of-concept code is <a class="underline" href="https://github.com/alisaesage/Disclosures/tree/master/CVE-2018-6981_VMWare_ESXi">here</a>. Apply the patch against vmxnet3 driver and build it. </p>
+                           <p>The proof-of-concept code is <a class="underline" href="https://github.com/badd1e/Disclosures/tree/master/CVE-2018-6981_VMWare_ESXi">here</a>. Apply the patch against vmxnet3 driver and build it. </p>
 
                            <p>An astute reader of technical vulnerability blogs may notice a curious similarity of this security issue to another critical bug that affected VMware Workstation. </p>
 

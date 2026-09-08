@@ -82,7 +82,7 @@
 
 <a name="introduction"><h6>Introduction</h6></a>
 
-<p>This text has been moved out from the swell draft of my upcoming article about <a href="https://github.com/alisaesage/Disclosures/tree/master/CVE-2019-0717_Hyper-V">Hyper-V CVE-2018-0717</a> - a memory corruption bug in Virtual Network Switch, a Hyper-V kernel component, that I found some time ago - because I realized that the set of technologies required to understand the bug is insanely extensive and doesn't fit in a single article. Because of that, the high-level context about Hyper-V architecture and certain conceptual links are excluded from this note, and will be covered later. <a href="https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/reference/hyper-v-architecture">[HVARCH]</a>
+<p>This text has been moved out from the swell draft of my upcoming article about <a href="https://github.com/badd1e/Disclosures/tree/master/CVE-2019-0717_Hyper-V">Hyper-V CVE-2018-0717</a> - a memory corruption bug in Virtual Network Switch, a Hyper-V kernel component, that I found some time ago - because I realized that the set of technologies required to understand the bug is insanely extensive and doesn't fit in a single article. Because of that, the high-level context about Hyper-V architecture and certain conceptual links are excluded from this note, and will be covered later. <a href="https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/reference/hyper-v-architecture">[HVARCH]</a>
 
 In general, Hyper-V design and implementation are quite different from all other hypervisors, though it borrows a lot from Xen, both on the conceptual design level (dom0/domU, enlightenments, paravirtualizations, privilege separation model, etc.) and the technical implementation level (the hypercall page, hypercalls format, etc.). On the other hand, Hyper-V is a near complete opposite of VMWare ESXi in practice, though the two products would be casually mentioned together and compared as Type 1 hypervisors, with the same expectations for system architecture and deployment scenarios. 
 
@@ -573,7 +573,7 @@ Despite the focus on Linux internals, the general implementation principles disc
 
 The undocumented internals of channel-specific hypervisor protocols that format the data sent over the VMBUS are omitted from this note. 
 
-With respect to my upcoming article about Hyper-V CVE-2018-0717, LIS constitutes the platform that I selected for rapid prototyping of the vulnerability. Specifically, the <a href="https://github.com/alisaesage/Disclosures/blob/master/CVE-2019-0717_Hyper-V/PoC_CVE-2019-0717.c">proof-of-concept snippet</a> must be invoked from within rndis_filter.c in order to reproduce the bug. 
+With respect to my upcoming article about Hyper-V CVE-2018-0717, LIS constitutes the platform that I selected for rapid prototyping of the vulnerability. Specifically, the <a href="https://github.com/badd1e/Disclosures/blob/master/CVE-2019-0717_Hyper-V/PoC_CVE-2019-0717.c">proof-of-concept snippet</a> must be invoked from within rndis_filter.c in order to reproduce the bug. 
 
 LIS is essential for runtime introspection of the hypervisor and VMBUS internals for Hyper-V security research, and makes it easier than with an equivalent Windows-based implementation. 
 

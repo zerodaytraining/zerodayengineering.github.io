@@ -72,7 +72,7 @@
                            
                            <p>When vmswitch receives an RNDIS message of type Set, and after a series of data sanitizations, VmsMpCommonPvtSetRequestCommon() procedure will be eventually called to process it. Inside VmsMpCommonPvtSetRequestCommon one particular path is responsible for handling RNDIS Set requests with OID RNDIS_OID_GEN_RNDIS_CONFIG_PARAMETER:</p>
                            
-                           <script src="https://gist.github.com/alisaesage/6e0df779c03ffc2c4d0e7053cc8c58b5.js"></script>
+                           <script src="https://gist.github.com/badd1e/6e0df779c03ffc2c4d0e7053cc8c58b5.js"></script>
                            
                            <p>At the start of the above code snippet, $r9 register points to InformationBuffer of type rndis_config_parameter_info:</p>
                            
@@ -100,7 +100,7 @@
 
                            <p>First, note that a Guest VM has a significant degree of control over memory management in vmswitch. For example, consider the output from !verifier on the faulting memory:</p>
 
-                           <script src="https://gist.github.com/alisaesage/652d205beca7b8a2cbe0659648c14197.js"></script>
+                           <script src="https://gist.github.com/badd1e/652d205beca7b8a2cbe0659648c14197.js"></script>
 
                            <p>RndisDevHostDispatchControlMessage in the allocation backtrace is the top-level function that dispatches RNDIS requests from the guest. For each incoming request it allocates memory based on the size of the request, as it is provided by the Guest VM. Thus the Guest VM controls both the timing and the size of memory allocations in vmswitch, which is conductive to heap grooming.</p>
 
@@ -117,7 +117,7 @@
                            <p>This vulnerability and the relevant technical architectural context is further discussed in the <a href="/training/hypervisor-vulnerability-research.html">"Hypervisor Exploitation I"</a> training.</p>
 
                            <p>CVE ID: CVE-2019-0717<br>
-                           <a href="https://github.com/alisaesage/Disclosures/blob/master/CVE-2019-0717_Hyper-V/PoC_CVE-2019-0717.c">Proof-of-concept testcase</a><br>
+                           <a href="https://github.com/badd1e/Disclosures/blob/master/CVE-2019-0717_Hyper-V/PoC_CVE-2019-0717.c">Proof-of-concept testcase</a><br>
                            Vulnerability discovery: Alisa Esage, Zero Day Engineering</p>
                                                          
                            <div class="pt-5 mb-5 categories_tags ">
