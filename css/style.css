@@ -3123,6 +3123,96 @@ body, html, .page-wrapper, .article, .main-content {
 }
 .billing-toggle-track.yearly .billing-toggle-thumb { transform: translateX(22px); }
 
+/* Tier card — layout for product/service tiers ============================= */
+
+/* Grid container for a row of tier cards. Wraps the whole row in a border. */
+.tier-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  border: 1px solid #8A7A5A;
+}
+@media (max-width: 991px) {
+  .tier-grid { grid-template-columns: 1fr; }
+}
+
+/* One cell inside .tier-grid. Cells share internal borders. */
+.tier-card {
+  padding: 52px 44px 48px;
+  border-right: 1px solid #8A7A5A;
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+}
+.tier-card:last-child { border-right: none; }
+@media (max-width: 991px) {
+  .tier-card {
+    border-right: none;
+    border-bottom: 1px solid #8A7A5A;
+  }
+  .tier-card:last-child { border-bottom: none; }
+}
+
+/* Standalone tier card (not inside a .tier-grid). Adds full border and centers. */
+.tier-card--standalone {
+  border: 1px solid #8A7A5A;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+/* Tier symbol — serif Greek/Latin letter in tan */
+.tier-symbol {
+  font-family: 'Alice', Georgia, serif;
+  font-size: 46px;
+  color: #8A7A5A;
+  line-height: 1;
+  margin-bottom: 8px;
+  display: block;
+  mix-blend-mode: difference;
+}
+
+/* Tier name — subtitle line under the symbol */
+.tier-name {
+  font-size: 14px;
+  color: #EDEAE6;
+  font-weight: 300;
+  margin-bottom: 28px;
+}
+.tier-name a { color: inherit; text-decoration: none; }
+
+/* Fixed-height price row so cards align across a grid */
+.tier-price-block {
+  height: 52px;
+  display: flex;
+  align-items: center;
+}
+
+/* Action button row — spacing above features list */
+.tier-actions {
+  margin-top: 24px;
+  margin-bottom: 32px;
+}
+
+/* Features list inside a tier card gets a top divider */
+.tier-card .card-list {
+  border-top: 1px solid #8A7A5A;
+  padding-top: 28px;
+}
+
+/* Tier footnote paragraph under the features (small print, muted). */
+.tier-note {
+  margin-top: 20px;
+  margin-bottom: 0;
+  opacity: 0.5;
+}
+
+/* Muted variant of body text (same color, 50% opacity). */
+.text-muted-body { opacity: 0.5; }
+
+/* Narrow reading wrap for text-heavy standalone sections. */
+.reading-wrap { max-width: 640px; margin: 0 auto; }
+
+
 /* Newsletter modal — layout-specific only.
    Card + title + field-label + field-input + btn-outline come from shared atoms. */
 .nl-modal-overlay {

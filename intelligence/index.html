@@ -21,97 +21,7 @@
       <link rel="stylesheet" href="/css/bootstrap.min.css">
       <link rel="stylesheet" href="/css/animate.min.css">
       <link rel="stylesheet" href="/css/font-awesome.min.css">
-      <link rel="stylesheet" href="/css/style.css?v=20260819">
-      <style>
-         /* Page-local layout only. Reusable atoms live in css/style.css. */
-
-         /* Billing toggle spacing local overrides */
-         .billing-toggle { gap: 18px; margin-bottom: 64px; }
-         .save-badge {
-            font-size: 14px;
-            color: #8A7A5A;
-            font-weight: 300;
-            opacity: 0;
-            transition: opacity .3s ease;
-         }
-
-         /* Pricing grid */
-         .intel-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 0;
-            border: 1px solid #8A7A5A;
-         }
-         @media (max-width: 991px) {
-            .intel-grid { grid-template-columns: 1fr; }
-         }
-         .intel-card {
-            padding: 52px 44px 48px;
-            border-right: 1px solid #8A7A5A;
-            position: relative;
-            overflow: hidden;
-            min-width: 0;
-         }
-         .intel-card:last-child { border-right: none; }
-         @media (max-width: 991px) {
-            .intel-card {
-               border-right: none;
-               border-bottom: 1px solid #8A7A5A;
-            }
-            .intel-card:last-child { border-bottom: none; }
-         }
-
-         /* Tier symbol — unique to this page (Alice serif, blend mode) */
-         .tier-symbol {
-            font-family: 'Alice', Georgia, serif;
-            font-size: 46px;
-            color: #8A7A5A;
-            line-height: 1;
-            margin-bottom: 8px;
-            display: block;
-            mix-blend-mode: difference;
-         }
-         .tier-name {
-            font-size: 14px;
-            color: #EDEAE6;
-            font-weight: 300;
-            margin-bottom: 28px;
-         }
-
-         /* Price row — layout only, atoms come from .card-price / .card-price-period */
-         .tier-price-block {
-            height: 52px;
-            display: flex;
-            align-items: center;
-         }
-
-         /* Card features list — border-top and spacing overlay on .card-list */
-         .intel-card .card-list {
-            border-top: 1px solid #8A7A5A;
-            padding-top: 28px;
-         }
-
-         /* Buttons block spacing */
-         .tier-actions {
-            margin-top: 24px;
-            margin-bottom: 32px;
-         }
-
-         /* Toggle visibility per billing period */
-         .price-yearly       { display: none; }
-         .price-yearly.show  { display: inline; }
-         .price-monthly.hide { display: none; }
-         .btn-outline.btn-period-yearly       { display: none; }
-         .btn-outline.btn-period-yearly.show  { display: block; }
-         .btn-outline.btn-period-monthly.hide { display: none; }
-
-         /* About */
-         .intel-about { margin-bottom: 60px; }
-         .intel-intro {
-            font-weight: 300;
-            margin-bottom: 0;
-         }
-      </style>
+      <link rel="stylesheet" href="/css/style.css?v=20260825">
    </head>
 
    <body data-spy="scroll" data-target=".site-nav-target" data-offset="200">
@@ -147,21 +57,21 @@
             <div class="section">
                <div class="container">
 
-                  <div class="row intel-about">
+                  <div class="row mb-5">
                      <div class="col-lg-2">
                         <h3 class="section-title">About</h3>
                      </div>
                      <div class="col-lg-10">
-                        <p class="intel-intro">Independent briefing on emerging threats and applied exploit research.<br>Structured access to world class <a class="underline" target="_blank" href="/about.html#founder">expert practitioner</a>'s mindset for scoped on-demand advisory.<br>Live ongoing insights and analysis from our <a class="underline" target="_blank" href="/research">research labs</a>.</p>
+                        <p class="font-weight-light mb-0">Independent briefing on emerging threats and applied exploit research.<br>Structured access to world class <a class="underline" target="_blank" href="/about.html#founder">expert practitioner</a>'s mindset for scoped on-demand advisory.<br>Live ongoing insights and analysis from our <a class="underline" target="_blank" href="/research">research labs</a>.</p>
                      </div>
                   </div>
 
-                  <div class="intel-grid">
+                  <div class="tier-grid">
 
                      <!-- ALPHA -->
-                     <div class="intel-card">
+                     <div class="tier-card">
                         <span class="tier-symbol">α</span>
-                        <div class="tier-name"><a href="/intelligence/alpha/index.html" style="color:inherit; text-decoration:none;">Alpha &mdash; Exploit Intelligence</a></div>
+                        <div class="tier-name"><a href="/intelligence/alpha/index.html">Alpha &mdash; Exploit Intelligence</a></div>
 
                         <div class="tier-price-block">
                            <span class="card-price">€10,000</span>
@@ -180,11 +90,11 @@
                            <li>AI infrastructure security and crypto exploits covered natively</li>
                            <li>Experimental access to 0-Day Watch platform</li>
                         </ul>
-                        <p style="margin-top:20px; margin-bottom:0;"><span style="opacity:0.5;">Q4 cohort launches 1 October 2026<br>10 seats total</span><br><br><a class="underline" href="/intelligence/alpha/index.html">Learn more</a></p>
+                        <p class="tier-note"><span class="text-muted-body">Q4 cohort launches 1 October 2026<br>10 seats total</span><br><br><a class="underline" href="/intelligence/alpha/index.html">Learn more</a></p>
                      </div>
 
                      <!-- PI -->
-                     <div class="intel-card">
+                     <div class="tier-card">
                         <span class="tier-symbol">π</span>
                         <div class="tier-name">Pi — Pattern Insight</div>
 
@@ -206,7 +116,7 @@
                      </div>
 
                      <!-- OMEGA -->
-                     <div class="intel-card">
+                     <div class="tier-card">
                         <span class="tier-symbol">Ω</span>
                         <div class="tier-name">Omega — Exclusive R&D</div>
 
@@ -221,7 +131,7 @@
 
                   </div>
 
-                  <p style="margin-top:28px; opacity:0.5;">Note: options listed are operational intelligence layers, not product tiers.</p>
+                  <p class="mt-4 text-muted-body">Note: options listed are operational intelligence layers, not product tiers.</p>
 
                </div>
             </div>
@@ -254,24 +164,6 @@
       <script src="/js/ScrollMagic.min.js"></script>
       <script src="/js/scrollmagic.animation.gsap.min.js"></script>
       <script src="/js/custom.js"></script>
-
-      <script>
-         let isYearly = false;
-
-         function toggleBilling() {
-            isYearly = !isYearly;
-            document.getElementById('billing-toggle').classList.toggle('yearly', isYearly);
-            document.getElementById('label-monthly').classList.toggle('active', !isYearly);
-            document.getElementById('label-yearly').classList.toggle('active', isYearly);
-            document.getElementById('save-badge').style.opacity = isYearly ? '1' : '0';
-
-            document.querySelectorAll('.price-monthly').forEach(el => el.classList.toggle('hide', isYearly));
-            document.querySelectorAll('.price-yearly').forEach(el => el.classList.toggle('show', isYearly));
-
-            document.querySelectorAll('.btn-period-monthly').forEach(el => el.classList.toggle('hide', isYearly));
-            document.querySelectorAll('.btn-period-yearly').forEach(el => el.classList.toggle('show', isYearly));
-         }
-      </script>
 
       <script src="/js/newsletter.js?v=20260819"></script>
 
