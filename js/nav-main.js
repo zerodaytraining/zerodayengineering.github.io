@@ -28,6 +28,7 @@
                            <li><a href="/intelligence/alpha/index.html">Alpha &mdash; Exploit Intelligence</a></li>
                            <li><a href="/intelligence/index.html">Pi — Pattern Insight</a></li>
                            <li><a href="/intelligence/index.html">Omega — Exclusive R&D</a></li>
+                           <li><a href="https://intelligence.zerodayengineering.com">Light &ndash; Public Feed</a></li>
                         </ul>
                      </li>
                      <li class="has-children">
