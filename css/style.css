@@ -1944,6 +1944,75 @@ hr {
   margin-top: 75px;
 }
 
+/* Exploit Intelligence feed: title card for posts without a feature image (js/intel-feed.js) */
+.intel-card {
+  position: relative;
+  z-index: 10;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 32px;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: 1s;
+}
+
+.portfolio-wrap:hover .intel-card {
+  transform: scale(0.9, 0.9);
+}
+
+.intel-card-tag {
+  color: #1BC8FF;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.intel-card-title {
+  color: #EDEAE6;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+/* Exploit Intelligence feed: centered post with smaller, dimmed side previews */
+.intel-carousel .owl-item {
+  transform: scale(0.8);
+  opacity: 0.35;
+  transition: transform 0.8s, opacity 0.8s;
+}
+
+.intel-carousel .owl-item.center {
+  transform: none;
+  opacity: 1;
+}
+
+.intel-carousel .owl-item:not(.center) .portfolio-content {
+  visibility: hidden;
+}
+
+/* Caption flows below the visual instead of sitting in a fixed 140px band,
+   so long titles aren't clipped */
+.intel-carousel .owl-item .portfolio-wrap {
+  padding-bottom: 0;
+  margin-bottom: 40px;
+}
+
+.intel-carousel .portfolio-content {
+  position: static;
+}
+
+@media only screen and (max-width: 767px) {
+  .intel-card {
+    padding: 20px;
+  }
+
+  .intel-card-title {
+    font-size: 20px;
+  }
+}
+
 .portfolio-title-single {
   font-size: 50px;
   font-weight: 900;
@@ -2134,6 +2203,25 @@ hr {
 
 .single_testmonial {
   margin-right: 30px;
+}
+
+/* Services section (desktop): stretch the GIF carousel to the height of the
+   text column; images are cropped to fill rather than distorted */
+@media (min-width: 992px) {
+  #services-section .services_active,
+  #services-section .services_active .owl-stage-outer,
+  #services-section .services_active .owl-stage,
+  #services-section .services_active .owl-item,
+  #services-section .services_active .single_testmonial,
+  #services-section .services_active .testmonial_info {
+    height: 100%;
+  }
+
+  #services-section .services_active .owl-item img {
+    height: 100%;
+    object-fit: cover;
+    margin-bottom: 0;
+  }
 }
 
 .author_name {
