@@ -11,7 +11,7 @@
    const GHOST_URL = 'https://intelligence.zerodayengineering.com';
    const GHOST_KEY = 'afa3dbe29b02cca52e9129d699'; // Content API key (Ghost Admin → Settings → Integrations)
    const LIMIT = 5;
-   const FILTER = 'tag:-announcements';
+   const FILTER = 'tag:-announcements+tag:-0-day-alerts';
 
    const EMOJI_PREFIX = /^[\p{Extended_Pictographic}️‍\s]+/u;
 
