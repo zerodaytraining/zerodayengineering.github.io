@@ -14,14 +14,26 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="description" content="Keynote: Cybersecurity and the Art of Looking Deeper — Alisa Esage, c0c0n 2026."/>
+      <meta name="description" content="Beneath the fast-moving surface of cybersecurity lies a stable core that barely ever changes - and a researcher's real edge is the art of looking deeper than the tools do."/>
       <meta name="keywords" content="cybersecurity, keynote, zero day, vulnerability research, exploit, Alisa Esage, c0c0n"/>
       <meta name="author" content="Alisa Esage"/>
+      <!-- Open Graph / Twitter Card -->
+      <meta property="og:type" content="article"/>
+      <meta property="og:title" content="Keynote: The Art of Looking Deeper"/>
+      <meta property="og:description" content="Beneath the fast-moving surface of cybersecurity lies a stable core that barely ever changes - and a researcher's real edge is the art of looking deeper than the tools do."/>
+      <meta property="og:url" content="https://zerodayengineering.com/research/keynote-the-art-of-looking-deeper/"/>
+      <meta property="og:image" content="https://zerodayengineering.com/research/keynote-the-art-of-looking-deeper/images/c0c0n-social-card.jpg"/>
+      <meta property="og:image:width" content="1200"/>
+      <meta property="og:image:height" content="630"/>
+      <meta name="twitter:card" content="summary_large_image"/>
+      <meta name="twitter:title" content="Keynote: The Art of Looking Deeper"/>
+      <meta name="twitter:description" content="Beneath the fast-moving surface of cybersecurity lies a stable core that barely ever changes - and a researcher's real edge is the art of looking deeper than the tools do."/>
+      <meta name="twitter:image" content="https://zerodayengineering.com/research/keynote-the-art-of-looking-deeper/images/c0c0n-social-card.jpg"/>
       <base href="../../">
       <!--Favicons-->
       <link rel="shortcut icon" href="/images/favicon.png">
       <!--Page Title-->
-      <title>Keynote: Cybersecurity and the Art of Looking Deeper</title>
+      <title>Keynote: The Art of Looking Deeper</title>
       <!-- Stylesheets -->
       <!-- bootstrap -->
       <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -93,7 +105,7 @@
                            The hierarchy of deep system matters here because of how impact transfers through a dependency graph. The deeper the impact application point, the more elements downstream it affects. This idea is famously shown by xkcd #2347.</p>
 
                            <p style="text-align: center;"><img src="/research/keynote-the-art-of-looking-deeper/images/slide-05.png" alt="The Root of Cyber &mdash; offensive/defensive layers around the vulnerability" class="img-fluid" width="85%"></p>
-                           <p>If you look at cybersecurity with this mindset, it quickly becomes clear that the root of its dependency graph is the vulnerability - and the exploit, as its complement which turns a mere bug into leverage. A system compromise requires a vulnerability, whether technical or social. 
+                           <p>Looking at cybersecurity with this mindset, it quickly becomes clear that the root of its dependency graph is the vulnerability - and the exploit, as its complement which turns a mere bug into leverage. A system compromise requires a vulnerability, whether technical or social. 
                               
                            Without the bug, the entire industry breaks down with no reason to exist. There would be nothing to exploit, nothing to defend against, nothing to build the policy of defending, nothing to harden with offensive research. 
 
@@ -113,7 +125,7 @@
 
                            Getting started with vulnerability research around 2010, I made a habit of studying the bugs of the past. Going back far enough in reading archived blogs and reverse-engineering forgotten patches, I'd notice something interesting: bug patterns recur more widely than most people realize.
                            
-                           A related trend: at any point in time, majority of security researchers believe that a certain bug class is dead. In 2015, the "dead" bug was a browser Use-after-free; #1 in browsers outside of JSE now. In 2020, the "dead" bug was a buffer overflow; the bug that owned most embedded targets at Pwn2Own competitions before the target category was eliminated. In 2026, the "dead" bug is apparently SQLi and people believe in it enough to claim it in my Twitter comments; several major compromises this year alone. A professional delusion then convinces the general public, which results in disproportionate hype cycles around mundane bugs and hoarding defense products that solve nothing.
+                           A related trend: at any point in time, majority of security researchers believe that a certain bug class is dead. In 2015, the "dead" bug was a browser Use-after-free; #1 in browsers outside of JSE now. In 2020, the "dead" bug was a buffer overflow; the bug that owned most embedded targets at Pwn2Own competitions for years, up to last year when the target category was eliminated. In 2026, the "dead" bug is apparently SQLi and people believe in it enough to claim it in my Twitter comments; several major compromises this year alone. A professional delusion then convinces the general public, which results in disproportionate hype cycles around mundane bugs and hoarding defense products that solve nothing.
 
                            But the trend that I am referring to is more interesting and specific. It's not about general buffer overflows, which obviously repeat themselves - rather, it's about high-specificity bug patterns that have every reason to no longer exist, but they do.
                            </p>
@@ -180,9 +192,9 @@
 
                            <div class="pt-5 mb-5 categories_tags ">
                               <div class="social float-right">
-                                 <a href="https://www.facebook.com/sharer/sharer.php?u=https://zerodayengineering.com/research/keynote-the-art-of-looking-deeper/&t=Keynote: Cybersecurity and the Art of Looking Deeper" class="mr-3"><i class="fa fa-facebook"></i></a>
-                                 <a href="https://twitter.com/intent/tweet?url=https://zerodayengineering.com/research/keynote-the-art-of-looking-deeper/&text=Keynote: Cybersecurity and the Art of Looking Deeper" class="mr-3"><i class="fa fa-twitter"></i></a>
-                                 <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://zerodayengineering.com/research/keynote-the-art-of-looking-deeper/&title=Keynote: Cybersecurity and the Art of Looking Deeper" class="mr-3"><i class="fa fa-linkedin"></i></a>
+                                 <a href="https://www.facebook.com/sharer/sharer.php?u=https://zerodayengineering.com/research/keynote-the-art-of-looking-deeper/&t=Keynote: The Art of Looking Deeper" class="mr-3"><i class="fa fa-facebook"></i></a>
+                                 <a href="https://twitter.com/intent/tweet?url=https://zerodayengineering.com/research/keynote-the-art-of-looking-deeper/&text=Keynote: The Art of Looking Deeper" class="mr-3"><i class="fa fa-twitter"></i></a>
+                                 <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://zerodayengineering.com/research/keynote-the-art-of-looking-deeper/&title=Keynote: The Art of Looking Deeper" class="mr-3"><i class="fa fa-linkedin"></i></a>
                               </div>
                            </div>
 
