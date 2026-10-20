@@ -1,0 +1,252 @@
+<!DOCTYPE HTML>
+<html lang="en">
+   <head>
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-RBMCFM6G1Z"></script>
+      <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+
+         gtag('config', 'G-RBMCFM6G1Z');
+      </script>
+      <!--Meta Tags-->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Keynote: Cybersecurity and the Art of Looking Deeper — Alisa Esage, c0c0n 2026."/>
+      <meta name="keywords" content="cybersecurity, keynote, zero day, vulnerability research, exploit, Alisa Esage, c0c0n"/>
+      <meta name="author" content="Alisa Esage"/>
+      <base href="../../">
+      <!--Favicons-->
+      <link rel="shortcut icon" href="/images/favicon.png">
+      <!--Page Title-->
+      <title>Keynote: Cybersecurity and the Art of Looking Deeper</title>
+      <!-- Stylesheets -->
+      <!-- bootstrap -->
+      <link rel="stylesheet" href="/css/bootstrap.min.css">
+      <!-- Animate -->
+      <link rel="stylesheet" href="/css/animate.min.css">
+      <!-- Owl carusel -->
+      <link rel="stylesheet" href="/css/owl.carousel.min.css">
+      <!-- Aos Css-->
+      <link rel="stylesheet" href="/css/aos.css"/>
+      <!-- font awesome -->
+      <link rel="stylesheet" href="/css/font-awesome.min.css">
+      <!-- highlight.js -->
+      <link rel="stylesheet" href="/css/default-dark.min.css">
+      <!-- main css -->
+      <link rel="stylesheet" href="/css/style.css?v=20260819">
+   </head>
+   <body data-spy="scroll" data-target=".site-nav-target" data-offset="200">
+
+
+      <script src="/js/nav-mobile.js"></script>
+      <!-- Main content wrap -->
+      <div class="site-wrap">
+         <!-- Main content inner -->
+         <div class="site-inner">
+
+            <script src="/js/nav-main.js"></script>
+            <div class="section">
+               <div class="blog-single-inner">
+                  <div class="container">
+                     <div class="row justify-content-center">
+                        <div class="col-md-8">
+                           <div id="quote"></div>
+                           <h3 class="mb-4">Keynote: The Art of Looking Deeper</h3>
+                           <p class="date">October 20th, 2026 &ndash; Alisa Esage</p>
+
+                           <p>Underneath the fast-moving landscape of the cybersecurity industry sits a layered mechanism that barely ever changes. 
+                              
+                           Just a few years ago, deep thinking to understand the core system was a matter of art: beautiful and optional. Now as AI commoditizes surface skills and shallow bugs, it becomes the new baseline. The attackers will go deeper first; the defense must follow accordingly. 
+                              
+                           Following is a synopsis of the opening keynote that I delivered at c0c0n 2026 conference in Kochi, India, on October 9th, reflecting on these ideas. </p>
+
+                           <p style="text-align: center;"><img src="/research/keynote-the-art-of-looking-deeper/images/slide-01.png" alt="The Art of Looking Deeper &mdash; title slide" class="img-fluid" width="85%"></p>
+
+                           <p style="text-align: center;"><img src="/research/keynote-the-art-of-looking-deeper/images/c0c0n-audience.jpg" alt="Alisa Esage delivering the opening keynote at c0c0n 2026, Kochi, India" class="img-fluid" width="85%"><br><i>Opening keynote &mdash; c0c0n 2026, Kochi, India</i></p>
+
+                           <p>Full slides are <a class="underline" target="_blank" href="/research/slides/c0c0n2026_TheArtOfLookingDeeper.pdf">here</a>. </p>
+
+                           <h4>The Heart of Cyber</h4>
+
+                           <p style="text-align: center;"><img src="/research/keynote-the-art-of-looking-deeper/images/slide-02.png" alt="Velocity of Change &mdash; a physics metaphor" class="img-fluid" width="85%"></p>
+                           <p>Consider this physics metaphor. Point speed on a rotating sphere - linear velocity - is highest on the surface. Towards the center the speed decreases, until it stops. At the zero point - the axis of rotation - nothing moves. 
+                              
+                           The rate of change in human-made systems behaves similarly. Most participants in the cybersecurity industry perceive a head-spinning chaos of trends, threats, bugs, and hype cycles. However, those who learn to see the deeper system only ever see repetition of the familiar - and predict accurately.
+                        
+                           But how does it work?</p>
+
+                           <p style="text-align: center;"><img src="/research/keynote-the-art-of-looking-deeper/images/slide-03.png" alt="Generative Hierarchy &mdash; the system behind all systems" class="img-fluid" width="85%"></p>
+                           <p>It helps to think of the world's systems as generatively composed hierarchies. Elements are not equal - they follow a dependency graph. The nature of the "dependency" property varies: it can be degrees of freedom, levels of privilege, simplicity/complexity, or functional reliance.
+                           
+                           Every system in existence builds on simpler systems - not the terminal elements - like a fractal. In physics, everything goes down to quanta and probability fields, and there is neither evidence nor a formal proof that it terminates there. In human biology, the body builds on organs build on cells build on organelles build on chemical compounds build on chemical elements build on … quanta and probability fields. 
+                        
+                           Socio-technological systems follow the same principles - except the elements aren't always defined with academic rigor.
+
+                           Even without a rigorous formalism, this, as a guiding mindset, generates insights where logic can't. </p>
+
+                           <p style="text-align: center;"><img src="/research/keynote-the-art-of-looking-deeper/images/slide-04.png" alt="Hierarchies in the SWE ecosystem" class="img-fluid" width="70%"></p>
+                           <p>The software ecosystem dependency graph is one concrete example of this abstract model. 
+                              
+                           The hierarchy of deep system matters here because of how impact transfers through a dependency graph. The deeper the impact application point, the more elements downstream it affects. This idea is famously shown by xkcd #2347.</p>
+
+                           <p style="text-align: center;"><img src="/research/keynote-the-art-of-looking-deeper/images/slide-05.png" alt="The Root of Cyber &mdash; offensive/defensive layers around the vulnerability" class="img-fluid" width="85%"></p>
+                           <p>If you look at cybersecurity with this mindset, it quickly becomes clear that the root of its dependency graph is the vulnerability - and the exploit, as its complement which turns a mere bug into leverage. A system compromise requires a vulnerability, whether technical or social. 
+                              
+                           Without the bug, the entire industry breaks down with no reason to exist. There would be nothing to exploit, nothing to defend against, nothing to build the policy of defending, nothing to harden with offensive research. 
+
+                           It doesn't mean that everything else in the industry is noise. It means that the fundamental laws that govern the bug should transfer, through the dependency graph, onto everything else in the industry.
+
+                           Scoping down in this way allows us to extract the deep laws that govern the entire industry, from a compact object. Understand the bug and the exploit to understand anything in cyber - and thereby, solve it. 
+                           
+                           This was the way of thinking that, back in 2021, led me to <a class="underline" href="about.html#founder">founding Zero Day Engineering</a> as a system of offensive research and intelligence from the first principles. In particular, the <a class="underline" href="training">training system</a> that I created is based on the methodology of thinking deeper, grasping what's underneath the surface and learning to <b>generate</b> every skill and every bit of information that you need regardless of the landscape you're standing on. 
+                           
+                           As the exploit landscape now churns faster and faster, with AI commoditizing both the shallow skills and information, the method that could be deemed extra a few years ago is now an essential baseline. 
+                           </p>
+
+                           <h4>Predictive Models</h4>
+
+                           <p style="text-align: center;"><img src="/research/keynote-the-art-of-looking-deeper/images/slide-06.png" alt="Deep Trend 1: Pattern Recurrence" class="img-fluid" width="70%"></p>
+                           <p>As I was navigating the industry with this mindset, one deep trend became apparent soon: pattern recurrence.
+
+                           Getting started with vulnerability research around 2010, I made a habit of studying the bugs of the past. Going back far enough in reading archived blogs and reverse-engineering forgotten patches, I'd notice something interesting: bug patterns recur more widely than most people realize.
+                           
+                           A related trend: at any point in time, majority of security researchers believe that a certain bug class is dead. In 2015, the "dead" bug was a browser Use-after-free; #1 in browsers outside of JSE now. In 2020, the "dead" bug was a buffer overflow; the bug that owned most embedded targets at Pwn2Own competitions before the target category was eliminated. In 2026, the "dead" bug is apparently SQLi and people believe in it enough to claim it in my Twitter comments; several major compromises this year alone. A professional delusion then convinces the general public, which results in disproportionate hype cycles around mundane bugs and hoarding defense products that solve nothing.
+
+                           But the trend that I am referring to is more interesting and specific. It's not about general buffer overflows, which obviously repeat themselves - rather, it's about high-specificity bug patterns that have every reason to no longer exist, but they do.
+                           </p>
+
+                           <p style="text-align: center;"><img src="/research/keynote-the-art-of-looking-deeper/images/slide-07.png" alt="The Bug that Shouldn't Exist &mdash; Pwn2Own 2021 hypervisor escape" class="img-fluid" width="85%"></p>
+                           <p>One example of such a bug pattern is my <a class="underline" href="/research/pwn2own-2021-vm-escape.html">Pwn2Own 2021 Parallels bug</a> - a directory traversal in deep hypervisor internals, which I exploited to achieve a full VM escape.
+                           
+                           For a hypervisor researcher, the attack scenario doesn't make sense. Hypervisors are binary programs, and logic bugs in them are rare. A hypervisor directory traversal is unheard of. In fact, there were ~5 of them in the entire history of virtualization.
+                        
+                           But the more important point isn't just rarity, it's the time scale AND rarity AND several other anomalies clustered. The first instance of a directory traversal in a hypervisor was around 2010 (I have a story about this in the <a class="underline" href="training/hypervisor-vulnerability-research.html">Hypervisor Vulnerability Research</a> course). It is such a trivial bug class that it's the first thing that gets patched out of open source web applications upon first scrutiny. Instead it kept recurring across a variety of unrelated binary hypervisors for decades.
+                        
+                           I thought at first it was just a coincidence. As I kept researching, attacking browsers and other hardened systems, I saw the pattern.</p>
+
+                           <p style="text-align: center;"><img src="/research/keynote-the-art-of-looking-deeper/images/slide-08.png" alt="Mythic Bugs &mdash; an archetype" class="img-fluid" width="85%"></p>
+                           <p>I call it Mythic Bugs. It's a highly specific bug pattern - a deep one, more of an archetype than a class - which combines several traits that make it particularly relevant at this point in time.
+
+                           The most interesting property of a Mythic Bug is that it evades both general VR tooling and human common sense. This leads to the situation where an apparently simple bug hides in the open, undetected for years. Furthermore, these bugs are likely to be mispatched and resurface as an incomplete fix. 
+                           </p>
+
+                           <p style="text-align: center;"><img src="/research/keynote-the-art-of-looking-deeper/images/slide-09.png" alt="Deep Trend 2: Overestimation of Tools" class="img-fluid" width="70%"></p>
+                           <p>Another deep trend that I noticed doing vulnerability research and observing the industry with the deep mindset was the systematic overestimation of tooling by expert practitioners. </p>
+
+                           <p style="text-align: center;"><img src="/research/keynote-the-art-of-looking-deeper/images/slide-10.png" alt="Baseline Shifts &mdash; every level claims bugs are solved" class="img-fluid" width="85%"></p>
+                           <p>Invention of tools is the driving factor of human evolution (a jumping factor, in fact). I touched the era when all that hackers had was a primitive disassembler producing megabytes of unreferenced, unlabeled and unsymbolized assembly code. I still remember what it's like to open the binary program in the hex editor, search for the specific byte sequence which represents <a class="underline" href="https://youtu.be/DWkImpawzhc?si=U1PRKlpSmHQMSVXq">assembly opcodes</a> of a software license check, and change them to other opcodes to bypass the check. Nowadays, writing even the most advanced binary exploits, we barely need to touch the code.
+                           
+                           At every new baseline of tooling, majority of practitioners tend to believe it solves the problem. It happened twice with fuzzing: first with random fuzzing tools, then with feedback-guided evolutionary fuzzing algorithms. Same sentiment every time: now, vulnerability problem is solved. Doom for researchers, hope for defenders, ressentiment valve for the rest. 
+                           
+                           It took years for most practitioners to realize that fuzzing technology has inherent limits and blind spots, and can't find certain classes of bugs by construction - unless the algorithm is overfit to the extent of defeating the whole premise of a universal solution. For someone who was looking deeper, it was clear from the beginning.
+
+                           Now the history is repeating itself with AI tools. To be fair, AI technology scales differently than fuzzing - but still has structural limits that few people see. 
+
+                           Interestingly, senior executives and multi-smart-person-boards suffer from the same overestimation bias. In April 2026 Google all but killed the Chromium VRP, believing that AI now lets them solve bugs internally and cut the external contributor out of the loop. Just days ago, the Chromium VRP payouts were <a class="underline" href="https://t.me/zerodaytraining/242">raised</a> again. It's okay to change your mind.   
+
+                           Setting the belief cycles aside, the constant is this: baseline shifts, challenges remain.
+                           </p>
+
+                           <p style="text-align: center;"><img src="/research/keynote-the-art-of-looking-deeper/images/slide-12.png" alt="Capability rings with the researcher outside them" class="img-fluid" width="70%"></p>
+                           <p style="text-align: center;"><img src="/research/keynote-the-art-of-looking-deeper/images/slide-13.png" alt="Capability rings with the researcher at the center" class="img-fluid" width="70%"></p>
+                           <p>Here, I show a radial perspective on the same levels of VR tooling, which rhymes with the rotating sphere metaphor.
+                              
+                           Each new evolutionary level of tooling commoditizes the surface slice of the information system in the industry, which moves fastest. A human with a hex editor cannot outpace advanced automation tools, nor should he. 
+                           
+                           What happens here - not just in cybersecurity - is the individual human practitioner being pushed away from entertaining shallow skills towards a deeper mindset. 
+
+                           And the most powerful entity in this picture isn't the human alone or the tool alone. It's the integrated hybrid. 
+                           </p>
+
+                           <p style="text-align: center;"><img src="/research/keynote-the-art-of-looking-deeper/images/slide-14.png" alt="Looking Even Deeper &mdash; what's underneath the deep trends" class="img-fluid" width="70%"></p>
+                           <p>How about looking even deeper? 
+
+                           Both trends that I mentioned are rooted in human cognition.
+
+                           Overestimation of tooling is clearly a human bias. Bug pattern recurrence is less obviously so. But vulnerabilities are aspects of code written by humans, and so it is. Even as AI generates code, it sources from the data distribution created by humans - inheriting its deepest biases. 
+
+                           And so the human factor is the real solution point. The leverage is learning how vulnerabilities and exploits work — to make better decisions and write secure code, instead of perpetuating the same cycles of vulnerability, now with AI acceleration. This realization is the reason I am building <a class="underline" href="intelligence">Exploit Intelligence</a> - to allow a broader technical audience, not just vulnerability researchers, to understand exploits from the perspective that doesn't sell another defensive product.
+
+                           </p>
+
+                           <p style="text-align: center;"><img src="/research/keynote-the-art-of-looking-deeper/images/slide-15.png" alt="~100k CVEs per year (projected) &mdash; depth has the 1" class="img-fluid" width="85%"></p>
+                           <p>An estimated 49K CVEs were assigned in 2025 - a progressive rise through past years. This year, the number is projected to skyrocket due to recent progress in AI models. Of this number, it takes ~1.5 to compromise a system. In the deep system that is yet-unreached by tooling automation, there is plenty of space for it. </p>
+
+                           <p>This is the mindset that I've built into the <a class="underline" href="training/universal-vulnerability-research.html">Zero Day Vulnerability Research</a> training since 2021, and now transmit through my <a class="underline" href="https://intelligence.zerodayengineering.com">intelligence community</a>.</p>
+
+
+                           <div class="pt-5 mb-5 categories_tags ">
+                              <div class="social float-right">
+                                 <a href="https://www.facebook.com/sharer/sharer.php?u=https://zerodayengineering.com/research/keynote-the-art-of-looking-deeper/&t=Keynote: Cybersecurity and the Art of Looking Deeper" class="mr-3"><i class="fa fa-facebook"></i></a>
+                                 <a href="https://twitter.com/intent/tweet?url=https://zerodayengineering.com/research/keynote-the-art-of-looking-deeper/&text=Keynote: Cybersecurity and the Art of Looking Deeper" class="mr-3"><i class="fa fa-twitter"></i></a>
+                                 <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://zerodayengineering.com/research/keynote-the-art-of-looking-deeper/&title=Keynote: Cybersecurity and the Art of Looking Deeper" class="mr-3"><i class="fa fa-linkedin"></i></a>
+                              </div>
+                           </div>
+
+                           <div class="post-single-navigation d-flex align-items-stretch">
+                              <a href="/research/index.html" class="mr-auto w-50 pr-4">
+                                 <span class="d-block cursor-item"><i class="fa fa-chevron-left mr-2"></i> Research</span></a>
+                              <a href="/training/index.html" class="ml-auto w-50 text-right pl-4">
+                                 <span class="d-block cursor-item">Training <i class="fa fa-chevron-right ml-2"></i></span></a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>            <script src="/js/footer.js"></script>
+            <!-- Circle Scroll -->
+            <div class="circular-text">
+               <span id="rotated">1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull; 0 &bull; 1 &bull;</span>
+            </div>
+
+         </div>
+         <!-- Main content inner end -->
+      </div>
+      <!-- Main content wrap end -->
+
+      <!-- Back to top button -->
+      <a id="back-to-top" href="#" class="cursor-item"><i class="fa fa-chevron-up"></i></a>
+
+      <div class="cursor"></div>
+      <div class="cursor-follower"></div>
+
+      <!-- jquery -->
+      <script src="/js/query-3.4.1.min.js"></script>
+      <!-- bootstrap -->
+      <script src="/js/bootstrap.min.js"></script>
+      <!-- aos -->
+      <script src="/js/aos.js"></script>
+      <!-- owl.carusel js -->
+      <script src="/js/owl.carousel.min.js"></script>
+      <!-- isotope js -->
+      <script src="/js/isotope.pkgd.min.js"></script>
+      <!-- isotope image loader js -->
+      <script src="/js/imagesloaded.pkgd.min.js"></script>
+      <!-- three -->
+      <script src="/js/three.min.js"></script>
+      <!-- anime -->
+      <script src="/js/anime.min.js"></script>
+      <!-- tweenmax -->
+      <script src="/js/TweenMax.min.js"></script>
+      <!-- jquery.waypoints.min.js -->
+      <script src="/js/jquery.waypoints.min.js"></script>
+      <!-- circletype-->
+      <script src="/js/circletype.min.js"></script>
+      <!-- hover-effect -->
+      <script src="/js/hover-effect.umd.js"></script>
+      <!-- gsap -->
+      <script src="/js/gsap.min.js"></script>
+      <!-- ScrollMagic gsap -->
+      <script src="/js/ScrollMagic.min.js"></script>
+      <script src="/js/scrollmagic.animation.gsap.min.js"></script>
+      <!-- highlight.js -->
+      <script src="/js/highlight.min.js"></script>
+      <!-- custom -->
+      <script src="/js/custom.js"></script>
+      <script>hljs.highlightAll();</script>
+   <script src="/js/newsletter.js?v=20260819"></script>
+   </body>
+</html>
