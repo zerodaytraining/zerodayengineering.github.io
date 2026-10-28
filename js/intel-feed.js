@@ -11,7 +11,9 @@
    const GHOST_URL = 'https://intelligence.zerodayengineering.com';
    const GHOST_KEY = 'afa3dbe29b02cca52e9129d699'; // Content API key (Ghost Admin → Settings → Integrations)
    const LIMIT = 5;
-   const FILTER = 'tag:-announcements+tag:-0-day-alerts';
+   // Allowlist, not a blocklist: only this tag reaches the homepage carousel, so
+   // a new tag on the Ghost side can never surface itself here by default.
+   const FILTER = 'tag:0-day-insights';
 
    const EMOJI_PREFIX = /^[\p{Extended_Pictographic}️‍\s]+/u;
 
